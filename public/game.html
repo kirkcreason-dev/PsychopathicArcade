@@ -482,11 +482,11 @@ body.in-game #marquee, body.in-game .wire-divider, body.in-game #hint{ display:n
 .bj-side-lbl{ font-size:9px; letter-spacing:.26em; color:#63636f; }
 #bjHowCard{ text-align:left; font-size:12px; color:#cfc6f2; line-height:1.8; max-width:440px; }
 #bjHowCard b{ color:var(--yellow); }
-#bjBadgeToast{ position:fixed; left:50%; bottom:26px; transform:translateX(-50%) translateY(140%);
+#bjBadgeToast{ visibility:hidden; position:fixed; left:50%; bottom:26px; transform:translateX(-50%) translateY(140%);
   display:flex; align-items:center; gap:12px; background:#0b0b0d; border:2px solid var(--yellow); border-radius:14px;
   padding:10px 18px; z-index:50; transition:transform .45s cubic-bezier(.2,1.3,.4,1);
   box-shadow:0 0 0 3px #000, 0 0 44px -8px var(--yellow); }
-#bjBadgeToast.show{ transform:translateX(-50%) translateY(0); }
+#bjBadgeToast.show{ visibility:visible; transform:translateX(-50%) translateY(0); }
 #bjBadgeToast img{ height:52px; }
 #bjBadgeToast .tt{ font-family:var(--display); letter-spacing:.1em; color:var(--yellow); font-size:14px; }
 #bjBadgeToast .ts{ font-size:10px; color:#9a9aa5; letter-spacing:.14em; }
@@ -846,6 +846,16 @@ body.in-game #marquee, body.in-game .wire-divider, body.in-game #hint{ display:n
 
 /* ---------- narrow ---------- */
 @media (max-width:880px){
+  #gcMid, #ahMid, #pbMid{ order:0 !important; }
+  #gcArena > aside, #ahArena > aside, #pbArena > aside{ order:3; }
+  #gcArena > aside > img, #ahArena > aside > img{ display:none; }
+  #soArena .so-side{ flex-direction:row; justify-content:center; flex-wrap:wrap; }
+  #soArena .so-side > img{ display:none; }
+  #soArena .so-side .so-plate{ width:calc(25% - 8px); }
+  #soArena .so-side:first-of-type .so-plate{ width:calc(33.333% - 8px); }
+}
+
+@media (max-width:880px){
   .arena{ grid-template-columns:1fr; }
   .arena > *{ min-width:0; }
   .fighter-card{ flex-direction:row; justify-content:flex-start; text-align:left; padding:8px 12px; gap:12px; }
@@ -875,6 +885,23 @@ body.in-game #marquee, body.in-game .wire-divider, body.in-game #hint{ display:n
   .fc-mask{ width:42px; } .fc-banner{ width:92px; max-width:92px; }
   #announce, #chAnnounce, #ckAnnounce, #fgAnnounce{ font-size:12px; padding:4px 12px; letter-spacing:.06em; }
   #tickerText{ font-size:11px; }
+}
+@media (max-width:880px){
+  #gcCanvasWrap{ width:min(100%, calc((100svh - 190px)*470/760)); }
+  #ahCanvasWrap{ width:min(100%, calc((100svh - 190px)*470/880)); }
+  #pbCanvasWrap{ width:min(100%, calc((100svh - 220px)*520/860)); }
+  #gcMid, #ahMid, #pbMid{ width:100%; }
+  #gcTouch .flip-btn{ min-width:48px; min-height:48px; }
+}
+button:focus-visible, input:focus-visible, summary:focus-visible{ outline:3px solid var(--yellow); outline-offset:3px; }
+canvas, #soBoard{ touch-action:none; }
+@media (prefers-reduced-motion:reduce){
+  *, *::before, *::after{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+}
+@media (max-width:380px){
+  .fighter-card{ flex-wrap:wrap; justify-content:center; }
+  .ctl-row .seg{ flex-wrap:wrap; justify-content:center; }
+  .ctl-row .ctl{ flex-wrap:wrap; justify-content:center; max-width:100%; }
 }
 </style>
 </head>
@@ -2212,7 +2239,7 @@ body.in-game #marquee, body.in-game .wire-divider, body.in-game #hint{ display:n
     <span id="tickerText">WELCOME TO THE PSYCHOPATHIC ARCADE — PICK YOUR POISON!</span>
   </div>
 
-  <div id="hint">kirk's art is wired in from the <code>ASSETS</code> block &middot; sounds are synthesized stand-ins until the real ones land &middot; see <code>ASSET_SPEC.md</code></div>
+  <div id="hint">11 games · Play solo, challenge a friend, or join an online match.</div>
 </div>
 
 <script>
@@ -4247,6 +4274,37 @@ const T = { scale:1 };                       // test hook: ARCADE.T.scale=.05 fa
 const sleep = ms => new Promise(r => setTimeout(r, Math.max(0, ms*T.scale)));
 const rnd = n => Math.floor(Math.random()*n);
 const pick = a => a[rnd(a.length)];
+// Saved data is optional: blocked storage or stale values must never stop a game.
+function gameStore(prefix){
+  return {
+    get(key, fallback){
+      try{
+        const value = JSON.parse(localStorage.getItem(prefix+key));
+        if(value === null || typeof value !== typeof fallback) return fallback;
+        if(typeof value === 'number' && !Number.isFinite(value)) return fallback;
+        if(typeof fallback === 'object' && (Array.isArray(value) || !value)) return fallback;
+        return value;
+      }catch{ return fallback; }
+    },
+    set(key, value){ try{ localStorage.setItem(prefix+key, JSON.stringify(value)); }catch{} }
+  };
+}
+function gameKeysBlocked(event){
+  return event.defaultPrevented || event.target.closest?.('input, textarea, select, [contenteditable="true"]') ||
+    [...document.querySelectorAll('#lbModal, #netModal, #bjHow, #soHow, #fgHow, #mmHow')]
+      .some(el => !el.hidden);
+}
+// Count active play time only, including the partial second before navigation.
+function updateClock(state, screen){
+  const now = Date.now();
+  if(state.clockRunning && state.clockLast != null) state.elapsed += (now-state.clockLast)/1000;
+  state.clockLast = now;
+  state.clockRunning = state.state === 'playing' && !document.hidden && !$(screen).hidden;
+}
+function syncClocks(){
+  updateClock(MEMORY.state, '#mmScreen');
+  updateClock(SOLITAIRE.state, '#soScreen');
+}
 function img(key){ return ASSETS.img[key] || ''; }
 function fmt(s, vars){ return s.replace(/\{(\w+)\}/g, (_,k)=> (vars&&vars[k]!=null)? vars[k] : ''); }
 
@@ -4292,7 +4350,11 @@ function setSoundIcons(){
    ['#j31SoundBtn','icoSoundOn','icoSoundOff'],
    ['#ahSoundBtn','ah_btnSndOn','ah_btnSndOff']].forEach(([sel,a,b])=>{
     const el = document.querySelector(sel+' img');
-    if(el) el.src = img(on?a:b);
+    if(el){
+      el.src = img(on?a:b);
+      el.parentElement.setAttribute('aria-label', on ? 'Mute sound' : 'Enable sound');
+      el.parentElement.setAttribute('aria-pressed', String(on));
+    }
   });
 }
 function toggleSound(){ Sound.toggle(); setSoundIcons(); }
@@ -4325,7 +4387,7 @@ const LINES_TTT = {
   win:["RING THE BELL! IT'S OVER!","{n} TAKES THE FALL — WHAT A SHOWING!","THAT'S ALL SHE WROTE — {n} WINS IT!"],
   draw:["NEITHER SIDE CAN GET THE ADVANTAGE!","DOUBLE COUNT-OUT! THE JUDGES CALL IT EVEN!","NINE SQUARES AND NOTHING SETTLED!"],
   denied:["THAT SQUARE'S TAKEN, CHAMP!","THE REF SAYS NO!"],
-  welcome:["WELCOME TO THE PSYCHOPATHIC ARCADE — PICK YOUR POISON!","STEP RIGHT UP — THE CARNIVAL NEVER CLOSES!","TWO GAMES, ZERO MERCY. CHOOSE."]
+  welcome:["WELCOME TO THE PSYCHOPATHIC ARCADE — PICK YOUR POISON!","STEP RIGHT UP — THE CARNIVAL NEVER CLOSES!","ELEVEN GAMES, ZERO MERCY. CHOOSE."]
 };
 const LINES_CH = {
   start:["THE CARNIVAL OPENS THE BOARD — PALE MOVES FIRST!","64 SQUARES OF BAD INTENTIONS. HERE WE GO!"],
@@ -4344,7 +4406,7 @@ const LINES_CH = {
 
 /* ================= sound engine ================= */
 const Sound = {
-  on:true, ctx:null, master:null, buffers:{}, crowdNodes:null, _loaded:false,
+  on:gameStore('pa_').get('sound', true), ctx:null, master:null, buffers:{}, crowdNodes:null, _loaded:false,
   ensure(){
     try{
       if(!this.ctx){
@@ -4352,7 +4414,7 @@ const Sound = {
         if(!AC) return null;
         this.ctx = new AC();
         this.master = this.ctx.createGain();
-        this.master.gain.value = .9;
+        this.master.gain.value = this.on ? .9 : 0;
         this.master.connect(this.ctx.destination);
         this.loadAll();
       }
@@ -4383,7 +4445,9 @@ const Sound = {
   },
   toggle(){
     this.on = !this.on;
-    if(!this.on) this.stopCrowd(); else this.startCrowd();
+    gameStore('pa_').set('sound', this.on);
+    if(this.master) this.master.gain.setValueAtTime(this.on ? .9 : 0, this.ctx.currentTime);
+    if(!this.on) this.stopCrowd(); else if(!$('#tttScreen').hidden) this.startCrowd();
     return this.on;
   },
   noiseBuf(ctx, secs=1){
@@ -4719,6 +4783,8 @@ function showScreen(name){
   if(name==='solitaire') SOLITAIRE.enter();
   if(name==='j31') J31.enter();
   if(name==='hockey') AIRHOCKEY.enter();
+  syncClocks();
+  window.scrollTo(0, 0);
 }
 
 /* ============================================================
@@ -4830,7 +4896,7 @@ const TTT = (()=>{
     return -1;
   }
   function place(i){
-    if(S.state!=='playing' || S.board[i]) return;
+    if(S.state!=='playing' || !Number.isInteger(i) || i<0 || i>=9 || S.board[i]) return;
     const side = S.turn;
     const wasBlock = makesWin(S.board, other(side)) === i;
     S.board[i] = side;
@@ -4891,19 +4957,19 @@ const TTT = (()=>{
       if(w.side==='X'){ S.lbStreak = (S.lbStreak||0)+1; LB.check('ttt', S.lbStreak, S.diff.toUpperCase()); }
       else S.lbStreak = 0;
     }
-    S.state = 'pinning'; S.token++;
+    S.state = 'pinning'; const token = ++S.token;
     $('#tttBoard').classList.add('locked');
     w.line.forEach(i=>cells[i].classList.add('win-cell'));
     setAnnounce('THE COVER... THE REFEREE COUNTS!', w.side==='X'?'x-turn':'o-turn');
     TICK.say(LINES_TTT.pin);
-    await sleep(550);
+    await sleep(550); if(token!==S.token) return;
     const pl = $('#pinLayer'), pd = $('#pinDigit');
     pl.hidden = false;
     for(const n of [1,2,3]){
       pd.textContent = n;
       pd.classList.remove('show'); void pd.offsetWidth; pd.classList.add('show');
       Sound.play('count'); shake();
-      await sleep(640);
+      await sleep(640); if(token!==S.token) return;
     }
     pl.hidden = true;
     S.scores[w.side]++;
@@ -4920,14 +4986,14 @@ const TTT = (()=>{
     S.state = 'over';
   }
   async function drawSeq(){
-    S.state = 'pinning'; S.token++;
+    S.state = 'pinning'; const token = ++S.token;
     $('#tttBoard').classList.add('locked');
     setAnnounce('DOUBLE COUNT-OUT!');
     Sound.play('drawHorn');
     TICK.say(LINES_TTT.draw);
     S.scores.D++;
     updatePanel();
-    await sleep(700);
+    await sleep(700); if(token!==S.token) return;
     const vn = $('#vcName');
     vn.textContent = "IT'S A DRAW";
     vn.className = 'v-name spray spray-white';
@@ -4968,17 +5034,18 @@ const TTT = (()=>{
   /* ---------- entrances ---------- */
   let skipIntro = false;
   async function intro(){
+    const token = ++S.token;
     const ov = $('#introOverlay'), card = $('#introCard');
     skipIntro = false;
     ov.hidden = false;
     const onSkip = ()=>{ skipIntro = true; };
     ov.addEventListener('click', onSkip);
     const step = async (html, snd, ms)=>{
-      if(skipIntro) return;
+      if(skipIntro || token!==S.token) return;
       card.innerHTML = html;
       if(snd) Sound.play(snd);
       let t = 0;
-      while(t < ms && !skipIntro){ await sleep(80); t += 80; }
+      while(t < ms && !skipIntro && token===S.token){ await sleep(80); t += 80; }
     };
     await step(`<div class="intro-kicker">LIVE FROM THE CREASO COLISEUM</div>
                 <div class="spray spray-yellow" style="font-size:34px">TONIGHT'S MAIN EVENT</div>`, 'bell', 1500);
@@ -4989,6 +5056,7 @@ const TTT = (()=>{
                 <img class="intro-mask" style="filter:drop-shadow(0 0 34px rgba(143,220,5,.4))" src="${img('maskGreen')}" alt="">
                 <img class="intro-banner" src="${img('bannerO')}" alt="PLAYER O">`, 'fanfare', 1900);
     ov.removeEventListener('click', onSkip);
+    if(token!==S.token) return;
     ov.hidden = true;
     startFall();
   }
@@ -4996,6 +5064,7 @@ const TTT = (()=>{
   /* ---------- controls ---------- */
   function setMode(m){
     if(NET.active('ttt') && !NET.state.applying){ TICK.set('ONLINE MATCH IN PROGRESS — END IT FROM THE GREEN PILL'); return; }
+    if(S.state==='playing') ++S.token;
     S.mode = m;
     $('#modeCpuBtn').classList.toggle('off', m!=='cpu');
     $('#mode2pBtn').classList.toggle('off', m!=='2p');
@@ -5340,10 +5409,12 @@ const CHESS = (()=>{
     } else clearSel();
   }
   async function humanMove(to){
+    const token = S.token;
     const cands = S.legal.filter(m=>m.to===to);
     let mv = cands[0];
     if(cands.some(m=>m.promotion)){
       const choice = await openPromo(game.turn());
+      if(token!==S.token) return;
       if(!choice){ clearSel(); render(); return; }
       mv = cands.find(m=>m.promotion===choice) || cands[0];
     }
@@ -5353,6 +5424,7 @@ const CHESS = (()=>{
   }
   let promoResolve = null;
   function openPromo(color){
+    closePromo(null);
     const row = $('#promoRow');
     row.innerHTML = '';
     ['q','r','b','n'].forEach(t=>{
@@ -5374,6 +5446,7 @@ const CHESS = (()=>{
 
   /* ---------- move execution ---------- */
   function exec(mv){
+    if(S.state!=='playing' || !mv) return;
     const res = game.move({from:mv.from, to:mv.to, promotion:mv.promotion});
     if(!res) return;
     S.lastMove = res;
@@ -5440,14 +5513,14 @@ const CHESS = (()=>{
   async function mateSeq(winnerColor){
     if(S.mode==='cpu' && winnerColor!==S.cpuColor && window.LB_READY)
       LB.check('chess', Math.ceil(game.history().length/2), S.diff.toUpperCase());
-    S.state = 'over'; S.token++;
+    S.state = 'over'; const token = ++S.token;
     clearSel();
     S.overMark = { loser:kingSquare(winnerColor==='w'?'b':'w'), winner:kingSquare(winnerColor) };
     flashBanner('ch_txtCheckmate', 1500);
     Sound.play('bell'); TICK.say(LINES_CH.mate);
     S.tally[winnerColor]++;
     updateTally();
-    await sleep(1500);
+    await sleep(1500); if(token!==S.token) return;
     Sound.play('crowdPop');
     const vn = $('#chVcName');
     vn.textContent = facName(winnerColor);
@@ -5460,13 +5533,13 @@ const CHESS = (()=>{
     announceTurn('CHECKMATE!');
   }
   async function drawSeq(reason){
-    S.state = 'over'; S.token++;
+    S.state = 'over'; const token = ++S.token;
     clearSel();
     S.overMark = null;
     Sound.play('drawHorn'); TICK.say(LINES_CH.draw);
     S.tally.d++;
     updateTally();
-    await sleep(600);
+    await sleep(600); if(token!==S.token) return;
     const vn = $('#chVcName');
     vn.textContent = "IT'S A DRAW";
     vn.className = 'v-name spray spray-white';
@@ -5554,18 +5627,22 @@ const CHESS = (()=>{
   }
   const ctx = { nodes:0, deadline:0, abort:false };
   function checkTime(){
-    if(!(++ctx.nodes & 511) && Date.now() > ctx.deadline) ctx.abort = true;
+    if(!(++ctx.nodes & 31) && Date.now() > ctx.deadline) ctx.abort = true;
     return ctx.abort;
   }
   function qsearch(alpha, beta, ply){
     if(checkTime()) return alpha;
+    const inCheck = game.in_check();
+    const legal = game.moves({verbose:true});
+    if(!legal.length) return inCheck ? -(100000-ply) : 0;
     const stand = sideEval();
-    if(stand >= beta) return beta;
-    if(stand > alpha) alpha = stand;
-    const moves = game.moves({verbose:true}).filter(m=>m.captured || m.promotion);
+    if(ply>=64) return stand;
+    if(!inCheck && stand >= beta) return beta;
+    if(!inCheck && stand > alpha) alpha = stand;
+    const moves = inCheck ? legal : legal.filter(m=>m.captured || m.promotion);
     orderMoves(moves, ply);
     for(const m of moves){
-      if(m.captured && stand + VAL[m.captured] + 220 < alpha) continue;   // delta prune
+      if(!inCheck && m.captured && stand + VAL[m.captured] + 220 < alpha) continue;   // delta prune
       game.move({from:m.from, to:m.to, promotion:m.promotion||'q'});
       const v = -qsearch(-beta, -alpha, ply+1);
       game.undo();
@@ -5577,6 +5654,7 @@ const CHESS = (()=>{
   }
   function negamax(depth, alpha, beta, ply){
     if(checkTime()) return alpha;
+    if(ply>=64) return sideEval();
     if(ply>0 && (game.in_threefold_repetition() || game.insufficient_material())) return 0;
     const inCheck = game.in_check();
     if(inCheck) depth++;                                    // check extension
@@ -5624,6 +5702,7 @@ const CHESS = (()=>{
     return mv || null;
   }
   async function searchBest(budgetMs, noisy){
+    const token = S.token;
     killers = []; history = {};
     ctx.nodes = 0; ctx.abort = false; ctx.deadline = Date.now() + budgetMs;
     const rootMoves = orderMoves(game.moves({verbose:true}), 0, noisy||0);
@@ -5641,7 +5720,8 @@ const CHESS = (()=>{
         if(ctx.abort) break;
         m.__root = v;
         if(v > alpha){ alpha = v; iterBest = m; }
-        if(depth >= 3) await sleep(0);                       // let the UI breathe
+        if(depth >= 3) await sleep(0);
+        if(token!==S.token) return null;                       // let the UI breathe
       }
       if(!ctx.abort && iterBest){
         completedBest = iterBest;
@@ -5673,10 +5753,11 @@ const CHESS = (()=>{
     announceTurn(`${facName(S.cpuColor)} IS SCHEMING...`);
     TICK.say(LINES_CH.think);
     await sleep(300+rnd(300));
-    if(tok!==S.token || S.state!=='playing'){ S.thinking = false; return; }
+    if(tok!==S.token || S.state!=='playing') return;
     let mv = null;
     try{ mv = await pickCpuMove(); }catch(err){ mv = null; }
     if(!mv){ const ms = game.moves({verbose:true}); if(ms.length) mv = ms[rnd(ms.length)]; }
+    if(tok!==S.token) return;
     S.thinking = false;
     if(tok!==S.token || S.state!=='playing' || !mv) return;
     exec(mv);
@@ -5700,6 +5781,7 @@ const CHESS = (()=>{
   function newGame(){
     NET.echo('chess','newGame');
     S.token++; S.thinking = false;
+    closePromo(null);
     game.reset();
     S.lastMove = null; S.state = 'playing'; S.overMark = null;
     clearSel();
@@ -5720,6 +5802,8 @@ const CHESS = (()=>{
   }
   function setMode(m){
     if(NET.active('chess') && !NET.state.applying){ TICK.set('ONLINE MATCH IN PROGRESS — END IT FROM THE GREEN PILL'); return; }
+    if(S.state==='playing') ++S.token; S.thinking = false;
+    closePromo(null);
     S.mode = m;
     $('#chModeCpuBtn').classList.toggle('off', m!=='cpu');
     $('#chMode2pBtn').classList.toggle('off', m!=='2p');
@@ -6006,8 +6090,13 @@ const CHECKERS = (()=>{
     if(S.history.length>200) S.history.shift();
   }
   async function exec(mv){
-    if(S.state!=='playing') return;
+    if(S.state!=='playing' || !mv) return;
+    // Use a generated legal move, including its promotion flag, for local and remote input.
+    mv = allMoves(S.board, S.turn).find(m => JSON.stringify(m.from)===JSON.stringify(mv.from) &&
+      JSON.stringify(m.path)===JSON.stringify(mv.path) && JSON.stringify(m.caps)===JSON.stringify(mv.caps));
+    if(!mv) return;
     snapshot();
+    S.state = 'moving'; clearSel();
     const tok = ++S.token;
     const p = S.board[idx(...mv.from)];
     S.board[idx(...mv.from)] = null;
@@ -6047,6 +6136,7 @@ const CHECKERS = (()=>{
     S.quiet = (mv.caps.length || mv.promote) ? 0 : S.quiet+1;
     renderPanel();
     S.turn = S.turn==='A' ? 'B' : 'A';
+    S.state = 'playing';
     render();
     checkEnd();
   }
@@ -6059,13 +6149,13 @@ const CHECKERS = (()=>{
   }
   async function winSeq(w){
     if(S.mode==='cpu' && w==='A' && window.LB_READY) LB.check('checkers', S.moveCount, S.diff.toUpperCase());
-    S.state='over'; S.token++;
+    S.state='over'; const token = ++S.token;
     render();
     for(let i=0;i<64;i++){ const p=S.board[i]; if(p && p.c===w) sqs[i].classList.add('win-glow'); }
     S.tally[w]++; updateTally();
     Sound.play('bell'); Sound.play('crowdPop');
     TICK.say(LINES_CK.win, {n:nameOf(w)});
-    await sleep(900);
+    await sleep(900); if(token!==S.token) return;
     const vn = $('#ckVcName');
     vn.textContent = nameOf(w);
     vn.className = 'v-name spray ' + (w==='A'?'spray-red':'spray-green');
@@ -6076,11 +6166,11 @@ const CHECKERS = (()=>{
     announceTurn('IT'+String.fromCharCode(39)+'S ALL OVER!');
   }
   async function drawSeq(){
-    S.state='over'; S.token++;
+    S.state='over'; const token = ++S.token;
     render();
     S.tally.D++; updateTally();
     Sound.play('drawHorn'); TICK.say(LINES_CK.draw);
-    await sleep(600);
+    await sleep(600); if(token!==S.token) return;
     const vn = $('#ckVcName');
     vn.textContent = "IT'S A DRAW";
     vn.className = 'v-name spray spray-white';
@@ -6213,7 +6303,7 @@ const CHECKERS = (()=>{
     announceTurn('PLAYER 2 IS SCHEMING...');
     TICK.say(LINES_CK.think);
     await sleep(420+rnd(420));
-    if(tok!==S.token || S.state!=='playing'){ S.thinking=false; return; }
+    if(tok!==S.token || S.state!=='playing') return;
     const mv = pickCpu();
     S.thinking = false;
     if(tok!==S.token || S.state!=='playing' || !mv) return;
@@ -6224,7 +6314,7 @@ const CHECKERS = (()=>{
   function undo(){
     if(NET.active('checkers')){ TICK.set('NO TAKEBACKS ONLINE, CLOWN.'); return; }
     if(!S.history.length || S.state==='over') return;
-    S.token++; S.thinking=false;
+    S.token++; S.thinking=false; S.state='playing';
     let snap = S.history.pop();
     if(S.mode==='cpu' && snap.turn==='B' && S.history.length) snap = S.history.pop();
     S.board = snap.board; S.turn = snap.turn; S.quiet = snap.quiet;
@@ -6248,7 +6338,9 @@ const CHECKERS = (()=>{
   }
   function setMode(m){
     if(NET.active('checkers') && !NET.state.applying){ TICK.set('ONLINE MATCH IN PROGRESS — END IT FROM THE GREEN PILL'); return; }
-    S.mode=m;
+    if(S.state==='playing') ++S.token;
+    S.thinking = false;
+    S.mode = m;
     $('#ckModeCpuBtn').classList.toggle('off', m!=='cpu');
     $('#ckMode2pBtn').classList.toggle('off', m!=='2p');
     $('#ckDiffCtl').style.visibility = m==='cpu'?'visible':'hidden';
@@ -6303,7 +6395,7 @@ const LINES_PB = {
 };
 const PINBALL = (()=>{
   const FW=520, FH=860, G=1650, BALL_R=11, MAXV=1700, SUB=6;
-  const S = { state:'attract', players:1, cur:{p:0,ball:1}, score:[0,0], best:0,
+  const S = { token:0, state:'attract', players:1, cur:{p:0,ball:1}, score:[0,0], best:0,
     balls:[], flippers:null, charge:0, charging:false, save:{on:false,t:0},
     bonusUnits:0, bonusX:1, bells:0, drops:[false,false,false], jackpotLit:false,
     stand:{q:false,skull:false,bull:false,clown:false}, lockLit:false, locks:0,
@@ -6646,18 +6738,19 @@ const PINBALL = (()=>{
   }
   async function endBall(){
     if(S.state!=='playing') return;
+    const token = S.token;
     S.state='bonus';
     TICK.say(LINES_PB.drain);
     const bonus = Math.round(S.bonusUnits)*1000*S.bonusX;
-    await sleep(500);
+    await sleep(500); if(token!==S.token) return;
     if(bonus>0){
       popFx(243,430,'BONUS '+fmt(bonus),'#ffd101');
       const ticks=8;
-      for(let i=0;i<ticks;i++){ S.score[S.cur.p]+=Math.round(bonus/ticks); hud(); Sound.play('beep',.7); await sleep(120); }
+      for(let i=0;i<ticks;i++){ S.score[S.cur.p]+=Math.round(bonus/ticks); hud(); Sound.play('beep',.7); await sleep(120); if(token!==S.token) return; }
     }
     S.best = Math.max(S.best, S.score[S.cur.p]);
     hud();
-    await sleep(500);
+    await sleep(500); if(token!==S.token) return;
     if(S.extraBalls>0){
       S.extraBalls--;
       TICK.set('SHOOT AGAIN!'); Sound.play('fanfare');
@@ -7033,6 +7126,8 @@ const PINBALL = (()=>{
     S.charge=0;
   }
   function startGame(n){
+    ++S.token; S.charging=false; S.charge=0;
+    press('L',false); press('R',false);
     S.players=n; S.score=[0,0]; S.cur={p:0,ball:1};
     S.locks=0; S.extraBalls=0;
     serve();
@@ -7061,12 +7156,14 @@ const PINBALL = (()=>{
     $('#pbHomeBtn').onclick=()=>showScreen('menu');
     $('#pbSoundBtn').onclick=()=>$('#soundBtn').onclick();
     $$('#pbPlayersSeg button').forEach(b=>b.onclick=()=>{
-      S.players=+b.dataset.n;
+      const players=+b.dataset.n;
+      if(S.state==='playing' || S.state==='bonus') startGame(players);
+      else S.players=players;
       $$('#pbPlayersSeg button').forEach(x=>x.classList.toggle('on',x===b));
       hud();
     });
     document.addEventListener('keydown',e=>{
-      if($('#pinballScreen').hidden) return;
+      if($('#pinballScreen').hidden || gameKeysBlocked(e)) return;
       if(['ArrowLeft','ArrowRight','Space','KeyZ','KeyX','Enter'].includes(e.code)) e.preventDefault();
       if(e.repeat) return;
       if(e.code==='ArrowLeft'||e.code==='KeyZ') press('L',true);
@@ -7260,6 +7357,7 @@ const FAYGO = (()=>{
     const t=$('#fgTimer'); t.style.display='flex'; t.classList.remove('hot');
     $('#fgTimerVal').textContent=S.timerV;
     S.timerH=setInterval(()=>{
+      if($('#faygoScreen').hidden || document.hidden) return;
       S.timerV--;
       $('#fgTimerVal').textContent=Math.max(0,S.timerV);
       if(S.timerV<=3){ t.classList.add('hot'); Sound.play('beep',.5); }
@@ -7280,10 +7378,10 @@ const FAYGO = (()=>{
     doDrop(c);
   }
   function doDrop(c){
-    if(S.state!=='playing') return;
+    if(S.state!=='playing' || !Number.isInteger(c) || c<0 || c>=COLS) return;
     const p=S.turn, armed=S.armed[p];
-    clearInterval(S.timerH); $('#fgTimer').style.display='none';
     if(armed==='bomb'){
+      clearInterval(S.timerH); $('#fgTimer').style.display='none';
       S.armed[p]=null; S.pow[p].bomb=false;
       bombColumn(c,p); return;
     }
@@ -7294,6 +7392,7 @@ const FAYGO = (()=>{
       setTimeout(()=>{ cells[0][c].classList.remove('winl'); },500*T.scale+60);
       Sound.play('move',.5); return;
     }
+    clearInterval(S.timerH); $('#fgTimer').style.display='none';
     let val=p;
     if(armed==='wild'){ val=3; S.armed[p]=null; S.pow[p].wild=false; TICK.say(LINES_FG.wild); Sound.play('check'); }
     S.grid[r][c]=val;
@@ -7345,7 +7444,7 @@ const FAYGO = (()=>{
     S.turn=opp; announce(); hud(); armTimer(); cpuMaybe();
   }
   async function winSeq(w,cs,last){
-    S.state='over'; S.token++;
+    S.state='over'; const token = ++S.token;
     clearInterval(S.timerH); $('#fgTimer').style.display='none';
     const glowKey = w===1?'fg_p1glow':'fg_p2glow';
     cs.forEach(([r,c])=>{
@@ -7363,7 +7462,7 @@ const FAYGO = (()=>{
     hud();
     Sound.play('bell'); Sound.play('crowdPop');
     TICK.say(LINES_FG.win,{n:nameOf(w)});
-    await sleep(900);
+    await sleep(900); if(token!==S.token) return;
     const champ = S.wins[w-1]===5;
     $('#fgVicText').src=img('fg_txtWinner'); $('#fgVicText').style.display='';
     $('#fgVicKing').src=img(champ?'fg_champ':(w===1?'fg_king1':'fg_king2'));
@@ -7378,10 +7477,10 @@ const FAYGO = (()=>{
     announce('THAT\'S THE ROUND!','');
   }
   async function drawSeq(){
-    S.state='over'; S.token++;
+    S.state='over'; const token = ++S.token;
     clearInterval(S.timerH); $('#fgTimer').style.display='none';
     Sound.play('drawHorn'); TICK.say(LINES_FG.draw);
-    await sleep(500);
+    await sleep(500); if(token!==S.token) return;
     $('#fgVicText').src=img('fg_txtDraw');
     $('#fgVicKing').style.display='none';
     const vn=$('#fgVcName'); vn.textContent='ALL FIZZ, NO POP'; vn.className='v-name spray spray-white';
@@ -7529,7 +7628,8 @@ const FAYGO = (()=>{
   }
   function setMode(m){
     if(NET.active('faygo') && !NET.state.applying){ TICK.set('ONLINE MATCH IN PROGRESS — END IT FROM THE GREEN PILL'); return; }
-    S.mode=m;
+    if(S.state==='playing') ++S.token;
+    S.mode = m;
     $('#fgModeCpuBtn').classList.toggle('off',m!=='cpu');
     $('#fgMode2pBtn').classList.toggle('off',m!=='2p');
     $('#fgDiffCtl').style.visibility=m==='cpu'?'visible':'hidden';
@@ -7543,7 +7643,7 @@ const FAYGO = (()=>{
     if(NET.active('faygo') && !NET.state.applying){ TICK.set('ONLINE MATCH IN PROGRESS — END IT FROM THE GREEN PILL'); return; }
     S.gmode=m;
     $$('#fgModeSeg .img-btn').forEach(b=>b.classList.toggle('on',b.dataset.mode===m));
-    TICK.set('MODE: '+m.toUpperCase()+' — NEW GAME STARTS IT');
+    if(S.entered) newMatch();
   }
   function bind(){
     buildBoard();
@@ -7607,10 +7707,7 @@ const BLACKJACK = (()=>{
               streak:0, mult:1, deckSkin:'carnival', badges:{}, entered:false, token:0, hitCount:0 };
 
   /* ---------- persistence ---------- */
-  const store = {
-    get(k,d){ try{ const v = localStorage.getItem('pa_bj_'+k); return v==null ? d : JSON.parse(v); }catch(e){ return d; } },
-    set(k,v){ try{ localStorage.setItem('pa_bj_'+k, JSON.stringify(v)); }catch(e){} }
-  };
+  const store = gameStore('pa_bj_');
   function loadSave(){
     S.points = store.get('points', START_POINTS);
     S.high   = store.get('high', Math.max(START_POINTS, S.points));
@@ -7646,18 +7743,20 @@ const BLACKJACK = (()=>{
     let base = 0, aces = 0, jokers = 0;
     for(const c of hand){
       if(c.joker) jokers++;
-      else if(c.r==='A'){ aces++; base += 11; }
+      else if(c.r==='A'){ aces++; base++; }
       else base += VAL(c.r);
     }
-    base += jokers*11;
-    let soft = aces + jokers;                 // flexible cards currently high
-    // reduce: jokers can shed up to 10 each, aces shed exactly 10
-    let jFlex = jokers, aFlex = aces;
-    while(base > 21 && (jFlex || aFlex)){
-      if(jFlex){ const need = Math.min(10, base-21); base -= (base-21>10) ? 10 : need; jFlex--; soft--; }
-      else { base -= 10; aFlex--; soft--; }
+    // Start every flexible card at one, then choose the best non-busting total.
+    base += jokers;
+    if(base>21) return { total:base, soft:false, bust:true };
+    let total = base, soft = false;
+    for(let highAces=0; highAces<=aces; highAces++){
+      const aceTotal = base + highAces*10;
+      if(aceTotal>21) break;
+      const candidate = aceTotal + Math.min(jokers*10, 21-aceTotal);
+      if(candidate>=total){ total=candidate; soft=highAces>0 || candidate>aceTotal; }
     }
-    return { total: base, soft: soft>0 && base<=21, bust: base>21 };
+    return { total, soft, bust:false };
   }
   const isNatural = h => h.length===2 && totals(h).total===21;
 
@@ -7818,7 +7917,7 @@ const BLACKJACK = (()=>{
     return settle('surrender', token);
   }
   function stand(){
-    if(S.state!=='player' && S.state!=='settling') return;
+    if(S.state!=='player') return;
     const token = S.token;
     if(S.state==='player'){ TICK.say(LINES_BJ.stand); }
     S.state = 'settling'; setButtons();
@@ -7854,6 +7953,7 @@ const BLACKJACK = (()=>{
     S.state = 'settling'; setButtons();
     if(kind!=='surrender' && $('#bjDealerHand').children[1] && $('#bjDealerHand').children[1].classList.contains('down'))
       await revealDealer(token);
+    if(token!==S.token) return;
     let delta = 0, cls = 'info';
     if(kind==='blackjack'){ delta = BET.bj*S.mult; cls='gold'; TICK.say(LINES_BJ.blackjack); Sound.play('bell'); Sound.play('crowdPop'); confettiBurst($('#confettiBj') || null); earn('bj'); }
     else if(kind==='win'){ delta = BET.win*S.mult; cls='good'; TICK.say(LINES_BJ.win, {p:BET.win*S.mult}); Sound.play('crowdPop'); }
@@ -7925,7 +8025,7 @@ const BLACKJACK = (()=>{
     $$('#bjDeckSeg button').forEach(b=> b.onclick = ()=>setDeck(b.dataset.deck));
     $('#cardBJ').onclick = ()=>{ Sound.play('move'); showScreen('bj'); };
     window.addEventListener('keydown', e=>{
-      if($('#bjScreen').hidden || e.repeat) return;
+      if($('#bjScreen').hidden || e.repeat || gameKeysBlocked(e)) return;
       const k = e.key.toLowerCase();
       if(k==='h') hit();
       else if(k==='s') stand();
@@ -7978,10 +8078,7 @@ const AIRHOCKEY = (()=>{
               slow:0, pu:null, nextPu:9, parts:[], serveT:0, lastTouch:1,
               online:false, netRole:null, goalSeq:0, hitSeq:0, token:0, entered:false };
   let cv, g, raf = null, last = 0, imgs = {}, DPR = 1, padT = null, netTimer = 0, joinView = null;
-  const store = {
-    get(k,d){ try{ const v = localStorage.getItem('pa_ah_'+k); return v==null?d:JSON.parse(v); }catch(e){ return d; } },
-    set(k,v){ try{ localStorage.setItem('pa_ah_'+k, JSON.stringify(v)); }catch(e){} }
-  };
+  const store = gameStore('pa_ah_');
   function I(key){ if(!imgs[key]){ const im = new Image(); im.src = img(key); imgs[key] = im; } return imgs[key]; }
   const ready = im => im.complete && im.naturalWidth;
   const asp = im => im.naturalWidth/im.naturalHeight;
@@ -7990,6 +8087,8 @@ const AIRHOCKEY = (()=>{
   function mkPuck(x, y){ return { x, y, vx:0, vy:0, r:PUCK_R, trail:[], stall:0 }; }
   function reset(){
     S.score = [0,0]; S.elapsed = 0; S.pucks = [mkPuck(W/2, H*.62)];
+    for(const pad of S.pads){ pad.vx=0; pad.vy=0; }
+    padT=null; joinView=null; netTimer=0;
     S.pads[0].x = W/2; S.pads[0].y = H*.8; S.pads[1].x = W/2; S.pads[1].y = H*.2;
     S.fx = [ {speed:0, giant:0, shield:0}, {speed:0, giant:0, shield:0} ];
     S.slow = 0; S.pu = null; S.nextPu = 9; S.parts = []; S.serveT = .8; S.goalSeq = 0; S.hitSeq = 0;
@@ -8011,7 +8110,7 @@ const AIRHOCKEY = (()=>{
   }
   function padRadius(i){ return PAD_R * (S.fx[i].giant>0 ? 1.5 : 1); }
   function step(dt){
-    if(S.state!=='run' || S.paused) return;
+    if(S.state!=='run' || S.paused || (S.online && S.netRole==='join')) return;
     const ts = S.slow>0 ? .55 : 1;
     S.elapsed += dt;
     if(S.serveT>0) S.serveT -= dt;
@@ -8249,11 +8348,13 @@ const AIRHOCKEY = (()=>{
   }
   function netApply(d){
     if(d.k==='pad'){                                 // host receives joiner paddle (canonical coords)
-      if(S.netRole!=='host') return;
+      if(S.netRole!=='host' || !Number.isFinite(d.x) || !Number.isFinite(d.y)) return;
       const pd = S.pads[1];
       pd.vx = (d.x-pd.x)*30; pd.vy = (d.y-pd.y)*30;
       pd.x = d.x; pd.y = d.y;
       clampPad(pd, 1);
+      const speed=Math.hypot(pd.vx,pd.vy), cap=padSpeedCap(1);
+      if(speed>cap){ pd.vx*=cap/speed; pd.vy*=cap/speed; }
     } else if(d.k==='st'){                           // joiner receives snapshot
       if(S.netRole!=='join') return;
       joinView = joinView || { pucks:[], goalSeq:0, hitSeq:0 };
@@ -8284,7 +8385,7 @@ const AIRHOCKEY = (()=>{
   function netStart(role){
     S.online = true; S.netRole = role; S.mode = 'online';
     if(role==='host'){ start(); NET.report('hockey', { k:'start' }); }
-    else { S.state = 'run'; $('#ahAttract').hidden = true; $('#ahOver').hidden = true; joinView = null; loopOn(); }
+    else { S.state = 'run'; S.paused=false; $('#ahAttract').hidden = true; $('#ahOver').hidden = true; joinView = null; loopOn(); }
   }
   function netEnd(){ S.online = false; S.netRole = null; joinView = null; if(S.mode==='online') S.mode = 'cpu'; }
   /* ---------- render ---------- */
@@ -8414,6 +8515,7 @@ const AIRHOCKEY = (()=>{
     cv.addEventListener('pointerdown', e=>{ active[e.pointerId] = true; onPoint(e); cv.setPointerCapture && cv.setPointerCapture(e.pointerId); });
     cv.addEventListener('pointermove', e=>{ if(active[e.pointerId] || e.pointerType==='mouse') onPoint(e); });
     cv.addEventListener('pointerup', e=>{ delete active[e.pointerId]; });
+    cv.addEventListener('pointercancel', e=>{ delete active[e.pointerId]; });
     function onPoint(e){
       if(S.state!=='run' || S.paused) return;
       const pt = pointerPos(e);
@@ -8437,9 +8539,11 @@ const AIRHOCKEY = (()=>{
       const pd = S.pads[i];
       const nx = pt.x, ny = pt.y;
       pd.vx = (nx-pd.x)*28; pd.vy = (ny-pd.y)*28;
+      const ox=pd.x, oy=pd.y;
+      pd.x = nx; pd.y = ny; clampPad(pd, i);
+      pd.vx=(pd.x-ox)*28; pd.vy=(pd.y-oy)*28;
       const cap = padSpeedCap(i), spd = Math.hypot(pd.vx, pd.vy);
-      pd.x = nx; pd.y = ny;
-      clampPad(pd, i);
+      if(spd>cap){ pd.vx*=cap/spd; pd.vy*=cap/spd; }
     }
   }
   /* ---------- wiring ---------- */
@@ -8472,12 +8576,14 @@ const AIRHOCKEY = (()=>{
     if(!S.entered){
       S.entered = true;
       S.streak = store.get('streak', 0);
-      S.puckSkin = store.get('puck', 'ah_puck1');
+      const savedPuck = store.get('puck', 'ah_puck1');
+      S.puckSkin = PUCKS.includes(savedPuck) ? savedPuck : PUCKS[0];
       $$('#ahPuckSeg .img-btn').forEach(x=>x.classList.toggle('on', x.dataset.p===S.puckSkin));
       $('#ahStreakLbl').textContent = S.streak;
       ['ah_table','ah_goalGlow','ah_spark','ah_strikerR','ah_strikerP','ah_hudP1','ah_hudT','ah_hudP2',
        'ah_puSpeed','ah_puSlow','ah_puGiant','ah_puShield','ah_puMulti'].concat(PUCKS).forEach(I);
     }
+    if(S.state==='run'){ S.paused=false; loopOn(); }
     draw();
     TICK.say(LINES_AH.enter);
   }
@@ -8517,17 +8623,14 @@ const J31 = (()=>{
   const S = { players:[], stock:[], disc:[], turn:0, dealerIdx:0, knocker:-1, lastTurns:0,
               state:'idle', nOpp:2, diff:'contender', streak:0, phase:'draw', token:0, entered:false,
               online:false, mySeat:0 };
-  const store = {
-    get(k,d){ try{ const v = localStorage.getItem('pa_j31_'+k); return v==null?d:JSON.parse(v); }catch(e){ return d; } },
-    set(k,v){ try{ localStorage.setItem('pa_j31_'+k, JSON.stringify(v)); }catch(e){} }
-  };
+  const store = gameStore('pa_j31_');
 
   /* ---------- valuation ---------- */
   function handValue(hand){
     if(hand.length===3 && hand[0].r===hand[1].r && hand[1].r===hand[2].r) return 30.5;
     const by = {};
     for(const c of hand) by[c.s] = (by[c.s]||0) + VAL(c.r);
-    return Math.max(...Object.values(by));
+    return Math.max(0, ...Object.values(by));
   }
   function fmtVal(v){ return v===30.5 ? '30½' : String(v); }
 
@@ -8566,11 +8669,12 @@ const J31 = (()=>{
     if(S.online) S.fx = 'deal';
     $('#j31Showdown').hidden = true;
     S.state = 'playing';
+    S.turn = S.online ? 0 : nextAlive(S.dealerIdx);
     renderAll();
     TICK.say(LINES_J31.deal);
-    S.turn = S.online ? 0 : nextAlive(S.dealerIdx);
     announceTurn();
-    maybeCpu();
+    const natural = S.players.findIndex(p=>!p.dead && handValue(p.hand)===31);
+    if(natural>=0) blitz(natural); else maybeCpu();
   }
   function dealFrom(deck, swapSeats){
     S.dealDeck = deck.map(c=>c.s+c.r);              // canonical order for online mirroring
@@ -8587,6 +8691,8 @@ const J31 = (()=>{
   /* ---------- turn flow ---------- */
   function myTurn(){ return S.state==='playing' && S.players[S.turn] && S.players[S.turn].human; }
   function drawFrom(src, seat){
+    if(S.state!=='playing' || S.viewOnly || (seat!=null && seat!==S.turn)) return false;
+    if(!['stock','disc'].includes(src)) return false;
     const p = S.players[seat!=null ? seat : S.turn];
     if(!p || S.phase!=='draw') return false;
     if(src==='disc' && !S.disc.length) return false;
@@ -8601,6 +8707,7 @@ const J31 = (()=>{
     return true;
   }
   function discard(i, seat){
+    if(S.state!=='playing' || S.viewOnly || (seat!=null && seat!==S.turn)) return false;
     const p = S.players[seat!=null ? seat : S.turn];
     if(!p || S.phase!=='discard' || i==null || !p.hand[i]) return false;
     S.disc.push(p.hand.splice(i,1)[0]);
@@ -8611,6 +8718,7 @@ const J31 = (()=>{
     return true;
   }
   function knock(seat){
+    if(S.state!=='playing' || S.viewOnly || (seat!=null && seat!==S.turn)) return false;
     const idx = seat!=null ? seat : S.turn;
     const p = S.players[idx];
     if(!p || S.phase!=='draw' || S.knocker>=0) return false;
@@ -8644,13 +8752,14 @@ const J31 = (()=>{
     maybeCpu();
   }
   function blitz(idx){
+    const token = S.token;
     S.state = 'showdown';
     flash('31!');
     Sound.play('bell'); Sound.play('crowdPop');
     if(S.online && isHost()) S.fx = 'blitz';
     TICK.say(LINES_J31.blitz);
     const losers = S.players.map((p,i)=>i).filter(i=>i!==idx && !S.players[i].dead);
-    setTimeout(()=>{ if(S.token) settle(losers.map(i=>({i, n:1})), idx, true); }, 900*T.scale+60);
+    setTimeout(()=>{ if(token===S.token) settle(losers.map(i=>({i, n:1})), idx, true); }, 900*T.scale+60);
   }
   function showdown(){
     S.state = 'showdown';
@@ -8668,6 +8777,7 @@ const J31 = (()=>{
     settle(hits, S.knocker, false);
   }
   function settle(hits, heroIdx, wasBlitz){
+    const token = S.token;
     // reveal panel
     const box = $('#j31Reveal'); box.replaceChildren();
     const alive = S.players.map((p,i)=>({p,i})).filter(x=>!x.p.dead);
@@ -8722,7 +8832,7 @@ const J31 = (()=>{
         })
       });
     }
-    if(winner){ setTimeout(()=>matchOver(winner), 700*T.scale+50); return; }
+    if(winner){ setTimeout(()=>{ if(token===S.token) matchOver(winner); }, 700*T.scale+50); return; }
     $('#j31Showdown').hidden = false;
   }
   function matchOver(winner){
@@ -8884,7 +8994,7 @@ const J31 = (()=>{
       if(S.viewOnly){ NET.report('j31',{a:'i',t:'again'}); $('#j31Over').hidden = true; return; }
       S.state='playing'; newTable(); };
     $('#j31MenuBtn').onclick = ()=>showScreen('menu');
-    $('#j31NewBtn').onclick = ()=>{ S.state='playing'; newTable(); };
+    $('#j31NewBtn').onclick = ()=>{ if(S.online){ NET.reqNew('j31'); return; } S.state='playing'; newTable(); };
     $('#j31HomeBtn').onclick = ()=>showScreen('menu');
     $('#j31SoundBtn').onclick = ()=>toggleSound();
     $$('#j31OppSeg button').forEach(b=> b.onclick = ()=>{ if(S.online) return;
@@ -8973,8 +9083,10 @@ const J31 = (()=>{
     $('#j31SdTitle').textContent = d.title;
     Sound.play('drawHorn', .5);
     if(d.over!=null){
+      const token = S.token;
       const won = d.over===1;                        // canonical joiner seat
       setTimeout(()=>{
+        if(token!==S.token) return;
         $('#j31Showdown').hidden = true;
         $('#j31OverName').textContent = won ? 'YOU' : 'THE HOMIE';
         $('#j31OverName').className = 'v-name spray ' + (won ? 'spray-green' : 'spray-red');
@@ -9016,7 +9128,7 @@ const J31 = (()=>{
       renderAll();
     }
   }
-  function netEnd(){ S.online = false; S.viewOnly = false; }
+  function netEnd(){ ++S.token; S.online = false; S.viewOnly = false; if(S.entered) newTable(); }
   return { enter, bind, state:S, handValue, newTable, startRound, drawFrom, discard, knock, maybeCpu,
            netApply, netStart, netEnd, fmtVal,
            debug:{ setHands(hs){ hs.forEach((h,i)=>{ if(S.players[i]) S.players[i].hand = h; }); renderAll(); },
@@ -9049,10 +9161,7 @@ const SOLITAIRE = (()=>{
   const S = { stock:[], waste:[], found:{h:[],d:[],c:[],s:[]}, tab:[[],[],[],[],[],[],[]],
               draw:3, score:0, moves:0, t0:0, elapsed:0, timer:null, state:'idle',
               best:0, vegas:0, games:0, wins:0, streak:0, hist:[], sel:null, token:0, entered:false };
-  const store = {
-    get(k,d){ try{ const v = localStorage.getItem('pa_so_'+k); return v==null?d:JSON.parse(v); }catch(e){ return d; } },
-    set(k,v){ try{ localStorage.setItem('pa_so_'+k, JSON.stringify(v)); }catch(e){} }
-  };
+  const store = gameStore('pa_so_');
   let els = {}, board, dragging = null;
 
   /* ---------- layout constants (percent of board) ---------- */
@@ -9077,27 +9186,29 @@ const SOLITAIRE = (()=>{
       S.tab[c].push({ card:d.pop(), up:r===c });
     S.stock = d; S.waste = [];
     S.found = {h:[],d:[],c:[],s:[]};
-    S.score = 0; S.moves = 0; S.hist = []; S.sel = null;
+    S.score = 0; S.moves = 0; S.hist = []; S.sel = null; dragging = null;
     S.elapsed = 0; S.t0 = Date.now();
-    S.state = 'playing';
+    S.state = 'playing'; S.clockLast=Date.now(); S.clockRunning=!$('#soScreen').hidden && !document.hidden;
     S.games++; S.vegas -= 52; persist();
     clearInterval(S.timer);
-    S.timer = setInterval(()=>{ if(S.state==='playing'){ S.elapsed = (Date.now()-S.t0)/1000; $('#soTime').textContent = fmtT(S.elapsed); } }, 500);
+    S.timer = setInterval(()=>{ if(S.state==='playing'){ updateClock(S, '#soScreen'); $('#soTime').textContent = fmtT(S.elapsed); } }, 500);
     Sound.play('cardDeal');
     TICK.say(LINES_SO.deal);
     announce('DIG IN', '');
   }
   const fmtT = s => Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0');
   function snapshot(){
-    S.hist.push(JSON.stringify({ stock:S.stock, waste:S.waste, found:S.found, tab:S.tab, score:S.score, moves:S.moves }));
+    S.hist.push(JSON.stringify({ stock:S.stock, waste:S.waste, found:S.found, tab:S.tab, score:S.score, moves:S.moves, vegas:S.vegas }));
     if(S.hist.length > 200) S.hist.shift();
   }
   function undo(){
+    if(S.state!=='playing') return;
     const snap = S.hist.pop();
-    if(!snap || S.state!=='playing'){ Sound.play('noMatch', .4); return; }
+    if(!snap){ Sound.play('noMatch', .4); return; }
     const o = JSON.parse(snap);
     S.stock = o.stock; S.waste = o.waste; S.found = o.found; S.tab = o.tab;
-    S.score = o.score; S.moves = o.moves; S.sel = null;
+    S.score = o.score; S.moves = o.moves; S.vegas = o.vegas; S.sel = null;
+    persist();
     TICK.say(LINES_SO.undo); Sound.play('cardFlip');
     render();
   }
@@ -9117,7 +9228,7 @@ const SOLITAIRE = (()=>{
     }
   }
   function drawStock(){
-    if(S.state!=='playing') return;
+    if(S.state!=='playing' || (!S.stock.length && !S.waste.length)) return;
     snapshot(); S.moves++;
     if(!S.stock.length){
       if(!S.waste.length){ render(); return; }
@@ -9131,6 +9242,14 @@ const SOLITAIRE = (()=>{
   }
   // sources: {k:'waste'} | {k:'tab', col, idx} | {k:'found', suit}
   function takeRun(src){
+    if(!src) return [];
+    if(src.k==='tab'){
+      const column = S.tab[src.col];
+      if(!column || !Number.isInteger(src.idx) || src.idx<0 || !column[src.idx]?.up) return [];
+      const entries = column.slice(src.idx);
+      if(entries.some((e,i)=>!e.up || (i>0 &&
+        (isRed(e.card.s)===isRed(entries[i-1].card.s) || RVAL[e.card.r]!==RVAL[entries[i-1].card.r]-1)))) return [];
+    } else if(src.k!=='waste' && !(src.k==='found' && S.found[src.suit])) return [];
     if(src.k==='waste') return S.waste.length ? [S.waste[S.waste.length-1]] : [];
     if(src.k==='found'){ const f = S.found[src.suit]; return f.length ? [f[f.length-1]] : []; }
     return S.tab[src.col].slice(src.idx).map(e=>e.card);
@@ -9142,6 +9261,9 @@ const SOLITAIRE = (()=>{
     return run.map(e=>e.card);
   }
   function moveTo(src, dst){                        // dst: {k:'found',suit} | {k:'tab',col}
+    if(S.state!=='playing' || !dst || !['found','tab'].includes(dst.k)) return false;
+    if(src?.k==='tab' && dst.k==='tab' && src.col===dst.col) return false;
+    if(dst.k==='tab' && !S.tab[dst.col]) return false;
     const run = takeRun(src);
     if(!run.length) return false;
     if(dst.k==='found'){
@@ -9158,7 +9280,7 @@ const SOLITAIRE = (()=>{
     } else {
       for(const c of cards) S.tab[dst.col].push({ card:c, up:true });
       if(src.k==='waste') S.score += 5;
-      if(src.k==='found') S.score = Math.max(0, S.score-15);
+      if(src.k==='found'){ S.score = Math.max(0, S.score-15); S.vegas -= 5; persist(); }
       Sound.play('move', .6);
     }
     if(src.k==='tab') flipCheck(src.col);
@@ -9224,6 +9346,7 @@ const SOLITAIRE = (()=>{
   async function autoComplete(){
     if(!autoReady()) return;
     const token = ++S.token;
+    updateClock(S, '#soScreen'); S.clockRunning=false;
     S.state = 'auto';
     TICK.say(LINES_SO.auto);
     let moved = true;
@@ -9244,7 +9367,7 @@ const SOLITAIRE = (()=>{
     }
     if(token!==S.token) return;
     persist();
-    S.state = 'playing';
+    S.state = 'playing'; updateClock(S, '#soScreen');
     checkWin();
   }
   function checkWin(){
@@ -9253,9 +9376,10 @@ const SOLITAIRE = (()=>{
   }
   function win(){
     if(S.state==='won') return;
+    updateClock(S, '#soScreen'); S.clockRunning=false;
     S.state = 'won';
     clearInterval(S.timer);
-    S.elapsed = (Date.now()-S.t0)/1000;
+
     const bonus = Math.round(700000/Math.max(30, S.elapsed)/10)*10;
     S.score += bonus;
     S.wins++; S.streak++;
@@ -9372,10 +9496,12 @@ const SOLITAIRE = (()=>{
   function bindPointer(){
     let start = null;
     board.addEventListener('pointerdown', e=>{
+      if(S.state!=='playing') return;
+      board.setPointerCapture(e.pointerId);
       const el = e.target.closest && e.target.closest('.so-card');
       if(!el){ const slot = e.target.closest && e.target.closest('.so-slot'); if(slot && slot.dataset.stock) drawStock(); return; }
       const src = srcAt(el);
-      start = { el, src, x:e.clientX, y:e.clientY, moved:false };
+      start = { el, src, x:e.clientX, y:e.clientY, moved:false, token:S.token };
     });
     board.addEventListener('pointermove', e=>{
       if(!start || !start.src || start.src.k==='stock') return;
@@ -9404,6 +9530,7 @@ const SOLITAIRE = (()=>{
       }
     });
     const finish = e=>{
+      if(start && start.token!==S.token){ start=null; return; }
       if(dragging){
         const r = board.getBoundingClientRect();
         const px = (e.clientX-r.left)/r.width*100, py = (e.clientY-r.top)/r.height*100;
@@ -9421,6 +9548,13 @@ const SOLITAIRE = (()=>{
       }
       start = null;
     };
+    board.addEventListener('keydown', e=>{
+      if(!['Enter',' '].includes(e.key) || gameKeysBlocked(e)) return;
+      const el=e.target.closest('.so-card, .so-slot');
+      if(!el) return;
+      e.preventDefault(); e.stopPropagation();
+      if(el.dataset.stock) drawStock(); else tapCard(el);
+    });
     board.addEventListener('pointerup', finish);
     board.addEventListener('pointercancel', ()=>{ if(dragging){ dragging.els.forEach(el2=>el2.classList.remove('dragging')); clearMarks(); dragging = null; render(); } start = null; });
   }
@@ -9441,7 +9575,7 @@ const SOLITAIRE = (()=>{
     setTimeout(clearMarks, 1800);
   }
   function setDraw(n){
-    S.draw = n; store.set('draw', n);
+    S.draw = n===1 ? 1 : 3; n=S.draw; store.set('draw', n);
     $$('#soDrawSeg .img-btn').forEach(b=>b.classList.toggle('on', Number(b.dataset.draw)===n));
     Sound.play('move', .5);
   }
@@ -9453,6 +9587,7 @@ const SOLITAIRE = (()=>{
     const slot = (id, x, y, ghost)=>{
       const el = document.createElement('button');
       el.className = 'so-slot'; el.dataset.slot = id;
+      el.setAttribute('aria-label', id==='stock' ? 'Draw cards' : id==='waste' ? 'Waste pile' : id.startsWith('found') ? 'Foundation '+id.slice(5) : 'Tableau column '+(+id.slice(3)+1));
       if(id==='stock') el.dataset.stock = '1';
       el.style.left = x+'%'; el.style.top = y+'%';
       if(ghost){ const im = document.createElement('img'); im.className='suit-ghost'; im.src = img(ghost); im.alt=''; el.appendChild(im); }
@@ -9489,9 +9624,9 @@ const SOLITAIRE = (()=>{
     $$('#soDrawSeg .img-btn').forEach(b=> b.onclick = ()=>setDraw(Number(b.dataset.draw)));
     $('#cardSO').onclick = ()=>{ Sound.play('move'); showScreen('solitaire'); };
     window.addEventListener('keydown', e=>{
-      if($('#soScreen').hidden) return;
+      if($('#soScreen').hidden || e.repeat || gameKeysBlocked(e)) return;
       const k = e.key.toLowerCase();
-      if(k==='u' || (e.ctrlKey&&k==='z')){ undo(); e.preventDefault(); }
+      if(k==='u' || ((e.ctrlKey||e.metaKey)&&k==='z')){ undo(); e.preventDefault(); }
       else if(k==='h') hint();
       else if(k==='n') newGame();
       else if(k===' '){ drawStock(); e.preventDefault(); }
@@ -9573,10 +9708,7 @@ const CAMPER = (()=>{
               obs:[], items:[], decor:[], pops:[], parts:[], powers:{magnet:0, shield:0, hatchet:0, x2:0},
               nextObs:14, nextItem:8, nextPow:26, nextDecor:4, token:0, entered:false, over:false, paused:false };
   let cv, g, raf = null, last = 0, imgs = {}, DPR = 1;
-  const store = {
-    get(k,d){ try{ const v = localStorage.getItem('pa_gc_'+k); return v==null?d:JSON.parse(v); }catch(e){ return d; } },
-    set(k,v){ try{ localStorage.setItem('pa_gc_'+k, JSON.stringify(v)); }catch(e){} }
-  };
+  const store = gameStore('pa_gc_');
   function I(key){
     if(!imgs[key]){ const im = new Image(); im.src = img(key); imgs[key] = im; }
     return imgs[key];
@@ -10277,17 +10409,18 @@ const CAMPER = (()=>{
     $('#gcSoundBtn').onclick = ()=>toggleSound();
     $('#gcHomeBtn').onclick = ()=>showScreen('menu');
     window.addEventListener('keydown', e=>{
-      if($('#gcScreen').hidden) return;
+      if($('#gcScreen').hidden || gameKeysBlocked(e)) return;
       const k = e.key.toLowerCase();
       if(k==='arrowleft'||k==='a'){ move(-1); e.preventDefault(); }
       else if(k==='arrowright'||k==='d'){ move(1); e.preventDefault(); }
       else if(k==='arrowup'||k==='w'||k===' '){ if(S.state==='run'){ jump(); e.preventDefault(); } else if(S.state!=='run' && !$('#gcAttract').hidden){ start(); e.preventDefault(); } }
       else if(k==='arrowdown'||k==='s'){ slide(); e.preventDefault(); }
-      else if(k==='p'||k==='escape'){ if(S.state==='run') pause(!S.paused); }
+      else if(k==='p'||k==='escape'){ if(e.repeat) return; if(S.state==='run') pause(!S.paused); }
     });
     // swipe
     let tx=null, ty=null;
-    cv.addEventListener('pointerdown', e=>{ tx=e.clientX; ty=e.clientY; });
+    cv.addEventListener('pointerdown', e=>{ cv.setPointerCapture(e.pointerId); tx=e.clientX; ty=e.clientY; });
+    cv.addEventListener('pointercancel', ()=>{ tx=ty=null; });
     cv.addEventListener('pointerup', e=>{
       if(tx==null) return;
       const dx = e.clientX-tx, dy = e.clientY-ty;
@@ -10307,7 +10440,7 @@ const CAMPER = (()=>{
       Object.values(OBS).forEach(d=>I(d.img));
       ['gc_p_run0','gc_p_run1','gc_p_run2','gc_p_jump','gc_p_slide0','gc_p_slide1',
        'gc_hud','gc_heart','gc_heartDim','gc_fayMeter','gc_road1','gc_bgsky','gc_bgfar','gc_bgmid','gc_bgcrowd','gc_bgtrees']
-        .concat(FAYGO_KEYS).concat(Object.values(PU_IMG)).concat(DECOR).forEach(I);
+        .concat(FAYGO_KEYS).concat(Object.values(PU_IMG)).concat(DECOR.map(([key])=>key)).forEach(I);
     }
     draw();
     TICK.say(LINES_GC.enter);
@@ -10345,10 +10478,7 @@ const MEMORY = (()=>{
               deck:[], up:[], lock:false, moves:0, found:0, streak:0, bestStreak:0,
               score:0, best:0, turn:1, p1Pairs:[], p2Pairs:[], state:'idle',
               t0:0, elapsed:0, timer:null, memory:{}, token:0, entered:false };
-  const store = {
-    get(k,d){ try{ const v = localStorage.getItem('pa_mm_'+k); return v==null ? d : JSON.parse(v); }catch(e){ return d; } },
-    set(k,v){ try{ localStorage.setItem('pa_mm_'+k, JSON.stringify(v)); }catch(e){} }
-  };
+  const store = gameStore('pa_mm_');
   let cardEls = [];
 
   /* ---------- helpers ---------- */
@@ -10415,7 +10545,7 @@ const MEMORY = (()=>{
     if(!netFaces) NET.sendDeal(S.deck.map(c=>c.f));
     if(netFaces && GRIDS[n]) S.pairs = n; S.up = []; S.moves = 0; S.found = 0; S.streak = 0; S.bestStreak = 0;
     S.p1Pairs = []; S.p2Pairs = []; S.turn = 1; S.memory = {}; S.lock = false;
-    S.elapsed = 0; S.t0 = Date.now();
+    S.elapsed = 0; S.t0 = Date.now(); S.clockLast=Date.now(); S.clockRunning=!$('#mmScreen').hidden && !document.hidden;
     if(S.mode==='solo' && S.level===0) S.score = 0;
     const grid = $('#mmGrid');
     grid.style.setProperty('--mmCols', cols);
@@ -10437,7 +10567,7 @@ const MEMORY = (()=>{
     });
     Sound.play('cardDeal');
     clearInterval(S.timer);
-    S.timer = setInterval(()=>{ if(S.state==='playing'){ S.elapsed = (Date.now()-S.t0)/1000; $('#mmTime').textContent = fmtTime(S.elapsed); } }, 500);
+    S.timer = setInterval(()=>{ if(S.state==='playing'){ updateClock(S, '#mmScreen'); $('#mmTime').textContent = fmtTime(S.elapsed); } }, 500);
     S.state = 'playing';
     renderHud(); renderSides();
     $('#mmVictory').hidden = true;
@@ -10455,9 +10585,10 @@ const MEMORY = (()=>{
   }
   async function flip(i){
     const c = S.deck[i], el = cardEls[i];
-    if(!c || c.done || S.up.includes(i) || S.lock) return;
+    if(S.state!=='playing' || !c || c.done || S.up.includes(i) || S.lock) return;
     const token = S.token;
     el.classList.add('up'); el.classList.remove('miss');
+    el.setAttribute('aria-label', c.f);
     Sound.play('cardFlip');
     S.memory[i] = c.f;                       // CPU sees every reveal
     S.up.push(i);
@@ -10470,7 +10601,7 @@ const MEMORY = (()=>{
     if(hit){
       S.deck[a].done = S.deck[b].done = true;
       delete S.memory[a]; delete S.memory[b];
-      [a,b].forEach(x=>{ cardEls[x].classList.remove('up'); cardEls[x].classList.add('done'); });
+      [a,b].forEach(x=>{ cardEls[x].classList.remove('up'); cardEls[x].classList.add('done'); cardEls[x].setAttribute('aria-label', 'Matched '+S.deck[x].f); cardEls[x].disabled=true; });
       setTimeout(()=>{ if(token===S.token) [a,b].forEach(x=>cardEls[x].classList.add('dim')); }, 700*T.scale+40);
       S.found++;
       S.streak++; S.bestStreak = Math.max(S.bestStreak, S.streak);
@@ -10493,7 +10624,7 @@ const MEMORY = (()=>{
       flashArt('mm_txtNoMatch');
       TICK.say(LINES_MM.nomatch);
       await sleep(520); if(token!==S.token) return;
-      [a,b].forEach(x=>{ cardEls[x].classList.remove('up','miss'); });
+      [a,b].forEach(x=>{ cardEls[x].classList.remove('up','miss'); cardEls[x].setAttribute('aria-label','Card '+(x+1)); });
       S.up = []; S.lock = false; $('#mmGrid').classList.remove('locked');
       if(S.mode!=='solo'){
         S.turn = S.turn===1 ? 2 : 1;
@@ -10545,8 +10676,8 @@ const MEMORY = (()=>{
 
   /* ---------- round end ---------- */
   async function roundOver(token){
+    updateClock(S, '#mmScreen'); S.clockRunning=false;
     S.state = 'over'; clearInterval(S.timer);
-    S.elapsed = (Date.now()-S.t0)/1000;
     const vic = $('#mmVictory');
     let record = false;
     if(S.mode==='solo'){
@@ -10583,7 +10714,7 @@ const MEMORY = (()=>{
     flashArt('mm_txtYouWin');
   }
   function nextLevel(){
-    if(S.mode!=='solo' || S.level>=LEVELS.length-1) return;
+    if(S.state!=='over' || S.mode!=='solo' || S.level>=LEVELS.length-1) return;
     ++S.token; S.level++;
     dealBoard();
   }
@@ -10720,14 +10851,25 @@ const NET = (()=>{
   function mkPeer(){
     const pc = new RTCPeerConnection({ iceServers:[{urls:'stun:stun.l.google.com:19302'},{urls:'stun:stun1.l.google.com:19302'}] });
     pc.onconnectionstatechange = ()=>{
+      if(S.pc!==pc) return;
       if(['failed','disconnected','closed'].includes(pc.connectionState) && S.session) drop('CONNECTION LOST');
     };
     return pc;
   }
+  let connectionTimer = null;
+  function watchConnection(){
+    clearTimeout(connectionTimer);
+    const pc=S.pc;
+    connectionTimer=setTimeout(()=>{
+      if(S.pc!==pc || S.connected) return;
+      teardown();
+      ui.status('Connection timed out. Try another network or browser, then create a fresh invite.', 'err');
+    }, 15000);
+  }
   function wireDC(dc){
     S.dc = dc;
-    dc.onopen = ()=>{ S.connected = true; onConnected(); };
-    dc.onclose = ()=>{ if(S.session) drop('OPPONENT DISCONNECTED'); };
+    dc.onopen = ()=>{ if(S.dc!==dc) return; clearTimeout(connectionTimer); S.connected = true; onConnected(); };
+    dc.onclose = ()=>{ if(S.dc===dc && S.session) drop('OPPONENT DISCONNECTED'); };
     dc.onmessage = e=>{ try{ handle(JSON.parse(e.data)); }catch(err){} };
   }
   function send(o){ try{ if(S.dc && S.dc.readyState==='open') S.dc.send(JSON.stringify(o)); }catch(e){} }
@@ -10745,6 +10887,7 @@ const NET = (()=>{
   async function hostConnect(code){
     const o = await unpack(code);
     await S.pc.setRemoteDescription({ type:'answer', sdp:o.s });
+    watchConnection();
   }
   async function joinAccept(code){
     teardown();
@@ -10755,6 +10898,7 @@ const NET = (()=>{
     await S.pc.setRemoteDescription({ type:'offer', sdp:o.s });
     await S.pc.setLocalDescription(await S.pc.createAnswer());
     await iceDone(S.pc);
+    watchConnection();
     return pack({ s:S.pc.localDescription.sdp });
   }
   function onConnected(){
@@ -10774,7 +10918,7 @@ const NET = (()=>{
     try{
       if(g==='faygo'){ FAYGO.setGmode('classic'); FAYGO.setMode('2p'); FAYGO.newMatch(); }
       else if(g==='memory'){ if(S.role==='host') MEMORY.setMode('2p'); else MEMORY.prep2p(); }
-      else if(g==='j31'){ if(S.role==='host') J31.netStart(); else { J31.state.online = true; J31.state.state='playing'; } }
+      else if(g==='j31'){ J31.netStart(); }
       else if(g==='hockey'){ AIRHOCKEY.netStart(S.role==='host' ? 'host' : 'join'); }
       else { mod(g).setMode('2p'); mod(g).newGame ? mod(g).newGame() : mod(g).newMatch(); }
       if(g==='chess') CHESS.setFlip(S.role!=='host');
@@ -10795,6 +10939,7 @@ const NET = (()=>{
     if(!silent) TICK.set('ONLINE MATCH ENDED', 'ONLINE');
   }
   function teardown(){
+    clearTimeout(connectionTimer); connectionTimer=null;
     if(S.game==='j31' && window.ARCADE) try{ J31.netEnd(); }catch(e){}
     if(S.game==='hockey' && window.ARCADE) try{ AIRHOCKEY.netEnd(); }catch(e){}
     S.session = false; S.connected = false;
@@ -10823,21 +10968,38 @@ const NET = (()=>{
     j31: { nextRound: ()=>{ const s=J31.state; s.state='playing'; J31.startRound(false); } },
   };
   function handle(m){
+    if(!m || typeof m!=='object') return;
     if(m.t==='bye'){ drop('OPPONENT LEFT'); return; }
     if(!S.session) return;
     S.applying = true;
     try{
-      if(m.t==='mv' && m.g===S.game && APPLY[m.g]) APPLY[m.g](m.d);
+      if(m.t==='mv' && m.g===S.game && APPLY[m.g]){
+        if(!m.d || typeof m.d!=='object') return;
+        const local = mod(m.g);
+        if(local){
+          const turn = m.g==='chess' ? CHESS.game.turn() : local.state.turn;
+          if(turn===mySide(m.g) || local.state.state!=='playing') return;
+        }
+        APPLY[m.g](m.d);
+      }
       else if(m.t==='act' && m.g===S.game && ACTS[m.g] && ACTS[m.g][m.a]) ACTS[m.g][m.a]();
-      else if(m.t==='deal' && S.game==='memory') MEMORY.dealFromNet(m.faces);
+      else if(m.t==='deal' && S.game==='memory' && S.role==='join'){
+        const faces=m.faces, counts={};
+        if(!Array.isArray(faces) || ![12,16,20,24].includes(faces.length)) return;
+        for(const face of faces){
+          if(typeof face!=='string' || !ASSETS.img['mm_card_'+face]) return;
+          counts[face]=(counts[face]||0)+1;
+        }
+        if(Object.values(counts).some(n=>n!==2)) return;
+        MEMORY.dealFromNet(faces);
+      }
       else if(m.t==='reqnew' && S.role==='host'){
         if(S.game==='hockey'){ S.applying=false; AIRHOCKEY.netStart('host'); }
         else if(S.game==='j31'){ const s=J31.state; s.state='playing'; S.applying=false; J31.startRound(false); }
         else if(S.game==='memory') MEMORY.newGame();
         else if(ACTS[S.game]){ const a = Object.keys(ACTS[S.game])[0]; if(a){ S.applying=false; ACTS[S.game][a](); } }
       }
-    }catch(e){}
-    S.applying = false;
+    }catch(e){}finally{ S.applying = false; }
   }
   const active   = g => S.session && S.game===g;
   const mySide   = g => S.role==='host' ? HOST_SIDE[g] : JOIN_SIDE[g];
@@ -11178,6 +11340,10 @@ const LB = (()=>{
   const SHORT = { ttt:'SLAM', chess:'CHESS', checkers:'CHECKERS', pinball:'PINBALL', faygo:'FAYGO 4', bj:'21', memory:'MEMORY', camper:'CAMPER', solitaire:'SOLITAIRE', j31:'31', hockey:'HOCKEY' };
   let data = {}, pending = null, queue = [], current = 'ttt';
   try{ data = JSON.parse(localStorage.getItem('pa_lb') || '{}') || {}; }catch(e){ data = {}; }
+  if(!data || typeof data!=='object' || Array.isArray(data)) data={};
+  for(const key of Object.keys(CFG)){
+    data[key]=(Array.isArray(data[key]) ? data[key] : []).filter(e=>e && Number.isFinite(e.v) && e.v>0 && typeof e.name==='string').slice(0,10);
+  }
   const save = ()=>{ try{ localStorage.setItem('pa_lb', JSON.stringify(data)); }catch(e){} };
   const board = g => (data[g] = data[g] || []);
   const sorter = g => (a,b) => CFG[g].higher ? b.v - a.v : a.v - b.v;
@@ -11189,7 +11355,7 @@ const LB = (()=>{
     return r < 10 ? r : -1;
   }
   function check(g, v, tag){
-    if(!CFG[g] || !(v > 0)) return;
+    if(!CFG[g] || !Number.isFinite(v) || !(v > 0)) return;
     if(rankOf(g, v) < 0) return;
     queue.push({ g, v, tag: tag||'' });
     if(!pending) nextEntry();
@@ -11311,15 +11477,32 @@ NET.bind();
 LB.bind();
 window.PINBALL_READY = true;
 bindHub();
-/* visible build tag so there's never a question of WHICH file is open */
-(function(){
-  const tag = document.createElement('div');
-  tag.id = 'buildTag';
-  tag.textContent = 'V16 · SYNCED + UNSTUCK';
-  tag.style.cssText = 'position:fixed; right:10px; bottom:6px; z-index:41; font:700 10px/1 monospace; letter-spacing:.12em; color:rgba(255,255,255,.38); pointer-events:none; text-shadow:0 1px 2px #000;';
-  document.body.appendChild(tag);
-})();
 showScreen('menu');
+setSoundIcons();
+// Keep touch controls beside the playfield without duplicating handlers or IDs.
+const narrowScreen = matchMedia('(max-width:880px)');
+for(const [screen, mid] of [['gcScreen','gcMid'],['ahScreen','ahMid'],['pinballScreen','pbMid'],['soScreen','soMid']]){
+  const controls = document.querySelector('#'+screen+' > .ctl-row');
+  const home = document.createComment('game controls'); controls.before(home);
+  const positionControls = ()=>{ if(narrowScreen.matches) $('#'+mid).appendChild(controls); else home.after(controls); };
+  narrowScreen.addEventListener('change', positionControls); positionControls();
+}
+window.addEventListener('blur', ()=>{
+  PINBALL.press('L',false); PINBALL.press('R',false);
+  PINBALL.state.charging=false; PINBALL.state.charge=0;
+});
+document.addEventListener('visibilitychange', ()=>{
+  syncClocks();
+  if(document.hidden){
+    PINBALL.leave();
+    if(!AIRHOCKEY.state.online) AIRHOCKEY.leave();
+    CAMPER.leave(); Sound.stopCrowd();
+  } else {
+    if(!$('#pinballScreen').hidden) PINBALL.enter();
+    if(!$('#ahScreen').hidden && !AIRHOCKEY.state.online) AIRHOCKEY.enter();
+    if(!$('#tttScreen').hidden) Sound.startCrowd();
+  }
+});
 </script>
 </body>
 </html>
