@@ -175,7 +175,6 @@ function Home() {
     if (!audioRef.current) return
 
     if (!audioCtxRef.current) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       audioCtxRef.current = new (window.AudioContext || (window as any).webkitAudioContext)()
       analyserRef.current = audioCtxRef.current.createAnalyser()
       analyserRef.current.fftSize = 256

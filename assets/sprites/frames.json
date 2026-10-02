@@ -1,0 +1,153 @@
+[
+  {
+    "file": "camper-objects.png",
+    "x": [
+      0,
+      257,
+      507,
+      751,
+      1007,
+      1254
+    ],
+    "y": [
+      0,
+      267,
+      517,
+      756,
+      995,
+      1254
+    ],
+    "keys": [
+      "gc_ob_tent1",
+      "gc_ob_tent2",
+      "gc_ob_puddle",
+      "gc_ob_mudhole",
+      "gc_ob_cart1",
+      "gc_ob_cart2",
+      "gc_ob_porta1",
+      "gc_ob_porta2",
+      "gc_ob_barrel1",
+      "gc_ob_barrel2",
+      "gc_ob_fire",
+      "gc_ob_chair1",
+      "gc_ob_chair2",
+      "gc_ob_cooler1",
+      "gc_ob_cooler2",
+      "gc_ob_cooler3",
+      "gc_ob_cone",
+      "gc_ob_rope",
+      "gc_ob_flag",
+      "gc_ob_barricade",
+      "gc_ob_log",
+      "gc_ob_stump",
+      "gc_ob_rocks",
+      "gc_ob_debris",
+      "gc_ob_cone2"
+    ]
+  },
+  {
+    "file": "pickups-pucks.png",
+    "x": [
+      0,
+      458,
+      896,
+      1322,
+      1774
+    ],
+    "y": [
+      0,
+      464,
+      887
+    ],
+    "keys": [
+      "gc_pu_sixpack",
+      "gc_pu_magnet",
+      "gc_pu_shield",
+      "gc_heart",
+      "ah_puck1",
+      "ah_puck2",
+      "ah_puck3",
+      "gc_heartDim"
+    ]
+  },
+  {
+    "file": "checker-tokens.png",
+    "x": [
+      0,
+      316,
+      635,
+      940,
+      1254
+    ],
+    "y": [
+      0,
+      324,
+      623,
+      927,
+      1254
+    ],
+    "keys": [
+      "ck_a0",
+      "ck_a1",
+      "ck_a2",
+      "ck_a3",
+      "ck_a4",
+      "ck_a5",
+      "ck_a6",
+      "ck_a7",
+      "ck_b0",
+      "ck_b1",
+      "ck_b2",
+      "ck_b3",
+      "ck_b4",
+      "ck_b5",
+      "ck_b6",
+      "ck_b7"
+    ]
+  },
+  {
+    "file": "camper-icon.png",
+    "x": [
+      0,
+      1226
+    ],
+    "y": [
+      0,
+      1283
+    ],
+    "keys": [
+      "gc_appicon"
+    ],
+    "maxEdge": 420
+  },
+  {
+    "file": "camper-logo.png",
+    "x": [
+      0,
+      1165
+    ],
+    "y": [
+      0,
+      1350
+    ],
+    "keys": [
+      "gc_logo"
+    ],
+    "maxEdge": 600
+  },
+  {
+    "file": "camper-horizon.png",
+    "x": [
+      0,
+      2172
+    ],
+    "y": [
+      0,
+      724
+    ],
+    "keys": [
+      "gc_horizon"
+    ],
+    "maxEdge": 1200
+  }
+]

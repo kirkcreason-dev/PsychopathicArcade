@@ -6,8 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "lint": "eslint . && npm run check:game",
+    "preview": "vite preview",
+    "check:game": "node scripts/check-game.mjs",
+    "test": "npm run build && playwright test",
+    "typecheck": "tsc -b"
   },
   "dependencies": {
     "react": "^19.2.3",
@@ -17,6 +20,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@playwright/test": "^1.63.0",
     "@tailwindcss/vite": "^4.1.17",
     "@types/node": "^22.10.2",
     "@types/react": "^19.2.5",
