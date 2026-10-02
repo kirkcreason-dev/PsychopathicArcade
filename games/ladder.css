@@ -12,3 +12,5 @@
 @media(min-width:721px) and (max-height:780px){.lw-layout{grid-template-columns:380px 1fr}.lw-heading{padding-bottom:9px}.lw-hud{padding:7px 4px}.lw-hud b{font-size:21px}.lw-panel h2{font-size:25px}.lw-pick canvas{width:75px;height:100px}.lw-pick{gap:8px}.lw-panel p{font-size:11px;margin:6px 0}.lw-primary{min-height:38px;font-size:16px}.lw-overlay{padding:10px}.lw-panel .lw-secondary{padding:7px;margin-top:7px}}
 
 #cardLW{background:radial-gradient(ellipse at 50% 35%,#583128,#110c18 75%);border-color:#c89943}.lw-brand b{color:#ffda83;text-shadow:3px 3px 0 #762d60}.lw-heading .lw-brand b{font-size:34px}.lw-machine{border-color:#8d683f}.lw-primary{background:linear-gradient(#ffe3a3,#d4a94c);color:#2d1a21;box-shadow:0 4px 0 #80602d}.lw-panel h2{color:#ffe2a1}.lw-hud b{color:#ffdc8c}.lw-stage{background:#0b0711}.lw-overlay{background:#130b18bb}.lw-guide h3{color:#ffdc99}.lw-throw{background:#edc572;color:#2e1b26}#lwScreen .lw-finisher{border-color:#ad7950}.lw-stage canvas{image-rendering:auto}#lwStatus{color:#edcfaa}.lw-brand small{color:#c7ff81}
+
+.lw-panel button[hidden]{display:none}

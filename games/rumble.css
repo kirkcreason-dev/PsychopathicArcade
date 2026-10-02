@@ -13,3 +13,5 @@
 
 .ru-coaching{min-height:49px;padding:8px 12px;background:#201425;border-top:1px solid #694358;display:flex;flex-direction:column;justify-content:center;gap:4px}.ru-coaching b{font:12px Impact,sans-serif;letter-spacing:1px;color:#f2a6cf}.ru-coaching b.ready{color:#d9ff81}.ru-coaching span{font-size:10px;line-height:1.4;color:#e2d4df}.ru-actions .ru-toss-ready{background:#e2ff8b;box-shadow:0 0 14px #c3ef5766,inset 0 0 0 2px #fff6b3}
 @media(max-width:720px){.ru-coaching{min-height:49px;padding:6px 10px}.ru-coaching b{font-size:11px}.ru-coaching span{font-size:9px}}
+
+.ru-panel button[hidden]{display:none}

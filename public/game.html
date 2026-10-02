@@ -1185,6 +1185,8 @@ canvas, #soBoard{ touch-action:none; }
 
 .ru-coaching{min-height:49px;padding:8px 12px;background:#201425;border-top:1px solid #694358;display:flex;flex-direction:column;justify-content:center;gap:4px}.ru-coaching b{font:12px Impact,sans-serif;letter-spacing:1px;color:#f2a6cf}.ru-coaching b.ready{color:#d9ff81}.ru-coaching span{font-size:10px;line-height:1.4;color:#e2d4df}.ru-actions .ru-toss-ready{background:#e2ff8b;box-shadow:0 0 14px #c3ef5766,inset 0 0 0 2px #fff6b3}
 @media(max-width:720px){.ru-coaching{min-height:49px;padding:6px 10px}.ru-coaching b{font-size:11px}.ru-coaching span{font-size:9px}}
+
+.ru-panel button[hidden]{display:none}
 /* RUMBLE STYLE END */
 /* RUMBLE LADDER STYLE START */
 /* Ladder Wars */
@@ -1201,6 +1203,8 @@ canvas, #soBoard{ touch-action:none; }
 @media(min-width:721px) and (max-height:780px){.lw-layout{grid-template-columns:380px 1fr}.lw-heading{padding-bottom:9px}.lw-hud{padding:7px 4px}.lw-hud b{font-size:21px}.lw-panel h2{font-size:25px}.lw-pick canvas{width:75px;height:100px}.lw-pick{gap:8px}.lw-panel p{font-size:11px;margin:6px 0}.lw-primary{min-height:38px;font-size:16px}.lw-overlay{padding:10px}.lw-panel .lw-secondary{padding:7px;margin-top:7px}}
 
 #cardLW{background:radial-gradient(ellipse at 50% 35%,#583128,#110c18 75%);border-color:#c89943}.lw-brand b{color:#ffda83;text-shadow:3px 3px 0 #762d60}.lw-heading .lw-brand b{font-size:34px}.lw-machine{border-color:#8d683f}.lw-primary{background:linear-gradient(#ffe3a3,#d4a94c);color:#2d1a21;box-shadow:0 4px 0 #80602d}.lw-panel h2{color:#ffe2a1}.lw-hud b{color:#ffdc8c}.lw-stage{background:#0b0711}.lw-overlay{background:#130b18bb}.lw-guide h3{color:#ffdc99}.lw-throw{background:#edc572;color:#2e1b26}#lwScreen .lw-finisher{border-color:#ad7950}.lw-stage canvas{image-rendering:auto}#lwStatus{color:#edcfaa}.lw-brand small{color:#c7ff81}
+
+.lw-panel button[hidden]{display:none}
 /* RUMBLE LADDER STYLE END */
 /* RUMBLE DUELS STYLE START */
 .duel-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 13px;border:1px solid #957245;background:#201526;border-radius:9px;margin-bottom:8px;font-size:10px;color:#cbb3cb}.duel-bar[hidden],.duel-modal[hidden],.duel-scores[hidden]{display:none}.duel-bar b{color:#e7f8b2;font-size:18px;margin-left:5px}.duel-bar small{font-size:8px;text-align:center;letter-spacing:1px}.duel-modal{position:fixed;inset:0;z-index:9500;background:#0d0719d9;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(7px)}.duel-panel{width:min(430px,100%);background:linear-gradient(140deg,#352139,#100c16);border:1px solid #a68051;border-radius:17px;padding:24px;text-align:center;box-shadow:0 25px 80px #0009}.duel-kicker{color:#eccca0;font-size:9px;letter-spacing:1.5px}.duel-panel h2{font:30px/1.05 Impact,'Arial Black',sans-serif;color:#e2f798;margin:16px 0}.duel-panel p{font-size:13px;color:#d1bfce;line-height:1.6}.duel-panel button{display:block;min-height:43px;border:0;border-radius:7px;background:#d0f675;color:#172214;font:16px Impact,sans-serif;letter-spacing:1px;width:100%;margin-top:11px;cursor:pointer}.duel-panel button[hidden]{display:none}.duel-panel button:disabled{opacity:.55;cursor:default}.duel-panel .duel-secondary{background:#2b1b32;border:1px solid #735269;color:#e7d6e4}.duel-scores{display:flex;justify-content:space-evenly;color:#c9b8ca;font-size:11px;padding:16px 0}.duel-scores b{display:block;font:30px Impact,sans-serif;color:#ffd795;margin-top:8px}.new-net-btn{background:#241a2e;border:1px solid #b58b55;color:#f3dbac;border-radius:7px;padding:7px 10px;font:12px Impact,sans-serif;letter-spacing:1px;cursor:pointer}
@@ -2279,7 +2283,7 @@ canvas, #soBoard{ touch-action:none; }
     <div class="lw-machine">
       <div class="lw-hud"><div><small>BELT GRABS</small><b id="lwKills">0</b></div><div><small>TIME LEFT</small><b id="lwRemaining">120</b></div><div><small>SCORE</small><b id="lwScore">0</b></div><div><small>BEST</small><b id="lwBest">0</b></div></div>
       <div class="lw-stage">
-        <canvas id="lwCanvas" width="480" height="460" tabindex="0" aria-label="JCW Ladder Wars ring. Move with arrows or WASD. J or Space strikes. K picks up, sets, climbs or grabs the ladder. Hold L or Shift to guard. F uses your finisher. Down climbs off the ladder. P pauses." aria-describedby="lwInstructions"></canvas>
+        <canvas id="lwCanvas" width="480" height="460" tabindex="0" aria-label="JCW Ladder Wars ring. Move with arrows or WASD. J or Space strikes. K picks up, sets or climbs the ladder and grabs the belt. Hold L or Shift to guard. F uses your finisher. Down climbs off the ladder. P pauses." aria-describedby="lwInstructions"></canvas>
         <div class="lw-overlay" id="lwSetup"><div class="lw-panel">
           <span class="lw-kicker">22 LUNACY UNLOCKED WRESTLERS</span><h2>WHO’S YOUR LUNATIC?</h2>
           <div class="lw-pick"><canvas id="lwPortrait" width="180" height="240" role="img" aria-label="Selected wrestler"></canvas><div><label for="lwRoster">CHOOSE YOUR WRESTLER</label><select id="lwRoster"></select><p id="lwStyle"></p><label for="lwSize">OPPONENTS</label><select id="lwSize"><option value="2">Singles · One rival</option><option value="4">Chaos · Three rivals</option></select></div></div>
@@ -11857,6 +11861,7 @@ const NET = (()=>{
   /* ---------- lobby UI ---------- */
   const ui = {
     open(game){
+      if(S.session)leave();
       if(game){ S.game = game; $$('#netGamePick .img-btn').forEach(x=>x.classList.toggle('on', x.dataset.g===game)); }
       $('#netPickLbl').hidden = $('#netGamePick').hidden = !!game;
       $('#netModal').hidden = false; ui.step('Main'); ui.status('');
@@ -12612,12 +12617,12 @@ function createWrestlingGame(ladderMode=false){
   }
   function maybeNetGo(){if(!N||N.role!=='host'||!N.loaded||!N.peerLoaded)return;N.phase='playing';S.mode='playing';announce('VERSUS · BOTH WRESTLERS READY');NET.push(game,{k:'go',round:N.round});overlays();hud();canvas.focus({preventScroll:true});run();sendFrame();}
   function netLobby(send){
-    if(!N)return;const match=N;stop();generation++;N=null;choose();N=match;N.phase='lobby';N.localReady=false;N.peerReady=false;N.loaded=false;N.peerLoaded=false;N.resultSaved=false;N.remote={x:0,y:0,hit:false,guard:false};
+    if(!N)return;const match=N,peerReady=N.phase==='over'&&N.rematchRequested&&N.peerReady;stop();generation++;N=null;choose();N=match;N.phase='lobby';N.localReady=false;N.peerReady=!!peerReady;N.loaded=false;N.peerLoaded=false;N.resultSaved=false;N.remote={x:0,y:0,hit:false,guard:false};
     text('ruStartBtn','READY FOR VERSUS');text('ruLoadStatus','Choose a wrestler for the rematch.');$('#ruSize').disabled=true;if(send)NET.push(game,{k:'lobby',round:N.round});
   }
   function netEnd(){if(!N)return;N=null;generation++;stop();choose();text('ruStartBtn',ladderMode?'CHASE THE GOLD':'RING THE BELL');$('#ruRoster').disabled=false;$('#ruSize').disabled=false;status('Online match ended. You can play solo or invite a friend.');}
   function controlVector(){let x=stick.x+(held.has('right')?1:0)-(held.has('left')?1:0),y=stick.y+(held.has('down')?1:0)-(held.has('up')?1:0);const len=Math.hypot(x,y);if(len>1){x/=len;y/=len;}return{x,y,hit:held.has('hit'),guard:guards.size>0};}
-  function netInput(action){if(!N||N.phase!=='playing'||S.mode!=='playing')return;NET.push(game,{k:'input',round:N.round,seq:++N.inputSeq,...controlVector(),...(action?{action}:{})});}
+  function netInput(action){if(!N||N.phase!=='playing'||S.mode!=='playing')return;NET.push(game,{k:'input',round:N.round,seq:++N.inputSeq,...controlVector(),...(action?{action,...(ladderMode&&action==='throw'?{grabAt:S.elapsed}:{})}:{})});}
   function netTick(dt){
     if(!N||N.phase!=='playing')return false;N.clock+=dt;
     if(N.role==='join'){if(N.clock>=.05){N.clock=0;netInput();}return true;}
@@ -12646,21 +12651,21 @@ function createWrestlingGame(ladderMode=false){
   }
   function netApply(d){
     if(!N||!d||typeof d!=='object')return;
-    if(d.k==='ready'&&N.phase==='lobby'&&byId[d.fighter]){N.peerReady=true;N.peerFighter=d.fighter;maybeNetSetup();return;}
+    if(d.k==='ready'&&(N.phase==='lobby'||N.phase==='over'&&N.rematchRequested)&&byId[d.fighter]){N.peerReady=true;N.peerFighter=d.fighter;maybeNetSetup();return;}
     if(d.k==='setup'&&N.role==='join'&&N.localReady&&['lobby','over'].includes(N.phase)&&Number.isSafeInteger(d.round)&&d.round>N.round&&Array.isArray(d.fighters)&&d.fighters.length===2&&d.fighters.every(id=>byId[id])&&d.fighters[1]===S.selected){N.round=d.round;N.phase='loading';N.rx=0;N.inputSeq=0;initNetMatch(d);return;}
     if(d.round!==N.round)return;
     if(d.k==='loaded'&&N.role==='host'&&N.phase==='loading'){N.peerLoaded=true;maybeNetGo();return;}
     if(d.k==='go'&&N.role==='join'&&N.loaded&&N.phase==='loading'){N.phase='playing';S.mode='playing';overlays();hud();canvas.focus({preventScroll:true});run();netInput();return;}
-    if(d.k==='input'&&N.role==='host'&&N.phase==='playing'&&S.mode==='playing'&&Number.isSafeInteger(d.seq)&&d.seq>N.inputRx&&Number.isFinite(d.x)&&Number.isFinite(d.y)&&Math.abs(d.x)<=1&&Math.abs(d.y)<=1){N.inputRx=d.seq;N.remoteAge=0;N.remote={x:d.x,y:d.y,hit:d.hit===true,guard:d.guard===true};if(['hit','throw','finish'].includes(d.action))act(d.action,S.fighters.find(f=>f.uid==='p2'));return;}
+    if(d.k==='input'&&N.role==='host'&&N.phase==='playing'&&S.mode==='playing'&&Number.isSafeInteger(d.seq)&&d.seq>N.inputRx&&Number.isFinite(d.x)&&Number.isFinite(d.y)&&Math.abs(d.x)<=1&&Math.abs(d.y)<=1){N.inputRx=d.seq;N.remoteAge=0;N.remote={x:d.x,y:d.y,hit:d.hit===true,guard:d.guard===true};if(['hit','throw','finish'].includes(d.action))act(d.action,S.fighters.find(f=>f.uid==='p2'),Number.isFinite(d.grabAt)&&Math.abs(S.elapsed-d.grabAt)<=.3?d.grabAt:S.elapsed);return;}
     if(d.k==='pause'&&N.role==='host'&&typeof d.paused==='boolean'&&N.phase==='playing'){N.pauses[1]=d.paused;applyNetPause();return;}
-    if(d.k==='lobby'&&N.phase==='over'){netLobby(false);return;}
+    if(d.k==='lobby'&&N.phase==='over'){N.rematchRequested=true;status('Your opponent wants a rematch. Run it back when you’re ready.');return;}
     if(d.k!=='frame'||N.role!=='join'||!['playing','over'].includes(N.phase)||!Number.isSafeInteger(d.seq)||d.seq<=N.rx)return;
     if(!['playing','paused','over'].includes(d.mode)||!Number.isFinite(d.elapsed)||d.elapsed<0||!Number.isFinite(d.time)||!Array.isArray(d.fighters)||d.fighters.length!==2||!d.fighters.every(validFighter)||new Set(d.fighters.map(f=>f.uid)).size!==2)return;
     if(ladderMode&&(!d.ladder||!Number.isFinite(d.ladder.x)||!Number.isFinite(d.ladder.y)||typeof d.ladder.open!=='boolean'||d.ladder.carrier&&!['p1','p2'].includes(d.ladder.carrier)))return;
     const resuming=S.mode==='paused'&&d.mode==='playing';N.rx=d.seq;S.mode=d.mode;if(resuming)canvas.focus({preventScroll:true});S.fighters=d.fighters.map(f=>({...f,player:f.uid==='p2',human:true}));S.elapsed=d.elapsed;S.time=clamp(d.time,0,120);S.ladder=d.ladder;S.winner=byId[d.winner]?d.winner:null;S.winnerUid=['p1','p2'].includes(d.winnerUid)?d.winnerUid:null;
     S.banner=typeof d.banner==='string'?d.banner.slice(0,100):'';S.bannerTime=clamp(Number(d.bannerTime)||0,0,3);if(Array.isArray(d.pauses)&&d.pauses.length===2)N.pauses=d.pauses.map(v=>v===true);
     const p=player();S.score=p.score;S.kills=p.kills;S.charge=p.charge;
-    if(S.mode==='over'&&!N.resultSaved){N.resultSaved=true;N.phase='over';S.won=S.winnerUid==='p2';S.best=Math.max(S.best,S.score);store.set('best',S.best);if(S.won){S.wins++;store.set('wins',S.wins);}stop();presentResult();}
+    if(S.mode==='over'&&!N.resultSaved){N.resultSaved=true;N.phase='over';N.peerReady=false;N.localReady=false;N.rematchRequested=false;S.won=S.winnerUid==='p2';S.best=Math.max(S.best,S.score);store.set('best',S.best);if(S.won){S.wins++;store.set('wins',S.wins);}stop();presentResult();}
     else if(S.mode==='paused')stop();else run();overlays();hud();draw();
   }
 
@@ -12673,10 +12678,10 @@ function createWrestlingGame(ladderMode=false){
     const victims=S.fighters.filter(v=>v!==f&&v.climbing);if(!victims.length||!ladderNear(f))return false;
     victims.forEach(fall);S.ladder.tilt=.8;S.ladder.open=false;S.ladder.x=clamp(S.ladder.x+(f.x<S.ladder.x?22:-22),90,390);label(f,'TIMBER!','#ffe29d');award(f,100);Sound.play('hit');return true;
   }
-  function ladderAction(f){
+  function ladderAction(f,attemptAt=S.elapsed){
     const l=S.ladder;if(f.climbing){
       if(f.climb<1){if(f.player)status('Keep climbing. Move down to descend.');return false;}
-      const needle=grabNeedle(f);f.cool=.4;
+      const needle=grabNeedle(f,attemptAt);f.cool=.4;
       if(needle>=.38&&needle<=.64){f.pulls++;f.misses=0;label(f,f.pulls+' / 4','#e0ff9e');if(isHuman(f)){award(f,250);f.kills=f.pulls;if(f===player())S.kills=f.pulls;}Sound.play('bell');if(f.pulls>=4){S.winner=f.id;S.winnerUid=f.uid;finish(f===player());}}
       else{f.misses++;label(f,'SLIPPED!','#ff9dc4');if(f.misses>=2)fall(f);else if(f.player)status('One more miss and you fall. Aim for green.');}
       return true;
@@ -12689,7 +12694,7 @@ function createWrestlingGame(ladderMode=false){
     }
     if(S.fighters.some(v=>v.climbing))return false;l.carrier=f.uid;l.open=false;f.cool=.3;if(f.player)status('Carry the ladder to the glowing centre mark.');return true;
   }
-  function grabNeedle(f){return (Math.sin(S.elapsed*4.1+(N?(f.uid==='p1'?0:1.3):(f.player?0:1.3)))+1)/2;}
+  function grabNeedle(f,at=S.elapsed){return (Math.sin(at*4.1+(N?(f.uid==='p1'?0:1.3):(f.player?0:1.3)))+1)/2;}
   function aiLadder(f,dt){
     const l=S.ladder,p=player(),climber=S.fighters.find(v=>v!==f&&v.climbing);
     if(f.climbing){if(f.climb>=1&&f.cool<=0&&grabNeedle(f)>.42&&grabNeedle(f)<.6)ladderAction(f);return;}
@@ -12750,10 +12755,10 @@ function createWrestlingGame(ladderMode=false){
     if(push){const e=edge(v);v[e.axis]+=e.sign*push;confine(v);}
     label(v,'−'+Math.round(amount),'#fff0cc');if(isHuman(from)){award(from,25,13);Sound.play('hit');}return true;
   }
-  function act(kind,f=player()){
+  function act(kind,f=player(),attemptAt=S.elapsed){
     if(N?.role==='join'){if(['hit','throw','finish'].includes(kind)&&S.mode==='playing')netInput(kind);return false;}
     if(S.mode!=='playing'||!f||f.out||f.grabbed||f.stun>0||f.action||f.cool>0)return false;
-    if(ladderMode&&kind==='throw')return ladderAction(f);
+    if(ladderMode&&kind==='throw')return ladderAction(f,attemptAt);
     if(ladderMode&&kind==='hit'&&!f.climbing&&S.fighters.some(v=>v!==f&&v.climbing)&&ladderNear(f)){f.action={kind:'tip',t:0,duration:.65,hit:false};f.cool=.8;return true;}
     if(kind==='finish'){
       if(!isHuman(f)||(f===player()?S.charge:f.charge)<100)return false;if(f===player())S.charge=0;f.charge=0;f.guardOn=false;f.action={kind:'heavy',t:0,duration:.72,hit:false};f.invuln=.75;f.cool=.85;announce(byId[f.id].name.toUpperCase()+' · FINISHER!');return true;
@@ -12853,7 +12858,7 @@ function createWrestlingGame(ladderMode=false){
     if(ladderMode){while(S.queue.length){const id=S.queue.shift();S.fighters.push(fighter(id,false,330+(S.entered%2)*30,310+(S.entered%3)*25));S.entered++;}announce('CHASE THE GOLD · SET THE LADDER IN THE GLOW');}else{spawn();spawn();announce('RING THE BELL · LAST LUNATIC STANDING');}loadingIds.clear();text('ruLoadStatus','');$('#ruSaveBtn').disabled=false;text('ruSaveBtn','SAVE YOUR RECORD');overlays();hud();draw();window.scrollTo(0,0);canvas.focus({preventScroll:true});Sound.play('bell');run();
   }
   function finish(won){
-    if(S.mode!=='playing')return;S.mode='over';S.won=won;if(N){if(!S.winnerUid&&!ladderMode)S.winnerUid=S.fighters.find(f=>!f.out)?.uid||null;const winner=S.fighters.find(f=>f.uid===S.winnerUid);if(winner)award(winner,2000+(ladderMode?Math.ceil(S.time)*10:0));N.phase='over';}else if(won)award(player(),2000+(ladderMode?Math.ceil(S.time)*10:0));if(won){S.wins++;store.set('wins',S.wins);}S.best=Math.max(S.best,S.score);store.set('best',S.best);stop();presentResult();if(N)sendFrame();
+    if(S.mode!=='playing')return;S.mode='over';S.won=won;if(N){if(!S.winnerUid&&!ladderMode)S.winnerUid=S.fighters.find(f=>!f.out)?.uid||null;const winner=S.fighters.find(f=>f.uid===S.winnerUid);if(winner)award(winner,2000+(ladderMode?Math.ceil(S.time)*10:0));N.phase='over';N.peerReady=false;N.localReady=false;N.rematchRequested=false;}else if(won)award(player(),2000+(ladderMode?Math.ceil(S.time)*10:0));if(won){S.wins++;store.set('wins',S.wins);}S.best=Math.max(S.best,S.score);store.set('best',S.best);stop();presentResult();if(N)sendFrame();
   }
   function presentResult(){
     const won=S.won;
@@ -13002,7 +13007,7 @@ const DUELS=(()=>{
     send({k:'score',seq:++S.seq,score:S.score,done:S.done});updateBar();if(S.done&&S.peerDone)result();
   }
   function result(){
-    if(!S||S.phase==='over')return;S.phase='over';el('Modal').hidden=false;el('Title').textContent=S.score>S.peerScore?'YOU WIN THE SHOWDOWN':S.score<S.peerScore?'THE HOMIE TAKES IT':'DEAD EVEN';el('Message').textContent='Your best score and any earned collectibles are saved on this device.';
+    if(!S||S.phase==='over')return;S.phase='over';S.ready=false;S.peerReady=false;S.rematchRequested=false;el('Modal').hidden=false;el('Title').textContent=S.score>S.peerScore?'YOU WIN THE SHOWDOWN':S.score<S.peerScore?'THE HOMIE TAKES IT':'DEAD EVEN';el('Message').textContent='Your best score and any earned collectibles are saved on this device.';
     el('Resume').hidden=true;el('Ready').hidden=true;el('Again').hidden=false;el('Save').hidden=false;el('Save').disabled=S.saved||S.score<=0;el('Scores').hidden=false;el('FinalMine').textContent=S.score.toLocaleString();el('FinalTheirs').textContent=S.peerScore.toLocaleString();updateBar();
   }
   function pause(force){
@@ -13013,17 +13018,17 @@ const DUELS=(()=>{
     if(paused){el('Modal').hidden=false;el('Title').textContent='MATCH PAUSED';el('Message').textContent='Both players must resume to continue this round.';el('Ready').hidden=true;el('Again').hidden=true;el('Save').hidden=true;el('Scores').hidden=true;el('Resume').hidden=false;el('Resume').disabled=!S.pauses[S.role==='host'?0:1];}
     else{el('Modal').hidden=true;el('Resume').hidden=true;}
   }
-  function rematch(sendRequest=true){if(!S||!['over','lobby'].includes(S.phase))return;S.phase='lobby';S.ready=false;S.peerReady=false;S.done=false;S.peerDone=false;if(sendRequest)send({k:'rematch'});showLobby('Another round? Both players must be ready.');updateBar();}
+  function rematch(sendRequest=true){if(!S||!['over','lobby'].includes(S.phase))return;const peerReady=S.phase==='over'&&S.rematchRequested&&S.peerReady;S.phase='lobby';S.ready=false;S.peerReady=!!peerReady;S.done=false;S.peerDone=false;if(sendRequest)send({k:'rematch'});showLobby('Another round? Both players must be ready.');updateBar();}
   function apply(d){
     if(!S||!d||typeof d!=='object')return;
-    if(d.k==='ready'&&S.phase==='lobby'){S.peerReady=true;tryStart();return;}
+    if(d.k==='ready'&&(S.phase==='lobby'||S.phase==='over'&&S.rematchRequested)){S.peerReady=true;tryStart();return;}
     if(d.k==='begin'&&S.role==='join'&&S.phase==='lobby'&&S.ready&&Number.isSafeInteger(d.round)&&d.round>S.round&&Number.isSafeInteger(d.seed)&&d.seed>0&&d.seed<=4294967295){S.round=d.round;begin(d.seed);return;}
     if(d.round!==S.round)return;
     if(d.k==='score'&&S.phase==='playing'&&!S.peerDone&&Number.isSafeInteger(d.seq)&&d.seq>S.rx&&Number.isSafeInteger(d.score)&&d.score>=0&&d.score<=1000000&&typeof d.done==='boolean'){
       // Bomb penalties may lower a live score; only a completed score is immutable.
       S.rx=d.seq;S.peerScore=d.score;S.peerDone=d.done;updateBar();if(S.done&&S.peerDone)result();
     }else if(d.k==='pause'&&S.phase==='playing'&&typeof d.paused==='boolean'){S.pauses[S.role==='host'?1:0]=d.paused;applyPause();}
-    else if(d.k==='rematch'&&S.phase==='over')rematch(false);
+    else if(d.k==='rematch'&&S.phase==='over'){S.rematchRequested=true;el('Message').textContent='Your opponent wants a rematch. Your results stay here until you’re ready.';}
   }
   function end(){if(!S)return;gameModule().pause(true);clearInterval(timer);timer=0;S=null;el('Modal').hidden=true;el('Bar').hidden=true;el('Resume').hidden=true;}
   function bind(){

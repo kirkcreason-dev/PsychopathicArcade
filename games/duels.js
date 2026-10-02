@@ -32,7 +32,7 @@ const DUELS=(()=>{
     send({k:'score',seq:++S.seq,score:S.score,done:S.done});updateBar();if(S.done&&S.peerDone)result();
   }
   function result(){
-    if(!S||S.phase==='over')return;S.phase='over';el('Modal').hidden=false;el('Title').textContent=S.score>S.peerScore?'YOU WIN THE SHOWDOWN':S.score<S.peerScore?'THE HOMIE TAKES IT':'DEAD EVEN';el('Message').textContent='Your best score and any earned collectibles are saved on this device.';
+    if(!S||S.phase==='over')return;S.phase='over';S.ready=false;S.peerReady=false;S.rematchRequested=false;el('Modal').hidden=false;el('Title').textContent=S.score>S.peerScore?'YOU WIN THE SHOWDOWN':S.score<S.peerScore?'THE HOMIE TAKES IT':'DEAD EVEN';el('Message').textContent='Your best score and any earned collectibles are saved on this device.';
     el('Resume').hidden=true;el('Ready').hidden=true;el('Again').hidden=false;el('Save').hidden=false;el('Save').disabled=S.saved||S.score<=0;el('Scores').hidden=false;el('FinalMine').textContent=S.score.toLocaleString();el('FinalTheirs').textContent=S.peerScore.toLocaleString();updateBar();
   }
   function pause(force){
@@ -43,17 +43,17 @@ const DUELS=(()=>{
     if(paused){el('Modal').hidden=false;el('Title').textContent='MATCH PAUSED';el('Message').textContent='Both players must resume to continue this round.';el('Ready').hidden=true;el('Again').hidden=true;el('Save').hidden=true;el('Scores').hidden=true;el('Resume').hidden=false;el('Resume').disabled=!S.pauses[S.role==='host'?0:1];}
     else{el('Modal').hidden=true;el('Resume').hidden=true;}
   }
-  function rematch(sendRequest=true){if(!S||!['over','lobby'].includes(S.phase))return;S.phase='lobby';S.ready=false;S.peerReady=false;S.done=false;S.peerDone=false;if(sendRequest)send({k:'rematch'});showLobby('Another round? Both players must be ready.');updateBar();}
+  function rematch(sendRequest=true){if(!S||!['over','lobby'].includes(S.phase))return;const peerReady=S.phase==='over'&&S.rematchRequested&&S.peerReady;S.phase='lobby';S.ready=false;S.peerReady=!!peerReady;S.done=false;S.peerDone=false;if(sendRequest)send({k:'rematch'});showLobby('Another round? Both players must be ready.');updateBar();}
   function apply(d){
     if(!S||!d||typeof d!=='object')return;
-    if(d.k==='ready'&&S.phase==='lobby'){S.peerReady=true;tryStart();return;}
+    if(d.k==='ready'&&(S.phase==='lobby'||S.phase==='over'&&S.rematchRequested)){S.peerReady=true;tryStart();return;}
     if(d.k==='begin'&&S.role==='join'&&S.phase==='lobby'&&S.ready&&Number.isSafeInteger(d.round)&&d.round>S.round&&Number.isSafeInteger(d.seed)&&d.seed>0&&d.seed<=4294967295){S.round=d.round;begin(d.seed);return;}
     if(d.round!==S.round)return;
     if(d.k==='score'&&S.phase==='playing'&&!S.peerDone&&Number.isSafeInteger(d.seq)&&d.seq>S.rx&&Number.isSafeInteger(d.score)&&d.score>=0&&d.score<=1000000&&typeof d.done==='boolean'){
       // Bomb penalties may lower a live score; only a completed score is immutable.
       S.rx=d.seq;S.peerScore=d.score;S.peerDone=d.done;updateBar();if(S.done&&S.peerDone)result();
     }else if(d.k==='pause'&&S.phase==='playing'&&typeof d.paused==='boolean'){S.pauses[S.role==='host'?1:0]=d.paused;applyPause();}
-    else if(d.k==='rematch'&&S.phase==='over')rematch(false);
+    else if(d.k==='rematch'&&S.phase==='over'){S.rematchRequested=true;el('Message').textContent='Your opponent wants a rematch. Your results stay here until you’re ready.';}
   }
   function end(){if(!S)return;gameModule().pause(true);clearInterval(timer);timer=0;S=null;el('Modal').hidden=true;el('Bar').hidden=true;el('Resume').hidden=true;}
   function bind(){
