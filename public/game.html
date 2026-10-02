@@ -1187,6 +1187,8 @@ canvas, #soBoard{ touch-action:none; }
 @media(max-width:720px){.ru-coaching{min-height:49px;padding:6px 10px}.ru-coaching b{font-size:11px}.ru-coaching span{font-size:9px}}
 
 .ru-panel button[hidden]{display:none}
+
+@media(max-width:360px){.ru-overlay{padding:8px}.ru-panel h2{font-size:18px;line-height:1.05;margin:4px 0 6px}.ru-pick canvas{width:54px;height:72px}.ru-pick select{padding:4px 2px;line-height:1.2}.ru-pick label{font-size:8px;line-height:1.1}.ru-pick p{font-size:9px;line-height:1.25}.ru-panel .ru-short{font-size:9px;line-height:1.3;margin:5px 0}.ru-panel .ru-primary{min-height:34px;font-size:15px}.ru-panel .ru-secondary{margin-top:5px;padding:7px;font-size:11px}.ru-panel #ruLoadStatus{font-size:9px;line-height:1.2;margin:4px 0}}
 /* RUMBLE STYLE END */
 /* RUMBLE LADDER STYLE START */
 /* Ladder Wars */
@@ -2260,7 +2262,7 @@ canvas, #soBoard{ touch-action:none; }
         <div class="ru-overlay" id="ruSetup"><div class="ru-panel">
           <span class="ru-kicker">22 LUNACY UNLOCKED WRESTLERS</span><h2>WHO’S YOUR LUNATIC?</h2>
           <div class="ru-pick"><canvas id="ruPortrait" width="180" height="240" role="img" aria-label="Selected wrestler"></canvas><div><label for="ruRoster">CHOOSE YOUR WRESTLER</label><select id="ruRoster"></select><p id="ruStyle"></p><label for="ruSize">MATCH SIZE</label><select id="ruSize"><option value="12">Quick Rumble · 12 entrants</option><option value="22">Full Roster · 22 entrants</option></select></div></div>
-          <p class="ru-short"><b>STRIKE → WHIP → TOSS OUT</b><br>Lower their health, send them to the ropes, then finish the job.</p><button class="ru-primary" id="ruStartBtn">RING THE BELL</button><p id="ruLoadStatus" role="status"></p>
+          <p class="ru-short"><b>STRIKE → WHIP → TOSS OUT</b><br>Weaken them. Whip to ropes. Toss them out.</p><button class="ru-primary" id="ruStartBtn">RING THE BELL</button><p id="ruLoadStatus" role="status"></p>
         </div></div>
         <div class="ru-overlay" id="ruPause" hidden><div class="ru-panel"><span class="ru-kicker">THE RING CAN WAIT</span><h2>TAKE A BREATHER</h2><p id="ruPauseNote">Your match is paused.</p><button class="ru-primary" id="ruResumeBtn">BACK IN THE RING</button><button class="ru-secondary" id="ruRestartBtn">CHOOSE A WRESTLER</button></div></div>
         <div class="ru-overlay" id="ruOver" hidden><div class="ru-panel"><span class="ru-kicker" id="ruResultKicker">MATCH COMPLETE</span><h2 id="ruResultTitle">LAST LUNATIC STANDING</h2><div class="ru-final" id="ruFinalScore">0</div><p id="ruResultDetail"></p><button class="ru-primary" id="ruAgainBtn">RUN IT BACK</button><button class="ru-secondary" id="ruChooseBtn">CHANGE WRESTLER</button><button class="ru-secondary" id="ruSaveBtn">SAVE YOUR RECORD</button></div></div>
