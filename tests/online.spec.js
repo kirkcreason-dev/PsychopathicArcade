@@ -75,3 +75,30 @@ for(const game of ['ttt','chess','checkers','faygo','memory','j31','hockey']){
     }finally{await host.close();await join.close();}
   });
 }
+
+for(const game of ['rumble','ladder','shooter','chicken','claw'])test(`online ${game}: ready, shared round, pause, rematch and disconnect`,async({browser,baseURL})=>{
+  const host=await browser.newPage(),join=await browser.newPage(),errors=[];const wrestling=['rumble','ladder'].includes(game),module={rumble:'RUMBLE',ladder:'LADDER',shooter:'SHOOTER',chicken:'CHICKEN',claw:'CLAW'}[game],pfx={rumble:'ru',ladder:'lw'}[game];
+  try{
+    for(const page of [host,join]){page.on('pageerror',e=>errors.push(e.message));await page.goto(baseURL+'/game.html');await page.waitForFunction(()=>window.ARCADE);await page.evaluate(()=>{ARCADE.Sound.on=false;const RTC=window.RTCPeerConnection;window.RTCPeerConnection=class extends RTC{constructor(){super({iceServers:[]});}};});}
+    const offer=await host.evaluate(async g=>{ARCADE.NET.state.game=g;return ARCADE.NET.hostCreate();},game),answer=await join.evaluate(o=>ARCADE.NET.joinAccept(o),offer);await host.evaluate(a=>ARCADE.NET.hostConnect(a),answer);
+    for(const page of [host,join])await page.waitForFunction(()=>ARCADE.NET.state.session);
+    if(wrestling){await host.locator('#'+pfx+'Roster').selectOption('dani-mo');await join.locator('#'+pfx+'Roster').selectOption('dani-mo');}
+    const ready=async p=>p.locator(wrestling?'#'+pfx+'StartBtn':'#duelReady').click();await ready(host);expect(await host.evaluate(m=>ARCADE[m].state.mode,module)).not.toBe('playing');await ready(join);
+    for(const page of [host,join])await page.waitForFunction(m=>ARCADE[m].state.mode==='playing',module);
+    if(wrestling){
+      expect(await join.evaluate(m=>ARCADE[m].player().uid,module)).toBe('p2');await join.locator('#'+pfx+'Canvas').press('ArrowLeft');await join.evaluate(m=>{const c=document.getElementById(m==='RUMBLE'?'ruCanvas':'lwCanvas');c.focus();c.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowLeft',bubbles:true}));},module);await host.waitForFunction(m=>ARCADE[m].state.fighters[1].x<300,module);await join.evaluate(()=>window.dispatchEvent(new KeyboardEvent('keyup',{key:'ArrowLeft',bubbles:true})));
+    }else if(game==='claw')expect(await host.evaluate(()=>ARCADE.CLAW.state.prizes.map(p=>p.item.id))).toEqual(await join.evaluate(()=>ARCADE.CLAW.state.prizes.map(p=>p.item.id)));
+    await join.evaluate(({m,w})=>w?ARCADE[m].pause(true):ARCADE.DUELS.pause(true),{m:module,w:wrestling});for(const page of [host,join])await page.waitForFunction(m=>ARCADE[m].state.mode==='paused',module);
+    await host.evaluate(({m,w})=>w?ARCADE[m].pause(true):ARCADE.DUELS.pause(true),{m:module,w:wrestling});
+    if(wrestling)await expect(host.locator('#'+pfx+'RestartBtn')).toBeHidden();
+    const elapsed=await host.evaluate(m=>ARCADE[m].state.elapsed??ARCADE[m].state.clock??ARCADE[m].state.time,module);await host.waitForTimeout(150);expect(await host.evaluate(m=>ARCADE[m].state.elapsed??ARCADE[m].state.clock??ARCADE[m].state.time,module)).toBe(elapsed);
+    await join.evaluate(({m,w})=>w?ARCADE[m].pause():ARCADE.DUELS.pause(false),{m:module,w:wrestling});await host.waitForTimeout(100);expect(await host.evaluate(m=>ARCADE[m].state.mode,module)).toBe('paused');await host.evaluate(({m,w})=>w?ARCADE[m].pause():ARCADE.DUELS.pause(false),{m:module,w:wrestling});for(const page of [host,join])await page.waitForFunction(m=>ARCADE[m].state.mode==='playing',module);
+    if(wrestling){await host.evaluate(({m,g})=>{const a=ARCADE[m],s=a.state,p=s.fighters[0],v=s.fighters[1];for(const f of s.fighters)Object.assign(f,{action:null,stun:0,cool:0,invuln:0,guardOn:false});if(g==='rumble'){Object.assign(p,{x:80,y:280,hp:20});Object.assign(v,{x:120,y:280});}else{Object.assign(s.ladder,{x:240,y:365,open:true,carrier:null});Object.assign(v,{climbing:true,climb:1,climbSide:1,pulls:3});s.elapsed=-1.3/4.1+Math.PI/4.1+.18;}}, {m:module,g:game});await join.evaluate(({m,g})=>{if(g==='ladder'){const n=ARCADE[m].netState();ARCADE.NET.push(g,{k:'input',round:n.round,seq:++n.inputSeq,x:0,y:0,action:'throw',grabAt:(Math.PI-1.3)/4.1});}else ARCADE[m].act('throw');},{m:module,g:game});for(const page of [host,join])await page.waitForFunction(m=>ARCADE[m].state.mode==='over',module);expect(await join.evaluate(m=>ARCADE[m].state.won,module)).toBe(true);expect(await host.evaluate(m=>ARCADE[m].state.won,module)).toBe(false);await Promise.all([join.locator('#'+pfx+'AgainBtn').click(),host.locator('#'+pfx+'AgainBtn').click()]);
+    }else{
+      await host.evaluate(m=>{ARCADE[m].state.score=300;},module);await join.waitForFunction(()=>ARCADE.DUELS.state().peerScore===300);await host.evaluate(m=>{ARCADE[m].state.score=100;},module);await join.waitForFunction(()=>ARCADE.DUELS.state().peerScore===100);
+      for(const [page,score] of [[host,100],[join,200]])await page.evaluate(({m,score})=>{ARCADE[m].pause(true);ARCADE[m].state.mode='over';ARCADE[m].state.score=score;},{m:module,score});for(const page of [host,join])await page.waitForFunction(()=>ARCADE.DUELS.state().phase==='over');await expect(join.locator('#duelTitle')).toHaveText('YOU WIN THE SHOWDOWN');await Promise.all([join.locator('#duelAgain').click(),host.locator('#duelAgain').click()]);for(const page of [host,join])await page.waitForFunction(()=>ARCADE.DUELS.state().phase==='lobby');await Promise.all([ready(host),ready(join)]);
+    }
+    for(const page of [host,join])await page.waitForFunction(m=>ARCADE[m].state.mode==='playing',module);
+    await join.evaluate(()=>ARCADE.NET.leave());await host.waitForFunction(()=>!ARCADE.NET.state.session);expect(await host.evaluate(({m,w})=>w?ARCADE[m].netState():ARCADE.DUELS.state(),{m:module,w:wrestling})).toBe(null);expect(errors).toEqual([]);
+  }finally{await host.close();await join.close();}
+});
