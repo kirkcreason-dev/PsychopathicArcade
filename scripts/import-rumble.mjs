@@ -8,7 +8,7 @@ import {chromium} from '@playwright/test';
 const root=fileURLToPath(new URL('../',import.meta.url));
 const directory=path.join(root,'assets/rumble');
 const manifestPath=path.join(directory,'manifest.json');
-const animations=['idle','walk','light','heavy','hurt','lift','throw','down','victory'];
+const animations=['idle','walk','light','heavy','hurt','lift','throw','down','victory','climb','dive'];
 if(process.argv[2] && !['--embed','--check'].includes(process.argv[2])){
   const source=JSON.parse(await fs.readFile(path.join(directory,'source-roster.json'),'utf8'));
   const chrome='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
@@ -23,7 +23,7 @@ if(process.argv[2] && !['--embed','--check'].includes(process.argv[2])){
         const scale=.64,pad=4,frames=[],lookup=new Map(),anims={};
         let x=0,y=0,rowH=0;
         for(const anim of animations){
-          anims[anim]=(fighter.animations[anim]||fighter.animations.idle).map(f=>{
+          anims[anim]=(fighter.animations[anim]||(anim==='climb'?fighter.animations.lift:anim==='dive'?fighter.animations.throw:fighter.animations.idle)).map(f=>{
             const key=[f.x,f.y,f.w,f.h].join(':');let p=lookup.get(key);
             if(!p){
               const w=Math.ceil(f.w*scale),h=Math.ceil(f.h*scale);

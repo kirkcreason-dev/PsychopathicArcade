@@ -1,7 +1,7 @@
 # Psychopathic Arcade
 
-Fifteen browser games with carnival artwork, synthesized audio, CPU opponents,
-local multiplayer, and seven online modes. Open `public/game.html` directly for
+Sixteen browser games with carnival artwork, synthesized audio, CPU opponents,
+local multiplayer, and twelve online modes. Open `public/game.html` directly for
 local play, or serve the Vite build. No backend is needed for solo/local games.
 
 ## Run and check
@@ -38,6 +38,45 @@ The executable arcade code and embedded assets live in `public/game.html`.
 `npm run check:game` validates the inline scripts, which Vite otherwise copies
 without checking. Keep the bundled chess engine's license intact.
 
+## Ladder Wars
+
+The sixteenth game reuses all 22 Lunacy Unlocked wrestlers in a dedicated
+carnival arena. Choose singles or four-wrestler chaos. Carry the ladder to the
+lit centre mark, set it, climb and time four grabs in the green window to win.
+Each wrestler retains their own belt progress. Two missed grabs cause a fall;
+a rival can tip the ladder from its base. Knock a rival down to earn a seven-second
+opening. The clock runs for 120 seconds. Clean hits, tips, successful grabs and
+a championship/time bonus contribute to the record board.
+
+The context button (K) handles pickup, set, climb and grab. Down descends;
+J/Space strikes, L/Shift guards and F uses the charged finisher. Phone controls,
+paused/loading/result states, local records, career wins and replay are included.
+Original climb poses are available for 13 wrestlers; the other nine use their
+existing lift poses. No source sprite boundaries were guessed or recut.
+
+The shared engine lives in `games/rumble.js`, with Ladder Wars markup/styles in
+`games/ladder.html` and `.css`. Run `node scripts/sync-rumble.mjs` to embed all
+wrestling and score-duel sources. The generated arena source and optimized WebP
+are in `assets/ladder/`; `node scripts/import-ladder-arena.mjs --build` rebuilds
+and embeds it. The generation prompt is recorded alongside the source artwork.
+All assets remain embedded for the existing blob-frame loader and offline play.
+
+## Multiplayer for the new games
+
+Rumble and Ladder Wars now support direct two-player matches using the existing
+room, invite and quick-match flows. Both players select a wrestler and ready up
+before artwork is loaded. The host simulates both wrestlers; the guest sends
+validated controls. Distinct player IDs allow mirror matches with the same
+wrestler. Shared pauses stop the clock and inputs; rematches require both players
+to be ready. Disconnects return to local play.
+
+Carnival Crossfire, Chicken Huntin’ and Carnival Claw have head-to-head score
+rounds with a shared starting seed, live opponent scores, results and rematches.
+Claw uses the same mixed cabinet for both players regardless of saved collections.
+Earned collectibles still save locally. Both peers can pause, and each pause owner
+must resume before play continues. Results connect to the existing local record
+boards; this is not a new global leaderboard service.
+
 ## JCW Rumble
 
 The fifteenth game is an over-the-rope survival match using **all 22 prepared
@@ -45,14 +84,18 @@ wrestlers from Lunacy Unlocked v0.7.0**. Choose a 12-entrant quick match or the
 full 22-person field. Four wrestlers can fight at once; queued entrants arrive
 every eight seconds when space is available, accelerated after an elimination.
 Rivals fight each other. There are no pinfalls or health-based eliminations:
-strike to weaken a rival, throw to shove them toward the nearest rope, then
-throw a rival at 35 health or below within 48 ring units of a rope to eliminate.
+strike to weaken a rival, use WHIP to send them toward the nearest rope, then
+TOSS OUT a rival at 35 health or below within 48 ring units of a rope to eliminate.
 
 Move with the thumb stick, arrows or WASD. J/Space strikes, K throws, L/Shift
 holds guard, F spends a full finisher meter, and P/Escape pauses. The buttons
 also work with a mouse and keyboard focus. Land hits for charge; a finisher
 damages and shoves nearby rivals. Guard drains while held and recovers on release.
-The ring target marker identifies the nearest opponent. Every entrant must be
+A persistent coach names the current target and explains the next useful move.
+The green button changes from WHIP to TOSS OUT only when the target is in range,
+weak enough and near the ropes. Irish whips travel across the mat instead of
+teleporting, with a recovery window for the follow-up. The ring target marker
+identifies the opponent being attacked. Every entrant must be
 cleared before a win is awarded. Scores, career wins, replay, wrestler selection,
 and optional record submission are included.
 
@@ -68,7 +111,7 @@ when navigating away; decoding failures offer a retry.
 `assets/rumble/manifest.json` retains the reviewed source frame boundaries,
 foot anchors, per-frame facing corrections and draw scales. The optimized WebP
 atlases preserve alpha and add four transparent pixels around each packed frame.
-They contain only the nine animation sets used by this game, about 4.3 MB total
+They contain eleven animation sets for both wrestling games, about 4.8 MB total
 instead of the original 76 MB of PNG sheets. To rebuild from the supplied Lunacy
 Unlocked `dist/assets` folder, run `node scripts/import-rumble.mjs PATH`; to
 re-embed committed artwork, run `node scripts/import-rumble.mjs --embed`.
@@ -195,7 +238,7 @@ networks may prevent connections. Failed invite connections now time out with
 recovery instructions. Public broker availability and cross-network connectivity
 are not guaranteed by the automated suite.
 
-All seven online games are tested with real Chromium peers on the same machine,
+All twelve online games are tested with real Chromium peers on the same machine,
 without public brokers or STUN. Local game flows and layouts are also tested in
 Playwright WebKit. WebKit peer connections in the macOS test runner require public STUN rather
 than only mDNS host candidates, so those network-dependent checks are opt-in:
