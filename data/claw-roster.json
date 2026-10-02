@@ -1,0 +1,3030 @@
+{
+  "source": "https://jcwlunacy.net/#crew",
+  "checkedAt": "2026-10-01",
+  "roster": [
+    {
+      "name": "Caleb Konley",
+      "id": "caleb-konley",
+      "role": "Lunacy World Champion",
+      "group": "Champions",
+      "items": [
+        {
+          "kind": "belt",
+          "name": "Belt"
+        },
+        {
+          "kind": "robe",
+          "name": "Entrance Robe"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Josh Bishop",
+      "id": "josh-bishop",
+      "role": "World Heavyweight Champion",
+      "group": "Champions",
+      "items": [
+        {
+          "kind": "belt",
+          "name": "Belt"
+        },
+        {
+          "kind": "robe",
+          "name": "Entrance Robe"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Dani Mo",
+      "id": "dani-mo",
+      "role": "Women’s World Champion",
+      "group": "Champions",
+      "items": [
+        {
+          "kind": "belt",
+          "name": "Belt"
+        },
+        {
+          "kind": "robe",
+          "name": "Entrance Robe"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Father Bronson",
+      "id": "father-bronson",
+      "role": "American Champion",
+      "group": "Champions",
+      "items": [
+        {
+          "kind": "belt",
+          "name": "Belt"
+        },
+        {
+          "kind": "robe",
+          "name": "Entrance Robe"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Choppa City",
+      "id": "choppa-city",
+      "role": "World Tag Team Champions",
+      "group": "Champions",
+      "items": [
+        {
+          "kind": "belt",
+          "name": "Belt"
+        },
+        {
+          "kind": "robe",
+          "name": "Entrance Robe"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "2 Tuff Tony",
+      "id": "2-tuff-tony",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "glove",
+          "name": "Flame Glove"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Alice Crowley",
+      "id": "alice-crowley",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Midnight Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Backseat Boyz",
+      "id": "backseat-boyz",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Barnabas the Bizarre",
+      "id": "barnabas-the-bizarre",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "mask",
+          "name": "Bizarre Mask"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Big Vito",
+      "id": "big-vito",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "hat",
+          "name": "Street-Fight Fedora"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Breyer Wellington",
+      "id": "breyer-wellington",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "bowtie",
+          "name": "Bow Tie"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Brothers of Funstruction",
+      "id": "brothers-of-funstruction",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "mask",
+          "name": "Clown Mask"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Cokane",
+      "id": "cokane",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "chain",
+          "name": "Entrance Chain"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Donovan Dijak",
+      "id": "donovan-dijak",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "glasses",
+          "name": "Entrance Shades"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "EC3",
+      "id": "ec3",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Main-Event Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Facade",
+      "id": "facade",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "mask",
+          "name": "Neon Bandana"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Forty Winks",
+      "id": "forty-winks",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "cap",
+          "name": "Sleep Cap"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Freya the Slaya",
+      "id": "freya-the-slaya",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "glove",
+          "name": "Battle Gauntlet"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Gisele Shaw",
+      "id": "gisele-shaw",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "robe",
+          "name": "Spotlight Robe"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "The Green Phantom",
+      "id": "the-green-phantom",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "mask",
+          "name": "Green Mask"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Hollyhood Haley J",
+      "id": "hollyhood-haley-j",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Hollyhood Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Hokane",
+      "id": "hokane",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "mask",
+          "name": "Monster Mask"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "J-Rod",
+      "id": "j-rod",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "James Storm",
+      "id": "james-storm",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "hat",
+          "name": "Cowboy Hat"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Jasmin St. Claire",
+      "id": "jasmine-st-claire",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Monster Corp Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Jeeves",
+      "id": "jeeves",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "bowtie",
+          "name": "Butler Bow Tie"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Joel Gertner",
+      "id": "joel-gertner",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "bowtie",
+          "name": "Ringside Bow Tie"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Kerry Morton",
+      "id": "kerry-morton",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Rock-Star Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Kongo Kong",
+      "id": "kongo-kong",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "mask",
+          "name": "Monster Faceplate"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Krule",
+      "id": "krule",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "mask",
+          "name": "Atrocity Mask"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Luigi Primo",
+      "id": "luigi-primo",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "hat",
+          "name": "Chef Hat"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Mad Man Pondo",
+      "id": "mad-man-pondo",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "sign",
+          "name": "Stop Sign"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Matt Cross",
+      "id": "matt-cross",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Mecha Wolf",
+      "id": "mecha-wolf",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "mask",
+          "name": "Wolf Mask"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Mickie Knuckles",
+      "id": "mickie-knuckles",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "glove",
+          "name": "Brawler Gloves"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Mosh Pit Mike",
+      "id": "moshpit-mike",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "vest",
+          "name": "Mosh Pit Vest"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Mr. Anderson",
+      "id": "mr-anderson",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "mic",
+          "name": "Drop Mic"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Mr. Happy",
+      "id": "mr-happy",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "mask",
+          "name": "Happy Mask"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Nic Nemeth",
+      "id": "nic-nemeth",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Showtime Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Ninja Mack",
+      "id": "ninja-mack",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "mask",
+          "name": "Ninja Mask"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "The Outbreak",
+      "id": "outbreak",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "mask",
+          "name": "Outbreak Mask"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "7 Foot Tall Painful Paul",
+      "id": "7-foot-tall-painful-paul",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "glove",
+          "name": "Giant Gloves"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Ricky Morton",
+      "id": "ricky-morton",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "bandana",
+          "name": "Rock & Roll Bandana"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "The Ring Rat",
+      "id": "the-ring-rat",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "pants",
+          "name": "Pants"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Sally Boy",
+      "id": "sally-boy",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "hat",
+          "name": "Street-Fight Fedora"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Sewacide",
+      "id": "sewacide",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "chair",
+          "name": "Hardcore Chair"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Shane Mercer",
+      "id": "shane-mercer",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "chain",
+          "name": "Iron Chain"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Sonny Kiss",
+      "id": "sonny-kiss",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Spotlight Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Sophia Rose",
+      "id": "sohpia-rose",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "robe",
+          "name": "Rose Robe"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Steven Flowe",
+      "id": "steven-flowe",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Vincenzo",
+      "id": "vincenzo",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "hat",
+          "name": "Street-Fight Fedora"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Zach Gowen",
+      "id": "zach-gowen",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Willie Mack",
+      "id": "willie-mack",
+      "role": "JCW Roster",
+      "group": "Roster",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Violent J",
+      "id": "violent-j",
+      "role": "Owner",
+      "group": "Crew",
+      "items": [
+        {
+          "kind": "chain",
+          "name": "Hatchet Pendant"
+        },
+        {
+          "kind": "headphones",
+          "name": "Broadcast Headset"
+        },
+        {
+          "kind": "mic",
+          "name": "Ringside Mic"
+        },
+        {
+          "kind": "pass",
+          "name": "Backstage Pass"
+        },
+        {
+          "kind": "clipboard",
+          "name": "Match Card Clipboard"
+        }
+      ]
+    },
+    {
+      "name": "Vince Russo",
+      "id": "vince-russo",
+      "role": "Owner",
+      "group": "Crew",
+      "items": [
+        {
+          "kind": "clipboard",
+          "name": "Booking Board"
+        },
+        {
+          "kind": "headphones",
+          "name": "Broadcast Headset"
+        },
+        {
+          "kind": "mic",
+          "name": "Ringside Mic"
+        },
+        {
+          "kind": "pass",
+          "name": "Backstage Pass"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Joe Dombrowski",
+      "id": "joe-dombrowski",
+      "role": "Commentary",
+      "group": "Crew",
+      "items": [
+        {
+          "kind": "headphones",
+          "name": "Broadcast Headset"
+        },
+        {
+          "kind": "mic",
+          "name": "Ringside Mic"
+        },
+        {
+          "kind": "pass",
+          "name": "Backstage Pass"
+        },
+        {
+          "kind": "clipboard",
+          "name": "Match Card Clipboard"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Mark Roberts",
+      "id": "mark-roberts",
+      "role": "Commentary",
+      "group": "Crew",
+      "items": [
+        {
+          "kind": "headphones",
+          "name": "Broadcast Headset"
+        },
+        {
+          "kind": "mic",
+          "name": "Ringside Mic"
+        },
+        {
+          "kind": "pass",
+          "name": "Backstage Pass"
+        },
+        {
+          "kind": "clipboard",
+          "name": "Match Card Clipboard"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "DJ Clay",
+      "id": "dj-clay",
+      "role": "House DJ",
+      "group": "Crew",
+      "items": [
+        {
+          "kind": "record",
+          "name": "Signed Vinyl"
+        },
+        {
+          "kind": "headphones",
+          "name": "Broadcast Headset"
+        },
+        {
+          "kind": "mic",
+          "name": "Ringside Mic"
+        },
+        {
+          "kind": "pass",
+          "name": "Backstage Pass"
+        },
+        {
+          "kind": "clipboard",
+          "name": "Match Card Clipboard"
+        }
+      ]
+    },
+    {
+      "name": "Veda Scott",
+      "id": "veda-scott",
+      "role": "Commentary",
+      "group": "Crew",
+      "items": [
+        {
+          "kind": "headphones",
+          "name": "Broadcast Headset"
+        },
+        {
+          "kind": "mic",
+          "name": "Ringside Mic"
+        },
+        {
+          "kind": "pass",
+          "name": "Backstage Pass"
+        },
+        {
+          "kind": "clipboard",
+          "name": "Match Card Clipboard"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Zac Amico",
+      "id": "zac-amico",
+      "role": "Commentary",
+      "group": "Crew",
+      "items": [
+        {
+          "kind": "headphones",
+          "name": "Broadcast Headset"
+        },
+        {
+          "kind": "mic",
+          "name": "Ringside Mic"
+        },
+        {
+          "kind": "pass",
+          "name": "Backstage Pass"
+        },
+        {
+          "kind": "clipboard",
+          "name": "Match Card Clipboard"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Mac Davis",
+      "id": "mac-davis",
+      "role": "Roving Reporter",
+      "group": "Crew",
+      "items": [
+        {
+          "kind": "headphones",
+          "name": "Broadcast Headset"
+        },
+        {
+          "kind": "mic",
+          "name": "Ringside Mic"
+        },
+        {
+          "kind": "pass",
+          "name": "Backstage Pass"
+        },
+        {
+          "kind": "clipboard",
+          "name": "Match Card Clipboard"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Kid Cadet",
+      "id": "kid-cadet",
+      "role": "Ring Announcer",
+      "group": "Crew",
+      "items": [
+        {
+          "kind": "headphones",
+          "name": "Broadcast Headset"
+        },
+        {
+          "kind": "mic",
+          "name": "Ringside Mic"
+        },
+        {
+          "kind": "pass",
+          "name": "Backstage Pass"
+        },
+        {
+          "kind": "clipboard",
+          "name": "Match Card Clipboard"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Jeff the Ref",
+      "id": "jeff-the-ref",
+      "role": "Referee",
+      "group": "Crew",
+      "items": [
+        {
+          "kind": "refshirt",
+          "name": "Referee Shirt"
+        },
+        {
+          "kind": "whistle",
+          "name": "Referee Whistle"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "clipboard",
+          "name": "Match Card Clipboard"
+        },
+        {
+          "kind": "pass",
+          "name": "Backstage Pass"
+        }
+      ]
+    },
+    {
+      "name": "George Ross",
+      "id": "george-ross",
+      "role": "Referee",
+      "group": "Crew",
+      "items": [
+        {
+          "kind": "refshirt",
+          "name": "Referee Shirt"
+        },
+        {
+          "kind": "whistle",
+          "name": "Referee Whistle"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "clipboard",
+          "name": "Match Card Clipboard"
+        },
+        {
+          "kind": "pass",
+          "name": "Backstage Pass"
+        }
+      ]
+    },
+    {
+      "name": "The Iron Sheik",
+      "id": "the-iron-sheik",
+      "role": "Night One · 1999",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "flag",
+          "name": "Entrance Flag"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "King Kong Bundy",
+      "id": "king-kong-bundy",
+      "role": "Night One · 1999",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Abdullah the Butcher",
+      "id": "abdullah-the-butcher",
+      "role": "Night One · 1999",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "robe",
+          "name": "Butcher Robe"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Handsome Harley Guestella & Diamond Donovan Douglas",
+      "id": "icp-founders",
+      "role": "Founders · First Tag Champs",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Evil Dead",
+      "id": "evil-dead",
+      "role": "First Champion",
+      "group": "Champions",
+      "items": [
+        {
+          "kind": "mask",
+          "name": "Horror Mask"
+        },
+        {
+          "kind": "belt",
+          "name": "Belt"
+        },
+        {
+          "kind": "robe",
+          "name": "Entrance Robe"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Corporal Robinson",
+      "id": "corporal-robinson",
+      "role": "Original · Creative",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "vest",
+          "name": "Camo Vest"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "The Rude Boy",
+      "id": "the-rude-boy",
+      "role": "JCW Legend",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Vampiro",
+      "id": "vampiro",
+      "role": "Champion · Consultant",
+      "group": "Champions",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Midnight Jacket"
+        },
+        {
+          "kind": "belt",
+          "name": "Belt"
+        },
+        {
+          "kind": "robe",
+          "name": "Entrance Robe"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Necro Butcher",
+      "id": "necro-butcher",
+      "role": "Vol. 3 · 2003",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "chair",
+          "name": "Hardcore Chair"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Human Tornado",
+      "id": "human-tornado",
+      "role": "SlamTV! Era",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Dance-Floor Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Trent Acid",
+      "id": "trent-acid",
+      "role": "PWU Alliance",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "The Great Muta",
+      "id": "the-great-muta",
+      "role": "Icon",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "mask",
+          "name": "Dragon Mask"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Chris Hero",
+      "id": "chris-hero",
+      "role": "Young Blood",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Scott Hall",
+      "id": "scott-hall",
+      "role": "Executive Consultant",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "vest",
+          "name": "Outsider Vest"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Raven",
+      "id": "raven",
+      "role": "2008 Arrival",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Raven Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Scott D’Amore",
+      "id": "scott-damore",
+      "role": "Manager · 2008",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Officer Colt Cabana",
+      "id": "officer-colt-cabana",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "cap",
+          "name": "Officer Cap"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Cash Flo",
+      "id": "cash-flo",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Rob Conway",
+      "id": "rob-conway",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "JWO",
+      "id": "jwo",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "shirt",
+          "name": "JWO Shirt"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Kevin Nash",
+      "id": "kevin-nash",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "vest",
+          "name": "Big-Man Vest"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Sean Waltman",
+      "id": "sean-waltman",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "bandana",
+          "name": "Bandana"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "The Weedman",
+      "id": "the-weedman",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "cap",
+          "name": "Green Cap"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Vanilla Ice",
+      "id": "vanilla-ice",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "mic",
+          "name": "Stage Mic"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Terry Funk",
+      "id": "terry-funk",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "hat",
+          "name": "Cowboy Hat"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Dusty Rhodes",
+      "id": "dusty-rhodes",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "elbow",
+          "name": "Polka-Dot Elbow Pad"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Pat Tanaka",
+      "id": "pat-tanaka",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "The Ring Ryders",
+      "id": "the-ring-ryders",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "The Thomaselli Brothers",
+      "id": "the-thomaselli-brothers",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Hollywood Chuck Hogan",
+      "id": "hollywood-chuck-hogan",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "bandana",
+          "name": "Hollywood Bandana"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Tracy Smothers",
+      "id": "tracy-smothers",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Steve Corino",
+      "id": "steve-corino",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "“Rowdy” Roddy Piper",
+      "id": "roddy-piper",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "kilt",
+          "name": "Tartan Kilt"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Greg “The Hammer” Valentine",
+      "id": "greg-valentine",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "elbow",
+          "name": "Hammer Elbow Pad"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Kamala",
+      "id": "kamala",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "mask",
+          "name": "Warrior Faceplate"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Tito Santana",
+      "id": "tito-santana",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Kid Kash",
+      "id": "kid-kash",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Monty Brown",
+      "id": "monty-brown",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Kevin Thorn",
+      "id": "kevin-thorn",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        },
+        {
+          "kind": "poster",
+          "name": "Foil Poster"
+        }
+      ]
+    },
+    {
+      "name": "Bobby Lashley",
+      "id": "bobby-lashley",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "glove",
+          "name": "Power Gloves"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Balls Mahoney",
+      "id": "balls-mahoney",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "chair",
+          "name": "Hardcore Chair"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Ian Rotten",
+      "id": "ian-rotten",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "chair",
+          "name": "Hardcore Chair"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Bull Pain",
+      "id": "bull-pain",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "vest",
+          "name": "Brawler Vest"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    },
+    {
+      "name": "Sabu",
+      "id": "sabu",
+      "role": "Legends & Alumni",
+      "group": "Legends & Alumni",
+      "items": [
+        {
+          "kind": "chair",
+          "name": "Airborne Chair"
+        },
+        {
+          "kind": "jacket",
+          "name": "Entrance Jacket"
+        },
+        {
+          "kind": "boots",
+          "name": "Ring Boots"
+        },
+        {
+          "kind": "shirt",
+          "name": "Entrance Shirt"
+        },
+        {
+          "kind": "turnbuckle",
+          "name": "Signed Turnbuckle"
+        }
+      ]
+    }
+  ]
+}
