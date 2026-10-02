@@ -18,6 +18,46 @@ async function frozenRun(page){
   });
 }
 
+test('the welcome gate does not freeze the animation after 380 metres, even offline',async({page,context})=>{
+  await page.setViewportSize({width:390,height:844});
+  await context.setOffline(true);
+  await page.locator('#gcStartBtn').click();
+  await page.evaluate(()=>{
+    const s=ARCADE.CAMPER.state;
+    Object.assign(s,{dist:379.9,nextDecor:0});
+    s.powers.hatchet=999;
+  });
+  await expect.poll(()=>page.evaluate(()=>ARCADE.CAMPER.state.dist)).toBeGreaterThan(405);
+  expect(errors).toEqual([]);
+});
+
+test('an extended offline run renders repeated gates, pickups and the score',async({page,context})=>{
+  await frozenRun(page);
+  await context.setOffline(true);
+  // Start the first gate so its embedded sprite decodes before accelerated play.
+  await page.evaluate(()=>{
+    const g=ARCADE.CAMPER;
+    Object.assign(g.state,{dist:379.9,nextDecor:0,nextObs:0,nextItem:0,nextPow:0});
+    for(let i=0;i<20;i++) g.step(.05);
+    g.draw();
+  });
+  await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+  const result=await page.evaluate(()=>{
+    const g=ARCADE.CAMPER;
+    let gates=0,previous=g.state.lastGate;
+    for(let i=0;i<3600;i++){
+      g.state.powers.hatchet=999;
+      g.step(.05);g.draw();
+      if(g.state.lastGate!==previous){ gates++;previous=g.state.lastGate; }
+    }
+    return {state:g.state.state,dist:g.state.dist,score:g.state.score,gates};
+  });
+  expect(result.state).toBe('run');
+  expect(result.dist).toBeGreaterThan(3500);
+  expect(result.score).toBeGreaterThan(0);
+  expect(result.gates).toBeGreaterThanOrEqual(7);
+});
+
 test('a cleared obstacle cannot hit behind the runner after landing',async({page})=>{
   await frozenRun(page);
   const result=await page.evaluate(()=>{
