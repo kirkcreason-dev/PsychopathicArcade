@@ -1,6 +1,6 @@
 # Psychopathic Arcade
 
-Fourteen browser games with carnival artwork, synthesized audio, CPU opponents,
+Fifteen browser games with carnival artwork, synthesized audio, CPU opponents,
 local multiplayer, and seven online modes. Open `public/game.html` directly for
 local play, or serve the Vite build. No backend is needed for solo/local games.
 
@@ -37,6 +37,47 @@ editor's script-message handler into the published site.
 The executable arcade code and embedded assets live in `public/game.html`.
 `npm run check:game` validates the inline scripts, which Vite otherwise copies
 without checking. Keep the bundled chess engine's license intact.
+
+## JCW Rumble
+
+The fifteenth game is an over-the-rope survival match using **all 22 prepared
+wrestlers from Lunacy Unlocked v0.7.0**. Choose a 12-entrant quick match or the
+full 22-person field. Four wrestlers can fight at once; queued entrants arrive
+every eight seconds when space is available, accelerated after an elimination.
+Rivals fight each other. There are no pinfalls or health-based eliminations:
+strike to weaken a rival, throw to shove them toward the nearest rope, then
+throw a rival at 35 health or below within 48 ring units of a rope to eliminate.
+
+Move with the thumb stick, arrows or WASD. J/Space strikes, K throws, L/Shift
+holds guard, F spends a full finisher meter, and P/Escape pauses. The buttons
+also work with a mouse and keyboard focus. Land hits for charge; a finisher
+damages and shoves nearby rivals. Guard drains while held and recovers on release.
+The ring target marker identifies the nearest opponent. Every entrant must be
+cleared before a win is awarded. Scores, career wins, replay, wrestler selection,
+and optional record submission are included.
+
+`games/rumble.js`, `.css`, and `.html` are the editable sources. Run
+`node scripts/sync-rumble.mjs` after changing them; regular checks reject an
+out-of-date standalone copy. Artwork is embedded so the JCW blob-frame loader
+and offline play need no new asset URLs. The six-entry decoded atlas cache,
+four-fighter limit, capped frame delta, cached scenery, and bounded effects
+keep the game small in memory. Blur, visibility loss, records and menu navigation
+pause every match timer and release held inputs. Async startup is cancelled
+when navigating away; decoding failures offer a retry.
+
+`assets/rumble/manifest.json` retains the reviewed source frame boundaries,
+foot anchors, per-frame facing corrections and draw scales. The optimized WebP
+atlases preserve alpha and add four transparent pixels around each packed frame.
+They contain only the nine animation sets used by this game, about 4.3 MB total
+instead of the original 76 MB of PNG sheets. To rebuild from the supplied Lunacy
+Unlocked `dist/assets` folder, run `node scripts/import-rumble.mjs PATH`; to
+re-embed committed artwork, run `node scripts/import-rumble.mjs --embed`.
+`source-roster.json` records the original metadata. Source project artwork is
+reused at the owner's request; this does not grant a new artwork license.
+
+`tests/rumble.spec.js` covers every atlas, both match sizes, touch/keyboard input,
+throws and interruptions, guard, finishers, entry limits, complete win/loss,
+storage failure, loading cancellation, offline simulation, and phone layouts.
 
 ## Chicken Huntin’
 

@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 const games = [
+  ['rumble','cardRU','ruScreen'],
   ['chicken','cardKH','khScreen'],
   ['claw','cardCL','clScreen'],
   ['shooter','cardSH','shScreen'],
@@ -21,7 +22,7 @@ test.beforeEach(async ({page}) => {
 test.afterEach(()=>expect(errors).toEqual([]));
 
 for (const width of [1440, 390, 320]) {
-  test(`all fourteen games open and fit at ${width}px`, async ({page})=>{
+  test(`all fifteen games open and fit at ${width}px`, async ({page})=>{
     await page.setViewportSize({width, height:900});
     for(const [name, card, screen] of games){
       await page.locator('#'+card).click();
