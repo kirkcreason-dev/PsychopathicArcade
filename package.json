@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint . && npm run check:game",
     "preview": "vite preview",
-    "check:game": "node scripts/check-game.mjs",
+    "check:game": "node scripts/check-game.mjs && node scripts/sync-claw-catalog.mjs --check",
     "test": "npm run build && playwright test",
     "typecheck": "tsc -b"
   },

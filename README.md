@@ -1,6 +1,6 @@
 # Psychopathic Arcade
 
-Twelve browser games with carnival artwork, synthesized audio, CPU opponents,
+Thirteen browser games with carnival artwork, synthesized audio, CPU opponents,
 local multiplayer, and seven online modes. Open `public/game.html` directly for
 local play, or serve the Vite build. No backend is needed for solo/local games.
 
@@ -37,6 +37,34 @@ editor's script-message handler into the published site.
 The executable arcade code and embedded assets live in `public/game.html`.
 `npm run check:game` validates the inline scripts, which Vite otherwise copies
 without checking. Keep the bundled chess engine's license intact.
+
+## Carnival Claw
+
+The thirteenth game is a wrestling memorabilia claw machine. Aim by dragging or
+using the arrow controls, drop the claw, then press Grab (or Space) while the
+needle is green. A centred, correctly timed grip always succeeds. Five pulls
+make a round; successive wins build a multiplier, and precise grabs earn bonuses.
+The claw visibly lowers, closes, lifts, carries, and delivers each prize through
+the chute. Pausing or leaving freezes the current pull, including the grip timer.
+
+The catalog includes **540 collectibles: five distinct item types for each of
+108 entries** on the JCW Lunacy roster, including teams, crew, and legends. The
+roster snapshot is from <https://jcwlunacy.net/#crew>, checked October 1, 2026.
+Dani Mo’s belt and The Ring Rat’s pants appear in the opening mixed load. Search
+the cabinet and use **Hunt this set** to stock all five of a specific name’s items.
+Mixed restocks favor missing items. Prizes save as soon as they reach the chute;
+copies are counted separately from unique items and completed five-item sets.
+
+`data/claw-roster.json` is the editable catalog. Keep roster and item-kind IDs
+stable so saved collections continue to match. After editing it, run
+`node scripts/sync-claw-catalog.mjs` to refresh the copy embedded in the standalone
+game. The regular checks reject missing, duplicate or unsynchronized five-item
+sets. Item artwork is original, code-native SVG with roster colorways and initials;
+the game loads no remote artwork and bounds its decoded-image cache.
+
+`tests/claw.spec.js` checks all 540 illustrations, every roster set, full offline
+rounds, grip timing, misses, scoring, phone layout, interrupted deliveries, search,
+restart, and immediate collection persistence in Chromium and WebKit.
 
 ## Carnival Crossfire
 
