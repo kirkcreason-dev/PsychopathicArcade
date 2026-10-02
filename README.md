@@ -1,6 +1,6 @@
 # Psychopathic Arcade
 
-Eleven browser games with carnival artwork, synthesized audio, CPU opponents,
+Twelve browser games with carnival artwork, synthesized audio, CPU opponents,
 local multiplayer, and seven online modes. Open `public/game.html` directly for
 local play, or serve the Vite build. No backend is needed for solo/local games.
 
@@ -35,8 +35,27 @@ but are not the arcade entry point. The Vite build no longer injects an external
 editor's script-message handler into the published site.
 
 The executable arcade code and embedded assets live in `public/game.html`.
-`npm run check:game` validates both inline scripts, which Vite otherwise copies
+`npm run check:game` validates the inline scripts, which Vite otherwise copies
 without checking. Keep the bundled chess engine's license intact.
+
+## Carnival Crossfire
+
+The twelfth game is a 60-second carnival target shooter. Tap or click moving
+Joker Card targets, aim for bullseyes, and avoid the red bombs. Three waves
+increase the pace. Every three consecutive hits raises the combo up to ×4;
+eight unlock six seconds of unlimited ammo and double scoring. Gold targets,
+six-shot magazines, five score medals, an immediate replay button, and saved
+personal bests give each round a clear score to chase.
+
+Arrow keys aim, Space fires, R reloads, and P/Escape pauses. The clock, targets,
+frenzy and reload freeze on focus loss, menu navigation, or opening records.
+The cabinet uses a cached canvas background and reuses embedded Joker art;
+no extra downloads are required during play. Local records are submitted from
+the result screen. The existing JCW Lunacy access gate remains in place.
+
+`tests/shooter.spec.js` covers phone hit coordinates and layout, scoring,
+reloads, frenzy, keyboard input, interrupted play, score persistence, and a
+complete offline round in Chromium and WebKit.
 
 ## Reliability update
 
