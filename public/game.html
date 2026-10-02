@@ -12105,7 +12105,7 @@ const CHICKEN = (()=>{
   const store=gameStore('pa_kh_');
   const medals=[[0,'COOP ROOKIE'],[1000,'FEATHER CHASER'],[3000,'HENCHMAN'],[6000,'BARNYARD MENACE'],[10000,'CHICKEN LEGEND']];
   const S={mode:'ready',score:0,time:60,elapsed:0,wave:1,ammo:6,reload:0,cooldown:0,
-    streak:0,bestStreak:0,charge:0,frenzy:0,shots:0,hits:0,bullseyes:0,golden:0,bonusTime:0,escaped:0,spawnIn:0,spawned:0,
+    streak:0,bestStreak:0,charge:0,frenzy:0,shots:0,hits:0,bullseyes:0,golden:0,frenzies:0,bonusTime:0,escaped:0,spawnIn:0,spawned:0,
     targets:[],particles:[],labels:[],best:Math.max(0,store.get('best',0)),saved:false,
     aim:{x:W/2,y:H/2,visible:false},banner:'',bannerTime:0};
   let canvas,ctx,scenery,raf=0,last=0,hudKey='',active=false;
@@ -12206,7 +12206,7 @@ const CHICKEN = (()=>{
         Sound.play(centre?'bellOne':'pop');
         if(!wasFrenzy) S.charge++;
         if(S.charge>=8){
-          S.charge=0; S.frenzy=6; S.reload=0; S.ammo=6;
+          S.charge=0; S.frenzy=6; S.frenzies++; S.reload=0; S.ammo=6;
           announce('FEATHER FRENZY · WHOOP WHOOP!'); status('FRENZY · 6 seconds of unlimited shots + double points'); Sound.play('fanfare');
         } else if(!wasFrenzy) status(S.streak+' HIT STREAK · '+(8-S.charge)+' to FRENZY');
       }
@@ -12239,7 +12239,7 @@ const CHICKEN = (()=>{
   function start(){
     stop();
     Object.assign(S,{mode:'playing',score:0,time:60,elapsed:0,wave:1,ammo:6,reload:0,cooldown:0,
-      streak:0,bestStreak:0,charge:0,frenzy:0,shots:0,hits:0,bullseyes:0,golden:0,bonusTime:0,escaped:0,spawnIn:.76,spawned:0,
+      streak:0,bestStreak:0,charge:0,frenzy:0,shots:0,hits:0,bullseyes:0,golden:0,frenzies:0,bonusTime:0,escaped:0,spawnIn:.76,spawned:0,
       targets:[],particles:[],labels:[],saved:false,aim:{x:W/2,y:H/2,visible:false}});
     spawn(); spawn(); announce('FLOCK 1 · CHICKEN HUNTIN’');
     status('Hit 8 in a row to unleash FRENZY.'); overlays(); hud(); draw();
@@ -12250,6 +12250,7 @@ const CHICKEN = (()=>{
     const oldBest=S.best;
     S.mode='over'; S.time=0; stop();
     S.best=Math.max(S.best,S.score); store.set('best',S.best);
+    try{window.__arcSend&&window.__arcSend({ev:'chicken',score:S.score,streak:S.bestStreak,bullseyes:S.bullseyes,hits:S.hits,shots:S.shots,golden:S.golden,frenzies:S.frenzies,escaped:S.escaped});}catch(_e){}
     const medal=medals.filter(m=>S.score>=m[0]).at(-1),next=medals.find(m=>m[0]>S.score);
     text('khResultKicker',S.score>oldBest?'NEW PERSONAL BEST':'ROUND COMPLETE'); text('khRank',medal[1]);
     text('khFinalScore',S.score.toLocaleString()); text('khAccuracy',(S.shots?Math.round(S.hits/S.shots*100):0)+'%');
