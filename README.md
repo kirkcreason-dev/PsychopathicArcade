@@ -40,7 +40,7 @@ without checking. Keep the bundled chess engine's license intact.
 
 ## Chicken Huntin’
 
-The fourteenth game is a 60-second farm shooting gallery. Chickens run, hop, and
+The fourteenth game is a 60-second wicked-clown shooting gallery. Chickens run, hop, and
 fly across three increasingly fast flocks. Tap or click a bird (or aim with the
 arrow keys and fire with Space); a clean centre shot adds a bonus. Golden birds
 add two seconds, capped at ten bonus seconds per round. Red TNT crates cost
@@ -52,7 +52,8 @@ Six-shot magazines reload automatically or with R. Pausing, switching games,
 opening records, or losing focus freezes the entire round. Best scores stay on
 the device, and results offer immediate replay and optional record submission.
 
-The chickens and farm are drawn directly in canvas, with a cached background,
+Face-painted chickens, jester crests and a haunted clown-mouth carnival gate
+are drawn directly in canvas, with a cached background,
 bounded target/particle counts and no additional image downloads. Tests cover
 scaled touch input, moving hit areas, all flock types, bonus-time limits,
 scoring, reloads, interruptions, offline rounds, and storage failures.
