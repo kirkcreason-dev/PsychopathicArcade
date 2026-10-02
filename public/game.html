@@ -1046,6 +1046,83 @@ canvas, #soBoard{ touch-action:none; }
 }
 @media(max-width:380px){.sh-heading .sh-brand{font-size:27px}.sh-edition{display:none}.sh-overlay-card{padding:13px}.sh-overlay p{margin:7px 0 10px}.sh-overlay .sh-kicker{margin-bottom:7px}.sh-overlay h2{font-size:25px}.sh-start{font-size:16px;min-height:44px;padding:10px}.sh-results{margin:6px 0 10px}.sh-results div{padding:6px 2px}.sh-results b{font-size:18px}.sh-overlay .sh-secondary{margin-top:9px;min-height:36px;padding:7px 12px}}
 
+.kh-brand{font-family:var(--display);text-align:center;line-height:.9;letter-spacing:.025em;text-transform:uppercase}
+.kh-brand small{display:block;color:#fff;font-size:.42em;letter-spacing:.32em;margin:0 0 7px;text-indent:.32em}
+.kh-brand b{color:#c3ff3f;text-shadow:3px 3px #263b06,0 0 26px #8fdc0533;font-weight:900}
+#cardKH{position:relative;background:radial-gradient(ellipse at 50% 35%,#241832,#0a0a0c 68%)}
+#cardKH .kh-brand{font-size:36px}
+.kh-new{position:absolute;left:15px;top:15px;font:12px var(--display);letter-spacing:.13em;background:#c3ff3f;color:#111;padding:6px 9px;border-radius:4px}
+.kh-card-art{display:grid;place-items:center;position:relative;width:160px;height:160px;border:2px solid #ec3d87;border-radius:50%;box-shadow:inset 0 0 0 12px #120d19,inset 0 0 0 14px #692042,0 0 30px #ef197d22;margin:6px auto 10px}
+.kh-card-art:after{content:'+';position:absolute;right:-7px;bottom:12px;color:#ffd101;font:70px/1 sans-serif;text-shadow:0 0 10px #000}
+.kh-card-art img{height:120px;max-width:100px;object-fit:contain;transform:rotate(-9deg);filter:drop-shadow(4px 6px 0 #0008)}
+#khScreen{max-width:960px;margin:auto;width:100%}
+.kh-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:8px 0 17px}
+.kh-heading .kh-brand{font-size:clamp(30px,5vw,46px);text-align:left}
+.kh-edition{font:11px var(--display);letter-spacing:.15em;text-align:right;color:#b9a4c9;line-height:1.8}
+.kh-layout{display:grid;grid-template-columns:minmax(280px,520px) minmax(200px,1fr);gap:24px;align-items:start}
+.kh-cabinet{min-width:0;border:1px solid #4b2440;border-radius:18px;background:#100c16;overflow:hidden;box-shadow:0 18px 65px #000,0 0 40px #a3144210}
+.kh-hud{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;padding:13px 14px 10px;gap:8px;background:#16101d;border-bottom:1px solid #382036}
+.kh-hud small{display:block;color:#a99bb4;font:10px var(--display);letter-spacing:.12em;margin-bottom:4px}
+.kh-hud strong{font:clamp(20px,3vw,28px)/1 var(--display);color:#fff}
+#khTime{color:#ffd101}#khCombo{color:#c3ff3f}#khBest{color:#e592b6}
+.kh-board{position:relative;width:100%;aspect-ratio:480/500;background:#0d0915;isolation:isolate}
+#khCanvas{display:block;width:100%;height:100%;touch-action:none;cursor:crosshair;outline-offset:-4px}
+.kh-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2;padding:14px;background:#06030bcc;backdrop-filter:blur(3px)}
+.kh-overlay[hidden]{display:none}
+.kh-overlay-card{width:min(100%,350px);padding:24px 20px;text-align:center;border:1px solid #753857;border-radius:14px;background:linear-gradient(145deg,#25132c,#100b17);box-shadow:0 12px 45px #000a}
+.kh-kicker{font:11px var(--display);letter-spacing:.22em;color:#ffd101;margin:0 0 12px}
+.kh-overlay h2{font:clamp(27px,5vw,36px)/1.05 var(--display);color:#fff;margin:0 0 12px;letter-spacing:.025em}
+.kh-overlay p{font-size:12px;line-height:1.6;color:#c4b9cd;margin:10px 0 18px}
+.kh-start{border:1px solid #e0ff9d;border-radius:7px;background:linear-gradient(#ceff66,#9aca29);color:#132006;font:18px var(--display);letter-spacing:.08em;min-height:48px;padding:13px 20px;cursor:pointer;width:100%;box-shadow:0 4px 0 #3a570a}
+.kh-start:hover{filter:brightness(1.1)}.kh-start:active{transform:translateY(2px);box-shadow:0 2px 0 #3a570a}
+.kh-secondary{border:1px solid #735267;background:#201222;color:#eadce8;border-radius:7px;padding:10px 13px;font:13px var(--display);letter-spacing:.06em;cursor:pointer;min-height:42px}
+.kh-secondary:disabled{opacity:.4;cursor:default}
+.kh-overlay .kh-secondary{margin-top:12px}
+.kh-results{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:14px 0 18px}
+.kh-results div{padding:9px 3px;background:#ffffff06;border:1px solid #ffffff0c;border-radius:7px}
+.kh-results span{font:10px var(--display);color:#b8a6c2;display:block;margin-bottom:4px}
+.kh-results b{font:21px var(--display);color:#fff}
+#khFinalScore{font:44px var(--display);color:#c3ff3f;margin:6px 0}
+#khGoal{font-size:11px;color:#d4c6df;margin:5px 0 14px}
+.kh-footer{padding:11px 14px 12px;border-top:1px solid #382036}
+.kh-ammo-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+#khAmmo{display:flex;gap:5px;align-items:center;min-height:25px}
+#khAmmo i{display:block;width:13px;height:23px;border:1px solid #866532;border-radius:5px 5px 2px 2px;background:linear-gradient(#ffd880,#bf872d);box-shadow:inset 0 -6px #5b3b17}
+#khAmmo i.empty{background:#2b2130;border-color:#49384d;box-shadow:none}
+#khAmmo.frenzy i{background:#c3ff3f;border-color:#e7ffc0;box-shadow:inset 0 -6px #527c10}
+.kh-meter{height:5px;margin-top:12px;border-radius:6px;background:#35203a;overflow:hidden}
+#khMeterFill{height:100%;width:0;background:linear-gradient(90deg,#f1197d,#ffd101);transition:width .1s linear}
+#khStatus{min-height:18px;margin-top:7px;color:#d4b8db;font-size:10px;letter-spacing:.02em;text-align:center}
+.kh-side{display:flex;flex-direction:column;gap:16px;padding-top:4px}
+.kh-side-card{border:1px solid #302034;border-radius:13px;padding:18px;background:linear-gradient(135deg,#140f1c,#0c0a10)}
+.kh-side h3{font:18px var(--display);letter-spacing:.08em;color:#f6e8f3;margin:0 0 15px}
+.kh-rule{display:flex;align-items:center;gap:12px;margin:15px 0;font-size:12px;line-height:1.6;color:#bba9c3}
+.kh-rule b{color:#fff}.kh-swatch{flex:0 0 34px;height:34px;border:2px solid #c3ff3f;border-radius:50%;background:#263413;color:#c3ff3f;display:grid;place-items:center;font:bold 20px sans-serif}
+.kh-swatch.gold{border-color:#ffd101;color:#ffd101;background:#332816}.kh-swatch.red{border-color:#fb4d66;color:#fb4d66;background:#351221}
+.kh-side p{font-size:12px;color:#bba9c3;line-height:1.8;margin:0}.kh-side kbd{color:#e9dfee;font:11px monospace;border:1px solid #4a354e;border-radius:3px;padding:1px 4px;background:#201527}
+.kh-tip{border-left:2px solid #f1197d;padding-left:12px;margin-top:14px!important}
+#khScreen .ctl-row{margin:14px auto 0;gap:8px}
+@media(max-width:720px){
+ .kh-layout{display:flex;flex-direction:column;align-items:center;gap:18px}
+ .kh-cabinet{width:min(100%,480px);margin-inline:auto}.kh-side{width:min(100%,480px)}
+ .kh-side-card{padding:14px}.kh-heading{margin:3px 0 12px}.kh-heading .kh-brand{font-size:32px}
+ .kh-hud{padding:10px 12px}.kh-hud strong{font-size:23px}.kh-edition{font-size:9px}
+ .kh-overlay-card{padding:18px}.kh-overlay p{font-size:11px;margin-bottom:14px}
+ .kh-overlay h2{font-size:29px}.kh-results{margin:9px 0 12px}#khFinalScore{font-size:38px}
+}
+@media(max-width:380px){.kh-heading .kh-brand{font-size:27px}.kh-edition{display:none}.kh-overlay-card{padding:13px}.kh-overlay p{margin:7px 0 10px}.kh-overlay .kh-kicker{margin-bottom:7px}.kh-overlay h2{font-size:25px}.kh-start{font-size:16px;min-height:44px;padding:10px}.kh-results{margin:6px 0 10px}.kh-results div{padding:6px 2px}.kh-results b{font-size:18px}.kh-overlay .kh-secondary{margin-top:9px;min-height:36px;padding:7px 12px}}
+
+
+#cardKH{background:radial-gradient(ellipse at 50% 45%,#633d32,#0e0b12 72%)}
+.kh-brand small{color:#f2a168}.kh-brand b{color:#ffe6a8;text-shadow:3px 3px #854039}
+.kh-card-art{border:0;box-shadow:none;width:200px;height:180px}.kh-card-art:after{content:none}#khMenuArt{width:200px;height:180px}.kh-new{background:#ffd995;color:#362026}
+.kh-cabinet{border-color:#8d5947;background:#1c1721}.kh-hud{background:#261c28;border-color:#634239}#khTime{color:#ffd995}#khCombo{color:#ffe39c}#khBest{color:#e69277}
+.kh-start{background:linear-gradient(#ffe7ac,#ebb56d);border-color:#ffe9bd;color:#352025;box-shadow:0 4px 0 #79533c}.kh-start:active{box-shadow:0 2px 0 #79533c}
+.kh-overlay-card{background:linear-gradient(145deg,#392434,#1c1722);border-color:#b87960;max-height:100%;overflow:auto}.kh-overlay{background:#1b1421b8}#khOver .kh-overlay-card{padding:14px 18px}#khOver h2{font-size:27px}#khOver .kh-kicker{margin-bottom:5px}#khFinalScore{font-size:36px}#khOver .kh-results{margin:8px 0}#khOver .kh-secondary{margin-top:8px}
+#khScreen .ctl-row{gap:8px}.kh-footer{border-color:#634239}.kh-side-card{border-color:#624137;background:linear-gradient(140deg,#281d2a,#14111b)}
+@media(min-width:721px) and (max-height:850px){#khScreen .kh-layout{grid-template-columns:340px minmax(200px,1fr)}#khScreen .kh-heading{margin-bottom:10px}#khScreen .kh-heading .kh-brand{font-size:34px}#khScreen .kh-hud{padding:9px 12px}#khScreen .ctl-row{margin:10px 0 0}}
+@media(max-width:380px){#khOver .kh-overlay-card{padding:9px 12px}#khOver h2{font-size:22px}#khOver .kh-results div{padding:4px 2px}#khOver .kh-results b{font-size:16px}#khFinalScore{font-size:30px}#khOver .kh-start{min-height:39px;font-size:15px}#khGoal{margin-bottom:6px}}
+
 /* Carnival Claw — the wrestling memorabilia vault. */
 .cl-brand{font-family:var(--display);line-height:.86;letter-spacing:.035em;text-transform:uppercase;color:#ffe294;text-align:center}
 .cl-brand small{display:block;font-size:.4em;letter-spacing:.28em;color:#fd79bd;margin-bottom:8px}
@@ -1112,6 +1189,10 @@ canvas, #soBoard{ touch-action:none; }
   <!-- ================= MENU ================= -->
   <section id="menuScreen" class="screen">
     <div id="gameCards">
+      <button class="game-card" id="cardKH" aria-label="Play Chicken Huntin’">
+        <span class="kh-new">NEW GAME</span><span class="kh-card-art"><canvas id="khMenuArt" width="400" height="360" role="img" aria-label="A cartoon chicken at the carnival"></canvas></span>
+        <span class="kh-brand"><small>CHICKEN</small><b>HUNTIN’</b></span><span class="gc-cta">LET THE FEATHERS FLY</span>
+      </button>
       <button class="game-card" id="cardCL" aria-label="Play Carnival Claw">
         <span class="cl-new">NEW GAME</span><span class="cl-card-art"><img id="clMenuArt" alt="Dani Mo’s collectible belt"></span>
         <span class="cl-brand"><small>CARNIVAL</small><b>CLAW</b></span><span class="gc-cta">GRAB THE GEAR</span>
@@ -2125,6 +2206,84 @@ canvas, #soBoard{ touch-action:none; }
     </div>
   </section>
 
+  <!-- ================= CHICKEN HUNTIN ================= -->
+  <section id="khScreen" class="screen" hidden>
+    <header class="kh-heading">
+      <div class="kh-brand" aria-label="Chicken Huntin’"><small>CHICKEN</small><b>HUNTIN’</b></div>
+      <div class="kh-edition">THE COOP IS LOOSE<br>60 SECONDS. KEEP THE FEATHERS FLYING.</div>
+    </header>
+    <div class="kh-layout">
+      <div style="width:100%;min-width:0">
+        <div class="kh-cabinet">
+          <div class="kh-hud">
+            <div><small>SCORE</small><strong id="khScore">0</strong></div>
+            <div><small>TIME</small><strong id="khTime">60</strong></div>
+            <div><small>COMBO</small><strong id="khCombo">×1</strong></div>
+            <div><small>BEST</small><strong id="khBest">0</strong></div>
+          </div>
+          <div class="kh-board">
+            <canvas id="khCanvas" width="480" height="500" tabindex="0" aria-label="Chicken Huntin. Tap or click running and flying chickens. Avoid TNT crates. Use arrow keys to aim and Space to fire. R reloads, P pauses." aria-describedby="khInstructions"></canvas>
+            <div id="khAttract" class="kh-overlay">
+              <div class="kh-overlay-card">
+                <div class="kh-kicker">WELCOME TO THE COOP</div>
+                <h2>THE COOP<br>IS LOOSE.</h2>
+                <p>Tag running and flying chickens. Golden birds add bonus time. Keep your shots away from the red TNT crates.</p>
+                <button id="khStartBtn" class="kh-start">LET THE FEATHERS FLY</button>
+                <p style="margin-bottom:0">8 hits in a row unlock FEATHER FRENZY:<br>unlimited shots + double points.</p>
+              </div>
+            </div>
+            <div id="khPause" class="kh-overlay" hidden>
+              <div class="kh-overlay-card">
+                <div class="kh-kicker">YOUR ROUND IS SAFE</div><h2>TAKE A BREATHER</h2>
+                <p>The clock, chickens and reload are paused.</p>
+                <button id="khResumeBtn" class="kh-start">BACK TO THE HUNT</button>
+                <button id="khRestartBtn" class="kh-secondary">START OVER</button>
+              </div>
+            </div>
+            <div id="khOver" class="kh-overlay" hidden>
+              <div class="kh-overlay-card">
+                <div id="khResultKicker" class="kh-kicker">ROUND COMPLETE</div>
+                <h2 id="khRank">COOP ROOKIE</h2><div id="khFinalScore">0</div>
+                <div class="kh-results">
+                  <div><span>ACCURACY</span><b id="khAccuracy">0%</b></div>
+                  <div><span>BEST STREAK</span><b id="khStreak">0</b></div>
+                  <div><span>GOLDEN BIRDS</span><b id="khGolden">0</b></div>
+                </div>
+                <div id="khGoal">Next medal: 1,000 points</div>
+                <button id="khAgainBtn" class="kh-start">ONE MORE ROUND</button>
+                <button id="khSaveBtn" class="kh-secondary">SAVE TO COOP RECORDS</button>
+              </div>
+            </div>
+          </div>
+          <div class="kh-footer">
+            <div class="kh-ammo-row"><div id="khAmmo" role="img" aria-label="6 shots remaining"></div><button id="khReloadBtn" class="kh-secondary">RELOAD · R</button></div>
+            <div class="kh-meter" role="meter" aria-label="Frenzy charge" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0" id="khMeter"><div id="khMeterFill"></div></div>
+            <div id="khStatus" role="status" aria-live="polite">Tap chickens. Avoid TNT. Keep the streak alive.</div>
+          </div>
+        </div>
+        <div class="ctl-row">
+          <button id="khPauseBtn" class="kh-secondary" disabled>PAUSE</button>
+          <button id="khSoundBtn" class="img-btn icon" aria-label="Mute sound"><img data-img="icoSoundOn" alt="Sound"></button>
+          <button id="khHomeBtn" class="kh-secondary">ARCADE MENU</button>
+        </div>
+      </div>
+      <aside class="kh-side" id="khInstructions">
+        <div class="kh-side-card">
+          <h3>THE HOUSE RULES</h3>
+          <div class="kh-rule"><span class="kh-swatch">◎</span><span><b>CHICKEN · 50 POINTS</b><br>A clean centre shot adds 25 points.</span></div>
+          <div class="kh-rule"><span class="kh-swatch gold">★</span><span><b>GOLDEN BIRD · 150 POINTS</b><br>Adds 2 seconds, up to 10 bonus seconds per round.</span></div>
+          <div class="kh-rule"><span class="kh-swatch red">×</span><span><b>RED TNT · HANDS OFF</b><br>Costs 100 points, 2 seconds and your combo.</span></div>
+          <p class="kh-tip">Every 3 clean hits raise your multiplier, up to ×4. Misses, escaped chickens and TNT break the streak. Land 8 in a row for 6 seconds of FEATHER FRENZY.</p>
+        </div>
+        <div class="kh-side-card">
+          <h3>GET YOUR AIM IN</h3>
+          <p><b>Phone:</b> tap a chicken to shoot.<br><b>Mouse:</b> aim and click.<br><b>Keyboard:</b> <kbd>←</kbd> <kbd>↑</kbd> <kbd>↓</kbd> <kbd>→</kbd> aim, <kbd>Space</kbd> fires.<br><kbd>R</kbd> reloads · <kbd>P</kbd> pauses.</p>
+          <p class="kh-tip">Six shots per magazine. Reload takes 0.85 seconds. Clear the screen before reloading to keep your streak alive.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
   <!-- ================= CARNIVAL CROSSFIRE ================= -->
   <section id="shScreen" class="screen" hidden>
     <header class="sh-heading">
@@ -2552,7 +2711,7 @@ canvas, #soBoard{ touch-action:none; }
     <span id="tickerText">WELCOME TO THE PSYCHOPATHIC ARCADE — PICK YOUR POISON!</span>
   </div>
 
-  <div id="hint">13 games · Play solo, challenge a friend, or join an online match.</div>
+  <div id="hint">14 games · Play solo, challenge a friend, or join an online match.</div>
 </div>
 
 <script>
@@ -4676,6 +4835,7 @@ function setSoundIcons(){
    ['#soSoundBtn','icoSoundOn','icoSoundOff'],
    ['#j31SoundBtn','icoSoundOn','icoSoundOff'],
    ['#clSoundBtn','icoSoundOn','icoSoundOff'],
+   ['#khSoundBtn','icoSoundOn','icoSoundOff'],
    ['#shSoundBtn','icoSoundOn','icoSoundOff'],
    ['#ahSoundBtn','ah_btnSndOn','ah_btnSndOff']].forEach(([sel,a,b])=>{
     const el = document.querySelector(sel+' img');
@@ -4716,7 +4876,7 @@ const LINES_TTT = {
   win:["RING THE BELL! IT'S OVER!","{n} TAKES THE FALL — WHAT A SHOWING!","THAT'S ALL SHE WROTE — {n} WINS IT!"],
   draw:["NEITHER SIDE CAN GET THE ADVANTAGE!","DOUBLE COUNT-OUT! THE JUDGES CALL IT EVEN!","NINE SQUARES AND NOTHING SETTLED!"],
   denied:["THAT SQUARE'S TAKEN, CHAMP!","THE REF SAYS NO!"],
-  welcome:["WELCOME TO THE PSYCHOPATHIC ARCADE — PICK YOUR POISON!","STEP RIGHT UP — THE CARNIVAL NEVER CLOSES!","THIRTEEN GAMES, ZERO MERCY. CHOOSE."]
+  welcome:["WELCOME TO THE PSYCHOPATHIC ARCADE — PICK YOUR POISON!","STEP RIGHT UP — THE CARNIVAL NEVER CLOSES!","FOURTEEN GAMES, ZERO MERCY. CHOOSE."]
 };
 const LINES_CH = {
   start:["THE CARNIVAL OPENS THE BOARD — PALE MOVES FIRST!","64 SQUARES OF BAD INTENTIONS. HERE WE GO!"],
@@ -5097,6 +5257,8 @@ function showScreen(name){
   $('#j31Screen').hidden      = name!=='j31';
   $('#ahScreen').hidden       = name!=='hockey';
   $('#shScreen').hidden       = name!=='shooter';
+  $('#khScreen').hidden       = name!=='chicken';
+  if(window.CHICKEN_READY && name!=='chicken') CHICKEN.leave();
   $('#clScreen').hidden       = name!=='claw';
   if(window.CLAW_READY && name!=='claw') CLAW.leave();
   if(window.SHOOTER_READY && name!=='shooter') SHOOTER.leave();
@@ -5119,6 +5281,7 @@ function showScreen(name){
   if(name==='hockey') AIRHOCKEY.enter();
   if(name==='shooter') SHOOTER.enter();
   if(name==='claw') CLAW.enter();
+  if(name==='chicken') CHICKEN.enter();
   syncClocks();
   window.scrollTo(0, 0);
 }
@@ -11934,6 +12097,273 @@ const SHOOTER = (()=>{
   return {bind,enter,leave,start,pause,reload,shoot,step,draw,position,state:S};
 })();
 
+/* ================= GAME 14 — CHICKEN HUNTIN ================= */
+const CHICKEN = (()=>{
+  const W=480, H=500, FONT='Impact,"Arial Black",sans-serif', RELOAD=.85;
+  const store=gameStore('pa_kh_');
+  const medals=[[0,'COOP ROOKIE'],[1000,'FEATHER CHASER'],[3000,'HENCHMAN'],[6000,'BARNYARD MENACE'],[10000,'CHICKEN LEGEND']];
+  const S={mode:'ready',score:0,time:60,elapsed:0,wave:1,ammo:6,reload:0,cooldown:0,
+    streak:0,bestStreak:0,charge:0,frenzy:0,shots:0,hits:0,bullseyes:0,golden:0,bonusTime:0,escaped:0,spawnIn:0,spawned:0,
+    targets:[],particles:[],labels:[],best:Math.max(0,store.get('best',0)),saved:false,
+    aim:{x:W/2,y:H/2,visible:false},banner:'',bannerTime:0};
+  let canvas,ctx,scenery,raf=0,last=0,hudKey='',active=false;
+  const held=new Set();
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+  const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
+  function text(id,value){ const el=$('#'+id); if(el.textContent!==String(value)) el.textContent=value; }
+  function status(message){ text('khStatus',message); }
+  function announce(message){ S.banner=message; S.bannerTime=1.4; }
+  function stop(){ cancelAnimationFrame(raf); raf=0; last=0; held.clear(); }
+  function loop(now){
+    raf=0;
+    if(!active || S.mode!=='playing') return;
+    // A suspended tab must never skip a whole round or create a spawn backlog.
+    const dt=last ? Math.min((now-last)/1000,.05) : 0; last=now;
+    step(dt); draw();
+    if(S.mode==='playing') raf=requestAnimationFrame(loop);
+  }
+  function run(){ if(active && S.mode==='playing' && !raf){ last=0; raf=requestAnimationFrame(loop); } }
+  function overlays(){
+    $('#khAttract').hidden=S.mode!=='ready'; $('#khPause').hidden=S.mode!=='paused'; $('#khOver').hidden=S.mode!=='over';
+    $('#khPauseBtn').disabled=S.mode==='ready' || S.mode==='over';
+    text('khPauseBtn',S.mode==='paused'?'RESUME':'PAUSE');
+  }
+  function hud(){
+    const key=[S.score,Math.ceil(S.time),multiplier(),S.ammo,Math.ceil(S.reload*10),Math.ceil(S.frenzy*10),S.charge,S.best,S.mode].join('|');
+    if(key===hudKey) return; hudKey=key;
+    text('khScore',S.score.toLocaleString()); text('khTime',Math.ceil(S.time));
+    text('khCombo','×'+(multiplier()*(S.frenzy>0?2:1))); text('khBest',S.best.toLocaleString());
+    $('#khTime').style.color=S.time<=10?'#ff5979':'#ffd101';
+    $('#khAmmo').classList.toggle('frenzy',S.frenzy>0);
+    [...$('#khAmmo').children].forEach((el,i)=>el.classList.toggle('empty',i>=S.ammo && S.frenzy<=0));
+    $('#khAmmo').setAttribute('aria-label',S.frenzy>0?'Unlimited shots':S.ammo+' shots remaining');
+    text('khReloadBtn',S.frenzy>0?'FRENZY':S.reload>0?'RELOADING…':'RELOAD · R');
+    $('#khReloadBtn').disabled=S.mode!=='playing' || S.reload>0 || S.ammo===6 || S.frenzy>0;
+    const charge=S.frenzy>0?8:S.charge;
+    $('#khMeterFill').style.width=(S.frenzy>0?S.frenzy/6*100:charge/8*100)+'%';
+    $('#khMeterFill').style.background=S.frenzy>0?'#c3ff3f':'';
+    $('#khMeter').setAttribute('aria-valuenow',String(charge));
+    $('#khMeter').setAttribute('aria-valuetext',S.frenzy>0?'Frenzy active':charge+' of 8 hits');
+  }
+  function multiplier(){ return Math.min(4,1+Math.floor(S.streak/3)); }
+  function position(t){
+    const progress=clamp(t.age/t.life,0,1);
+    const x=t.dir>0?48+progress*384:432-progress*384;
+    const hop=t.kind==='bomb'?0:t.flying?Math.sin(t.age*3+t.phase)*22:Math.abs(Math.sin(t.age*5+t.phase))*14;
+    return {x,y:t.y-hop};
+  }
+  function spawn(){
+    if(S.targets.length>=6)return;
+    S.spawned++;
+    const kind=S.spawned%7===0?'gold':S.spawned>4&&S.spawned%6===0?'bomb':'chicken';
+    const flying=kind!=='bomb'&&(kind==='gold'||S.spawned%3===0);
+    const dir=S.spawned%2?1:-1;
+    const lane=S.spawned%3;
+    // Birds start fully inside the cabinet. Each gets a complete reaction window.
+    S.targets.push({kind,age:0,life:4.9-S.wave*.45,r:kind==='gold'?36:38,phase:Math.random()*Math.PI*2,dir,flying,y:flying?167+lane*55:284+lane*64});
+  }
+  function breakStreak(message){ S.streak=0; S.charge=0; status(message); }
+  function reload(){
+    if(S.mode!=='playing' || S.reload>0 || S.ammo===6 || S.frenzy>0) return;
+    S.reload=RELOAD; status('Reloading…'); Sound.play('flip'); hud();
+  }
+  function burst(x,y,color,label){
+    S.labels.push({x,y,text:label,color,life:.75});
+    if(S.labels.length>10) S.labels.shift();
+    for(let i=0;i<(reduced.matches?0:9);i++){
+      const a=Math.random()*Math.PI*2, v=35+Math.random()*95;
+      S.particles.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,life:.38+Math.random()*.2,color});
+    }
+    if(S.particles.length>90) S.particles.splice(0,S.particles.length-90);
+  }
+  function shoot(x,y){
+    if(S.mode!=='playing' || !active || S.cooldown>0 || S.reload>0 || !Number.isFinite(x+y)) return;
+    if(x<0 || x>W || y<0 || y>H) return;
+    if(S.ammo<=0 && S.frenzy<=0){ reload(); return; }
+    S.cooldown=.14; S.shots++; if(S.frenzy<=0) S.ammo--;
+    S.aim.x=x; S.aim.y=y;
+    // Match the drawn bird silhouette and crate body in logical canvas coordinates.
+    let hit=-1;
+    for(let i=S.targets.length-1;i>=0;i--){ const t=S.targets[i],p=position(t); if(t.kind==='bomb' ? Math.abs(x-p.x)<=28 && Math.abs(y-p.y)<=28 : Math.hypot((x-p.x)/1.12,y-p.y)<=t.r){hit=i;break;} }
+    if(hit<0){ breakStreak('MISS · streak reset'); burst(x,y,'#aa8dba','MISS'); Sound.play('move'); }
+    else {
+      const t=S.targets.splice(hit,1)[0], p=position(t);
+      if(t.kind==='bomb'){
+        S.score=Math.max(0,S.score-100); S.time=Math.max(0,S.time-2);
+        breakStreak('TNT · −100 points / −2 seconds'); burst(p.x,p.y,'#ff5979','−100 / −2s'); Sound.play('fizz');
+      } else {
+        const centre=Math.hypot(x-p.x,y-p.y)<=12, wasFrenzy=S.frenzy>0;
+        S.hits++; S.streak++; S.bestStreak=Math.max(S.bestStreak,S.streak); if(centre) S.bullseyes++;
+        const points=((t.kind==='gold'?150:50)+(centre?25:0))*multiplier()*(wasFrenzy?2:1);
+        S.score+=points;
+        if(t.kind==='gold'){
+          S.golden++;const bonus=Math.min(2,10-S.bonusTime);S.bonusTime+=bonus;S.time+=bonus;
+          if(bonus>0)announce('GOLDEN CHICKEN · +'+bonus+' SECONDS');
+        }
+        burst(p.x,p.y,t.kind==='gold'?'#ffd101':'#c3ff3f',(t.kind==='gold'?'GOLD ':centre?'CLEAN ':'')+'+'+points);
+        Sound.play(centre?'bellOne':'pop');
+        if(!wasFrenzy) S.charge++;
+        if(S.charge>=8){
+          S.charge=0; S.frenzy=6; S.reload=0; S.ammo=6;
+          announce('FEATHER FRENZY!'); status('FRENZY · 6 seconds of unlimited shots + double points'); Sound.play('fanfare');
+        } else if(!wasFrenzy) status(S.streak+' HIT STREAK · '+(8-S.charge)+' to FRENZY');
+      }
+    }
+    if(S.time<=0) finish();
+    else if(S.ammo===0 && S.frenzy<=0) reload();
+    hud(); draw();
+  }
+  function step(dt){
+    if(S.mode!=='playing' || !Number.isFinite(dt) || dt<=0) return;
+    dt=Math.min(dt,.05);
+    S.time=Math.max(0,S.time-dt); S.elapsed+=dt;
+    S.cooldown=Math.max(0,S.cooldown-dt); S.bannerTime=Math.max(0,S.bannerTime-dt);
+    if(S.reload>0){ S.reload=Math.max(0,S.reload-dt); if(S.reload===0){S.ammo=6;status('LOCKED & LOADED · make them count');} }
+    if(S.frenzy>0){ S.frenzy=Math.max(0,S.frenzy-dt); if(S.frenzy===0){S.ammo=6;status('FRENZY ended · build another streak');} }
+    const wave=Math.min(3,1+Math.floor(S.elapsed/20));
+    if(wave!==S.wave){ S.wave=wave; announce(wave===2?'FLOCK 2 · THE COOP IS LOOSE':'FINAL FLOCK · GIVE ’EM HELL'); Sound.play('bell'); }
+    for(const t of S.targets) t.age+=dt;
+    if(S.targets.some(t=>t.age>=t.life && t.kind!=='bomb')) {S.escaped+=S.targets.filter(t=>t.age>=t.life&&t.kind!=='bomb').length;breakStreak('CHICKEN ESCAPED · streak reset');}
+    S.targets=S.targets.filter(t=>t.age<t.life);
+    S.spawnIn-=dt;
+    if(S.spawnIn<=0){ spawn(); S.spawnIn=[0,1.05,.87,.7][S.wave]; }
+    S.particles.forEach(p=>{p.life-=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=100*dt;});
+    S.particles=S.particles.filter(p=>p.life>0);
+    S.labels.forEach(p=>{p.life-=dt;p.y-=30*dt;}); S.labels=S.labels.filter(p=>p.life>0);
+    const dx=(held.has('ArrowRight')?1:0)-(held.has('ArrowLeft')?1:0),dy=(held.has('ArrowDown')?1:0)-(held.has('ArrowUp')?1:0);
+    if(dx || dy){ const speed=300*dt/Math.hypot(dx,dy);S.aim.x=clamp(S.aim.x+dx*speed,10,W-10);S.aim.y=clamp(S.aim.y+dy*speed,65,H-15);S.aim.visible=true; }
+    if(S.time<=0) finish(); hud();
+  }
+  function start(){
+    stop();
+    Object.assign(S,{mode:'playing',score:0,time:60,elapsed:0,wave:1,ammo:6,reload:0,cooldown:0,
+      streak:0,bestStreak:0,charge:0,frenzy:0,shots:0,hits:0,bullseyes:0,golden:0,bonusTime:0,escaped:0,spawnIn:.76,spawned:0,
+      targets:[],particles:[],labels:[],saved:false,aim:{x:W/2,y:H/2,visible:false}});
+    spawn(); spawn(); announce('FLOCK 1 · CHICKEN HUNTIN’');
+    status('Hit 8 in a row to unleash FRENZY.'); overlays(); hud(); draw();
+    window.scrollTo(0,0);canvas.focus({preventScroll:true}); Sound.play('launch'); run();
+  }
+  function finish(){
+    if(S.mode!=='playing') return;
+    const oldBest=S.best;
+    S.mode='over'; S.time=0; stop();
+    S.best=Math.max(S.best,S.score); store.set('best',S.best);
+    const medal=medals.filter(m=>S.score>=m[0]).at(-1),next=medals.find(m=>m[0]>S.score);
+    text('khResultKicker',S.score>oldBest?'NEW PERSONAL BEST':'ROUND COMPLETE'); text('khRank',medal[1]);
+    text('khFinalScore',S.score.toLocaleString()); text('khAccuracy',(S.shots?Math.round(S.hits/S.shots*100):0)+'%');
+    text('khStreak',S.bestStreak); text('khGolden',S.golden);
+    text('khGoal',next?(next[0]-S.score).toLocaleString()+' more points to '+next[1]+'.':'Top medal earned. How high can you go?');
+    $('#khSaveBtn').disabled=S.score<=0; text('khSaveBtn','SAVE TO COOP RECORDS');
+    overlays(); hud(); status('Round complete. Your best is saved on this device.');
+    $('#khAgainBtn').focus({preventScroll:true}); Sound.play('bell');
+  }
+  function pause(force){
+    if(force===true && S.mode!=='playing') return;
+    if(S.mode==='playing'){S.mode='paused';stop();}
+    else if(S.mode==='paused' && force!==true){S.mode='playing';run();canvas.focus({preventScroll:true});}
+    else return;
+    overlays(); hud(); draw();
+  }
+  function leave(){ pause(true); active=false; stop(); }
+  function enter(){ active=true; resize(); overlays(); hud(); draw(); TICK.set('CHICKEN HUNTIN’ — KEEP THE FEATHERS FLYING.','THE COOP'); }
+  function resize(){
+    const dpr=Math.min(devicePixelRatio||1,2);
+    if(canvas.width!==W*dpr || canvas.height!==H*dpr){canvas.width=W*dpr;canvas.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);}
+  }
+  function circle(c,x,y,r,fill,stroke){c.beginPath();c.arc(x,y,r,0,Math.PI*2);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.stroke();}}
+  function ellipse(c,x,y,rx,ry,fill,rotation=0){c.beginPath();c.ellipse(x,y,rx,ry,rotation,0,Math.PI*2);c.fillStyle=fill;c.fill();}
+  function chicken(c,x,y,scale,gold,dir,age,flying=false){
+    c.save();c.translate(x,y);c.scale(scale*dir,scale);
+    const flap=reduced.matches?0:Math.sin(age*(flying?17:12));
+    c.lineJoin='round';c.lineCap='round';c.lineWidth=3;
+    const body=gold?'#ffcf48':'#fff4d8', shade=gold?'#da871d':'#d4c1a6';
+    // Whole birds are drawn inside padded bounds, with no sheet cropping.
+    if(!flying){
+      c.strokeStyle='#ef933d';
+      for(const side of [-1,1]){const leg=side*8;c.beginPath();c.moveTo(leg,16);c.lineTo(leg+flap*side*7,29);c.lineTo(leg+flap*side*7+7,29);c.stroke();}
+    }
+    ellipse(c,-25,-4,10,19,shade,-.65);ellipse(c,-29,-11,6,14,body,-.6);
+    ellipse(c,-2,3,28,23,'#27171b');ellipse(c,-2,0,26,22,body);
+    ellipse(c,-8,2,17,flying?6:12,shade,flying?flap*.85:-.25);
+    ellipse(c,19,-15,14,16,'#27171b');ellipse(c,19,-17,12,15,body);
+    ellipse(c,15,-32,5,8,'#ec4051',-.4);ellipse(c,22,-34,5,8,'#ec4051');ellipse(c,27,-29,4,7,'#ec4051',.4);
+    ellipse(c,27,-2,4,8,'#de334d');
+    c.beginPath();c.moveTo(29,-20);c.lineTo(41,-14);c.lineTo(29,-10);c.fillStyle='#ee9534';c.fill();
+    circle(c,23,-21,3.5,'#241b25');circle(c,24,-22,1,'#fff');
+    if(gold){c.strokeStyle='#fff0a7';c.lineWidth=2;c.beginPath();c.moveTo(-13,-10);c.lineTo(-5,-2);c.lineTo(-13,6);c.lineTo(-21,-2);c.closePath();c.stroke();}
+    c.restore();
+  }
+  function makeScenery(){
+    scenery=document.createElement('canvas');scenery.width=W;scenery.height=H;const c=scenery.getContext('2d');
+    const sky=c.createLinearGradient(0,0,0,330);sky.addColorStop(0,'#28182c');sky.addColorStop(.6,'#a14347');sky.addColorStop(1,'#eca761');c.fillStyle=sky;c.fillRect(0,0,W,H);
+    circle(c,372,124,43,'#ffdc97');
+    c.fillStyle='#422839';c.beginPath();c.moveTo(0,240);c.bezierCurveTo(130,95,250,270,480,176);c.lineTo(480,340);c.lineTo(0,340);c.fill();
+    // Barn silhouettes, planks and fairground pennants are cached once.
+    c.fillStyle='#7b303b';c.fillRect(22,188,156,140);c.beginPath();c.moveTo(6,190);c.lineTo(100,112);c.lineTo(194,190);c.fill();
+    c.strokeStyle='#ba6057';c.lineWidth=2;for(let x=30;x<178;x+=15){c.beginPath();c.moveTo(x,198);c.lineTo(x,317);c.stroke();}
+    c.fillStyle='#291d2c';c.fillRect(66,230,69,98);c.strokeStyle='#e2a67c';c.strokeRect(66,230,69,98);c.beginPath();c.moveTo(67,232);c.lineTo(134,325);c.moveTo(134,232);c.lineTo(67,325);c.stroke();circle(c,101,186,18,'#2d1e2d','#d48b72');
+    c.fillStyle='#30362d';c.fillRect(0,314,W,H-314);
+    for(let lane=0;lane<3;lane++){const y=251+lane*83;c.fillStyle=['#50513a','#434a31','#353e2b'][lane];c.fillRect(0,y+40,W,55);c.strokeStyle='#aa926033';c.lineWidth=1;for(let x=15;x<W;x+=34){c.beginPath();c.moveTo(x,y+56);c.lineTo(x+13,y+56);c.stroke();}}
+    c.fillStyle='#84704f';c.fillRect(0,300,W,7);c.fillStyle='#392e29';c.fillRect(0,307,W,4);
+    for(let x=7;x<W;x+=43){c.fillStyle='#a18b62';c.fillRect(x,274,7,60);c.fillStyle='#c6a575';c.fillRect(x,274,2,60);}
+    c.strokeStyle='#181523';c.lineWidth=3;c.beginPath();c.moveTo(0,56);c.quadraticCurveTo(240,120,480,56);c.stroke();
+    for(let x=20;x<W;x+=34){const y=56+Math.sin(x/W*Math.PI)*31;c.fillStyle=(x/34|0)%2?'#d7615d':'#e9b968';c.beginPath();c.moveTo(x,y);c.lineTo(x+23,y+3);c.lineTo(x+11,y+25);c.fill();circle(c,x,y,2.5,'#ffe8ae');}
+    c.fillStyle='#171722';c.fillRect(0,0,W,47);c.fillStyle='#f4d697';c.font='12px '+FONT;c.textAlign='left';c.fillText('THE DARK CARNIVAL POULTRY SHOOT',18,28);
+    c.textAlign='right';c.fillStyle='#cd8d7f';c.fillText('WILD FLOCKS',W-18,28);
+    c.fillStyle='#211c24';c.fillRect(0,461,W,39);
+  }
+  function draw(){
+    if(!ctx || !active)return;ctx.drawImage(scenery,0,0);
+    for(const t of S.targets){const p=position(t);
+      ellipse(ctx,p.x,p.y+30,t.r*.8,5,'#100f163d');
+      if(t.kind==='bomb'){
+        ctx.save();ctx.translate(p.x,p.y);ctx.rotate(Math.sin(t.age*3)*.05);ctx.fillStyle='#502534';ctx.fillRect(-28,-28,56,55);ctx.strokeStyle='#ff8a73';ctx.lineWidth=3;ctx.strokeRect(-28,-28,56,55);
+        for(let x=-17;x<=17;x+=17){ctx.fillStyle='#e7524c';ctx.fillRect(x-5,-21,10,39);}ctx.fillStyle='#392232';ctx.fillRect(-27,-1,54,9);ctx.font='12px '+FONT;ctx.fillStyle='#fff0c8';ctx.textAlign='center';ctx.fillText('TNT',0,19);
+        ctx.strokeStyle='#e8c28c';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,-24);ctx.quadraticCurveTo(8,-38,19,-29);ctx.stroke();circle(ctx,19,-29,4,'#ffd16d');ctx.restore();
+      }else{chicken(ctx,p.x,p.y,t.r/38,t.kind==='gold',t.dir,t.age,t.flying);if(t.kind==='gold'){ctx.fillStyle='#fff0a5';ctx.font='12px '+FONT;ctx.textAlign='center';ctx.fillText('GOLD +2s',p.x,p.y-49);}}
+    }
+    for(const p of S.particles){ctx.globalAlpha=Math.min(1,p.life*3);ellipse(ctx,p.x,p.y,5,2,p.color,p.life*8);}ctx.globalAlpha=1;
+    ctx.textAlign='center';for(const p of S.labels){ctx.globalAlpha=Math.min(1,p.life*3);ctx.font='16px '+FONT;ctx.lineWidth=4;ctx.strokeStyle='#231824';const x=clamp(p.x,85,W-85);ctx.strokeText(p.text,x,p.y-44);ctx.fillStyle=p.color;ctx.fillText(p.text,x,p.y-44);}ctx.globalAlpha=1;
+    if(S.aim.visible && S.mode==='playing'){
+      const {x,y}=S.aim;ctx.lineWidth=1.5;circle(ctx,x,y,17,null,'#fff4c8');ctx.strokeStyle='#fff4c8';ctx.beginPath();ctx.moveTo(x-24,y);ctx.lineTo(x-10,y);ctx.moveTo(x+10,y);ctx.lineTo(x+24,y);ctx.moveTo(x,y-24);ctx.lineTo(x,y-10);ctx.moveTo(x,y+10);ctx.lineTo(x,y+24);ctx.stroke();
+    }
+    ctx.fillStyle=S.frenzy>0?'#fff2a1':'#d5b39b';ctx.font='15px '+FONT;ctx.textAlign='center';
+    ctx.fillText(S.frenzy>0?'FEATHER FRENZY · ×2 · '+S.frenzy.toFixed(1)+'s':'FLOCK '+S.wave+' / 3 · '+(S.streak?'STREAK '+S.streak:'KEEP THE FEATHERS FLYING'),W/2,485);
+    if(S.bannerTime>0 && S.mode==='playing'){ctx.globalAlpha=Math.min(1,S.bannerTime*2);ctx.fillStyle='#211321e8';ctx.fillRect(0,461,W,39);ctx.fillStyle='#ffe3a2';ctx.font='19px '+FONT;ctx.fillText(S.banner,W/2,486);ctx.globalAlpha=1;}
+  }
+  function pointer(e){const r=canvas.getBoundingClientRect();return{x:(e.clientX-r.left)*W/r.width,y:(e.clientY-r.top)*H/r.height};}
+  function bind(){
+    canvas=$('#khCanvas');ctx=canvas.getContext('2d'); makeScenery();resize();
+    const menu=$('#khMenuArt').getContext('2d');menu.scale(2,2);
+    circle(menu,100,88,72,'#753d36','#d58d58');circle(menu,100,88,59,null,'#e6ad69');
+    chicken(menu,100,105,1.6,false,1,0);
+    for(let i=0;i<6;i++) $('#khAmmo').appendChild(document.createElement('i'));
+    $('#khStartBtn').onclick=start;$('#khAgainBtn').onclick=start;$('#khRestartBtn').onclick=start;
+    $('#khPauseBtn').onclick=()=>pause();$('#khResumeBtn').onclick=()=>pause();
+    $('#khReloadBtn').onclick=()=>{reload();canvas.focus({preventScroll:true});};
+    $('#khSoundBtn').onclick=toggleSound;$('#khHomeBtn').onclick=()=>showScreen('menu');
+    $('#khSaveBtn').onclick=()=>{if(S.mode!=='over'||S.saved||S.score<=0)return;S.saved=true;$('#khSaveBtn').disabled=true;text('khSaveBtn','SCORE SUBMITTED');LB.check('chicken',S.score,S.bestStreak+' hit streak');};
+    canvas.addEventListener('pointerdown',e=>{if(e.button!==0 || !e.isPrimary)return;e.preventDefault();canvas.focus({preventScroll:true});const p=pointer(e);S.aim.visible=e.pointerType!=='touch';shoot(p.x,p.y);});
+    canvas.addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;Object.assign(S.aim,pointer(e),{visible:true});});
+    canvas.addEventListener('pointerleave',()=>{S.aim.visible=false;});
+    document.addEventListener('keydown',e=>{
+      if(!active || gameKeysBlocked(e) || (e.target!==canvas && e.target?.closest('button'))) return;
+      if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Space','KeyR','KeyP','Escape'].includes(e.code)) e.preventDefault(); else return;
+      if(e.code==='KeyP'||e.code==='Escape'){if(!e.repeat)pause();return;}
+      if(S.mode!=='playing')return;
+      if(e.code.startsWith('Arrow')){held.add(e.code);S.aim.visible=true;}
+      if(e.code==='Space'){S.aim.visible=true;shoot(S.aim.x,S.aim.y);}
+      if(e.code==='KeyR'&&!e.repeat)reload();
+    });
+    document.addEventListener('keyup',e=>held.delete(e.code));
+    window.addEventListener('blur',()=>pause(true));
+    document.addEventListener('visibilitychange',()=>{if(document.hidden)pause(true);});
+    window.addEventListener('resize',()=>{if(active){resize();draw();}});
+    hud();overlays();
+  }
+  return {bind,enter,leave,start,pause,reload,shoot,step,draw,position,state:S};
+})();
+
 /* CLAW CATALOG START */
 const CLAW_CATALOG = {"source":"https://jcwlunacy.net/#crew","checkedAt":"2026-10-01","roster":[{"name":"Caleb Konley","id":"caleb-konley","role":"Lunacy World Champion","group":"Champions","items":[{"kind":"belt","name":"Belt"},{"kind":"robe","name":"Entrance Robe"},{"kind":"boots","name":"Ring Boots"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Josh Bishop","id":"josh-bishop","role":"World Heavyweight Champion","group":"Champions","items":[{"kind":"belt","name":"Belt"},{"kind":"robe","name":"Entrance Robe"},{"kind":"boots","name":"Ring Boots"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Dani Mo","id":"dani-mo","role":"Women’s World Champion","group":"Champions","items":[{"kind":"belt","name":"Belt"},{"kind":"robe","name":"Entrance Robe"},{"kind":"boots","name":"Ring Boots"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Father Bronson","id":"father-bronson","role":"American Champion","group":"Champions","items":[{"kind":"belt","name":"Belt"},{"kind":"robe","name":"Entrance Robe"},{"kind":"boots","name":"Ring Boots"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Choppa City","id":"choppa-city","role":"World Tag Team Champions","group":"Champions","items":[{"kind":"belt","name":"Belt"},{"kind":"robe","name":"Entrance Robe"},{"kind":"boots","name":"Ring Boots"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"2 Tuff Tony","id":"2-tuff-tony","role":"JCW Roster","group":"Roster","items":[{"kind":"glove","name":"Flame Glove"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Alice Crowley","id":"alice-crowley","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Midnight Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Backseat Boyz","id":"backseat-boyz","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Barnabas the Bizarre","id":"barnabas-the-bizarre","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Bizarre Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Big Vito","id":"big-vito","role":"JCW Roster","group":"Roster","items":[{"kind":"hat","name":"Street-Fight Fedora"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Breyer Wellington","id":"breyer-wellington","role":"JCW Roster","group":"Roster","items":[{"kind":"bowtie","name":"Bow Tie"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Brothers of Funstruction","id":"brothers-of-funstruction","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Clown Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Cokane","id":"cokane","role":"JCW Roster","group":"Roster","items":[{"kind":"chain","name":"Entrance Chain"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Donovan Dijak","id":"donovan-dijak","role":"JCW Roster","group":"Roster","items":[{"kind":"glasses","name":"Entrance Shades"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"EC3","id":"ec3","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Main-Event Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Facade","id":"facade","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Neon Bandana"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Forty Winks","id":"forty-winks","role":"JCW Roster","group":"Roster","items":[{"kind":"cap","name":"Sleep Cap"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Freya the Slaya","id":"freya-the-slaya","role":"JCW Roster","group":"Roster","items":[{"kind":"glove","name":"Battle Gauntlet"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Gisele Shaw","id":"gisele-shaw","role":"JCW Roster","group":"Roster","items":[{"kind":"robe","name":"Spotlight Robe"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"The Green Phantom","id":"the-green-phantom","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Green Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Hollyhood Haley J","id":"hollyhood-haley-j","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Hollyhood Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Hokane","id":"hokane","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Monster Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"J-Rod","id":"j-rod","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"James Storm","id":"james-storm","role":"JCW Roster","group":"Roster","items":[{"kind":"hat","name":"Cowboy Hat"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Jasmin St. Claire","id":"jasmine-st-claire","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Monster Corp Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Jeeves","id":"jeeves","role":"JCW Roster","group":"Roster","items":[{"kind":"bowtie","name":"Butler Bow Tie"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Joel Gertner","id":"joel-gertner","role":"JCW Roster","group":"Roster","items":[{"kind":"bowtie","name":"Ringside Bow Tie"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Kerry Morton","id":"kerry-morton","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Rock-Star Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Kongo Kong","id":"kongo-kong","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Monster Faceplate"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Krule","id":"krule","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Atrocity Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Luigi Primo","id":"luigi-primo","role":"JCW Roster","group":"Roster","items":[{"kind":"hat","name":"Chef Hat"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Mad Man Pondo","id":"mad-man-pondo","role":"JCW Roster","group":"Roster","items":[{"kind":"sign","name":"Stop Sign"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Matt Cross","id":"matt-cross","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Mecha Wolf","id":"mecha-wolf","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Wolf Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Mickie Knuckles","id":"mickie-knuckles","role":"JCW Roster","group":"Roster","items":[{"kind":"glove","name":"Brawler Gloves"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Mosh Pit Mike","id":"moshpit-mike","role":"JCW Roster","group":"Roster","items":[{"kind":"vest","name":"Mosh Pit Vest"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Mr. Anderson","id":"mr-anderson","role":"JCW Roster","group":"Roster","items":[{"kind":"mic","name":"Drop Mic"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Mr. Happy","id":"mr-happy","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Happy Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Nic Nemeth","id":"nic-nemeth","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Showtime Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Ninja Mack","id":"ninja-mack","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Ninja Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"The Outbreak","id":"outbreak","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Outbreak Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"7 Foot Tall Painful Paul","id":"7-foot-tall-painful-paul","role":"JCW Roster","group":"Roster","items":[{"kind":"glove","name":"Giant Gloves"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Ricky Morton","id":"ricky-morton","role":"JCW Roster","group":"Roster","items":[{"kind":"bandana","name":"Rock & Roll Bandana"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"The Ring Rat","id":"the-ring-rat","role":"JCW Roster","group":"Roster","items":[{"kind":"pants","name":"Pants"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Sally Boy","id":"sally-boy","role":"JCW Roster","group":"Roster","items":[{"kind":"hat","name":"Street-Fight Fedora"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Sewacide","id":"sewacide","role":"JCW Roster","group":"Roster","items":[{"kind":"chair","name":"Hardcore Chair"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Shane Mercer","id":"shane-mercer","role":"JCW Roster","group":"Roster","items":[{"kind":"chain","name":"Iron Chain"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Sonny Kiss","id":"sonny-kiss","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Spotlight Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Sophia Rose","id":"sohpia-rose","role":"JCW Roster","group":"Roster","items":[{"kind":"robe","name":"Rose Robe"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Steven Flowe","id":"steven-flowe","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Vincenzo","id":"vincenzo","role":"JCW Roster","group":"Roster","items":[{"kind":"hat","name":"Street-Fight Fedora"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Zach Gowen","id":"zach-gowen","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Willie Mack","id":"willie-mack","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Violent J","id":"violent-j","role":"Owner","group":"Crew","items":[{"kind":"chain","name":"Hatchet Pendant"},{"kind":"headphones","name":"Broadcast Headset"},{"kind":"mic","name":"Ringside Mic"},{"kind":"pass","name":"Backstage Pass"},{"kind":"clipboard","name":"Match Card Clipboard"}]},{"name":"Vince Russo","id":"vince-russo","role":"Owner","group":"Crew","items":[{"kind":"clipboard","name":"Booking Board"},{"kind":"headphones","name":"Broadcast Headset"},{"kind":"mic","name":"Ringside Mic"},{"kind":"pass","name":"Backstage Pass"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Joe Dombrowski","id":"joe-dombrowski","role":"Commentary","group":"Crew","items":[{"kind":"headphones","name":"Broadcast Headset"},{"kind":"mic","name":"Ringside Mic"},{"kind":"pass","name":"Backstage Pass"},{"kind":"clipboard","name":"Match Card Clipboard"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Mark Roberts","id":"mark-roberts","role":"Commentary","group":"Crew","items":[{"kind":"headphones","name":"Broadcast Headset"},{"kind":"mic","name":"Ringside Mic"},{"kind":"pass","name":"Backstage Pass"},{"kind":"clipboard","name":"Match Card Clipboard"},{"kind":"poster","name":"Foil Poster"}]},{"name":"DJ Clay","id":"dj-clay","role":"House DJ","group":"Crew","items":[{"kind":"record","name":"Signed Vinyl"},{"kind":"headphones","name":"Broadcast Headset"},{"kind":"mic","name":"Ringside Mic"},{"kind":"pass","name":"Backstage Pass"},{"kind":"clipboard","name":"Match Card Clipboard"}]},{"name":"Veda Scott","id":"veda-scott","role":"Commentary","group":"Crew","items":[{"kind":"headphones","name":"Broadcast Headset"},{"kind":"mic","name":"Ringside Mic"},{"kind":"pass","name":"Backstage Pass"},{"kind":"clipboard","name":"Match Card Clipboard"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Zac Amico","id":"zac-amico","role":"Commentary","group":"Crew","items":[{"kind":"headphones","name":"Broadcast Headset"},{"kind":"mic","name":"Ringside Mic"},{"kind":"pass","name":"Backstage Pass"},{"kind":"clipboard","name":"Match Card Clipboard"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Mac Davis","id":"mac-davis","role":"Roving Reporter","group":"Crew","items":[{"kind":"headphones","name":"Broadcast Headset"},{"kind":"mic","name":"Ringside Mic"},{"kind":"pass","name":"Backstage Pass"},{"kind":"clipboard","name":"Match Card Clipboard"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Kid Cadet","id":"kid-cadet","role":"Ring Announcer","group":"Crew","items":[{"kind":"headphones","name":"Broadcast Headset"},{"kind":"mic","name":"Ringside Mic"},{"kind":"pass","name":"Backstage Pass"},{"kind":"clipboard","name":"Match Card Clipboard"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Jeff the Ref","id":"jeff-the-ref","role":"Referee","group":"Crew","items":[{"kind":"refshirt","name":"Referee Shirt"},{"kind":"whistle","name":"Referee Whistle"},{"kind":"boots","name":"Ring Boots"},{"kind":"clipboard","name":"Match Card Clipboard"},{"kind":"pass","name":"Backstage Pass"}]},{"name":"George Ross","id":"george-ross","role":"Referee","group":"Crew","items":[{"kind":"refshirt","name":"Referee Shirt"},{"kind":"whistle","name":"Referee Whistle"},{"kind":"boots","name":"Ring Boots"},{"kind":"clipboard","name":"Match Card Clipboard"},{"kind":"pass","name":"Backstage Pass"}]},{"name":"The Iron Sheik","id":"the-iron-sheik","role":"Night One · 1999","group":"Legends & Alumni","items":[{"kind":"flag","name":"Entrance Flag"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"King Kong Bundy","id":"king-kong-bundy","role":"Night One · 1999","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Abdullah the Butcher","id":"abdullah-the-butcher","role":"Night One · 1999","group":"Legends & Alumni","items":[{"kind":"robe","name":"Butcher Robe"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Handsome Harley Guestella & Diamond Donovan Douglas","id":"icp-founders","role":"Founders · First Tag Champs","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Evil Dead","id":"evil-dead","role":"First Champion","group":"Champions","items":[{"kind":"mask","name":"Horror Mask"},{"kind":"belt","name":"Belt"},{"kind":"robe","name":"Entrance Robe"},{"kind":"boots","name":"Ring Boots"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Corporal Robinson","id":"corporal-robinson","role":"Original · Creative","group":"Legends & Alumni","items":[{"kind":"vest","name":"Camo Vest"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"The Rude Boy","id":"the-rude-boy","role":"JCW Legend","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Vampiro","id":"vampiro","role":"Champion · Consultant","group":"Champions","items":[{"kind":"jacket","name":"Midnight Jacket"},{"kind":"belt","name":"Belt"},{"kind":"robe","name":"Entrance Robe"},{"kind":"boots","name":"Ring Boots"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Necro Butcher","id":"necro-butcher","role":"Vol. 3 · 2003","group":"Legends & Alumni","items":[{"kind":"chair","name":"Hardcore Chair"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Human Tornado","id":"human-tornado","role":"SlamTV! Era","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Dance-Floor Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Trent Acid","id":"trent-acid","role":"PWU Alliance","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"The Great Muta","id":"the-great-muta","role":"Icon","group":"Legends & Alumni","items":[{"kind":"mask","name":"Dragon Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Chris Hero","id":"chris-hero","role":"Young Blood","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Scott Hall","id":"scott-hall","role":"Executive Consultant","group":"Legends & Alumni","items":[{"kind":"vest","name":"Outsider Vest"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Raven","id":"raven","role":"2008 Arrival","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Raven Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Scott D’Amore","id":"scott-damore","role":"Manager · 2008","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Officer Colt Cabana","id":"officer-colt-cabana","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"cap","name":"Officer Cap"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Cash Flo","id":"cash-flo","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Rob Conway","id":"rob-conway","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"JWO","id":"jwo","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"shirt","name":"JWO Shirt"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Kevin Nash","id":"kevin-nash","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"vest","name":"Big-Man Vest"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Sean Waltman","id":"sean-waltman","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"bandana","name":"Bandana"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"The Weedman","id":"the-weedman","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"cap","name":"Green Cap"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Vanilla Ice","id":"vanilla-ice","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"mic","name":"Stage Mic"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Terry Funk","id":"terry-funk","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"hat","name":"Cowboy Hat"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Dusty Rhodes","id":"dusty-rhodes","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"elbow","name":"Polka-Dot Elbow Pad"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Pat Tanaka","id":"pat-tanaka","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"The Ring Ryders","id":"the-ring-ryders","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"The Thomaselli Brothers","id":"the-thomaselli-brothers","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Hollywood Chuck Hogan","id":"hollywood-chuck-hogan","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"bandana","name":"Hollywood Bandana"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Tracy Smothers","id":"tracy-smothers","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Steve Corino","id":"steve-corino","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"“Rowdy” Roddy Piper","id":"roddy-piper","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"kilt","name":"Tartan Kilt"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Greg “The Hammer” Valentine","id":"greg-valentine","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"elbow","name":"Hammer Elbow Pad"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Kamala","id":"kamala","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"mask","name":"Warrior Faceplate"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Tito Santana","id":"tito-santana","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Kid Kash","id":"kid-kash","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Monty Brown","id":"monty-brown","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Kevin Thorn","id":"kevin-thorn","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Bobby Lashley","id":"bobby-lashley","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"glove","name":"Power Gloves"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Balls Mahoney","id":"balls-mahoney","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"chair","name":"Hardcore Chair"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Ian Rotten","id":"ian-rotten","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"chair","name":"Hardcore Chair"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Bull Pain","id":"bull-pain","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"vest","name":"Brawler Vest"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Sabu","id":"sabu","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"chair","name":"Airborne Chair"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]}]};
 /* CLAW CATALOG END */
@@ -12260,6 +12690,7 @@ const CLAW = (()=>{
 
 const LB = (()=>{
   const CFG = {
+    chicken: {name:'CHICKEN HUNTIN’',metric:'HIGH SCORE',higher:true,screen:'khScreen'},
     claw: {name:'CARNIVAL CLAW',metric:'BEST FIVE-PULL HAUL',higher:true,screen:'clScreen'},
     shooter: {name:'CARNIVAL CROSSFIRE',metric:'HIGH SCORE',higher:true,screen:'shScreen'},
     ttt:     { name:'TIC TAC SLAM',        metric:'LONGEST FALL STREAK VS CPU', higher:true,  screen:'tttScreen' },
@@ -12274,7 +12705,7 @@ const LB = (()=>{
     j31:     { name:'JUGGALO 31',           metric:'TABLES SWEPT IN A ROW VS CPU', higher:true, screen:'j31Screen' },
     hockey:  { name:'JUGGALO AIR HOCKEY',   metric:'WIN STREAK VS CPU', higher:true, screen:'ahScreen' },
   };
-  const SHORT = { claw:'CLAW', shooter:'CROSSFIRE', ttt:'SLAM', chess:'CHESS', checkers:'CHECKERS', pinball:'PINBALL', faygo:'JOKER CARD FOUR', bj:'21', memory:'MEMORY', camper:'CAMPER', solitaire:'SOLITAIRE', j31:'31', hockey:'HOCKEY' };
+  const SHORT = { chicken:'CHICKEN HUNTIN’', claw:'CLAW', shooter:'CROSSFIRE', ttt:'SLAM', chess:'CHESS', checkers:'CHECKERS', pinball:'PINBALL', faygo:'JOKER CARD FOUR', bj:'21', memory:'MEMORY', camper:'CAMPER', solitaire:'SOLITAIRE', j31:'31', hockey:'HOCKEY' };
   let data = {}, pending = null, queue = [], current = 'ttt';
   try{ data = JSON.parse(localStorage.getItem('pa_lb') || '{}') || {}; }catch(e){ data = {}; }
   if(!data || typeof data!=='object' || Array.isArray(data)) data={};
@@ -12369,6 +12800,7 @@ const LB = (()=>{
     });
   }
   function show(g){
+    if(!$('#khScreen').hidden) CHICKEN.pause(true);
     if(!$('#shScreen').hidden) SHOOTER.pause(true);
     if(!$('#clScreen').hidden) CLAW.pause(true);
     if(g && CFG[g]) current = g;
@@ -12403,6 +12835,7 @@ window.LB_READY = true;
 
 /* ================= hub + boot ================= */
 function bindHub(){
+  $('#cardKH').onclick = ()=>{ Sound.play('move'); showScreen('chicken'); };
   $('#cardCL').onclick = ()=>{ Sound.play('move'); showScreen('claw'); };
   $('#cardSH').onclick = ()=>{ Sound.play('move'); showScreen('shooter'); };
   $('#cardTTT').onclick = ()=>{ Sound.play('move'); showScreen('ttt'); };
@@ -12411,7 +12844,7 @@ function bindHub(){
   $('#cardPinball').onclick = ()=>{ Sound.play('move'); showScreen('pinball'); };
   $('#cardFaygo').onclick = ()=>{ Sound.play('move'); showScreen('faygo'); };
 }
-window.ARCADE = { showScreen, CLAW, SHOOTER, TTT, CHESS, CHECKERS, FAYGO, PINBALL, BLACKJACK, MEMORY, CAMPER, SOLITAIRE, J31, AIRHOCKEY, NET, LB, Sound, T, TICK, ASSETS };
+window.ARCADE = { showScreen, CHICKEN, CLAW, SHOOTER, TTT, CHESS, CHECKERS, FAYGO, PINBALL, BLACKJACK, MEMORY, CAMPER, SOLITAIRE, J31, AIRHOCKEY, NET, LB, Sound, T, TICK, ASSETS };
 
 applyDataImgs();
 TTT.bind();
@@ -12427,6 +12860,8 @@ SOLITAIRE.bind();
 J31.bind();
 AIRHOCKEY.bind();
 window.AH_READY = true;
+CHICKEN.bind();
+window.CHICKEN_READY = true;
 CLAW.bind();
 window.CLAW_READY = true;
 SHOOTER.bind();
@@ -12467,7 +12902,7 @@ document.addEventListener('visibilitychange', ()=>{
 /* Play counter hook: when the arcade runs inside jcwlunacy.net the host page
    counts plays (stats/arcade/<game>, read by admin.html). No-op standalone. */
 (function(){
-  var GAMES={claw:1,shooter:1,ttt:1,chess:1,checkers:1,faygo:1,pinball:1,bj:1,memory:1,camper:1,solitaire:1,j31:1,hockey:1};
+  var GAMES={chicken:1,claw:1,shooter:1,ttt:1,chess:1,checkers:1,faygo:1,pinball:1,bj:1,memory:1,camper:1,solitaire:1,j31:1,hockey:1};
   var last=null;
   window.__arcCount=function(name){
     if(name==='menu'){last=null;return;}
