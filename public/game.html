@@ -11989,6 +11989,7 @@ const SHOOTER = (()=>{
     const oldBest=S.best;
     S.mode='over'; S.time=0; stop();
     S.best=Math.max(S.best,S.score); store.set('best',S.best);
+    try{window.__arcSend&&window.__arcSend({ev:'shooter',score:S.score,streak:S.bestStreak,bullseyes:S.bullseyes,hits:S.hits,shots:S.shots});}catch(_e){}
     const medal=medals.filter(m=>S.score>=m[0]).at(-1),next=medals.find(m=>m[0]>S.score);
     text('shResultKicker',S.score>oldBest?'NEW PERSONAL BEST':'ROUND COMPLETE'); text('shRank',medal[1]);
     text('shFinalScore',S.score.toLocaleString()); text('shAccuracy',(S.shots?Math.round(S.hits/S.shots*100):0)+'%');
@@ -12418,6 +12419,8 @@ const CLAW = (()=>{
     color:r.id==='dani-mo'?'#ec579f':r.id==='the-ring-rat'?'#9670d3':`hsl(${(ri*137+17)%360},48%,48%)`
   })));
   const byId=Object.fromEntries(items.map(i=>[i.id,i]));
+  /* cabinet as one 5-bit mask per roster name (bit 0 = the legendary piece) — sent to the site for locker badges */
+  const masks=()=>{const m={};roster.forEach(r=>r.items.forEach((v,i)=>{if(S.owned[r.id+':'+v.kind])m[r.id]=(m[r.id]||0)|(1<<i);}));return m;};
   let owned=store.get('collection',{});
   if(!owned || typeof owned!=='object' || Array.isArray(owned))owned={};
   owned=Object.fromEntries(Object.entries(owned).filter(([k,v])=>typeof k==='string' && Number.isInteger(v) && v>0).map(([k,v])=>[k,Math.min(v,99999)]));
@@ -12540,6 +12543,7 @@ const CLAW = (()=>{
       S.wins++;S.chain++;if(S.perfect)S.perfects++;if(first)S.newItems++;
       const points=Math.round(item.value*multiplier())+(S.perfect?50:0);S.score+=points;
       S.owned[item.id]=Math.min(99999,(S.owned[item.id]||0)+1);store.set('collection',S.owned);
+      try{window.__arcSend&&window.__arcSend({ev:'claw',masks:masks()});}catch(_e){}
       const complete=oldSet<5 && setCount(item.rosterId)===5;
       text('clRewardTag',complete?'FIVE OF FIVE · SET COMPLETE':first?'NEW COLLECTIBLE':'ANOTHER FOR THE CABINET');
       $('#clRewardArt').src=CLAW_ART.uri(item);$('#clRewardArt').alt=item.owner+' — '+item.name;$('#clRewardArt').hidden=false;
@@ -12563,6 +12567,7 @@ const CLAW = (()=>{
   function finish(){
     if(S.mode!=='playing')return;
     const old=S.best;S.mode='over';stop();S.best=Math.max(S.best,S.score);store.set('best',S.best);
+    try{window.__arcSend&&window.__arcSend({ev:'clawrun',score:S.score,wins:S.wins,perfects:S.perfects,masks:masks()});}catch(_e){}
     text('clResultTag',S.score>old?'NEW BEST HAUL':'HAUL COMPLETE');text('clRank',S.wins===5?'CLEAN SWEEP!':S.wins>=3?'RINGSIDE COLLECTOR':S.wins?'PRIZE FIGHTER':'RINGSIDE ROOKIE');
     text('clFinalScore',S.score.toLocaleString());text('clWins',S.wins+' / 5');text('clPerfects',S.perfects);
     const completed=roster.filter(r=>setCount(r.id)===5).length;
@@ -12601,7 +12606,7 @@ const CLAW = (()=>{
     else return;overlays();hud();draw();
   }
   function leave(){pause(true);active=false;stop();}
-  function enter(){active=true;resize();overlays();hud();draw();TICK.set('CARNIVAL CLAW — FIVE ITEMS FOR EVERY ROSTER NAME. BUILD YOUR CABINET.','RINGSIDE RELICS');}
+  function enter(){try{window.__arcSend&&window.__arcSend({ev:'claw',masks:masks()});}catch(_e){}active=true;resize();overlays();hud();draw();TICK.set('CARNIVAL CLAW — FIVE ITEMS FOR EVERY ROSTER NAME. BUILD YOUR CABINET.','RINGSIDE RELICS');}
   function resize(){const d=Math.min(devicePixelRatio||1,2);if(canvas.width!==W*d||canvas.height!==H*d){canvas.width=W*d;canvas.height=H*d;ctx.setTransform(d,0,0,d,0,0);}}
   function box(c,x,y,w,h,r,fill,stroke){c.beginPath();c.roundRect(x,y,w,h,r);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.stroke();}}
   function makeScenery(){
@@ -12904,6 +12909,8 @@ document.addEventListener('visibilitychange', ()=>{
 (function(){
   var GAMES={chicken:1,claw:1,shooter:1,ttt:1,chess:1,checkers:1,faygo:1,pinball:1,bj:1,memory:1,camper:1,solitaire:1,j31:1,hockey:1};
   var last=null;
+  /* progress for the site's locker badges (Carnival Claw cabinet, Crossfire rounds) */
+  window.__arcSend=function(o){ try{ if(window.parent!==window) window.parent.postMessage(Object.assign({type:'jcw-arcade'},o),'*'); }catch(e){} };
   window.__arcCount=function(name){
     if(name==='menu'){last=null;return;}
     if(!GAMES[name]||name===last)return;
