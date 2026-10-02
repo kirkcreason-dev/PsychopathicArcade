@@ -47,7 +47,11 @@ test('an extended offline run renders repeated gates, pickups and the score',asy
     let gates=0,previous=g.state.lastGate;
     for(let i=0;i<3600;i++){
       g.state.powers.hatchet=999;
-      g.step(.05);g.draw();
+      g.step(.05);
+      // Sample rendering every 300ms of simulated time. Every gate stays in
+      // view for several seconds; drawing 3,600 queued frames only saturates
+      // software-rendered WebKit on CI without adding coverage.
+      if(i%6===0) g.draw();
       if(g.state.lastGate!==previous){ gates++;previous=g.state.lastGate; }
     }
     return {state:g.state.state,dist:g.state.dist,score:g.state.score,gates};
