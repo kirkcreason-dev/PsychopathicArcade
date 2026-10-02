@@ -979,6 +979,73 @@ canvas, #soBoard{ touch-action:none; }
   .ctl-row .seg{ flex-wrap:wrap; justify-content:center; }
   .ctl-row .ctl{ flex-wrap:wrap; justify-content:center; max-width:100%; }
 }
+/* Carnival Crossfire: a compact, touch-first shooting gallery. */
+.sh-brand{font-family:var(--display);text-align:center;line-height:.9;letter-spacing:.025em;text-transform:uppercase}
+.sh-brand small{display:block;color:#fff;font-size:.42em;letter-spacing:.32em;margin:0 0 7px;text-indent:.32em}
+.sh-brand b{color:#c3ff3f;text-shadow:3px 3px #263b06,0 0 26px #8fdc0533;font-weight:900}
+#cardSH{position:relative;background:radial-gradient(ellipse at 50% 35%,#241832,#0a0a0c 68%)}
+#cardSH .sh-brand{font-size:36px}
+.sh-new{position:absolute;left:15px;top:15px;font:12px var(--display);letter-spacing:.13em;background:#c3ff3f;color:#111;padding:6px 9px;border-radius:4px}
+.sh-card-art{display:grid;place-items:center;position:relative;width:160px;height:160px;border:2px solid #ec3d87;border-radius:50%;box-shadow:inset 0 0 0 12px #120d19,inset 0 0 0 14px #692042,0 0 30px #ef197d22;margin:6px auto 10px}
+.sh-card-art:after{content:'+';position:absolute;right:-7px;bottom:12px;color:#ffd101;font:70px/1 sans-serif;text-shadow:0 0 10px #000}
+.sh-card-art img{height:120px;max-width:100px;object-fit:contain;transform:rotate(-9deg);filter:drop-shadow(4px 6px 0 #0008)}
+#shScreen{max-width:960px;margin:auto;width:100%}
+.sh-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:8px 0 17px}
+.sh-heading .sh-brand{font-size:clamp(30px,5vw,46px);text-align:left}
+.sh-edition{font:11px var(--display);letter-spacing:.15em;text-align:right;color:#b9a4c9;line-height:1.8}
+.sh-layout{display:grid;grid-template-columns:minmax(280px,520px) minmax(200px,1fr);gap:24px;align-items:start}
+.sh-cabinet{min-width:0;border:1px solid #4b2440;border-radius:18px;background:#100c16;overflow:hidden;box-shadow:0 18px 65px #000,0 0 40px #a3144210}
+.sh-hud{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;padding:13px 14px 10px;gap:8px;background:#16101d;border-bottom:1px solid #382036}
+.sh-hud small{display:block;color:#a99bb4;font:10px var(--display);letter-spacing:.12em;margin-bottom:4px}
+.sh-hud strong{font:clamp(20px,3vw,28px)/1 var(--display);color:#fff}
+#shTime{color:#ffd101}#shCombo{color:#c3ff3f}#shBest{color:#e592b6}
+.sh-board{position:relative;width:100%;aspect-ratio:480/500;background:#0d0915;isolation:isolate}
+#shCanvas{display:block;width:100%;height:100%;touch-action:none;cursor:crosshair;outline-offset:-4px}
+.sh-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2;padding:14px;background:#06030bcc;backdrop-filter:blur(3px)}
+.sh-overlay[hidden]{display:none}
+.sh-overlay-card{width:min(100%,350px);padding:24px 20px;text-align:center;border:1px solid #753857;border-radius:14px;background:linear-gradient(145deg,#25132c,#100b17);box-shadow:0 12px 45px #000a}
+.sh-kicker{font:11px var(--display);letter-spacing:.22em;color:#ffd101;margin:0 0 12px}
+.sh-overlay h2{font:clamp(27px,5vw,36px)/1.05 var(--display);color:#fff;margin:0 0 12px;letter-spacing:.025em}
+.sh-overlay p{font-size:12px;line-height:1.6;color:#c4b9cd;margin:10px 0 18px}
+.sh-start{border:1px solid #e0ff9d;border-radius:7px;background:linear-gradient(#ceff66,#9aca29);color:#132006;font:18px var(--display);letter-spacing:.08em;min-height:48px;padding:13px 20px;cursor:pointer;width:100%;box-shadow:0 4px 0 #3a570a}
+.sh-start:hover{filter:brightness(1.1)}.sh-start:active{transform:translateY(2px);box-shadow:0 2px 0 #3a570a}
+.sh-secondary{border:1px solid #735267;background:#201222;color:#eadce8;border-radius:7px;padding:10px 13px;font:13px var(--display);letter-spacing:.06em;cursor:pointer;min-height:42px}
+.sh-secondary:disabled{opacity:.4;cursor:default}
+.sh-overlay .sh-secondary{margin-top:12px}
+.sh-results{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:14px 0 18px}
+.sh-results div{padding:9px 3px;background:#ffffff06;border:1px solid #ffffff0c;border-radius:7px}
+.sh-results span{font:10px var(--display);color:#b8a6c2;display:block;margin-bottom:4px}
+.sh-results b{font:21px var(--display);color:#fff}
+#shFinalScore{font:44px var(--display);color:#c3ff3f;margin:6px 0}
+#shGoal{font-size:11px;color:#d4c6df;margin:5px 0 14px}
+.sh-footer{padding:11px 14px 12px;border-top:1px solid #382036}
+.sh-ammo-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+#shAmmo{display:flex;gap:5px;align-items:center;min-height:25px}
+#shAmmo i{display:block;width:13px;height:23px;border:1px solid #866532;border-radius:5px 5px 2px 2px;background:linear-gradient(#ffd880,#bf872d);box-shadow:inset 0 -6px #5b3b17}
+#shAmmo i.empty{background:#2b2130;border-color:#49384d;box-shadow:none}
+#shAmmo.frenzy i{background:#c3ff3f;border-color:#e7ffc0;box-shadow:inset 0 -6px #527c10}
+.sh-meter{height:5px;margin-top:12px;border-radius:6px;background:#35203a;overflow:hidden}
+#shMeterFill{height:100%;width:0;background:linear-gradient(90deg,#f1197d,#ffd101);transition:width .1s linear}
+#shStatus{min-height:18px;margin-top:7px;color:#d4b8db;font-size:10px;letter-spacing:.02em;text-align:center}
+.sh-side{display:flex;flex-direction:column;gap:16px;padding-top:4px}
+.sh-side-card{border:1px solid #302034;border-radius:13px;padding:18px;background:linear-gradient(135deg,#140f1c,#0c0a10)}
+.sh-side h3{font:18px var(--display);letter-spacing:.08em;color:#f6e8f3;margin:0 0 15px}
+.sh-rule{display:flex;align-items:center;gap:12px;margin:15px 0;font-size:12px;line-height:1.6;color:#bba9c3}
+.sh-rule b{color:#fff}.sh-swatch{flex:0 0 34px;height:34px;border:2px solid #c3ff3f;border-radius:50%;background:#263413;color:#c3ff3f;display:grid;place-items:center;font:bold 20px sans-serif}
+.sh-swatch.gold{border-color:#ffd101;color:#ffd101;background:#332816}.sh-swatch.red{border-color:#fb4d66;color:#fb4d66;background:#351221}
+.sh-side p{font-size:12px;color:#bba9c3;line-height:1.8;margin:0}.sh-side kbd{color:#e9dfee;font:11px monospace;border:1px solid #4a354e;border-radius:3px;padding:1px 4px;background:#201527}
+.sh-tip{border-left:2px solid #f1197d;padding-left:12px;margin-top:14px!important}
+#shScreen .ctl-row{margin:14px auto 0;gap:8px}
+@media(max-width:720px){
+ .sh-layout{display:flex;flex-direction:column;align-items:center;gap:18px}
+ .sh-cabinet{width:min(100%,480px);margin-inline:auto}.sh-side{width:min(100%,480px)}
+ .sh-side-card{padding:14px}.sh-heading{margin:3px 0 12px}.sh-heading .sh-brand{font-size:32px}
+ .sh-hud{padding:10px 12px}.sh-hud strong{font-size:23px}.sh-edition{font-size:9px}
+ .sh-overlay-card{padding:18px}.sh-overlay p{font-size:11px;margin-bottom:14px}
+ .sh-overlay h2{font-size:29px}.sh-results{margin:9px 0 12px}#shFinalScore{font-size:38px}
+}
+@media(max-width:380px){.sh-heading .sh-brand{font-size:27px}.sh-edition{display:none}.sh-overlay-card{padding:13px}.sh-overlay p{margin:7px 0 10px}.sh-overlay .sh-kicker{margin-bottom:7px}.sh-overlay h2{font-size:25px}.sh-start{font-size:16px;min-height:44px;padding:10px}.sh-results{margin:6px 0 10px}.sh-results div{padding:6px 2px}.sh-results b{font-size:18px}.sh-overlay .sh-secondary{margin-top:9px;min-height:36px;padding:7px 12px}}
+
 </style>
 </head>
 <body>
@@ -1000,6 +1067,12 @@ canvas, #soBoard{ touch-action:none; }
   <!-- ================= MENU ================= -->
   <section id="menuScreen" class="screen">
     <div id="gameCards">
+      <button class="game-card" id="cardSH" aria-label="Play Carnival Crossfire">
+        <span class="sh-new">NEW GAME</span>
+        <span class="sh-card-art"><img data-img="mm_card_riddlebox" alt="Joker shooting target"></span>
+        <span class="sh-brand"><small>CARNIVAL</small><b>CROSSFIRE</b></span>
+        <span class="gc-cta">TAKE YOUR SHOT</span>
+      </button>
       <button class="game-card" id="cardTTT">
         <img class="gc-art" data-img="board" alt="Tic Tac Slam">
         <span class="gc-logos"><img data-img="txtTicTacToe" alt="TIC TAC TOE"><img data-img="txtWrestling" alt="WRESTLING"></span>
@@ -1967,6 +2040,84 @@ canvas, #soBoard{ touch-action:none; }
   </section>
 
   <!-- ================= GATHERING CAMPER ================= -->
+  <!-- ================= CARNIVAL CROSSFIRE ================= -->
+  <section id="shScreen" class="screen" hidden>
+    <header class="sh-heading">
+      <div class="sh-brand" aria-label="Carnival Crossfire"><small>CARNIVAL</small><b>CROSSFIRE</b></div>
+      <div class="sh-edition">THE MIDWAY SHOOTING GALLERY<br>60 SECONDS. MAKE EVERY SHOT COUNT.</div>
+    </header>
+    <div class="sh-layout">
+      <div style="width:100%;min-width:0">
+        <div class="sh-cabinet">
+          <div class="sh-hud">
+            <div><small>SCORE</small><strong id="shScore">0</strong></div>
+            <div><small>TIME</small><strong id="shTime">60</strong></div>
+            <div><small>COMBO</small><strong id="shCombo">×1</strong></div>
+            <div><small>BEST</small><strong id="shBest">0</strong></div>
+          </div>
+          <div class="sh-board">
+            <canvas id="shCanvas" width="480" height="500" tabindex="0" aria-label="Carnival shooting gallery. Tap or click moving targets. Use arrow keys to aim and Space to fire. R reloads, P pauses." aria-describedby="shInstructions"></canvas>
+            <div id="shAttract" class="sh-overlay">
+              <div class="sh-overlay-card">
+                <div class="sh-kicker">STEP RIGHT UP</div>
+                <h2>QUICK HANDS.<br>WICKED AIM.</h2>
+                <p>Blast the Joker targets. Hit the tiny bullseye for extra points. Leave the red bombs alone.</p>
+                <button id="shStartBtn" class="sh-start">LET IT RIP</button>
+                <p style="margin-bottom:0">8 hits in a row unlock FRENZY:<br>unlimited shots + double points.</p>
+              </div>
+            </div>
+            <div id="shPause" class="sh-overlay" hidden>
+              <div class="sh-overlay-card">
+                <div class="sh-kicker">YOUR ROUND IS SAFE</div><h2>TAKE A BREATHER</h2>
+                <p>The clock, targets and reload are paused.</p>
+                <button id="shResumeBtn" class="sh-start">BACK TO THE MIDWAY</button>
+                <button id="shRestartBtn" class="sh-secondary">START OVER</button>
+              </div>
+            </div>
+            <div id="shOver" class="sh-overlay" hidden>
+              <div class="sh-overlay-card">
+                <div id="shResultKicker" class="sh-kicker">ROUND COMPLETE</div>
+                <h2 id="shRank">MIDWAY ROOKIE</h2><div id="shFinalScore">0</div>
+                <div class="sh-results">
+                  <div><span>ACCURACY</span><b id="shAccuracy">0%</b></div>
+                  <div><span>BEST STREAK</span><b id="shStreak">0</b></div>
+                  <div><span>BULLSEYES</span><b id="shBullseyes">0</b></div>
+                </div>
+                <div id="shGoal">Next medal: 1,000 points</div>
+                <button id="shAgainBtn" class="sh-start">ONE MORE ROUND</button>
+                <button id="shSaveBtn" class="sh-secondary">SAVE TO MIDWAY RECORDS</button>
+              </div>
+            </div>
+          </div>
+          <div class="sh-footer">
+            <div class="sh-ammo-row"><div id="shAmmo" role="img" aria-label="6 shots remaining"></div><button id="shReloadBtn" class="sh-secondary">RELOAD · R</button></div>
+            <div class="sh-meter" role="meter" aria-label="Frenzy charge" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0" id="shMeter"><div id="shMeterFill"></div></div>
+            <div id="shStatus" role="status" aria-live="polite">Tap targets. Avoid bombs. Build your streak.</div>
+          </div>
+        </div>
+        <div class="ctl-row">
+          <button id="shPauseBtn" class="sh-secondary" disabled>PAUSE</button>
+          <button id="shSoundBtn" class="img-btn icon" aria-label="Mute sound"><img data-img="icoSoundOn" alt="Sound"></button>
+          <button id="shHomeBtn" class="sh-secondary">ARCADE MENU</button>
+        </div>
+      </div>
+      <aside class="sh-side" id="shInstructions">
+        <div class="sh-side-card">
+          <h3>THE HOUSE RULES</h3>
+          <div class="sh-rule"><span class="sh-swatch">◎</span><span><b>JOKER TARGET · 50 POINTS</b><br>Hit the centre for a +25 bullseye bonus.</span></div>
+          <div class="sh-rule"><span class="sh-swatch gold">★</span><span><b>GOLD TARGET · 150 POINTS</b><br>A quick payday. Grab it before it drops.</span></div>
+          <div class="sh-rule"><span class="sh-swatch red">×</span><span><b>RED BOMB · HANDS OFF</b><br>Costs 100 points, 2 seconds and your combo.</span></div>
+          <p class="sh-tip">Every 3 clean hits raise your multiplier, up to ×4. Misses, escaped targets and bombs break the streak. Land 8 in a row for 6 seconds of FRENZY.</p>
+        </div>
+        <div class="sh-side-card">
+          <h3>GET YOUR AIM IN</h3>
+          <p><b>Phone:</b> tap a target to shoot.<br><b>Mouse:</b> aim and click.<br><b>Keyboard:</b> <kbd>←</kbd> <kbd>↑</kbd> <kbd>↓</kbd> <kbd>→</kbd> aim, <kbd>Space</kbd> fires.<br><kbd>R</kbd> reloads · <kbd>P</kbd> pauses.</p>
+          <p class="sh-tip">Six shots per magazine. Reload takes 0.85 seconds. Clear the screen before reloading to keep your streak alive.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
   <section id="gcScreen" class="screen" hidden>
     <div class="game-logo">
       <img data-img="gc_logo" alt="GATHERING CAMPER" style="height:clamp(64px,10vw,104px)">
@@ -2316,7 +2467,7 @@ canvas, #soBoard{ touch-action:none; }
     <span id="tickerText">WELCOME TO THE PSYCHOPATHIC ARCADE — PICK YOUR POISON!</span>
   </div>
 
-  <div id="hint">11 games · Play solo, challenge a friend, or join an online match.</div>
+  <div id="hint">12 games · Play solo, challenge a friend, or join an online match.</div>
 </div>
 
 <script>
@@ -4439,6 +4590,7 @@ function setSoundIcons(){
    ['#gcSoundBtn','icoSoundOn','icoSoundOff'],
    ['#soSoundBtn','icoSoundOn','icoSoundOff'],
    ['#j31SoundBtn','icoSoundOn','icoSoundOff'],
+   ['#shSoundBtn','icoSoundOn','icoSoundOff'],
    ['#ahSoundBtn','ah_btnSndOn','ah_btnSndOff']].forEach(([sel,a,b])=>{
     const el = document.querySelector(sel+' img');
     if(el){
@@ -4478,7 +4630,7 @@ const LINES_TTT = {
   win:["RING THE BELL! IT'S OVER!","{n} TAKES THE FALL — WHAT A SHOWING!","THAT'S ALL SHE WROTE — {n} WINS IT!"],
   draw:["NEITHER SIDE CAN GET THE ADVANTAGE!","DOUBLE COUNT-OUT! THE JUDGES CALL IT EVEN!","NINE SQUARES AND NOTHING SETTLED!"],
   denied:["THAT SQUARE'S TAKEN, CHAMP!","THE REF SAYS NO!"],
-  welcome:["WELCOME TO THE PSYCHOPATHIC ARCADE — PICK YOUR POISON!","STEP RIGHT UP — THE CARNIVAL NEVER CLOSES!","ELEVEN GAMES, ZERO MERCY. CHOOSE."]
+  welcome:["WELCOME TO THE PSYCHOPATHIC ARCADE — PICK YOUR POISON!","STEP RIGHT UP — THE CARNIVAL NEVER CLOSES!","TWELVE GAMES, ZERO MERCY. CHOOSE."]
 };
 const LINES_CH = {
   start:["THE CARNIVAL OPENS THE BOARD — PALE MOVES FIRST!","64 SQUARES OF BAD INTENTIONS. HERE WE GO!"],
@@ -4858,6 +5010,8 @@ function showScreen(name){
   $('#soScreen').hidden       = name!=='solitaire';
   $('#j31Screen').hidden      = name!=='j31';
   $('#ahScreen').hidden       = name!=='hockey';
+  $('#shScreen').hidden       = name!=='shooter';
+  if(window.SHOOTER_READY && name!=='shooter') SHOOTER.leave();
   if(window.PINBALL_READY && name!=='pinball') PINBALL.leave();
   if(window.CAMPER_READY && name!=='camper') CAMPER.leave();
   if(window.AH_READY && name!=='hockey') AIRHOCKEY.leave();
@@ -4875,6 +5029,7 @@ function showScreen(name){
   if(name==='solitaire') SOLITAIRE.enter();
   if(name==='j31') J31.enter();
   if(name==='hockey') AIRHOCKEY.enter();
+  if(name==='shooter') SHOOTER.enter();
   syncClocks();
   window.scrollTo(0, 0);
 }
@@ -11439,8 +11594,260 @@ window.NET_READY = true;
 /* ============================================================
    MIDWAY RECORDS — per-game local leaderboards
    ============================================================ */
+/* ================= GAME 12 — CARNIVAL CROSSFIRE ================= */
+const SHOOTER = (()=>{
+  const W=480, H=500, FONT='Impact,"Arial Black",sans-serif', RELOAD=.85;
+  const store=gameStore('pa_sh_');
+  const medals=[[0,'MIDWAY ROOKIE'],[1000,'TRICK SHOT'],[3000,'SHARPSHOOTER'],[6000,'CARNIVAL ACE'],[10000,'MIDWAY LEGEND']];
+  const S={mode:'ready',score:0,time:60,elapsed:0,wave:1,ammo:6,reload:0,cooldown:0,
+    streak:0,bestStreak:0,charge:0,frenzy:0,shots:0,hits:0,bullseyes:0,spawnIn:0,spawned:0,
+    targets:[],particles:[],labels:[],best:Math.max(0,store.get('best',0)),saved:false,
+    aim:{x:W/2,y:H/2,visible:false},banner:'',bannerTime:0};
+  let canvas,ctx,scenery,raf=0,last=0,hudKey='',active=false;
+  const held=new Set(), art=[];
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+  const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
+  function text(id,value){ const el=$('#'+id); if(el.textContent!==String(value)) el.textContent=value; }
+  function status(message){ text('shStatus',message); }
+  function announce(message){ S.banner=message; S.bannerTime=1.4; }
+  function stop(){ cancelAnimationFrame(raf); raf=0; last=0; held.clear(); }
+  function loop(now){
+    raf=0;
+    if(!active || S.mode!=='playing') return;
+    // A suspended tab must never skip a whole round or create a spawn backlog.
+    const dt=last ? Math.min((now-last)/1000,.05) : 0; last=now;
+    step(dt); draw();
+    if(S.mode==='playing') raf=requestAnimationFrame(loop);
+  }
+  function run(){ if(active && S.mode==='playing' && !raf){ last=0; raf=requestAnimationFrame(loop); } }
+  function overlays(){
+    $('#shAttract').hidden=S.mode!=='ready'; $('#shPause').hidden=S.mode!=='paused'; $('#shOver').hidden=S.mode!=='over';
+    $('#shPauseBtn').disabled=S.mode==='ready' || S.mode==='over';
+    text('shPauseBtn',S.mode==='paused'?'RESUME':'PAUSE');
+  }
+  function hud(){
+    const key=[S.score,Math.ceil(S.time),multiplier(),S.ammo,Math.ceil(S.reload*10),Math.ceil(S.frenzy*10),S.charge,S.best,S.mode].join('|');
+    if(key===hudKey) return; hudKey=key;
+    text('shScore',S.score.toLocaleString()); text('shTime',Math.ceil(S.time));
+    text('shCombo','×'+(multiplier()*(S.frenzy>0?2:1))); text('shBest',S.best.toLocaleString());
+    $('#shTime').style.color=S.time<=10?'#ff5979':'#ffd101';
+    $('#shAmmo').classList.toggle('frenzy',S.frenzy>0);
+    [...$('#shAmmo').children].forEach((el,i)=>el.classList.toggle('empty',i>=S.ammo && S.frenzy<=0));
+    $('#shAmmo').setAttribute('aria-label',S.frenzy>0?'Unlimited shots':S.ammo+' shots remaining');
+    text('shReloadBtn',S.frenzy>0?'FRENZY':S.reload>0?'RELOADING…':'RELOAD · R');
+    $('#shReloadBtn').disabled=S.mode!=='playing' || S.reload>0 || S.ammo===6 || S.frenzy>0;
+    const charge=S.frenzy>0?8:S.charge;
+    $('#shMeterFill').style.width=(S.frenzy>0?S.frenzy/6*100:charge/8*100)+'%';
+    $('#shMeterFill').style.background=S.frenzy>0?'#c3ff3f':'';
+    $('#shMeter').setAttribute('aria-valuenow',String(charge));
+    $('#shMeter').setAttribute('aria-valuetext',S.frenzy>0?'Frenzy active':charge+' of 8 hits');
+  }
+  function multiplier(){ return Math.min(4,1+Math.floor(S.streak/3)); }
+  function position(t){
+    const row=Math.floor(t.slot/3), col=t.slot%3;
+    return {x:86+col*154+Math.sin(t.age*(1.4+S.wave*.35)+t.phase)*18,
+      y:139+row*130+Math.sin(t.age*2+t.phase)*6};
+  }
+  function spawn(){
+    const free=Array.from({length:9},(_,i)=>i).filter(i=>!S.targets.some(t=>t.slot===i));
+    if(!free.length) return;
+    S.spawned++;
+    const kind=S.spawned%7===0?'gold':S.spawned>3 && S.spawned%5===0?'bomb':'joker';
+    S.targets.push({slot:pick(free),kind,age:0,life:3.1-S.wave*.32,r:38,phase:Math.random()*Math.PI*2,art:rnd(art.length)});
+  }
+  function breakStreak(message){ S.streak=0; S.charge=0; status(message); }
+  function reload(){
+    if(S.mode!=='playing' || S.reload>0 || S.ammo===6 || S.frenzy>0) return;
+    S.reload=RELOAD; status('Reloading…'); Sound.play('flip'); hud();
+  }
+  function burst(x,y,color,label){
+    S.labels.push({x,y,text:label,color,life:.75});
+    if(S.labels.length>10) S.labels.shift();
+    for(let i=0;i<(reduced.matches?0:9);i++){
+      const a=Math.random()*Math.PI*2, v=35+Math.random()*95;
+      S.particles.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,life:.38+Math.random()*.2,color});
+    }
+    if(S.particles.length>90) S.particles.splice(0,S.particles.length-90);
+  }
+  function shoot(x,y){
+    if(S.mode!=='playing' || !active || S.cooldown>0 || S.reload>0 || !Number.isFinite(x+y)) return;
+    if(x<0 || x>W || y<0 || y>H) return;
+    if(S.ammo<=0 && S.frenzy<=0){ reload(); return; }
+    S.cooldown=.14; S.shots++; if(S.frenzy<=0) S.ammo--;
+    S.aim.x=x; S.aim.y=y;
+    // Use the same centre and radius as the drawing, in logical canvas coordinates.
+    let hit=-1;
+    for(let i=S.targets.length-1;i>=0;i--){ const t=S.targets[i],p=position(t); if(Math.hypot(x-p.x,y-p.y)<=t.r){hit=i;break;} }
+    if(hit<0){ breakStreak('MISS · streak reset'); burst(x,y,'#aa8dba','MISS'); Sound.play('move'); }
+    else {
+      const t=S.targets.splice(hit,1)[0], p=position(t);
+      if(t.kind==='bomb'){
+        S.score=Math.max(0,S.score-100); S.time=Math.max(0,S.time-2);
+        breakStreak('BOMB · −100 points / −2 seconds'); burst(p.x,p.y,'#ff5979','−100 / −2s'); Sound.play('fizz');
+      } else {
+        const centre=Math.hypot(x-p.x,y-p.y)<=12, wasFrenzy=S.frenzy>0;
+        S.hits++; S.streak++; S.bestStreak=Math.max(S.bestStreak,S.streak); if(centre) S.bullseyes++;
+        const points=((t.kind==='gold'?150:50)+(centre?25:0))*multiplier()*(wasFrenzy?2:1);
+        S.score+=points;
+        burst(p.x,p.y,t.kind==='gold'?'#ffd101':'#c3ff3f',(centre?'BULLSEYE ':'')+'+'+points);
+        Sound.play(centre?'bellOne':'pop');
+        if(!wasFrenzy) S.charge++;
+        if(S.charge>=8){
+          S.charge=0; S.frenzy=6; S.reload=0; S.ammo=6;
+          announce('FRENZY!'); status('FRENZY · 6 seconds of unlimited shots + double points'); Sound.play('fanfare');
+        } else if(!wasFrenzy) status(S.streak+' HIT STREAK · '+(8-S.charge)+' to FRENZY');
+      }
+    }
+    if(S.time<=0) finish();
+    else if(S.ammo===0 && S.frenzy<=0) reload();
+    hud(); draw();
+  }
+  function step(dt){
+    if(S.mode!=='playing' || !Number.isFinite(dt) || dt<=0) return;
+    dt=Math.min(dt,.05);
+    S.time=Math.max(0,S.time-dt); S.elapsed+=dt;
+    S.cooldown=Math.max(0,S.cooldown-dt); S.bannerTime=Math.max(0,S.bannerTime-dt);
+    if(S.reload>0){ S.reload=Math.max(0,S.reload-dt); if(S.reload===0){S.ammo=6;status('LOCKED & LOADED · make them count');} }
+    if(S.frenzy>0){ S.frenzy=Math.max(0,S.frenzy-dt); if(S.frenzy===0){S.ammo=6;status('FRENZY ended · build another streak');} }
+    const wave=Math.min(3,1+Math.floor(S.elapsed/20));
+    if(wave!==S.wave){ S.wave=wave; announce(wave===2?'WAVE 2 · PICK UP THE PACE':'FINAL WAVE · GO ALL IN'); Sound.play('bell'); }
+    for(const t of S.targets) t.age+=dt;
+    if(S.targets.some(t=>t.age>=t.life && t.kind!=='bomb')) breakStreak('TARGET ESCAPED · streak reset');
+    S.targets=S.targets.filter(t=>t.age<t.life);
+    S.spawnIn-=dt;
+    if(S.spawnIn<=0){ spawn(); S.spawnIn=[0,.76,.6,.46][S.wave]; }
+    S.particles.forEach(p=>{p.life-=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=100*dt;});
+    S.particles=S.particles.filter(p=>p.life>0);
+    S.labels.forEach(p=>{p.life-=dt;p.y-=30*dt;}); S.labels=S.labels.filter(p=>p.life>0);
+    const dx=(held.has('ArrowRight')?1:0)-(held.has('ArrowLeft')?1:0),dy=(held.has('ArrowDown')?1:0)-(held.has('ArrowUp')?1:0);
+    if(dx || dy){ const speed=300*dt/Math.hypot(dx,dy);S.aim.x=clamp(S.aim.x+dx*speed,10,W-10);S.aim.y=clamp(S.aim.y+dy*speed,65,H-15);S.aim.visible=true; }
+    if(S.time<=0) finish(); hud();
+  }
+  function start(){
+    stop();
+    Object.assign(S,{mode:'playing',score:0,time:60,elapsed:0,wave:1,ammo:6,reload:0,cooldown:0,
+      streak:0,bestStreak:0,charge:0,frenzy:0,shots:0,hits:0,bullseyes:0,spawnIn:.76,spawned:0,
+      targets:[],particles:[],labels:[],saved:false,aim:{x:W/2,y:H/2,visible:false}});
+    spawn(); spawn(); announce('WAVE 1 · STEP RIGHT UP');
+    status('Hit 8 in a row to unleash FRENZY.'); overlays(); hud(); draw();
+    canvas.focus({preventScroll:true}); Sound.play('launch'); run();
+  }
+  function finish(){
+    if(S.mode!=='playing') return;
+    const oldBest=S.best;
+    S.mode='over'; S.time=0; stop();
+    S.best=Math.max(S.best,S.score); store.set('best',S.best);
+    const medal=medals.filter(m=>S.score>=m[0]).at(-1),next=medals.find(m=>m[0]>S.score);
+    text('shResultKicker',S.score>oldBest?'NEW PERSONAL BEST':'ROUND COMPLETE'); text('shRank',medal[1]);
+    text('shFinalScore',S.score.toLocaleString()); text('shAccuracy',(S.shots?Math.round(S.hits/S.shots*100):0)+'%');
+    text('shStreak',S.bestStreak); text('shBullseyes',S.bullseyes);
+    text('shGoal',next?(next[0]-S.score).toLocaleString()+' more points to '+next[1]+'.':'Top medal earned. How high can you go?');
+    $('#shSaveBtn').disabled=S.score<=0; text('shSaveBtn','SAVE TO MIDWAY RECORDS');
+    overlays(); hud(); status('Round complete. Your best is saved on this device.');
+    $('#shAgainBtn').focus({preventScroll:true}); Sound.play('bell');
+  }
+  function pause(force){
+    if(force===true && S.mode!=='playing') return;
+    if(S.mode==='playing'){S.mode='paused';stop();}
+    else if(S.mode==='paused' && force!==true){S.mode='playing';run();canvas.focus({preventScroll:true});}
+    else return;
+    overlays(); hud(); draw();
+  }
+  function leave(){ pause(true); active=false; stop(); }
+  function enter(){ active=true; resize(); overlays(); hud(); draw(); TICK.set('CARNIVAL CROSSFIRE — CHASE THE STREAK. DODGE THE BOMBS.','MIDWAY'); }
+  function resize(){
+    const dpr=Math.min(devicePixelRatio||1,2);
+    if(canvas.width!==W*dpr || canvas.height!==H*dpr){canvas.width=W*dpr;canvas.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);}
+  }
+  function circle(c,x,y,r,fill,stroke){c.beginPath();c.arc(x,y,r,0,Math.PI*2);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.stroke();}}
+  function makeScenery(){
+    scenery=document.createElement('canvas'); scenery.width=W;scenery.height=H;const c=scenery.getContext('2d');
+    const bg=c.createLinearGradient(0,0,0,H);bg.addColorStop(0,'#2a1537');bg.addColorStop(1,'#0d0b18');c.fillStyle=bg;c.fillRect(0,0,W,H);
+    for(let x=0;x<W;x+=40){c.fillStyle=(x/40)%2?'#40132c':'#671c40';c.fillRect(x,0,40,40);c.beginPath();c.moveTo(x,40);c.lineTo(x+20,59);c.lineTo(x+40,40);c.fill();}
+    for(let x=18;x<W;x+=28){circle(c,x,16,4,'#e7b958');circle(c,x,16,2,'#fff0a1');}
+    for(let row=0;row<3;row++){
+      for(let col=0;col<3;col++){
+        const x=86+col*154,y=139+row*130;
+        circle(c,x,y,47,'#06050d','#33223f');c.lineWidth=1;circle(c,x,y,42,null,'#20172c');
+        c.fillStyle='#28132a';c.fillRect(x-48,y+41,96,7);
+      }
+      c.fillStyle='#713351';c.fillRect(16,188+row*130,448,3);
+      c.fillStyle='#2d162f';c.fillRect(16,191+row*130,448,8);
+      c.fillStyle='#09060f';c.fillRect(16,199+row*130,448,5);
+    }
+    c.fillStyle='#a884af';c.textAlign='center';c.font='11px '+FONT;c.fillText('JOKERS PAY. BOMBS BITE.',W/2,481);
+  }
+  function draw(){
+    if(!ctx || !active) return;
+    ctx.drawImage(scenery,0,0);
+    ctx.textAlign='center';ctx.font='12px '+FONT;ctx.fillStyle=S.frenzy>0?'#c3ff3f':'#b797c1';
+    ctx.fillText(S.frenzy>0?'FRENZY  ·  DOUBLE POINTS  ·  '+S.frenzy.toFixed(1)+'s':'WAVE '+S.wave+' / 3  ·  '+(S.streak?'STREAK '+S.streak:'MAKE EVERY SHOT COUNT'),W/2,78);
+    for(const t of S.targets){
+      const p=position(t),color=t.kind==='bomb'?'#ff5979':t.kind==='gold'?'#ffd101':'#c3ff3f';
+      ctx.save();ctx.translate(p.x,p.y);
+      // The visible/hittable circle stays full-size, including during its entry cue.
+      ctx.fillStyle='#483043';ctx.fillRect(-4,30,8,22);
+      ctx.lineWidth=3;circle(ctx,0,0,t.r,t.kind==='bomb'?'#451628':'#241b2e',color);
+      ctx.lineWidth=1;circle(ctx,0,0,t.r-7,null,color);
+      if(t.kind==='bomb'){
+        circle(ctx,0,0,22,'#110b17','#ff5979');ctx.lineWidth=5;ctx.strokeStyle='#ff5979';
+        ctx.beginPath();ctx.moveTo(-10,-10);ctx.lineTo(10,10);ctx.moveTo(10,-10);ctx.lineTo(-10,10);ctx.stroke();
+        ctx.font='9px '+FONT;ctx.fillStyle='#ffb8c5';ctx.fillText('BOMB',0,31);
+      } else {
+        const im=art[t.art];
+        if(im && im.complete && im.naturalWidth){const scale=Math.min(43/im.naturalWidth,54/im.naturalHeight);ctx.drawImage(im,-im.naturalWidth*scale/2,-im.naturalHeight*scale/2,im.naturalWidth*scale,im.naturalHeight*scale);}
+        else {ctx.fillStyle=color;ctx.font='30px '+FONT;ctx.fillText('J',0,10);}
+        ctx.lineWidth=1.5;circle(ctx,0,0,12,'#180823a0','#fff5dc');circle(ctx,0,0,3,'#fff5dc');
+        if(t.kind==='gold'){ctx.font='14px '+FONT;ctx.fillStyle='#ffd101';ctx.fillText('★',0,-42);}
+      }
+      ctx.lineWidth=3;ctx.strokeStyle=color;ctx.beginPath();ctx.arc(0,0,t.r+5,-Math.PI/2,-Math.PI/2+Math.PI*2*(1-t.age/t.life));ctx.stroke();
+      ctx.restore();
+    }
+    for(const p of S.particles){ctx.globalAlpha=Math.min(1,p.life*3);ctx.fillStyle=p.color;ctx.fillRect(p.x-2,p.y-2,4,4);}ctx.globalAlpha=1;
+    for(const p of S.labels){ctx.globalAlpha=Math.min(1,p.life*3);ctx.font='15px '+FONT;ctx.lineWidth=4;ctx.strokeStyle='#100817';ctx.strokeText(p.text,p.x,p.y-44);ctx.fillStyle=p.color;ctx.fillText(p.text,p.x,p.y-44);}ctx.globalAlpha=1;
+    if(S.aim.visible && S.mode==='playing'){
+      const {x,y}=S.aim;ctx.lineWidth=1.5;circle(ctx,x,y,17,null,'#fff');ctx.strokeStyle='#fff';ctx.beginPath();
+      ctx.moveTo(x-24,y);ctx.lineTo(x-10,y);ctx.moveTo(x+10,y);ctx.lineTo(x+24,y);ctx.moveTo(x,y-24);ctx.lineTo(x,y-10);ctx.moveTo(x,y+10);ctx.lineTo(x,y+24);ctx.stroke();
+    }
+    if(S.bannerTime>0 && S.mode==='playing'){
+      ctx.globalAlpha=Math.min(1,S.bannerTime*2);ctx.fillStyle='#100916e8';ctx.fillRect(16,451,W-32,42);
+      ctx.fillStyle=S.frenzy>0?'#c3ff3f':'#ffe298';ctx.font=(S.frenzy>0?'30':'20')+'px '+FONT;ctx.fillText(S.banner,W/2,479);ctx.globalAlpha=1;
+    }
+  }
+  function pointer(e){const r=canvas.getBoundingClientRect();return{x:(e.clientX-r.left)*W/r.width,y:(e.clientY-r.top)*H/r.height};}
+  function bind(){
+    canvas=$('#shCanvas');ctx=canvas.getContext('2d'); makeScenery();resize();
+    for(const key of ['riddlebox','milenko','carnival','ringmaster','jeckel','wraith']){const im=new Image();im.src=img('mm_card_'+key);im.onload=()=>{if(S.mode!=='playing')draw();};art.push(im);}
+    for(let i=0;i<6;i++) $('#shAmmo').appendChild(document.createElement('i'));
+    $('#shStartBtn').onclick=start;$('#shAgainBtn').onclick=start;$('#shRestartBtn').onclick=start;
+    $('#shPauseBtn').onclick=()=>pause();$('#shResumeBtn').onclick=()=>pause();
+    $('#shReloadBtn').onclick=()=>{reload();canvas.focus({preventScroll:true});};
+    $('#shSoundBtn').onclick=toggleSound;$('#shHomeBtn').onclick=()=>showScreen('menu');
+    $('#shSaveBtn').onclick=()=>{if(S.mode!=='over'||S.saved||S.score<=0)return;S.saved=true;$('#shSaveBtn').disabled=true;text('shSaveBtn','SCORE SUBMITTED');LB.check('shooter',S.score,S.bestStreak+' hit streak');};
+    canvas.addEventListener('pointerdown',e=>{if(e.button!==0 || !e.isPrimary)return;e.preventDefault();canvas.focus({preventScroll:true});const p=pointer(e);S.aim.visible=e.pointerType!=='touch';shoot(p.x,p.y);});
+    canvas.addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;Object.assign(S.aim,pointer(e),{visible:true});});
+    canvas.addEventListener('pointerleave',()=>{S.aim.visible=false;});
+    document.addEventListener('keydown',e=>{
+      if(!active || gameKeysBlocked(e) || (e.target!==canvas && e.target?.closest('button'))) return;
+      if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Space','KeyR','KeyP','Escape'].includes(e.code)) e.preventDefault(); else return;
+      if(e.code==='KeyP'||e.code==='Escape'){if(!e.repeat)pause();return;}
+      if(S.mode!=='playing')return;
+      if(e.code.startsWith('Arrow')){held.add(e.code);S.aim.visible=true;}
+      if(e.code==='Space'){S.aim.visible=true;shoot(S.aim.x,S.aim.y);}
+      if(e.code==='KeyR'&&!e.repeat)reload();
+    });
+    document.addEventListener('keyup',e=>held.delete(e.code));
+    window.addEventListener('blur',()=>pause(true));
+    document.addEventListener('visibilitychange',()=>{if(document.hidden)pause(true);});
+    window.addEventListener('resize',()=>{if(active){resize();draw();}});
+    hud();overlays();
+  }
+  return {bind,enter,leave,start,pause,reload,shoot,step,draw,position,state:S};
+})();
+
 const LB = (()=>{
   const CFG = {
+    shooter: {name:'CARNIVAL CROSSFIRE',metric:'HIGH SCORE',higher:true,screen:'shScreen'},
     ttt:     { name:'TIC TAC SLAM',        metric:'LONGEST FALL STREAK VS CPU', higher:true,  screen:'tttScreen' },
     chess:   { name:'JUGGALO CHESS',       metric:'FEWEST MOVES TO MATE THE CPU', higher:false, screen:'chessScreen' },
     checkers:{ name:'JUGGALO CHECKERS',    metric:'FEWEST MOVES TO SWEEP THE CPU', higher:false, screen:'checkersScreen' },
@@ -11453,7 +11860,7 @@ const LB = (()=>{
     j31:     { name:'JUGGALO 31',           metric:'TABLES SWEPT IN A ROW VS CPU', higher:true, screen:'j31Screen' },
     hockey:  { name:'JUGGALO AIR HOCKEY',   metric:'WIN STREAK VS CPU', higher:true, screen:'ahScreen' },
   };
-  const SHORT = { ttt:'SLAM', chess:'CHESS', checkers:'CHECKERS', pinball:'PINBALL', faygo:'JOKER CARD FOUR', bj:'21', memory:'MEMORY', camper:'CAMPER', solitaire:'SOLITAIRE', j31:'31', hockey:'HOCKEY' };
+  const SHORT = { shooter:'CROSSFIRE', ttt:'SLAM', chess:'CHESS', checkers:'CHECKERS', pinball:'PINBALL', faygo:'JOKER CARD FOUR', bj:'21', memory:'MEMORY', camper:'CAMPER', solitaire:'SOLITAIRE', j31:'31', hockey:'HOCKEY' };
   let data = {}, pending = null, queue = [], current = 'ttt';
   try{ data = JSON.parse(localStorage.getItem('pa_lb') || '{}') || {}; }catch(e){ data = {}; }
   if(!data || typeof data!=='object' || Array.isArray(data)) data={};
@@ -11548,6 +11955,7 @@ const LB = (()=>{
     });
   }
   function show(g){
+    if(!$('#shScreen').hidden) SHOOTER.pause(true);
     if(g && CFG[g]) current = g;
     $('#lbEntry').hidden = !pending;
     render();
@@ -11580,13 +11988,14 @@ window.LB_READY = true;
 
 /* ================= hub + boot ================= */
 function bindHub(){
+  $('#cardSH').onclick = ()=>{ Sound.play('move'); showScreen('shooter'); };
   $('#cardTTT').onclick = ()=>{ Sound.play('move'); showScreen('ttt'); };
   $('#cardChess').onclick = ()=>{ Sound.play('move'); showScreen('chess'); };
   $('#cardCheckers').onclick = ()=>{ Sound.play('move'); showScreen('checkers'); };
   $('#cardPinball').onclick = ()=>{ Sound.play('move'); showScreen('pinball'); };
   $('#cardFaygo').onclick = ()=>{ Sound.play('move'); showScreen('faygo'); };
 }
-window.ARCADE = { showScreen, TTT, CHESS, CHECKERS, FAYGO, PINBALL, BLACKJACK, MEMORY, CAMPER, SOLITAIRE, J31, AIRHOCKEY, NET, LB, Sound, T, TICK, ASSETS };
+window.ARCADE = { showScreen, SHOOTER, TTT, CHESS, CHECKERS, FAYGO, PINBALL, BLACKJACK, MEMORY, CAMPER, SOLITAIRE, J31, AIRHOCKEY, NET, LB, Sound, T, TICK, ASSETS };
 
 applyDataImgs();
 TTT.bind();
@@ -11602,6 +12011,8 @@ SOLITAIRE.bind();
 J31.bind();
 AIRHOCKEY.bind();
 window.AH_READY = true;
+SHOOTER.bind();
+window.SHOOTER_READY = true;
 NET.bind();
 LB.bind();
 window.PINBALL_READY = true;
@@ -11638,7 +12049,7 @@ document.addEventListener('visibilitychange', ()=>{
 /* Play counter hook: when the arcade runs inside jcwlunacy.net the host page
    counts plays (stats/arcade/<game>, read by admin.html). No-op standalone. */
 (function(){
-  var GAMES={ttt:1,chess:1,checkers:1,faygo:1,pinball:1,bj:1,memory:1,camper:1,solitaire:1,j31:1,hockey:1};
+  var GAMES={shooter:1,ttt:1,chess:1,checkers:1,faygo:1,pinball:1,bj:1,memory:1,camper:1,solitaire:1,j31:1,hockey:1};
   var last=null;
   window.__arcCount=function(name){
     if(name==='menu'){last=null;return;}
