@@ -9771,6 +9771,7 @@ const LINES_GC = {
 
 const CAMPER = (()=>{
   const W = 470, H = 760;
+  const FONT = 'Impact,"Arial Black",sans-serif';
   const JUMP_TIME = .82, SLIDE_TIME = .8, STEP_TIME = 1/120;
   const HORIZON = .34, PLAYERY = .84, SPAWNZ = 60;
   const LANE_OFF = .62;
@@ -10333,7 +10334,6 @@ const CAMPER = (()=>{
     g.closePath();
   }
   function drawHud(){
-    const FONT = 'Impact,"Arial Black",sans-serif';
     g.textBaseline = 'middle';
     // --- top bar ---
     const bw = W-16, bx = 8, by = 8, bh = 46;
