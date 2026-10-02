@@ -1,6 +1,6 @@
 # Psychopathic Arcade
 
-Eleven browser games with the original artwork, synthesized audio, CPU opponents,
+Eleven browser games with carnival artwork, synthesized audio, CPU opponents,
 local multiplayer, and seven online modes. Open `public/game.html` directly for
 local play, or serve the Vite build. No backend is needed for solo/local games.
 
@@ -19,6 +19,8 @@ npm test
 `npm test` builds the production site and runs Playwright against its preview,
 including game rules, interrupted rounds, CPU cancellation, score persistence,
 keyboard controls, phone layouts, and real two-peer WebRTC matches.
+The test server uses port 4713 (`ARCADE_TEST_PORT` can override it) and never
+silently reuses another project's server.
 
 On a developer machine Chromium tests use installed Google Chrome. Install
 WebKit with `npx playwright install webkit`. In CI, install both engines with
@@ -46,12 +48,35 @@ without checking. Keep the bundled chess engine's license intact.
   Juggalo 31 recognizes a dealt 31 and rejects out-of-turn/after-round actions.
 - Air hockey resumes after menu navigation and bounds paddle momentum. Runner
   swipes handle cancelled pointers; pinball releases controls on focus loss.
-- Solo clocks and the Faygo speed timer stop advancing while their game is hidden.
-  Faygo's clock survives full-column clicks; changing modes starts a fresh round.
+- Solo clocks and the Joker Card Four speed timer stop advancing while hidden.
+  Its clock survives full-column clicks; changing modes starts a fresh round.
 - Invalid stored score types cannot prevent startup. Sound preferences persist.
   Keyboard shortcuts respect help dialogs. Browser zoom and reduced motion work.
 - Phone layouts keep game controls with the playfield and condense solitaire
   statistics. Badge notices stay hidden until earned.
+
+## Sprite and Gathering Camper update
+
+Repaired 52 sprites, including the Camper selection icon/logo, 25 campground
+objects, checker tokens, pickups and three Joker Card pucks. The replacement art
+keeps opaque dark interiors and transparent margins. Broken text-button cuts and
+score plates now use live text. Visible beverage branding has been replaced with
+Joker Card art; internal game and storage IDs remain compatible.
+
+Camper caches its scenery, draws one continuous horizon, and uses a fixed
+simulation step. Touch controls respond on press and swipes act before release.
+Cleared obstacles resolve once, fatal hits stop scoring, and focus loss pauses
+the run. Rows leave a reachable lane and their spacing grows with speed.
+
+Source PNGs, reviewed frame boundaries and generation prompts are in
+`assets/sprites/`. Run `node scripts/import-sprites.mjs` to rebuild the embedded
+WebP sprites after changing those sources. This preserves alpha rather than
+treating dark object pixels as background. The exported game remains a single
+self-contained HTML file.
+
+Local 4× CPU-throttled Chromium sampling (390px viewport, 2× pixel ratio) measured
+median simulation/draw work of 1.4ms before and 1.0ms after; p95 was 2.4ms and
+1.8ms. This is a local rendering-cost comparison, not a guaranteed device FPS.
 
 ## Online play and test limits
 

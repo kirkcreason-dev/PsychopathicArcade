@@ -1,12 +1,12 @@
 import { test, expect } from '@playwright/test';
 
 for(const game of ['ttt','chess','checkers','faygo','memory','j31','hockey']){
-  test(`online ${game}: two real peers connect and share moves`,async({browser,browserName})=>{
+  test(`online ${game}: two real peers connect and share moves`,async({browser,browserName,baseURL})=>{
     const host=await browser.newPage(), join=await browser.newPage();const errors=[];
     try{
       for(const page of [host,join]){
         page.on('pageerror',e=>errors.push(e.message));
-        await page.goto('http://127.0.0.1:4173/game.html');
+        await page.goto(baseURL+'/game.html');
         await page.waitForFunction(()=>window.ARCADE);
         await page.evaluate(browserName=>{
           ARCADE.Sound.on=false;ARCADE.T.scale=.02;
