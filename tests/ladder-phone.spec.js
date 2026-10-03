@@ -17,6 +17,11 @@ async function controlsInView(frame,width,height){
     expect(b.x,id).toBeGreaterThanOrEqual(0);expect(b.y,id).toBeGreaterThanOrEqual(0);
     expect(b.x+b.width,id).toBeLessThanOrEqual(width);expect(b.y+b.height,id).toBeLessThanOrEqual(height);
   }
+  if(height<500)for(const selector of ['#lwSoundBtn img','#lwScreen .lb-mini img']){
+    const image=frame.locator(selector),b=await image.boundingBox(),button=await image.evaluate(el=>{const r=el.parentElement.getBoundingClientRect();return{x:r.x,y:r.y,right:r.right,bottom:r.bottom};});
+    expect(b.x).toBeGreaterThanOrEqual(button.x);expect(b.y).toBeGreaterThanOrEqual(button.y);
+    expect(b.x+b.width).toBeLessThanOrEqual(button.right);expect(b.y+b.height).toBeLessThanOrEqual(button.bottom);
+  }
   expect(await frame.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
 }
 for(const [width,height] of [[320,568],[390,664],[430,740],[667,375],[844,390]])test(`embedded match keeps the ring and controls visible at ${width}×${height}`,async({page})=>{
