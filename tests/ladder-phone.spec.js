@@ -4,9 +4,9 @@ import {test,expect} from '@playwright/test';
 // layout with a short phone viewport, not just a tall standalone document.
 async function embedded(page){
   await page.route('**/phone-host',route=>route.fulfill({contentType:'text/html',body:`<!doctype html><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>html,body{margin:0;height:100%;overflow:hidden}iframe{position:fixed;inset:0;width:100%;height:100dvh;border:0}</style><iframe title="Arcade"></iframe><script>fetch('/game.html').then(r=>r.text()).then(html=>{document.querySelector('iframe').src=URL.createObjectURL(new Blob([html],{type:'text/html'}))})</script>`}));
+  const loaded=page.waitForEvent('framenavigated',{predicate:frame=>frame.url().startsWith('blob:')});
   await page.goto('/phone-host');
-  await expect.poll(()=>page.frames().some(f=>f.url().startsWith('blob:'))).toBe(true);
-  const frame=page.frames().find(f=>f.url().startsWith('blob:'));
+  const frame=await loaded;
   await frame.waitForFunction(()=>window.ARCADE);
   await frame.evaluate(()=>{ARCADE.Sound.on=false;ARCADE.showScreen('ladder');});
   return frame;
