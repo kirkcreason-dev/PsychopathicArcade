@@ -6,7 +6,7 @@ function createWrestlingGame(ladderMode=false){
   const W=480,H=ladderMode?460:420,FONT='Impact,"Arial Black",sans-serif',B=ladderMode?{left:72,right:408,top:282,bottom:407}:{left:72,right:408,top:185,bottom:337};
   const roster=RUMBLE_ART.roster,byId=Object.fromEntries(roster.map(r=>[r.id,r])),store=gameStore('pa_'+prefix+'_');
   const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-  const S={mode:'ready',fighters:[],queue:[],entered:0,total:12,elapsed:0,nextIn:8,score:0,kills:0,chain:0,lastKill:-99,labels:[],banner:'',bannerTime:0,selected:byId[store.get('selected','violent-j')]?store.get('selected','violent-j'):'violent-j',best:Math.max(0,store.get('best',0)),wins:Math.max(0,store.get('wins',0)),charge:0,saved:false,won:false,error:'',time:120,ladder:null,winner:null};
+  const S={mode:'ready',fighters:[],queue:[],entered:0,total:12,elapsed:0,nextIn:8,score:0,kills:0,chain:0,lastKill:-99,labels:[],banner:'',bannerTime:0,selected:byId[store.get('selected','violent-j')]?store.get('selected','violent-j'):'violent-j',best:Math.max(0,store.get('best',0)),wins:Math.max(0,store.get('wins',0)),charge:0,saved:false,won:false,error:'',time:120,countdown:0,ladder:null,winner:null};
   let loadingIds=new Set(),N=null;
   const art=new Map(),held=new Set(),guards=new Set();
   let arenaImage=null,arenaPromise=null;
@@ -36,19 +36,22 @@ function createWrestlingGame(ladderMode=false){
   function loop(now){raf=0;if(!active||S.mode!=='playing')return;const dt=last?Math.min(.05,Math.max(0,(now-last)/1000)):0;last=now;step(dt);draw();if(S.mode==='playing')raf=requestAnimationFrame(loop);}
   function run(){if(active&&S.mode==='playing'&&!raf){last=0;raf=requestAnimationFrame(loop);}}
   function overlays(){
+    if(ladderMode){const match=active&&!['ready','loading'].includes(S.mode);$('#ruScreen').classList.toggle('lw-match',match);document.body.classList.toggle('ladder-match',match);}
+
     $('#ruRestartBtn').hidden=!!N;$('#ruSetup').hidden=!['ready','loading'].includes(S.mode);$('#ruPause').hidden=S.mode!=='paused';$('#ruOver').hidden=S.mode!=='over';
     $('#ruStartBtn').disabled=S.mode==='loading'||!!N?.localReady;$('#ruRoster').disabled=S.mode==='loading'||!!N?.localReady;$('#ruSize').disabled=S.mode==='loading'||!!N;
     $('#ruPauseBtn').disabled=!['playing','paused'].includes(S.mode);text('ruPauseBtn',S.mode==='paused'?'RESUME':'PAUSE');text('ruPauseNote',S.error||'Your match is paused.');
     for(const id of ['ruHitBtn','ruThrowBtn','ruGuardBtn'])$('#'+id).disabled=S.mode!=='playing';
   }
   function hud(){
+    if(ladderMode){$('#ruCountdown').hidden=S.countdown<=0||S.mode!=='playing';text('ruCount',Math.ceil(S.countdown));}
     coach();const p=player(),hp=p?Math.ceil(p.hp):100,guard=p?Math.floor(p.guard):100;
-    const key=[S.mode,S.score,S.kills,S.total,S.entered,alive().length,S.best,hp,guard,Math.floor(S.charge),S.wins,Math.ceil(S.time),p?.climbing,p?.climb>=1,S.ladder?.carrier,S.ladder?.open].join('|');if(key===hudKey)return;hudKey=key;
+    const key=[S.mode,S.score,S.kills,S.total,S.entered,alive().length,S.best,hp,guard,Math.floor(S.charge),S.wins,Math.ceil(S.time),p?.climbing,p?.climb>=1,S.ladder?.carrier,S.ladder?.open,p&&Math.abs(p.x-240)<=28&&Math.abs(p.y-365)<=28].join('|');if(key===hudKey)return;hudKey=key;
     text('ruScore',S.score.toLocaleString());text('ruKills',S.kills);text('ruRemaining',ladderMode?Math.ceil(S.time):S.queue.length+alive().length||S.total);text('ruBest',S.best.toLocaleString());text('ruHealth',hp);text('ruGuard',guard);
     $('#ruHealthFill').style.width=hp+'%';$('#ruHealthFill').style.background=hp<=35?'#ff5b99':'#d1fa61';
     $('#ruFinisherFill').style.width=S.charge+'%';$('#ruFinisherBtn').classList.toggle('ready',S.charge>=100);$('#ruFinisherBtn').disabled=S.mode!=='playing'||S.charge<100;
     text('ruFinisherText',S.charge>=100?'UNLEASH FINISHER · F':'FINISHER · '+Math.floor(S.charge)+'%');text('ruCareer',S.wins+' career '+(S.wins===1?'win':'wins'));
-    if(ladderMode)$('#ruThrowBtn').firstChild.textContent=p?.climbing?(p.climb>=1?'GRAB':'CLIMBING'):p&&S.ladder?.carrier===p.uid?'SET':S.ladder?.open&&aligned()?'CLIMB':'LADDER';
+    if(ladderMode){$('#ruThrowBtn').classList.toggle('lw-set-ready',!!p&&S.ladder?.carrier===p.uid&&Math.abs(p.x-240)<=28&&Math.abs(p.y-365)<=28);$('#ruThrowBtn').firstChild.textContent=p?.climbing?(p.climb>=1?'GRAB':'CLIMBING'):p&&S.ladder?.carrier===p.uid?(Math.abs(p.x-240)<=28&&Math.abs(p.y-365)<=28?'SET HERE':'SET'):S.ladder?.open&&aligned()?'CLIMB':'LADDER';}
   }
   function targetFor(f){
     const locked=S.fighters.find(v=>v.uid===f?.action?.target&&!v.out);
@@ -88,7 +91,7 @@ function createWrestlingGame(ladderMode=false){
     const match=N,token=++generation;stop();S.mode='loading';text('ruLoadStatus','Loading both wrestlers…');overlays();loadingIds=new Set(cfg.fighters);
     try{await Promise.all([loadArena(),...cfg.fighters.map(load)]);}catch(_e){if(N===match){NET.leave();status('Artwork could not load. Please create a new match.');}return;}
     if(N!==match||generation!==token)return;
-    Object.assign(S,{mode:'netwait',fighters:cfg.fighters.map((id,i)=>Object.assign(fighter(id,N.role==='host'?i===0:i===1,ladderMode?(i?330:150):(i?310:170),ladderMode?365:280),{uid:'p'+(i+1),human:true,score:0,kills:0,charge:0})),queue:[],entered:2,total:2,score:0,kills:0,charge:0,elapsed:0,time:120,nextIn:999,labels:[],banner:'',bannerTime:0,saved:false,won:false,error:'',winner:null,winnerUid:null,ladder:ladderMode?{x:240,y:365,open:false,carrier:null,tilt:0}:null});
+    Object.assign(S,{mode:'netwait',fighters:cfg.fighters.map((id,i)=>Object.assign(fighter(id,N.role==='host'?i===0:i===1,ladderMode?(i?330:150):(i?310:170),ladderMode?365:280),{uid:'p'+(i+1),human:true,score:0,kills:0,charge:0})),queue:[],entered:2,total:2,score:0,kills:0,charge:0,elapsed:0,time:120,countdown:ladderMode?3:0,nextIn:999,labels:[],banner:'',bannerTime:0,saved:false,won:false,error:'',winner:null,winnerUid:null,ladder:ladderMode?{x:240,y:365,open:false,carrier:null,tilt:0}:null});
     loadingIds.clear();text('ruSaveBtn','SAVE YOUR RECORD');N.loaded=true;N.pauses=[false,false];N.resultSaved=false;overlays();hud();draw();
     if(N.role==='join')NET.push(game,{k:'loaded',round:N.round});else maybeNetGo();
   }
@@ -107,7 +110,7 @@ function createWrestlingGame(ladderMode=false){
   }
   function sendFrame(){
     if(!N||N.role!=='host'||!N.loaded||!N.peerLoaded)return;
-    NET.push(game,{k:'frame',round:N.round,seq:++N.tx,mode:S.mode,elapsed:S.elapsed,time:S.time,total:2,fighters:S.fighters,ladder:S.ladder,winner:S.winner,winnerUid:S.winnerUid,banner:S.banner,bannerTime:S.bannerTime,pauses:N.pauses});
+    NET.push(game,{k:'frame',round:N.round,seq:++N.tx,mode:S.mode,elapsed:S.elapsed,time:S.time,countdown:S.countdown,total:2,fighters:S.fighters,ladder:S.ladder,winner:S.winner,winnerUid:S.winnerUid,banner:S.banner,bannerTime:S.bannerTime,pauses:N.pauses});
   }
   function netPause(force){
     if(!N||!['playing','paused'].includes(S.mode))return;
@@ -139,7 +142,7 @@ function createWrestlingGame(ladderMode=false){
     if(d.k!=='frame'||N.role!=='join'||!['playing','over'].includes(N.phase)||!Number.isSafeInteger(d.seq)||d.seq<=N.rx)return;
     if(!['playing','paused','over'].includes(d.mode)||!Number.isFinite(d.elapsed)||d.elapsed<0||!Number.isFinite(d.time)||!Array.isArray(d.fighters)||d.fighters.length!==2||!d.fighters.every(validFighter)||new Set(d.fighters.map(f=>f.uid)).size!==2)return;
     if(ladderMode&&(!d.ladder||!Number.isFinite(d.ladder.x)||!Number.isFinite(d.ladder.y)||typeof d.ladder.open!=='boolean'||d.ladder.carrier&&!['p1','p2'].includes(d.ladder.carrier)))return;
-    const resuming=S.mode==='paused'&&d.mode==='playing';N.rx=d.seq;S.mode=d.mode;if(resuming)canvas.focus({preventScroll:true});S.fighters=d.fighters.map(f=>({...f,player:f.uid==='p2',human:true}));S.elapsed=d.elapsed;S.time=clamp(d.time,0,120);S.ladder=d.ladder;S.winner=byId[d.winner]?d.winner:null;S.winnerUid=['p1','p2'].includes(d.winnerUid)?d.winnerUid:null;
+    const resuming=S.mode==='paused'&&d.mode==='playing';N.rx=d.seq;S.mode=d.mode;if(resuming)canvas.focus({preventScroll:true});S.fighters=d.fighters.map(f=>({...f,player:f.uid==='p2',human:true}));S.elapsed=d.elapsed;S.countdown=clamp(Number(d.countdown)||0,0,3);S.time=clamp(d.time,0,120);S.ladder=d.ladder;S.winner=byId[d.winner]?d.winner:null;S.winnerUid=['p1','p2'].includes(d.winnerUid)?d.winnerUid:null;
     S.banner=typeof d.banner==='string'?d.banner.slice(0,100):'';S.bannerTime=clamp(Number(d.bannerTime)||0,0,3);if(Array.isArray(d.pauses)&&d.pauses.length===2)N.pauses=d.pauses.map(v=>v===true);
     const p=player();S.score=p.score;S.kills=p.kills;S.charge=p.charge;
     if(S.mode==='over'&&!N.resultSaved){N.resultSaved=true;N.phase='over';N.peerReady=false;N.localReady=false;N.rematchRequested=false;S.won=S.winnerUid==='p2';S.best=Math.max(S.best,S.score);store.set('best',S.best);if(S.won){S.wins++;store.set('wins',S.wins);}stop();presentResult();}
@@ -163,7 +166,7 @@ function createWrestlingGame(ladderMode=false){
       else{f.misses++;label(f,'SLIPPED!','#ff9dc4');if(f.misses>=2)fall(f);else if(f.player)status('One more miss and you fall. Aim for green.');}
       return true;
     }
-    if(l.carrier===f.uid){l.carrier=null;l.open=true;l.x=f.x;l.y=f.y;if(Math.abs(l.x-240)<28)l.x=240;if(Math.abs(l.y-365)<28)l.y=365;f.cool=.3;label(f,aligned()?'LINED UP':'MOVE TO THE GLOW',aligned()?'#dfff95':'#ffd999');return true;}
+    if(l.carrier===f.uid){l.carrier=null;l.open=true;l.x=f.x;l.y=f.y;if(Math.abs(l.x-240)<=28)l.x=240;if(Math.abs(l.y-365)<=28)l.y=365;f.cool=.3;label(f,aligned()?'LINED UP':'MOVE TO THE GLOW',aligned()?'#dfff95':'#ffd999');return true;}
     if(l.carrier||!ladderNear(f)){if(f.player)status('Move closer to the ladder.');return false;}
     if(l.open&&aligned()){
       if(S.fighters.filter(v=>v.climbing).length>=2){if(f.player)status('Both sides are occupied. Tip the ladder to clear it.');return false;}
@@ -233,6 +236,7 @@ function createWrestlingGame(ladderMode=false){
     label(v,'−'+Math.round(amount),'#fff0cc');if(isHuman(from)){award(from,25,13);Sound.play('hit');}return true;
   }
   function act(kind,f=player(),attemptAt=S.elapsed){
+    if(S.countdown>0)return false;
     if(N?.role==='join'){if(['hit','throw','finish'].includes(kind)&&S.mode==='playing')netInput(kind);return false;}
     if(S.mode!=='playing'||!f||f.out||f.grabbed||f.stun>0||f.action||f.cool>0)return false;
     if(ladderMode&&kind==='throw')return ladderAction(f,attemptAt);
@@ -290,7 +294,10 @@ function createWrestlingGame(ladderMode=false){
     else if(f.aiWait<=0&&!f.guardOn){const needsThrow=v.hp<=35||v.hp<65&&f.age%4<1.4;act(needsThrow?'throw':'hit',f);f.aiWait=.35+Math.random()*.55;}
   }
   function step(dt){
-    if(S.mode!=='playing'||!Number.isFinite(dt)||dt<=0)return;dt=Math.min(dt,.05);if(netTick(dt))return;S.elapsed+=dt;S.nextIn=Math.max(0,S.nextIn-dt);S.bannerTime=Math.max(0,S.bannerTime-dt);
+    if(S.mode!=='playing'||!Number.isFinite(dt)||dt<=0)return;dt=Math.min(dt,.05);if(netTick(dt))return;
+    // The match clock and every fighter stay still until the same opening bell.
+    if(S.countdown>0){S.countdown=Math.max(0,S.countdown-dt);if(S.countdown===0){announce('GO! · CHASE THE GOLD');Sound.play('bell');}hud();if(N?.role==='host'&&N.clock>=.05){N.clock=0;sendFrame();}return;}
+    S.elapsed+=dt;S.nextIn=Math.max(0,S.nextIn-dt);S.bannerTime=Math.max(0,S.bannerTime-dt);
     S.labels.forEach(l=>{l.t-=dt;l.y-=18*dt;});S.labels=S.labels.filter(l=>l.t>0);
     const p=player();
     if(ladderMode){S.time=Math.max(0,120-S.elapsed);S.ladder.tilt=Math.max(0,S.ladder.tilt-dt);}
@@ -331,7 +338,7 @@ function createWrestlingGame(ladderMode=false){
     const queue=ids.slice(0,S.total-1);loadingIds=new Set([S.selected,...queue.slice(0,ladderMode?3:2)]);
     try{await Promise.all([loadArena(),...[S.selected,...queue.slice(0,ladderMode?3:2)].map(load)]);}catch(_e){if(token!==generation)return;S.mode='ready';text('ruLoadStatus','Artwork could not load. Tap Ring the Bell to retry.');overlays();return;}
     if(token!==generation||!active)return;
-    Object.assign(S,{mode:'playing',fighters:[fighter(S.selected,true,ladderMode?150:230,ladderMode?370:280)],queue,entered:1,elapsed:0,nextIn:8,score:0,kills:0,chain:0,lastKill:-99,charge:0,labels:[],banner:'',bannerTime:0,saved:false,won:false,error:'',time:120,ladder:ladderMode?{x:180,y:370,open:false,carrier:null,tilt:0}:null,winner:null});
+    Object.assign(S,{mode:'playing',fighters:[fighter(S.selected,true,ladderMode?150:230,ladderMode?370:280)],queue,entered:1,elapsed:0,nextIn:8,score:0,kills:0,chain:0,lastKill:-99,charge:0,labels:[],banner:'',bannerTime:0,saved:false,won:false,error:'',time:120,countdown:ladderMode?3:0,ladder:ladderMode?{x:180,y:370,open:false,carrier:null,tilt:0}:null,winner:null});
     if(ladderMode){while(S.queue.length){const id=S.queue.shift();S.fighters.push(fighter(id,false,330+(S.entered%2)*30,310+(S.entered%3)*25));S.entered++;}announce('CHASE THE GOLD · SET THE LADDER IN THE GLOW');}else{spawn();spawn();announce('RING THE BELL · LAST LUNATIC STANDING');}loadingIds.clear();text('ruLoadStatus','');$('#ruSaveBtn').disabled=false;text('ruSaveBtn','SAVE YOUR RECORD');overlays();hud();draw();window.scrollTo(0,0);canvas.focus({preventScroll:true});Sound.play('bell');run();
   }
   function finish(won){
@@ -350,7 +357,7 @@ function createWrestlingGame(ladderMode=false){
     overlays();hud();draw();
   }
   function choose(){if(N){if(['over','lobby'].includes(N.phase))netLobby(true);return;}stop();generation++;S.mode='ready';S.fighters=[];S.queue=[];S.score=0;S.kills=0;S.charge=0;S.error='';S.bannerTime=0;text('ruLoadStatus','');overlays();hud();portrait();draw();}
-  function leave(){if(S.mode==='loading'){generation++;S.mode='ready';text('ruLoadStatus','');}pause(true);active=false;stop();}
+  function leave(){if(S.mode==='loading'){generation++;S.mode='ready';text('ruLoadStatus','');}pause(true);active=false;stop();if(ladderMode){$('#ruScreen').classList.remove('lw-match');document.body.classList.remove('ladder-match');}}
   function enter(){active=true;resize();overlays();hud();portrait();draw();TICK.set(ladderMode?'LADDER WARS — CLIMB THROUGH THE CHAOS. CLAIM THE GOLD.':'JCW RUMBLE — OVER THE ROPES. LAST LUNATIC STANDING.','LUNACY UNLOCKED');}
   function resize(){const dpr=Math.min(devicePixelRatio||1,2);canvas.width=W*dpr;canvas.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);draw();}
   function oval(c,x,y,rx,ry,fill,stroke){c.beginPath();c.ellipse(x,y,rx,ry,0,0,Math.PI*2);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.stroke();}}
@@ -387,7 +394,8 @@ function createWrestlingGame(ladderMode=false){
       if(f.out&&f.outTime>1.2)continue;
       const a=f.action,frames=byId[f.id].animations;let anim=a?(a.kind==='tip'?'heavy':a.kind):f.walk?'walk':'idle',ix=0,x=f.x,y=f.y,rotation=0;
       if(anim==='throw'){anim=a.t<.46?'lift':'throw';const progress=a.t<.46?a.t/.46:(a.t-.46)/.39;ix=Math.floor(clamp(progress,0,.99)*frames[anim].length);}
-      else if(a)ix=Math.floor(clamp(a.t/a.duration,0,.99)*frames[anim].length);
+      // Landing is a quick animation; hold the final prone frame during recovery.
+      else if(a)ix=Math.floor(clamp(a.t/(a.kind==='down'?.3:a.duration),0,.99)*frames[anim].length);
       else if(f.walk)ix=Math.floor(f.age*9)%frames.walk.length;
       if(ladderMode&&f.climbing){y-=f.climb*174;anim='climb';ix=Math.floor(f.age*6)%frames.climb.length;}
       if(ladderMode&&f.fallTime>0){y-=f.fallHeight*(f.fallTime/.55);rotation=f.climbSide*.5;}

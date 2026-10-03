@@ -48,6 +48,13 @@ a rival can tip the ladder from its base. Knock a rival down to earn a seven-sec
 opening. The clock runs for 120 seconds. Clean hits, tips, successful grabs and
 a championship/time bonus contribute to the record board.
 
+Phone matches keep the arena and every control in the visible viewport, including
+inside the site’s blob iframe and after rotation or browser-bar resizing. A shared
+three-count freezes all wrestlers and the clock before solo and versus rounds.
+The SET HERE button lights green inside the ladder placement zone. Knockdown
+animations settle onto their final prone frame before the recovery wait; Caleb’s
+left-facing run artwork is mirrored independently of his other moves.
+
 The context button (K) handles pickup, set, climb and grab. Down descends;
 J/Space strikes, L/Shift guards and F uses the charged finisher. Phone controls,
 paused/loading/result states, local records, career wins and replay are included.
