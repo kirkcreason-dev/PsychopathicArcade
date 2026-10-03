@@ -21,6 +21,7 @@ async function controlsInView(frame,width,height){
 }
 for(const [width,height] of [[320,568],[390,664],[430,740],[667,375],[844,390]])test(`embedded match keeps the ring and controls visible at ${width}×${height}`,async({page})=>{
   await page.setViewportSize({width,height});const frame=await embedded(page);
+  if(height<500)await frame.addStyleTag({content:'#lwScreen *{font-family:Arial,sans-serif!important}'});
   // Reproduce a player arriving with the instructions scrolled into view.
   await frame.locator('#lwInstructions').scrollIntoViewIfNeeded();
   await frame.locator('#lwStartBtn').click();await expect(frame.locator('#lwCountdown')).toBeVisible();

@@ -128,7 +128,12 @@ test('pausing in a grab, leaving, and opening records preserve the pull and rele
   await page.locator('#clHomeBtn').click();await page.locator('#cardCL').click();await expect(page.locator('#clPause')).toBeVisible();
   await page.locator('#clResumeBtn').click();await page.locator('#clScreen .lb-mini').click();await expect(page.locator('#clPause')).toBeVisible();
   await page.locator('#lbClose').click();await page.locator('#clResumeBtn').click();
-  await expect.poll(()=>page.evaluate(()=>ARCADE.CLAW.state.phase)).toBe('reward');
+  const clock=await page.evaluate(()=>ARCADE.CLAW.state.clock);
+  await expect.poll(()=>page.evaluate(()=>ARCADE.CLAW.state.clock)).toBeGreaterThan(clock);
+  // Confirm the resumed RAF runs, then finish the grip timeout and lift with
+  // simulation ticks so a loaded CI worker need not render them within 5 seconds.
+  await page.evaluate(()=>{const g=ARCADE.CLAW;for(let i=0;i<300&&g.state.phase!=='reward';i++)g.step(.025);});
+  expect(await page.evaluate(()=>ARCADE.CLAW.state.phase)).toBe('reward');
 });
 
 test('restart during delivery cancels the old prize and award',async({page})=>{

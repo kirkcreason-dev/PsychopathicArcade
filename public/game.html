@@ -1223,7 +1223,7 @@ canvas, #soBoard{ touch-action:none; }
   .lw-match .lw-overlay{align-items:safe center}
 }
 @media(max-width:1000px) and (max-height:500px){
-  .lw-match .lw-machine{display:grid;grid-template-columns:minmax(0,1fr) 196px;grid-template-rows:44px minmax(0,1fr) 26px 30px 46px}
+  .lw-match .lw-machine{display:grid;grid-template-columns:minmax(0,1fr) 232px;grid-template-rows:44px minmax(0,1fr) 26px 30px 46px}
   .lw-match .lw-hud{grid-column:1;grid-row:1}
   .lw-match .lw-stage{grid-column:1;grid-row:2 / 5}
   .lw-match .lw-vitals{grid-column:2;grid-row:3;padding:4px}
@@ -1233,8 +1233,8 @@ canvas, #soBoard{ touch-action:none; }
   .lw-match .lw-actions button{min-height:36px;font-size:13px}
   .lw-match .lw-actions .lw-block{min-height:28px}
   .lw-match #lwStatus{grid-column:1;grid-row:5}
-  #lwScreen.lw-match .ctl-row{grid-column:2;grid-row:5;gap:3px;padding:4px 2px}
-  #lwScreen.lw-match .ctl-row button{font-size:9px;padding:6px 4px}
+  #lwScreen.lw-match .ctl-row{grid-column:2;grid-row:5;display:grid;grid-template-columns:1fr 24px 1.15fr 1.6fr 24px;gap:3px;padding:4px 2px;min-width:0}
+  #lwScreen.lw-match .ctl-row button{font-size:9px;line-height:1.1;padding:6px 2px;min-width:0;max-width:100%;white-space:normal}
   #lwScreen.lw-match .ctl-row .icon{width:24px;height:24px}
   .lw-match #lwStick{width:86px;height:86px}.lw-match #lwStickNub{left:26px;top:26px}
 }
