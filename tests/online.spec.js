@@ -85,6 +85,12 @@ for(const game of ['rumble','ladder','shooter','chicken','claw'])test(`online ${
     if(wrestling){await host.locator('#'+pfx+'Roster').selectOption('dani-mo');await join.locator('#'+pfx+'Roster').selectOption('dani-mo');}
     const ready=async p=>p.locator(wrestling?'#'+pfx+'StartBtn':'#duelReady').click();await ready(host);expect(await host.evaluate(m=>ARCADE[m].state.mode,module)).not.toBe('playing');await ready(join);
     for(const page of [host,join])await page.waitForFunction(m=>ARCADE[m].state.mode==='playing',module);
+    if(game==='ladder'){
+      for(const page of [host,join]){await expect(page.locator('#lwCountdown')).toBeVisible();expect(await page.evaluate(()=>ARCADE.LADDER.state.elapsed)).toBe(0);}
+      const positions=await host.evaluate(()=>ARCADE.LADDER.state.fighters.map(f=>[f.x,f.y]));await host.waitForTimeout(150);
+      expect(await host.evaluate(()=>ARCADE.LADDER.state.fighters.map(f=>[f.x,f.y]))).toEqual(positions);
+      for(const page of [host,join])await page.waitForFunction(()=>ARCADE.LADDER.state.countdown===0);
+    }
     if(wrestling){
       expect(await join.evaluate(m=>ARCADE[m].player().uid,module)).toBe('p2');await join.locator('#'+pfx+'Canvas').press('ArrowLeft');await join.evaluate(m=>{const c=document.getElementById(m==='RUMBLE'?'ruCanvas':'lwCanvas');c.focus();c.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowLeft',bubbles:true}));},module);await host.waitForFunction(m=>ARCADE[m].state.fighters[1].x<300,module);await join.evaluate(()=>window.dispatchEvent(new KeyboardEvent('keyup',{key:'ArrowLeft',bubbles:true})));
     }else if(game==='claw')expect(await host.evaluate(()=>ARCADE.CLAW.state.prizes.map(p=>p.item.id))).toEqual(await join.evaluate(()=>ARCADE.CLAW.state.prizes.map(p=>p.item.id)));
