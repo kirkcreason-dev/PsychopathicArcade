@@ -311,34 +311,6 @@
       ]
     },
     {
-      "name": "Brothers of Funstruction",
-      "id": "brothers-of-funstruction",
-      "role": "JCW Roster",
-      "group": "Roster",
-      "items": [
-        {
-          "kind": "mask",
-          "name": "Clown Mask"
-        },
-        {
-          "kind": "jacket",
-          "name": "Entrance Jacket"
-        },
-        {
-          "kind": "boots",
-          "name": "Ring Boots"
-        },
-        {
-          "kind": "shirt",
-          "name": "Entrance Shirt"
-        },
-        {
-          "kind": "turnbuckle",
-          "name": "Signed Turnbuckle"
-        }
-      ]
-    },
-    {
       "name": "Cokane",
       "id": "cokane",
       "role": "JCW Roster",
@@ -1511,34 +1483,6 @@
         {
           "kind": "clipboard",
           "name": "Match Card Clipboard"
-        }
-      ]
-    },
-    {
-      "name": "Vince Russo",
-      "id": "vince-russo",
-      "role": "Owner",
-      "group": "Crew",
-      "items": [
-        {
-          "kind": "clipboard",
-          "name": "Booking Board"
-        },
-        {
-          "kind": "headphones",
-          "name": "Broadcast Headset"
-        },
-        {
-          "kind": "mic",
-          "name": "Ringside Mic"
-        },
-        {
-          "kind": "pass",
-          "name": "Backstage Pass"
-        },
-        {
-          "kind": "poster",
-          "name": "Foil Poster"
         }
       ]
     },

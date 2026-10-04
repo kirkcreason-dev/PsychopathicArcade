@@ -333,7 +333,7 @@ function createWrestlingGame(ladderMode=false){
   async function start(){
     if(N){netReady();return;}
     stop();const token=++generation;S.mode='loading';S.error='';text('ruLoadStatus','Getting your wrestlers ready…');overlays();
-    S.selected=$('#ruRoster').value;S.total=ladderMode?(Number($('#ruSize').value)===4?4:2):(Number($('#ruSize').value)===22?22:12);store.set('selected',S.selected);
+    S.selected=$('#ruRoster').value;S.total=ladderMode?(Number($('#ruSize').value)===4?4:2):(Number($('#ruSize').value)===12?12:roster.length);store.set('selected',S.selected);
     const ids=roster.filter(r=>r.id!==S.selected).map(r=>r.id);for(let i=ids.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[ids[i],ids[j]]=[ids[j],ids[i]];}
     const queue=ids.slice(0,S.total-1);loadingIds=new Set([S.selected,...queue.slice(0,ladderMode?3:2)]);
     try{await Promise.all([loadArena(),...[S.selected,...queue.slice(0,ladderMode?3:2)].map(load)]);}catch(_e){if(token!==generation)return;S.mode='ready';text('ruLoadStatus','Artwork could not load. Tap Ring the Bell to retry.');overlays();return;}

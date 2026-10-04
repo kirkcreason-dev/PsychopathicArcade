@@ -54,5 +54,5 @@ const file=path.join(root,'public/game.html');let html=await fs.readFile(file,'u
 const block='/* RUMBLE ART START */\nconst RUMBLE_ART = '+JSON.stringify(manifest)+';\n/* RUMBLE ART END */';
 if(html.includes('/* RUMBLE ART START */'))html=html.replace(/\/\* RUMBLE ART START \*\/[\s\S]*?\/\* RUMBLE ART END \*\//,()=>block);
 else html=html.replace('/* CLAW CATALOG START */',()=>block+'\n\n/* CLAW CATALOG START */');
-if(process.argv.includes('--check')){if(html!==before)throw new Error('Run node scripts/import-rumble.mjs --embed to synchronize artwork.');console.log('22 wrestler atlases match the standalone game.');}
-else{await fs.writeFile(file,html);console.log('Embedded 22 transparent wrestler atlases.');}
+if(process.argv.includes('--check')){if(html!==before)throw new Error('Run node scripts/import-rumble.mjs --embed to synchronize artwork.');console.log(`${manifest.roster.length} wrestler atlases match the standalone game.`);}
+else{await fs.writeFile(file,html);console.log(`Embedded ${manifest.roster.length} transparent wrestler atlases.`);}
