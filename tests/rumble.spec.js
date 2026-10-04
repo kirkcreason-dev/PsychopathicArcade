@@ -16,17 +16,17 @@ for(const width of [320,390,1440])test(`roster, pause and result panels fit at $
   }
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
 });
-test('22 original wrestlers decode offline with intact alpha gutters and bounded cache',async({page,context})=>{
+test('21 original wrestlers decode offline with intact alpha gutters and bounded cache',async({page,context})=>{
   await context.setOffline(true);const r=await page.evaluate(async()=>{const g=ARCADE.RUMBLE;let frames=0,valid=true,clear=true,maxCache=0;
     for(const f of g.roster){const im=await g.load(f.id);valid&&=im.width===f.width&&im.height===f.height;const c=document.createElement('canvas');c.width=im.width;c.height=im.height;const ctx=c.getContext('2d',{willReadFrequently:true});ctx.drawImage(im,0,0);
       for(const list of Object.values(f.animations))for(const a of list){frames++;valid&&=a.x>=4&&a.y>=4&&a.x+a.w+4<=im.width&&a.y+a.h+4<=im.height&&Number.isFinite(a.anchorX)&&Number.isFinite(a.anchorY);clear&&=ctx.getImageData(a.x-2,a.y-2,1,1).data[3]===0;}
       maxCache=Math.max(maxCache,g.cacheSize());
     }return{names:g.roster.length,ids:new Set(g.roster.map(r=>r.id)).size,frames,valid,clear,maxCache};});
-  expect(r.names).toBe(22);expect(r.ids).toBe(22);expect(r.frames).toBeGreaterThan(650);expect(r.valid).toBe(true);expect(r.clear).toBe(true);expect(r.maxCache).toBeLessThanOrEqual(6);
+  expect(r.names).toBe(21);expect(r.ids).toBe(21);expect(r.frames).toBeGreaterThan(650);expect(r.valid).toBe(true);expect(r.clear).toBe(true);expect(r.maxCache).toBeLessThanOrEqual(6);
 });
-test('selection starts the right wrestler and unique complete 22-person field',async({page})=>{
-  await page.locator('#ruRoster').selectOption('dani-mo');await page.locator('#ruSize').selectOption('22');await page.locator('#ruStartBtn').click();await expect(page.locator('#ruSetup')).toBeHidden();
-  const r=await page.evaluate(()=>{const g=ARCADE.RUMBLE,s=g.state;return {player:g.player().id,total:s.total,ids:new Set([...s.fighters.map(f=>f.id),...s.queue]).size,active:s.fighters.length,queue:s.queue.length};});expect(r).toEqual({player:'dani-mo',total:22,ids:22,active:3,queue:19});
+test('selection starts the right wrestler and unique complete 21-person field',async({page})=>{
+  await page.locator('#ruRoster').selectOption('dani-mo');await page.locator('#ruSize').selectOption('21');await page.locator('#ruStartBtn').click();await expect(page.locator('#ruSetup')).toBeHidden();
+  const r=await page.evaluate(()=>{const g=ARCADE.RUMBLE,s=g.state;return {player:g.player().id,total:s.total,ids:new Set([...s.fighters.map(f=>f.id),...s.queue]).size,active:s.fighters.length,queue:s.queue.length};});expect(r).toEqual({player:'dani-mo',total:21,ids:21,active:3,queue:18});
 });
 test('strike windup lands once, builds charge and cannot hurt distant rivals',async({page})=>{
   await controlled(page);const r=await page.evaluate(()=>{const g=ARCADE.RUMBLE,v=duel();g.act('hit');g.act('hit');advance(.1);const before=v.hp;advance(.1);const hit=v.hp;advance(.2);const after=v.hp,score=g.state.score;advance(.1);v.x=405;g.act('hit');advance(.5);return{before,hit,after,score,finalScore:g.state.score,charge:g.state.charge};});expect(r.before).toBe(100);expect(r.hit).toBeLessThan(100);expect(r.after).toBe(r.hit);expect(r.score).toBe(25);expect(r.finalScore).toBe(25);expect(r.charge).toBe(13);
@@ -77,7 +77,7 @@ test('offline simulation stays bounded, responsive and respects wall-clock clamp
 test('blocked storage cannot break a win or replay',async({page})=>{
   await controlled(page);await page.evaluate(()=>{Storage.prototype.setItem=()=>{throw new Error('Blocked');};const g=ARCADE.RUMBLE;g.state.queue=[];g.state.fighters=[g.player()];advance(.1);});await expect(page.locator('#ruOver')).toBeVisible();await page.locator('#ruAgainBtn').click();await expect(page.locator('#ruOver')).toBeHidden();
 });
-for(const size of [12,22])test(`${size}-entrant tournament reaches the last elimination and one championship`,async({page,context})=>{
+for(const size of [12,21])test(`${size}-entrant tournament reaches the last elimination and one championship`,async({page,context})=>{
   await page.locator('#ruSize').selectOption(String(size));await controlled(page);await context.setOffline(true);
   const r=await page.evaluate(async()=>{const g=ARCADE.RUMBLE,s=g.state;let maxActive=0,maxCache=0;const seen=new Set(s.fighters.map(f=>f.id));
     for(let turn=0;turn<70&&s.mode==='playing';turn++){

@@ -20,14 +20,14 @@ async function controlled(page,focus='dani-mo'){
   },focus);
 }
 
-test('all 108 roster entries have five distinct, obtainable collectibles',async({page})=>{
-  expect(catalog.roster).toHaveLength(108);
+test('all 106 roster entries have five distinct, obtainable collectibles',async({page})=>{
+  expect(catalog.roster).toHaveLength(106);
   const data=await page.evaluate(()=>{
     const g=ARCADE.CLAW,ids=new Set(g.items.map(i=>i.id));
     const sets=g.roster.map(r=>{g.start(r.id);g.pause(true);return {id:r.id,n:g.state.prizes.length,owners:[...new Set(g.state.prizes.map(p=>p.item.rosterId))],kinds:new Set(g.state.prizes.map(p=>p.item.kind)).size};});
     return {ids:ids.size,count:g.items.length,sets,missingArt:g.items.filter(i=>!g.artKinds.includes(i.kind)).map(i=>i.id),names:g.roster.map(r=>r.name)};
   });
-  expect(data.ids).toBe(540);expect(data.count).toBe(540);expect(data.missingArt).toEqual([]);
+  expect(data.ids).toBe(530);expect(data.count).toBe(530);expect(data.missingArt).toEqual([]);
   expect(data.names).toEqual(catalog.roster.map(r=>r.name));
   for(const set of data.sets){expect(set.n).toBe(5);expect(set.kinds).toBe(5);expect(set.owners).toEqual([set.id]);}
 });
@@ -35,7 +35,7 @@ test('all 108 roster entries have five distinct, obtainable collectibles',async(
 test('every collectible illustration decodes without external assets',async({page})=>{
   const failures=await page.evaluate(async()=>{
     const g=ARCADE.CLAW;const failed=[];
-    // Decode in batches to avoid a 540-image memory spike on phones or CI.
+    // Decode in batches to avoid a 530-image memory spike on phones or CI.
     for(let i=0;i<g.items.length;i+=20){await Promise.all(g.items.slice(i,i+20).map(async item=>{const im=new Image();im.src=g.artURI(item);try{await im.decode();if(!im.naturalWidth)failed.push(item.id);}catch{failed.push(item.id);}}));}
     return failed;
   });
@@ -70,7 +70,7 @@ test('a centred green-zone grab travels to the chute and awards exactly once',as
     return {before,score:s.score,wins:s.wins,perfects:s.perfects,owned:s.owned['dani-mo:belt'],drops:s.drops};
   });
   expect(result).toEqual({before:450,score:450,wins:1,perfects:1,owned:1,drops:3});
-  await expect(page.locator('#clOwned')).toHaveText('1 / 540');
+  await expect(page.locator('#clOwned')).toHaveText('1 / 530');
 });
 
 test('five perfect pulls complete a set, apply the advertised streak and finish offline',async({page,context})=>{
@@ -84,7 +84,7 @@ test('five perfect pulls complete a set, apply the advertised streak and finish 
   expect(r).toEqual({mode:'over',score:1645,after:1645,wins:5,perfects:5,drops:0,owned:5});
   await expect(page.locator('#clSetProgress')).toContainText('SET COMPLETE');await expect(page.locator('#clOver')).toBeVisible();
   await expect(page.locator('#lbModal')).toBeHidden();await page.locator('#clAgainBtn').click();
-  expect(await page.evaluate(()=>ARCADE.CLAW.state.score)).toBe(0);await expect(page.locator('#clOwned')).toHaveText('5 / 540');
+  expect(await page.evaluate(()=>ARCADE.CLAW.state.score)).toBe(0);await expect(page.locator('#clOwned')).toHaveText('5 / 530');
 });
 
 test('empty drops, edge grips and bad timing cost one pull and never award a prize',async({page})=>{
@@ -159,15 +159,15 @@ test('collection search, set hunting and no-results handling select exactly the 
 
 test('prizes save immediately, duplicates count as copies, and a reload keeps the collection',async({page})=>{
   await controlled(page);await page.evaluate(()=>clawWin('belt'));await page.reload();await page.evaluate(()=>ARCADE.showScreen('claw'));
-  await expect(page.locator('#clOwned')).toHaveText('1 / 540');await controlled(page);await page.evaluate(()=>clawWin('belt'));
-  await expect(page.locator('#clOwned')).toHaveText('1 / 540');expect(await page.evaluate(()=>ARCADE.CLAW.state.owned['dani-mo:belt'])).toBe(2);
+  await expect(page.locator('#clOwned')).toHaveText('1 / 530');await controlled(page);await page.evaluate(()=>clawWin('belt'));
+  await expect(page.locator('#clOwned')).toHaveText('1 / 530');expect(await page.evaluate(()=>ARCADE.CLAW.state.owned['dani-mo:belt'])).toBe(2);
 });
 
 test('malformed and blocked storage cannot break prizes, replay or score submission',async({page})=>{
   await page.evaluate(()=>localStorage.setItem('pa_cl_collection','[1,2,3]'));await page.reload();await page.evaluate(()=>{ARCADE.showScreen('claw');ARCADE.Sound.on=false;Storage.prototype.setItem=()=>{throw Error('Blocked');};});
   await controlled(page);await page.evaluate(()=>{clawWin('belt');const g=ARCADE.CLAW;g.state.drops=0;g.act();});
   await page.locator('#clSaveBtn').click();await page.locator('#lbInitials').fill('CLW');await page.locator('#lbSaveBtn').click();await page.locator('#lbClose').click();
-  await expect(page.locator('#clSaveBtn')).toBeDisabled();await page.locator('#clAgainBtn').click();await expect(page.locator('#clOwned')).toHaveText('1 / 540');
+  await expect(page.locator('#clSaveBtn')).toBeDisabled();await page.locator('#clAgainBtn').click();await expect(page.locator('#clOwned')).toHaveText('1 / 530');
 });
 
 
