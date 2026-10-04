@@ -31,8 +31,8 @@ if(process.argv[2] && !['--embed','--check'].includes(process.argv[2])){
               p={x:x+pad,y:y+pad,w,h,source:f};frames.push(p);lookup.set(key,p);
               x+=w+pad*2;rowH=Math.max(rowH,h+pad*2);
             }
-            // Caleb’s running artwork faces left; the other moves face right.
-            return {x:p.x,y:p.y,w:p.w,h:p.h,anchorX:(f.anchorX??f.w/2)*p.w/f.w,anchorY:(f.anchorY??f.h)*p.h/f.h,...((fighter.id==='caleb-konley'&&anim==='walk'?!f.flipX:f.flipX)?{flipX:true}:{}),...(f.drawScale?{drawScale:f.drawScale}:{})};
+            // These reviewed running sequences face left; normalize them without flipping other moves.
+            return {x:p.x,y:p.y,w:p.w,h:p.h,anchorX:(f.anchorX??f.w/2)*p.w/f.w,anchorY:(f.anchorY??f.h)*p.h/f.h,...((['caleb-konley','sally-boy','facade'].includes(fighter.id)&&anim==='walk'?!f.flipX:f.flipX)?{flipX:true}:{}),...(f.drawScale?{drawScale:f.drawScale}:{})};
           });
         }
         const c=document.createElement('canvas');c.width=1024;c.height=y+rowH;
