@@ -11,3 +11,28 @@ test('time runs out, replay resets ladder and pause freezes the round',async({pa
 test('chaos uses four unique wrestlers, bounded effects and finite state offline',async({page,context})=>{await page.locator('#lwSize').selectOption('4');await controlled(page);await context.setOffline(true);const r=await page.evaluate(()=>{const g=ARCADE.LADDER,s=g.state;const ids=new Set(s.fighters.map(f=>f.id)).size;for(const f of s.fighters)f.stun=0;for(let i=0;i<2450&&s.mode==='playing';i++){g.step(.05);if(i%25===0)g.draw();}return{ids,finite:s.fighters.every(f=>Number.isFinite(f.hp)&&Number.isFinite(f.x)&&Number.isFinite(f.climb)),labels:s.labels.length,cache:g.cacheSize(),mode:s.mode};});expect(r.ids).toBe(4);expect(r.finite).toBe(true);expect(r.labels).toBeLessThanOrEqual(12);expect(r.cache).toBeLessThanOrEqual(6);expect(r.mode).toBe('over');});
 
 test('a knockout creates enough time to climb and win before the rival recovers',async({page})=>{await controlled(page);const r=await page.evaluate(()=>{const g=ARCADE.LADDER,s=g.state,p=g.player(),v=s.fighters[1];Object.assign(s.ladder,{x:240,y:365,open:true});Object.assign(p,{x:217,y:365});Object.assign(v,{x:260,y:365,hp:1,stun:0});g.act('hit');advance(.5);g.act('throw');for(let i=0;i<150&&s.mode==='playing';i++){if(p.climb>=1&&p.cool<=0&&g.grabNeedle(p)>.42&&g.grabNeedle(p)<.6)g.act('throw');advance(.05);}return{won:s.won,pulls:p.pulls,elapsed:s.elapsed,rivalDown:v.stun>0};});expect(r.won).toBe(true);expect(r.pulls).toBe(4);expect(r.rivalDown).toBe(true);});
+
+test('completed matches report lifetime attempts, falls and tips once; replay starts fresh',async({page})=>{
+ await controlled(page);
+ const r=await page.evaluate(async()=>{
+  const g=ARCADE.LADDER,s=g.state,p=g.player(),v=s.fighters[1],reports=[];window.__arcSend=d=>{if(d.ev==='ladder')reports.push(d);};
+  Object.assign(s.ladder,{x:240,y:365,open:true});Object.assign(p,{x:220,y:365,climbing:true,climb:1});
+  for(let i=0;i<2;i++){p.cool=0;s.elapsed=Math.PI/2/4.1;g.act('throw');}
+  const afterFall={misses:p.ladderMisses,falls:p.ladderFalls};
+  Object.assign(p,{climbing:false,climb:0,action:null,stun:0,cool:0});Object.assign(v,{climbing:true,climb:.8});g.act('hit');advance(.2);
+  Object.assign(p,{action:null,stun:0,climbing:true,climb:1});
+  for(let i=0;i<4;i++){p.cool=0;s.elapsed=2*Math.PI/4.1;g.act('throw');}
+  for(let i=0;i<10;i++){g.step(.05);g.act('throw');}
+  const beforeReplay=reports.slice();await g.start();g.pause(true);
+  return{afterFall,reports:beforeReplay,fresh:{misses:g.player().ladderMisses,falls:g.player().ladderFalls,tips:g.player().ladderTips}};
+ });
+ expect(r.afterFall).toEqual({misses:2,falls:1});expect(r.reports).toHaveLength(1);
+ expect(r.reports[0]).toMatchObject({won:true,grabs:4,misses:2,falls:1,tips:1,online:false,entrants:2});expect(r.reports[0].resultId).toMatch(/^[a-f0-9-]{36}$/);expect(r.fresh).toEqual({misses:0,falls:0,tips:0});
+});
+test('timeout reports partial grabs without a win, and abandoning a match reports nothing',async({page})=>{
+ await controlled(page);const r=await page.evaluate(async()=>{const g=ARCADE.LADDER,reports=[];window.__arcSend=d=>{if(d.ev==='ladder')reports.push(d);};g.player().pulls=2;g.state.elapsed=119.99;g.step(.05);await g.start();g.pause(true);g.choose();return reports;});
+ expect(r).toHaveLength(1);expect(r[0]).toMatchObject({won:false,grabs:2,misses:0,falls:0,tips:0});
+});
+test('Abel uses his corrected name in both rosters while preserving his save ID',async({page})=>{
+ for(const [game,prefix] of [['rumble','ru'],['ladder','lw']]){await page.evaluate(game=>ARCADE.showScreen(game),game);await expect(page.locator('#'+prefix+'Roster option[value="able"]')).toHaveText('Abel');await page.locator('#'+prefix+'Roster').selectOption('able');await page.locator('#'+prefix+'StartBtn').click();await expect(page.locator('#'+prefix+'Setup')).toBeHidden();expect(await page.evaluate(game=>ARCADE[game==='rumble'?'RUMBLE':'LADDER'].player().id,game)).toBe('able');}
+});

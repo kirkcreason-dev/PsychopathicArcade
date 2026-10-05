@@ -115,7 +115,7 @@ test('Tony reaches his prone frame quickly and stays down until recovery',async(
   const r=await frame.evaluate(async()=>{const g=ARCADE.LADDER;document.querySelector('#lwRoster').value='2-tuff-tony';await g.start();g.pause(true);g.state.mode='playing';g.state.countdown=0;const p=g.player();for(const f of g.state.fighters)if(!f.player)f.stun=999;Object.assign(p,{action:{kind:'down',t:0,duration:7},stun:7,hp:1});const art=g.roster.find(f=>f.id===p.id),frames=art.animations.down,c=document.querySelector('#lwCanvas').getContext('2d'),draw=c.drawImage,seen=[];c.drawImage=function(image,...args){if(image.src===art.src)seen.push(args.slice(0,4));return draw.call(this,image,...args);};const samples=[];for(let i=0;i<130;i++){g.step(.05);if([9,39,119].includes(i)){g.draw();samples.push(seen.at(-1));}}const down=p.action?.kind;for(let i=0;i<12;i++)g.step(.05);c.drawImage=draw;const last=frames.at(-1);return{samples,expected:[last.x,last.y,last.w,last.h],down,recovered:p.action===null,hp:p.hp};});
   for(const sample of r.samples)expect(sample).toEqual(r.expected);expect(r.down).toBe('down');expect(r.recovered).toBe(true);expect(r.hp).toBeGreaterThanOrEqual(55);
 });
-for(const id of ['caleb-konley','sally-boy','facade'])test(`${id} faces movement through every run frame in both wrestling games`,async({page})=>{
+for(const id of ['caleb-konley','sally-boy','facade','matt-cross','vincenzo','2-tuff-tony','willie-mack'])test(`${id} faces movement through every run frame in both wrestling games`,async({page})=>{
   const frame=await embedded(page);
   const samples=await frame.evaluate(async id=>{
     const results=[];
@@ -130,18 +130,19 @@ for(const id of ['caleb-konley','sally-boy','facade'])test(`${id} faces movement
           const frames=art.animations[animation];
           for(let i=0;i<frames.length;i++){
             Object.assign(p,{walk:animation==='walk',age:(i+.1)/9,action:animation==='light'?{kind:'light',t:(i+.1)/frames.length,duration:1}:null,facing});
-            seen=null;g.draw();const f=frames[i];results.push({game:name,animation,facing,seen,rect:[f.x,f.y,f.w,f.h]});
+            seen=null;g.draw();const f=frames[i];results.push({game:name,animation,index:i,facing,seen,rect:[f.x,f.y,f.w,f.h]});
           }
         }
       }finally{ctx.drawImage=draw;}
     }
     return results;
   },id);
-  expect(samples.filter(s=>s.animation==='walk')).toHaveLength(24);
+  expect(samples.filter(s=>s.animation==='walk')).toHaveLength(['2-tuff-tony','willie-mack'].includes(id)?20:24);
   for(const sample of samples){
     expect(sample.seen,`${sample.game} ${sample.animation}`).not.toBeNull();
     expect(sample.seen.rect).toEqual(sample.rect);
-    // Reviewed runs face left; standing and striking frames already face right.
-    expect(Math.sign(sample.seen.scale)).toBe(sample.animation==='walk'?-sample.facing:sample.facing);
+    // Preserve the reviewed run flips and Willie’s existing three mirrored strike frames.
+    const mirrored=sample.animation==='walk'&&(!['2-tuff-tony','willie-mack'].includes(id)||sample.index===4)||id==='willie-mack'&&sample.animation==='light'&&sample.index<3;
+    expect(Math.sign(sample.seen.scale),JSON.stringify({id,...sample})).toBe(mirrored?-sample.facing:sample.facing);
   }
 });

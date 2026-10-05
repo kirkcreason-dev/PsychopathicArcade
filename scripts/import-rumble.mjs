@@ -23,7 +23,7 @@ if(process.argv[2] && !['--embed','--check'].includes(process.argv[2])){
         const scale=.64,pad=4,frames=[],lookup=new Map(),anims={};
         let x=0,y=0,rowH=0;
         for(const anim of animations){
-          anims[anim]=(fighter.animations[anim]||(anim==='climb'?fighter.animations.lift:anim==='dive'?fighter.animations.throw:fighter.animations.idle)).map(f=>{
+          anims[anim]=(fighter.animations[anim]||(anim==='climb'?fighter.animations.lift:anim==='dive'?fighter.animations.throw:fighter.animations.idle)).map((f,index)=>{
             const key=[f.x,f.y,f.w,f.h].join(':');let p=lookup.get(key);
             if(!p){
               const w=Math.ceil(f.w*scale),h=Math.ceil(f.h*scale);
@@ -31,8 +31,8 @@ if(process.argv[2] && !['--embed','--check'].includes(process.argv[2])){
               p={x:x+pad,y:y+pad,w,h,source:f};frames.push(p);lookup.set(key,p);
               x+=w+pad*2;rowH=Math.max(rowH,h+pad*2);
             }
-            // These reviewed running sequences face left; normalize them without flipping other moves.
-            return {x:p.x,y:p.y,w:p.w,h:p.h,anchorX:(f.anchorX??f.w/2)*p.w/f.w,anchorY:(f.anchorY??f.h)*p.h/f.h,...((['caleb-konley','sally-boy','facade'].includes(fighter.id)&&anim==='walk'?!f.flipX:f.flipX)?{flipX:true}:{}),...(f.drawScale?{drawScale:f.drawScale}:{})};
+            // These reviewed run frames face left; normalize them without flipping other moves.
+            return {x:p.x,y:p.y,w:p.w,h:p.h,anchorX:(f.anchorX??f.w/2)*p.w/f.w,anchorY:(f.anchorY??f.h)*p.h/f.h,...((anim==='walk'&&(['caleb-konley','sally-boy','facade','matt-cross','vincenzo'].includes(fighter.id)||['2-tuff-tony','willie-mack'].includes(fighter.id)&&index===4)?!f.flipX:f.flipX)?{flipX:true}:{}),...(f.drawScale?{drawScale:f.drawScale}:{})};
           });
         }
         const c=document.createElement('canvas');c.width=1024;c.height=y+rowH;
