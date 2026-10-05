@@ -465,7 +465,8 @@
             "w": 85,
             "h": 141,
             "anchorX": 43.17613636363637,
-            "anchorY": 141
+            "anchorY": 141,
+            "flipX": true
           }
         ],
         "light": [
@@ -821,7 +822,8 @@
             "w": 84,
             "h": 141,
             "anchorX": 43.282442748091604,
-            "anchorY": 141
+            "anchorY": 141,
+            "flipX": true
           }
         ],
         "light": [
@@ -2922,7 +2924,7 @@
     },
     {
       "id": "able",
-      "name": "Able",
+      "name": "Abel",
       "style": "Outbreak",
       "color": "#bd774b",
       "power": 1.05,
@@ -4337,7 +4339,8 @@
             "w": 85,
             "h": 111,
             "anchorX": 42.821969696969695,
-            "anchorY": 111
+            "anchorY": 111,
+            "flipX": true
           },
           {
             "x": 136,
@@ -4345,7 +4348,8 @@
             "w": 77,
             "h": 116,
             "anchorX": 63.73529411764706,
-            "anchorY": 116
+            "anchorY": 116,
+            "flipX": true
           },
           {
             "x": 221,
@@ -4353,7 +4357,8 @@
             "w": 81,
             "h": 116,
             "anchorX": 66.99857142857142,
-            "anchorY": 116
+            "anchorY": 116,
+            "flipX": true
           },
           {
             "x": 310,
@@ -4361,7 +4366,8 @@
             "w": 84,
             "h": 116,
             "anchorX": 17.954198473282442,
-            "anchorY": 116
+            "anchorY": 116,
+            "flipX": true
           },
           {
             "x": 402,
@@ -4369,7 +4375,8 @@
             "w": 78,
             "h": 118,
             "anchorX": 17.727272727272727,
-            "anchorY": 118
+            "anchorY": 118,
+            "flipX": true
           },
           {
             "x": 488,
@@ -4377,7 +4384,8 @@
             "w": 84,
             "h": 118,
             "anchorX": 42,
-            "anchorY": 118
+            "anchorY": 118,
+            "flipX": true
           }
         ],
         "light": [
@@ -4749,7 +4757,8 @@
             "w": 91,
             "h": 114,
             "anchorX": 47.102112676056336,
-            "anchorY": 114
+            "anchorY": 114,
+            "flipX": true
           },
           {
             "x": 143,
@@ -4757,7 +4766,8 @@
             "w": 88,
             "h": 111,
             "anchorX": 52.411764705882355,
-            "anchorY": 111
+            "anchorY": 111,
+            "flipX": true
           },
           {
             "x": 239,
@@ -4765,7 +4775,8 @@
             "w": 70,
             "h": 116,
             "anchorX": 55.22935779816514,
-            "anchorY": 116
+            "anchorY": 116,
+            "flipX": true
           },
           {
             "x": 317,
@@ -4773,7 +4784,8 @@
             "w": 82,
             "h": 112,
             "anchorX": 14.734375,
-            "anchorY": 112
+            "anchorY": 112,
+            "flipX": true
           },
           {
             "x": 407,
@@ -4781,7 +4793,8 @@
             "w": 84,
             "h": 118,
             "anchorX": 25.64885496183206,
-            "anchorY": 118
+            "anchorY": 118,
+            "flipX": true
           },
           {
             "x": 499,
@@ -4789,7 +4802,8 @@
             "w": 91,
             "h": 116,
             "anchorX": 13.346666666666666,
-            "anchorY": 116
+            "anchorY": 116,
+            "flipX": true
           }
         ],
         "light": [

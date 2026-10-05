@@ -65,7 +65,7 @@ function createWrestlingGame(ladderMode=false){
     $('#ruThrowBtn').firstChild.textContent=out?'TOSS OUT':'WHIP';$('#ruThrowBtn').classList.toggle('ru-toss-ready',out);
     $('#ruTarget').classList.toggle('ready',out);
   }
-  function fighter(id,isPlayer,x,y){return {id,uid:id,score:0,kills:0,charge:0,human:false,player:isPlayer,x,y,facing:isPlayer?1:-1,hp:100,guard:100,guardOn:false,age:0,walk:false,cool:0,stun:0,invuln:1.1,lastHit:-10,action:null,grabbed:null,out:false,outTime:0,climbing:false,climb:0,pulls:0,misses:0,fallTime:0,fallHeight:0,think:Math.random()*.5,target:null,aiWait:.8+Math.random()*.7};}
+  function fighter(id,isPlayer,x,y){return {id,uid:id,score:0,kills:0,charge:0,human:false,player:isPlayer,x,y,facing:isPlayer?1:-1,hp:100,guard:100,guardOn:false,age:0,walk:false,cool:0,stun:0,invuln:1.1,lastHit:-10,action:null,grabbed:null,out:false,outTime:0,climbing:false,climb:0,pulls:0,misses:0,ladderMisses:0,ladderFalls:0,ladderTips:0,fallTime:0,fallHeight:0,think:Math.random()*.5,target:null,aiWait:.8+Math.random()*.7};}
   function distance(a,b){return Math.hypot(a.x-b.x,(a.y-b.y)*1.35,ladderMode?((a.climb||0)-(b.climb||0))*174:0);}
   function nearest(f){return alive().filter(v=>v!==f&&!v.grabbed).sort((a,b)=>distance(f,a)-distance(f,b))[0];}
   function edge(f){return [{axis:'x',sign:-1,at:B.left,d:f.x-B.left},{axis:'x',sign:1,at:B.right,d:B.right-f.x},{axis:'y',sign:-1,at:B.top,d:f.y-B.top},{axis:'y',sign:1,at:B.bottom,d:B.bottom-f.y}].sort((a,b)=>a.d-b.d)[0];}
@@ -123,7 +123,7 @@ function createWrestlingGame(ladderMode=false){
   }
   function validFighter(f){
     if(!f||!byId[f.id]||!['p1','p2'].includes(f.uid))return false;
-    if(!['x','y','hp','guard','age','cool','stun','invuln','outTime','climb','fallTime','score','kills','charge'].every(k=>Number.isFinite(f[k])))return false;
+    if(!['x','y','hp','guard','age','cool','stun','invuln','outTime','climb','fallTime','score','kills','charge','ladderMisses','ladderFalls','ladderTips'].every(k=>Number.isFinite(f[k])))return false;
     if(Math.abs(f.x)>1000||Math.abs(f.y)>1000||f.hp<0||f.hp>100||f.score<0||f.score>1000000||f.climb<0||f.climb>1)return false;
     if(f.action&&(!['light','heavy','hurt','throw','tip','down'].includes(f.action.kind)||!Number.isFinite(f.action.t)||!Number.isFinite(f.action.duration)||f.action.duration<=0))return false;
     if(f.out&&(!f.exit||!Number.isFinite(f.exit.x)||!Number.isFinite(f.exit.y)||!['x','y'].includes(f.exit.axis)||![-1,1].includes(f.exit.sign)))return false;
@@ -152,18 +152,18 @@ function createWrestlingGame(ladderMode=false){
   function ladderNear(f){return Math.hypot(f.x-S.ladder.x,(f.y-S.ladder.y)*1.2)<62;}
   function aligned(){return Math.abs(S.ladder.x-240)<=28&&Math.abs(S.ladder.y-365)<=28;}
   function fall(f){
-    if(!f.climbing)return;f.fallHeight=f.climb*174;f.fallTime=.55;f.climbing=false;f.climb=0;f.misses=0;f.stun=1.65;f.hp=Math.max(1,f.hp-25);f.action={kind:'hurt',t:0,duration:1.65};label(f,'KNOCKED DOWN','#ff8db6');
+    if(!f.climbing)return;f.ladderFalls++;f.fallHeight=f.climb*174;f.fallTime=.55;f.climbing=false;f.climb=0;f.misses=0;f.stun=1.65;f.hp=Math.max(1,f.hp-25);f.action={kind:'hurt',t:0,duration:1.65};label(f,'KNOCKED DOWN','#ff8db6');
   }
   function tip(f){
     const victims=S.fighters.filter(v=>v!==f&&v.climbing);if(!victims.length||!ladderNear(f))return false;
-    victims.forEach(fall);S.ladder.tilt=.8;S.ladder.open=false;S.ladder.x=clamp(S.ladder.x+(f.x<S.ladder.x?22:-22),90,390);label(f,'TIMBER!','#ffe29d');award(f,100);Sound.play('hit');return true;
+    victims.forEach(fall);f.ladderTips++;S.ladder.tilt=.8;S.ladder.open=false;S.ladder.x=clamp(S.ladder.x+(f.x<S.ladder.x?22:-22),90,390);label(f,'TIMBER!','#ffe29d');award(f,100);Sound.play('hit');return true;
   }
   function ladderAction(f,attemptAt=S.elapsed){
     const l=S.ladder;if(f.climbing){
       if(f.climb<1){if(f.player)status('Keep climbing. Move down to descend.');return false;}
       const needle=grabNeedle(f,attemptAt);f.cool=.4;
       if(needle>=.38&&needle<=.64){f.pulls++;f.misses=0;label(f,f.pulls+' / 4','#e0ff9e');if(isHuman(f)){award(f,250);f.kills=f.pulls;if(f===player())S.kills=f.pulls;}Sound.play('bell');if(f.pulls>=4){S.winner=f.id;S.winnerUid=f.uid;finish(f===player());}}
-      else{f.misses++;label(f,'SLIPPED!','#ff9dc4');if(f.misses>=2)fall(f);else if(f.player)status('One more miss and you fall. Aim for green.');}
+      else{f.misses++;f.ladderMisses++;label(f,'SLIPPED!','#ff9dc4');if(f.misses>=2)fall(f);else if(f.player)status('One more miss and you fall. Aim for green.');}
       return true;
     }
     if(l.carrier===f.uid){l.carrier=null;l.open=true;l.x=f.x;l.y=f.y;if(Math.abs(l.x-240)<=28)l.x=240;if(Math.abs(l.y-365)<=28)l.y=365;f.cool=.3;label(f,aligned()?'LINED UP':'MOVE TO THE GLOW',aligned()?'#dfff95':'#ffd999');return true;}
@@ -348,7 +348,10 @@ function createWrestlingGame(ladderMode=false){
     const won=S.won;
     text('ruResultKicker',won?(ladderMode?'LADDER WARS CHAMPION':'JCW RUMBLE CHAMPION'):(ladderMode?'THE GOLD GOT AWAY':'OVER THE ROPES'));text('ruResultTitle',won?(ladderMode?'YOU OWN THE GOLD.':'LAST LUNATIC STANDING'):'GET BACK IN THERE.');text('ruFinalScore',S.score.toLocaleString());text('ruResultDetail',S.kills+(ladderMode?' belt grabs · ':' eliminations · ')+Math.floor(S.elapsed/60)+':'+String(Math.floor(S.elapsed%60)).padStart(2,'0')+(ladderMode?' elapsed · '+(S.winner?byId[S.winner].name+' claimed the belt':'Time expired'):' survived · '+S.total+' entrants'));
     $('#ruSaveBtn').disabled=S.score<=0;overlays();hud();status(ladderMode?(won?'You claimed the gold. Champion!':'The belt got away. Your best score is saved.'):(won?'You cleared the whole field. Champion!':'You were eliminated. Your best score is saved.'));$('#ruAgainBtn').focus({preventScroll:true});Sound.play(won?'fanfare':'bell');
-    try{window.__arcSend&&window.__arcSend({ev:game,score:S.score,kills:S.kills,won,roster:S.selected,entrants:S.total});}catch(_e){}
+    const p=player();
+    try{window.__arcSend&&window.__arcSend({ev:game,score:S.score,kills:S.kills,won,roster:S.selected,entrants:S.total,...(ladderMode?{
+      resultId:crypto.randomUUID(),grabs:p.pulls,misses:p.ladderMisses,falls:p.ladderFalls,tips:p.ladderTips,elapsed:S.elapsed,online:!!N
+    }:{})});}catch(_e){}
   }
   function pause(force){
     if(N){netPause(force);return;}
