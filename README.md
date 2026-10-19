@@ -1,7 +1,9 @@
 # Psychopathic Arcade — published game
 
-Play through the JCW Lunacy arcade: https://jcwlunacy.net/arcade.html
+Play: https://kirkcreason-dev.github.io/PsychopathicArcade/
 
-This branch contains the tested static build from `codex/ladder-achievements-roster` at `97f5f80f1cc83e42558613d78bf5cd90f26e8ec8`. Vincenzo and Matt Cross face their movement in Rumble and Ladder Wars; Tony and Willie Mack retain the correct direction through every run frame. Abel’s display name is corrected without changing saved IDs. Completed Ladder Wars matches report each player’s grabs, misses, falls, tips and result for 35 locker achievements in the companion JCWLUNACY website update. All 328 browser checks passed. The sixteen-game arcade, mobile controls, multiplayer, device-local records, 530 Carnival Claw collectibles, 21 active wrestlers and JCW access gate are preserved.
+This branch contains the tested static build from `codex/big-foot-roster` at `b2d38277d62a2c4d1dfaea8f17948bae61e94f19`. Big Foot joins JCW Rumble and Ladder Wars as the 22nd playable wrestler, with reviewed transparent artwork, kicks, a one-handed chokeslam, climbing, and proper prone poses. Solo and versus play, device-local records, all sixteen games, and 530 Carnival Claw collectibles are included. The separate JCWLUNACY website and its badge definitions are unchanged.
+
+Validation: all 344 browser tests, lint, type checking and the production build passed in GitHub Actions.
 
 GitHub Pages publishes the root of `gh-pages`. Build source with `npm run build`, replace the static files with `dist/`, retain `.nojekyll`, update `version.json`, and keep `public/game.html` identical to `game.html` for existing links. Do not merge this generated branch into source branches.
