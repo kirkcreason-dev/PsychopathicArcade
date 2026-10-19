@@ -8,6 +8,8 @@ import {chromium} from '@playwright/test';
 const root=fileURLToPath(new URL('../',import.meta.url));
 const directory=path.join(root,'assets/rumble');
 const manifestPath=path.join(directory,'manifest.json');
+const additional=JSON.parse(await fs.readFile(path.join(directory,'additional-roster.json'),'utf8'));
+const additionalSource='Big Foot: artwork supplied by the owner, prepared as transparent poses';
 const animations=['idle','walk','light','heavy','hurt','lift','throw','down','victory','climb','dive'];
 if(process.argv[2] && !['--embed','--check'].includes(process.argv[2])){
   const source=JSON.parse(await fs.readFile(path.join(directory,'source-roster.json'),'utf8'));
@@ -46,9 +48,11 @@ if(process.argv[2] && !['--embed','--check'].includes(process.argv[2])){
       console.log(`${name}: ${result.frames} reviewed frames, ${Math.round(result.url.length*.75/1024)} KB`);
     }
   }finally{await browser.close();}
-  await fs.writeFile(manifestPath,JSON.stringify({source:'Lunacy Unlocked v0.7.0',scale:.64,roster},null,2)+'\n');
+  await fs.writeFile(manifestPath,JSON.stringify({source:'Lunacy Unlocked v0.7.0',scale:.64,roster:[...roster,...additional],additionalSource},null,2)+'\n');
 }
 const manifest=JSON.parse(await fs.readFile(manifestPath,'utf8'));
+if(new Set(manifest.roster.map(f=>f.id)).size!==manifest.roster.length)throw new Error('Duplicate wrestler ID.');
+for(const f of additional)if(JSON.stringify(manifest.roster.find(r=>r.id===f.id))!==JSON.stringify(f))throw new Error('Additional wrestler metadata is out of sync: '+f.id);
 for(const f of manifest.roster)f.src='data:image/webp;base64,'+(await fs.readFile(path.join(directory,f.id+'.webp'))).toString('base64');
 const file=path.join(root,'public/game.html');let html=await fs.readFile(file,'utf8');const before=html;
 const block='/* RUMBLE ART START */\nconst RUMBLE_ART = '+JSON.stringify(manifest)+';\n/* RUMBLE ART END */';

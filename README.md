@@ -40,7 +40,7 @@ without checking. Keep the bundled chess engine's license intact.
 
 ## Ladder Wars
 
-The sixteenth game reuses all 22 Lunacy Unlocked wrestlers in a dedicated
+The sixteenth game features 21 Lunacy Unlocked wrestlers and Big Foot in a dedicated
 carnival arena. Choose singles or four-wrestler chaos. Carry the ladder to the
 lit centre mark, set it, climb and time four grabs in the green window to win.
 Each wrestler retains their own belt progress. Two missed grabs cause a fall;
@@ -58,8 +58,8 @@ left-facing run artwork is mirrored independently of his other moves.
 The context button (K) handles pickup, set, climb and grab. Down descends;
 J/Space strikes, L/Shift guards and F uses the charged finisher. Phone controls,
 paused/loading/result states, local records, career wins and replay are included.
-Original climb poses are available for 13 wrestlers; the other nine use their
-existing lift poses. No source sprite boundaries were guessed or recut.
+Dedicated climb poses are available for 14 wrestlers, including Big Foot; the
+remaining eight use their existing lift poses. Frame cuts are reviewed individually.
 
 The shared engine lives in `games/rumble.js`, with Ladder Wars markup/styles in
 `games/ladder.html` and `.css`. Run `node scripts/sync-rumble.mjs` to embed all
@@ -86,8 +86,8 @@ boards; this is not a new global leaderboard service.
 
 ## JCW Rumble
 
-The fifteenth game is an over-the-rope survival match using **all 22 prepared
-wrestlers from Lunacy Unlocked v0.7.0**. Choose a 12-entrant quick match or the
+The fifteenth game is an over-the-rope survival match featuring **21 wrestlers
+from Lunacy Unlocked v0.7.0 plus Big Foot**. Choose a 12-entrant quick match or the
 full 22-person field. Four wrestlers can fight at once; queued entrants arrive
 every eight seconds when space is available, accelerated after an elimination.
 Rivals fight each other. There are no pinfalls or health-based eliminations:
@@ -118,12 +118,25 @@ when navigating away; decoding failures offer a retry.
 `assets/rumble/manifest.json` retains the reviewed source frame boundaries,
 foot anchors, per-frame facing corrections and draw scales. The optimized WebP
 atlases preserve alpha and add four transparent pixels around each packed frame.
-They contain eleven animation sets for both wrestling games, about 4.8 MB total
+They contain eleven animation sets for both wrestling games, about 5 MB total
 instead of the original 76 MB of PNG sheets. To rebuild from the supplied Lunacy
 Unlocked `dist/assets` folder, run `node scripts/import-rumble.mjs PATH`; to
 re-embed committed artwork, run `node scripts/import-rumble.mjs --embed`.
 `source-roster.json` records the original metadata. Source project artwork is
 reused at the owner's request; this does not grant a new artwork license.
+
+Big Foot uses the owner's supplied artwork, prepared into transparent poses with
+imagegen. He is a slower powerhouse with a kick, one-handed chokeslam, ladder
+climb and a horizontal prone pose. He works in solo and versus matches. His
+reviewed rectangles, anchors, facing corrections and source sheets are in
+`assets/rumble/big-foot-source/`; run `node scripts/import-big-foot.mjs` then
+`node scripts/import-rumble.mjs --embed` to rebuild him. Additional roster
+metadata is preserved when importing the original Lunacy Unlocked cast.
+
+Site locker achievement definitions belong to the separate host website. This
+addition does not change those definitions: local records and wins work for Big
+Foot, but host-specific character achievements require a separately authorized
+website update.
 
 `tests/rumble.spec.js` covers every atlas, both match sizes, touch/keyboard input,
 throws and interruptions, guard, finishers, entry limits, complete win/loss,
