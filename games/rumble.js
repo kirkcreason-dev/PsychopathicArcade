@@ -409,7 +409,9 @@ function createWrestlingGame(ladderMode=false){
       if(!f.out){oval(ctx,x,f.y,f.player?25:21,f.player?8:6,'#100b2477',f.player?'#d1ff68':f===target?'#ff70b6':null);}
       sprite(ctx,f.id,anim,ix,x,y,scale,f.facing,rotation);ctx.globalAlpha=1;
       if(!f.out){
-        const head=y-(ladderMode?104:106);ctx.textAlign='center';ctx.font='9px '+FONT;ctx.fillStyle=f.player?'#defd93':'#fff1ea';ctx.fillText((f.player?'YOU · ':'')+byId[f.id].name.toUpperCase(),f.x,head);
+        // Taller poses need room above the head, including at the front of the ring.
+        const pose=frames[anim][Math.min(ix,frames[anim].length-1)];
+        const head=y-Math.max(ladderMode?104:106,frames.idle[0].anchorY*scale+13,pose.anchorY*scale*(pose.drawScale||1)+13);ctx.textAlign='center';ctx.font='9px '+FONT;ctx.fillStyle=f.player?'#defd93':'#fff1ea';ctx.fillText((f.player?'YOU · ':'')+byId[f.id].name.toUpperCase(),f.x,head);
         ctx.fillStyle='#211323';ctx.fillRect(f.x-22,head+5,44,4);ctx.fillStyle=f.hp<=35?'#ff69a8':f.player?'#c5f876':'#e8b387';ctx.fillRect(f.x-22,head+5,44*f.hp/100,4);
         if(f.guardOn){ctx.strokeStyle='#a6b4f3';ctx.lineWidth=2;ctx.beginPath();ctx.arc(f.x,f.y-46,37,-2.6,.6);ctx.stroke();}
         if(!ladderMode&&f.hp<=35&&edge(f).d<=48){ctx.fillStyle='#d6ff72';ctx.font='15px '+FONT;ctx.fillText('TOSS OUT ↓',f.x,f.y+18);}
@@ -433,6 +435,8 @@ function createWrestlingGame(ladderMode=false){
   function bind(){
     canvas=$('#ruCanvas');ctx=canvas.getContext('2d');makeScenery();resize();loadArena().then(draw).catch(()=>{});
     for(const r of roster){const o=document.createElement('option');o.value=r.id;o.textContent=r.name;$('#ruRoster').appendChild(o);}$('#ruRoster').value=S.selected;
+    text('ruRosterCount',roster.length+' PLAYABLE WRESTLERS');
+    if(!ladderMode){$('#ruFullRoster').value=String(roster.length);text('ruFullRoster','Full Roster · '+roster.length+' entrants');}
     $('#ruRoster').onchange=()=>{S.selected=$('#ruRoster').value;store.set('selected',S.selected);portrait();};
     $('#ruStartBtn').onclick=start;$('#ruAgainBtn').onclick=start;$('#ruRestartBtn').onclick=choose;$('#ruChooseBtn').onclick=choose;$('#ruPauseBtn').onclick=()=>pause();$('#ruResumeBtn').onclick=()=>pause();$('#ruHomeBtn').onclick=()=>showScreen('menu');$('#ruSoundBtn').onclick=toggleSound;
     $('#ruFinisherBtn').onclick=()=>{act('finish');canvas.focus({preventScroll:true});};$('#ruSaveBtn').onclick=()=>{if(S.mode!=='over'||S.saved||S.score<=0)return;S.saved=true;$('#ruSaveBtn').disabled=true;text('ruSaveBtn','RECORD SUBMITTED');LB.check(game,S.score,S.kills+(ladderMode?' belt grabs · ':' eliminations · ')+(S.won?'Champion':byId[S.selected].name));};
