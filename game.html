@@ -1257,6 +1257,77 @@ canvas, #soBoard{ touch-action:none; }
 /* RUMBLE DUELS STYLE START */
 .duel-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 13px;border:1px solid #957245;background:#201526;border-radius:9px;margin-bottom:8px;font-size:10px;color:#cbb3cb}.duel-bar[hidden],.duel-modal[hidden],.duel-scores[hidden]{display:none}.duel-bar b{color:#e7f8b2;font-size:18px;margin-left:5px}.duel-bar small{font-size:8px;text-align:center;letter-spacing:1px}.duel-modal{position:fixed;inset:0;z-index:9500;background:#0d0719d9;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(7px)}.duel-panel{width:min(430px,100%);background:linear-gradient(140deg,#352139,#100c16);border:1px solid #a68051;border-radius:17px;padding:24px;text-align:center;box-shadow:0 25px 80px #0009}.duel-kicker{color:#eccca0;font-size:9px;letter-spacing:1.5px}.duel-panel h2{font:30px/1.05 Impact,'Arial Black',sans-serif;color:#e2f798;margin:16px 0}.duel-panel p{font-size:13px;color:#d1bfce;line-height:1.6}.duel-panel button{display:block;min-height:43px;border:0;border-radius:7px;background:#d0f675;color:#172214;font:16px Impact,sans-serif;letter-spacing:1px;width:100%;margin-top:11px;cursor:pointer}.duel-panel button[hidden]{display:none}.duel-panel button:disabled{opacity:.55;cursor:default}.duel-panel .duel-secondary{background:#2b1b32;border:1px solid #735269;color:#e7d6e4}.duel-scores{display:flex;justify-content:space-evenly;color:#c9b8ca;font-size:11px;padding:16px 0}.duel-scores b{display:block;font:30px Impact,sans-serif;color:#ffd795;margin-top:8px}.new-net-btn{background:#241a2e;border:1px solid #b58b55;color:#f3dbac;border-radius:7px;padding:7px 10px;font:12px Impact,sans-serif;letter-spacing:1px;cursor:pointer}
 /* RUMBLE DUELS STYLE END */
+/* POOL STYLE START */
+#plScreen{--pl-cream:#f8ecd4;--pl-gold:#d7b377;--pl-mint:#9df6cb;--pl-pink:#ec84bb;width:100%;max-width:1220px;margin:0 auto;padding:12px 12px 28px;color:var(--pl-cream);font-family:Arial,sans-serif}
+#plScreen[hidden]{display:none!important}#plScreen *{box-sizing:border-box}#plScreen [hidden]{display:none!important}
+.pl-heading{display:flex;align-items:center;gap:26px;margin:2px 0 18px}.pl-brand{display:flex;flex-direction:column;text-align:left;line-height:.88}.pl-brand small{font:900 14px/1.3 Arial,sans-serif;letter-spacing:.37em;color:#e4c79c}.pl-brand b{font:italic 900 61px/.95 Impact,'Arial Black',sans-serif;letter-spacing:.025em;color:#a7f8d0;text-shadow:2px 3px 0 #4a183a}.pl-eyebrow{font:700 10px/1.5 Arial,sans-serif;letter-spacing:.17em;color:#d4b88d}.pl-heading p{font-size:16px;color:#c6babd;margin:8px 0}.pl-table-number{margin-left:auto;text-align:center;color:#a48f7d;font:10px/1.4 Arial,sans-serif;letter-spacing:.2em}.pl-table-number b{font:32px/1 Impact,sans-serif;color:#e4c79c}
+.pl-layout{display:grid;align-items:start;grid-template-columns:minmax(0,1fr) 245px;gap:22px}.pl-machine{min-width:0;background:#100e17;border:1px solid #65516a;border-radius:16px;overflow:hidden;box-shadow:0 15px 50px #0007}.pl-players{display:grid;grid-template-columns:minmax(0,1fr) 34px minmax(0,1fr);align-items:center;padding:12px 15px;gap:8px;border-bottom:1px solid #43323d;background:linear-gradient(120deg,#1a2023,#20121d)}.pl-player{padding:7px 9px;border:1px solid transparent;border-radius:7px;min-width:0}.pl-player.active{border-color:#9df6cb80;background:#9df6cb0c;box-shadow:0 0 20px #63b28c10}.pl-player:nth-child(3).active{border-color:#ec84bb80;background:#ec84bb0a}.pl-player>div:first-child{display:grid;grid-template-columns:1fr auto;gap:3px 8px}.pl-player b{font-size:11px;letter-spacing:.06em;color:#a7f8d0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pl-player:nth-child(3) b{color:#ec84bb}.pl-player span{font-size:9px;color:#c5b7bc;grid-column:1;white-space:nowrap}.pl-player strong{grid-column:2;grid-row:1/3;font:23px/1.2 Impact,sans-serif;color:#e8d2ab}.pl-versus{border:2px solid #ae9360;background:#0b0b11;border-radius:50%;color:#fff;font:bold 20px/30px Georgia,serif;width:34px;height:34px;text-align:center;box-shadow:0 3px 6px #000b}.pl-ball-tray{display:flex;gap:3px;margin-top:6px;min-height:17px}.pl-ball-tray i{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:50%;font:700 9px/1 Arial,sans-serif;background:var(--ball,#e0bd36);color:#12121a;font-style:normal;box-shadow:inset -2px -2px 3px #0005,0 1px 2px #0009;border:1px solid #fff8}.pl-ball-tray i.stripe{background:linear-gradient(#fff 23%,var(--ball) 24% 76%,#fff 77%)}.pl-ball-tray i.gone{opacity:.17}.pl-ball-tray i.eight{background:#15131b;color:#fff}.pl-ball-tray em{font:10px/17px Arial,sans-serif;color:#9f949d;font-style:normal}
+.pl-message{min-height:54px;padding:9px 16px;display:flex;flex-direction:column;justify-content:center;gap:4px;border-bottom:1px solid #463140}.pl-message b{font:700 10px/1.2 Arial,sans-serif;letter-spacing:.13em;color:#e3c795}.pl-message span{font-size:12px;line-height:1.35;color:#ded8d8}.pl-stage{position:relative;width:100%;aspect-ratio:5/3;background:#0e0b12;min-height:240px;isolation:isolate}.pl-stage canvas{display:block;width:100%;height:100%;outline:none;touch-action:none;cursor:crosshair}.pl-stage canvas:focus-visible{outline:2px solid #a7f8d0;outline-offset:-3px}.pl-overlay{position:absolute;inset:0;display:flex;align-items:flex-start;justify-content:center;background:#09080cd9;backdrop-filter:blur(6px);padding:14px;overflow-y:auto}.pl-panel{flex-shrink:0;margin-block:auto;width:min(100%,360px);padding:20px 24px;text-align:center;background:linear-gradient(140deg,#231c28ef,#141119f7);border:1px solid #b2946770;border-radius:13px;box-shadow:0 20px 50px #0008}.pl-panel h2{font:italic 900 31px/1.1 Impact,'Arial Black',sans-serif;color:#a7f8d0;margin:10px 0}.pl-panel p{font-size:12px;line-height:1.45;color:#d6c9ce;margin:8px 0 13px}.pl-panel label{display:block;text-align:left;font:700 9px/1.4 Arial,sans-serif;letter-spacing:.14em;color:#c9b18c;margin:10px 0 5px}.pl-panel select{width:100%;min-height:40px;padding:8px 10px;border-radius:6px;border:1px solid #6e5a72;background:#19151f;color:#f2e5dc;font:12px Arial,sans-serif;max-width:100%}.pl-panel .pl-primary{width:100%;margin-top:16px}.pl-panel .pl-secondary{width:100%;margin-top:8px}.pl-panel .pl-note{font-size:10px;margin:12px 0 0}.pl-result-score{font:42px/1 Impact,sans-serif;color:#e7c695}
+#plScreen button{cursor:pointer}#plScreen button:disabled{opacity:.38;cursor:default}.pl-primary,.pl-secondary{font:800 11px/1.1 Arial,sans-serif;letter-spacing:.045em;border-radius:7px;min-height:42px;padding:11px 14px}.pl-primary{color:#10241d;border:1px solid #c1ffe2;background:linear-gradient(#b6ffdb,#75dcae);box-shadow:0 3px 0 #2a7555}.pl-primary:hover:not(:disabled){filter:brightness(1.08)}.pl-secondary{color:#e9d9c5;background:#211a27;border:1px solid #6b536b}.pl-secondary:hover:not(:disabled){border-color:#d7b377}#plScreen button:focus-visible,#plScreen select:focus-visible,#plScreen input:focus-visible{outline:2px solid #a7f8d0;outline-offset:2px}
+.pl-shot-controls{padding:12px 16px 8px;border-top:1px solid #49313d;background:linear-gradient(110deg,#191620,#211621)}.pl-power-row{display:grid;grid-template-columns:75px minmax(0,1fr) 135px;gap:12px;align-items:center}.pl-power-row>label{font:700 9px/1.5 Arial,sans-serif;letter-spacing:.1em;color:#d4b894}.pl-power-row output{display:block;font:20px/1.1 Impact,sans-serif;color:#b5f8d5;letter-spacing:.03em}.pl-power-row input{width:100%;min-height:40px;accent-color:#a7f8d0;cursor:pointer}.pl-aim-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:7px;min-height:39px}.pl-aim-row>span{font:10px/1.4 Arial,sans-serif;color:#b6a9b3;max-width:220px}.pl-nudge{display:flex;align-items:center;gap:7px}.pl-nudge button{width:38px;min-height:38px;background:#27202c;border:1px solid #65536b;color:#f0e3d5;font-size:23px;border-radius:6px}.pl-nudge span{font-size:8px;color:#ab99a8;letter-spacing:.06em}.pl-guide-toggle{display:flex;align-items:center;gap:4px;font-size:11px;color:#d9c9d1}.pl-guide-toggle input{accent-color:#9df6cb;width:16px;height:16px}.pl-pocket-call{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:8px}.pl-pocket-call>b{font-size:10px;color:#e5c488;letter-spacing:.08em}.pl-pocket-call>div{display:flex;gap:7px}.pl-pocket-call button{width:37px;height:37px;border:1px solid #79627d;background:#251c2d;color:#ede2d7;border-radius:50%;font:bold 13px Arial}.pl-pocket-call button[aria-pressed=true]{background:#9df6cb;color:#10241d;border-color:#d3ffe8;box-shadow:0 0 12px #9df6cb42}
+#plScreen .pl-footer{margin:0;padding:10px 12px;display:flex;flex-wrap:nowrap;justify-content:center;gap:7px;border-top:1px solid #44303f;background:#110f17}#plScreen .pl-footer .pl-secondary{padding:9px 10px;font-size:10px;min-height:38px}#plScreen .pl-footer .img-btn.icon{width:35px;height:35px;padding:0;min-width:30px}#plScreen .pl-footer .img-btn.icon img{max-width:100%;max-height:100%;object-fit:contain}#plScreen .pl-footer .ctl{margin:0;gap:0}.pl-guide>div,.pl-guide details{background:linear-gradient(130deg,#211723,#120f18);border:1px solid #584253;border-radius:10px;padding:19px;margin-bottom:14px}.pl-guide h3{font:25px/1.05 Impact,'Arial Black',sans-serif;color:#e9c89d;margin:10px 0 18px;letter-spacing:.02em}.pl-guide ol{margin:0;padding-left:17px}.pl-guide li{font-size:11px;line-height:1.65;color:#d0c4ca;padding-left:3px;margin-bottom:15px}.pl-guide li:last-child{margin-bottom:0}.pl-guide li b{display:block;color:#b6f2d3;font-size:10px;letter-spacing:.07em}.pl-guide p{font-size:11px;line-height:1.65;color:#c7b9c5}.pl-guide summary{font-size:12px;font-weight:bold;color:#e9c89d;cursor:pointer}.pl-career{padding:3px 2px;color:#9df6cb!important}
+#cardPool{background:radial-gradient(ellipse at 50% 40%,#23433c,#1a1020 68%,#0b0b11);border-color:#b59867;padding:30px 20px;gap:10px}#cardPool .pl-new{color:#e8cda4;font:700 10px/1.5 Arial,sans-serif;letter-spacing:.15em}#plMenuArt{display:block;width:100%;height:220px;object-fit:contain;margin:2px 0 -8px}#cardPool .pl-brand{text-align:center;margin:0 auto;gap:4px}#cardPool .pl-brand b{font-size:65px}#cardPool .pl-brand small{font-size:13px}#cardPool .pl-card-tagline{color:#b2bfb4;font:700 9px/1.4 Arial,sans-serif;letter-spacing:.14em;margin:4px 0 14px}#cardPool .gc-cta{color:#b8ffdb;border-color:#7cab8d80}
+@media(max-width:1000px){.pl-layout{grid-template-columns:1fr}.pl-guide{display:grid;grid-template-columns:1fr 1fr;gap:12px}.pl-guide>div,.pl-guide details{margin-bottom:0}.pl-career{grid-column:1/-1}.pl-stage{max-height:650px}}
+@media(max-width:600px){#plScreen{padding:6px 6px 18px}.pl-heading{gap:12px;margin:7px 3px 14px}.pl-heading .pl-brand b{font-size:42px}.pl-heading .pl-brand small{font-size:9px}.pl-heading .pl-eyebrow{font-size:8px}.pl-heading p{font-size:12px;line-height:1.4;margin:5px 0}.pl-table-number{display:none}.pl-guide{grid-template-columns:1fr}.pl-players{padding:6px;gap:4px;grid-template-columns:1fr 26px 1fr}.pl-player{padding:5px}.pl-player b{font-size:9px}.pl-player strong{font-size:19px}.pl-versus{width:26px;height:26px;font-size:16px;line-height:22px}.pl-ball-tray{gap:2px}.pl-ball-tray i{width:15px;height:15px;font-size:8px}.pl-ball-tray em{font-size:9px}.pl-message{padding:8px 11px}.pl-stage{aspect-ratio:3/5;max-height:none;min-height:430px}.pl-panel{padding:19px 20px;width:min(100%,315px)}.pl-panel h2{font-size:29px}.pl-shot-controls{padding:8px 9px}.pl-power-row{grid-template-columns:53px 1fr 104px;gap:7px}.pl-power-row>button{padding:10px 7px}.pl-aim-row>span{font-size:9px;max-width:125px}.pl-nudge{gap:4px}.pl-nudge span{display:none}.pl-nudge button{width:36px;min-height:36px}.pl-pocket-call button{width:31px;height:34px}.pl-pocket-call>div{gap:5px}.pl-pocket-call>b{font-size:9px}#plScreen .pl-footer{gap:5px;padding:8px 6px}#plScreen .pl-footer .pl-secondary{padding:8px 6px;font-size:9px}#plScreen .pl-footer .img-btn.icon{width:29px;height:32px;min-width:26px}#plMenuArt{height:190px}}
+/* Setup always has room for the full form; auto margins keep overflow reachable. */
+#plScreen:not(.pl-match) .pl-stage{min-height:430px}
+/* Match-only viewport layout keeps the table and actions in the same viewport. */
+@media(max-width:900px){body.pool-match{overflow:hidden}#plScreen.pl-match{position:fixed;inset:0;z-index:20;max-width:none;margin:0;width:100%;height:100dvh;padding:max(4px,env(safe-area-inset-top)) max(4px,env(safe-area-inset-right)) max(4px,env(safe-area-inset-bottom)) max(4px,env(safe-area-inset-left));overflow-y:auto;background:#0d0b13}#plScreen.pl-match .pl-heading,#plScreen.pl-match .pl-guide{display:none}#plScreen.pl-match .pl-layout{display:block;height:100%}#plScreen.pl-match .pl-machine{display:flex;flex-direction:column;min-height:100%;height:100%;border-radius:10px}#plScreen.pl-match .pl-stage{flex:1 1 0;aspect-ratio:auto;min-height:220px}#plScreen.pl-match .pl-players{flex:none}#plScreen.pl-match .pl-message{min-height:43px;padding-top:6px;padding-bottom:6px;flex:none}#plScreen.pl-match .pl-shot-controls,#plScreen.pl-match .pl-footer{flex:none}#plScreen.pl-match .pl-aim-row{margin-top:2px;min-height:34px}#plScreen.pl-match .pl-machine:has(#plPocketCall:not([hidden])) .pl-stage{min-height:220px}#plScreen.pl-match .pl-panel{max-height:100%;overflow-y:auto}}
+@media(max-width:900px) and (orientation:landscape){#plScreen.pl-match .pl-machine{display:grid;grid-template-columns:minmax(0,1fr) 205px;grid-template-rows:47px minmax(0,1fr) 41px;min-height:280px}#plScreen.pl-match .pl-players{grid-column:1;grid-row:1;padding:3px 8px;grid-template-columns:1fr 26px 1fr}#plScreen.pl-match .pl-player{padding:1px 6px}#plScreen.pl-match .pl-ball-tray{margin-top:3px;min-height:13px}#plScreen.pl-match .pl-ball-tray i{width:13px;height:13px;font-size:7px}#plScreen.pl-match .pl-versus{width:26px;height:26px;font-size:16px;line-height:22px}#plScreen.pl-match .pl-stage{grid-column:1;grid-row:2;min-height:170px!important;height:100%}#plScreen.pl-match .pl-message{grid-column:2;grid-row:1/2;padding:7px 10px;border-left:1px solid #44303f;min-height:47px}#plScreen.pl-match .pl-message span{font-size:10px}#plScreen.pl-match .pl-message b{font-size:9px}#plScreen.pl-match .pl-shot-controls{grid-column:2;grid-row:2/4;display:flex;flex-direction:column;justify-content:flex-end;border-left:1px solid #44303f;padding:10px;gap:8px}#plScreen.pl-match .pl-power-row{grid-template-columns:45px 1fr;gap:3px 8px}#plScreen.pl-match .pl-power-row>button{grid-column:1/-1;width:100%;margin-top:6px;min-height:43px}#plScreen.pl-match .pl-aim-row{flex-wrap:wrap;justify-content:space-between;gap:5px}#plScreen.pl-match .pl-aim-row>span{max-width:none;width:100%;font-size:9px}#plScreen.pl-match .pl-nudge button{width:36px;min-height:34px}#plScreen.pl-match .pl-pocket-call{flex-direction:column;align-items:flex-start;gap:5px;padding-bottom:0}#plScreen.pl-match .pl-pocket-call>div{gap:3px;flex-wrap:wrap}#plScreen.pl-match .pl-pocket-call button{width:26px;height:29px}#plScreen.pl-match .pl-footer{grid-column:1;grid-row:3;padding:3px 6px;gap:7px}#plScreen.pl-match .pl-footer .pl-secondary{font-size:9px;padding:6px;min-height:31px}#plScreen.pl-match .pl-footer .img-btn.icon{width:25px;height:28px}#plScreen.pl-match .pl-panel{padding:10px 18px}#plScreen.pl-match .pl-panel h2{font-size:23px;margin:5px 0}#plScreen.pl-match .pl-panel p{font-size:10px;margin:5px 0}#plScreen.pl-match .pl-panel .pl-primary{margin-top:8px;min-height:34px}}
+/* Compact the HUD, not the playable area, on handheld tables. */
+@media(max-width:900px){
+  #plScreen.pl-match .pl-player{min-width:0}
+  #plScreen.pl-match .pl-ball-tray em{display:none}
+  #plScreen.pl-match .pl-ball-tray i{flex-shrink:0}
+  #plScreen.pl-match .pl-player>div:first-child{gap:1px 5px}
+  #plScreen.pl-match .pl-player b{font-size:9px;line-height:12px}
+  #plScreen.pl-match .pl-player span{font-size:8px;line-height:10px}
+  #plScreen.pl-match .pl-player strong{font-size:18px;line-height:22px}
+}
+@media(max-width:900px) and (orientation:portrait){
+  #plScreen.pl-match .pl-players{height:54px;padding:3px 6px}
+  #plScreen.pl-match .pl-player{padding:2px 4px}
+  #plScreen.pl-match .pl-ball-tray{margin-top:3px;min-height:12px;gap:2px}
+  #plScreen.pl-match .pl-ball-tray i{width:12px;height:12px;font-size:7px}
+  #plScreen.pl-match .pl-message{min-height:40px;padding:5px 9px;gap:3px}
+  #plScreen.pl-match .pl-message b{font-size:9px}
+  #plScreen.pl-match .pl-message span{font-size:10px;line-height:1.3}
+  #plScreen.pl-match .pl-shot-controls{padding:5px 8px}
+  #plScreen.pl-match .pl-power-row{grid-template-columns:48px minmax(0,1fr) 99px;gap:7px}
+  #plScreen.pl-match .pl-aim-row{min-height:34px;margin-top:3px;gap:5px}
+  #plScreen.pl-match .pl-aim-row>span{font-size:8px;max-width:110px}
+  #plScreen.pl-match .pl-nudge button{width:34px;min-height:34px}
+  #plScreen.pl-match .pl-nudge span{display:none}
+  #plScreen.pl-match .pl-guide-toggle{font-size:10px}
+  #plScreen.pl-match .pl-pocket-call{padding-bottom:5px;gap:5px}
+  #plScreen.pl-match .pl-pocket-call button{width:30px;height:34px}
+  #plScreen.pl-match .pl-pocket-call>div{gap:4px}
+  #plScreen.pl-match .pl-pocket-call>b{font-size:9px}
+  #plScreen.pl-match .pl-footer{padding:4px 5px;gap:4px}
+  #plScreen.pl-match .pl-footer .pl-secondary{padding:6px 5px;font-size:8px;min-height:33px}
+  #plScreen.pl-match .pl-footer .img-btn.icon{width:27px;height:29px;min-width:24px}
+  #plScreen.pl-match .pl-footer .lb-mini img{height:27px;width:27px}
+}
+@media(max-width:900px) and (orientation:landscape){
+  #plScreen.pl-match .pl-players{overflow:hidden}
+  #plScreen.pl-match .pl-ball-tray{margin-top:2px;min-height:12px}
+  #plScreen.pl-match .pl-ball-tray i{width:12px;height:12px;font-size:7px}
+}
+/* On shorter laptops the live rack owns the height; the rules can scroll separately. */
+@media(min-width:901px) and (max-height:850px){
+  #plScreen.pl-match{padding-top:0;padding-bottom:0}
+  #plScreen.pl-match .pl-heading{display:none}
+  #plScreen.pl-match .pl-machine{display:flex;flex-direction:column;height:calc(100dvh - 28px)}
+  #plScreen.pl-match .pl-stage{flex:1 1 0;aspect-ratio:auto;min-height:240px;max-height:none}
+  #plScreen.pl-match .pl-players{flex:none;padding:5px 10px}
+  #plScreen.pl-match .pl-player{padding:4px 7px}
+  #plScreen.pl-match .pl-ball-tray{margin-top:4px}
+  #plScreen.pl-match .pl-message,#plScreen.pl-match .pl-shot-controls,#plScreen.pl-match .pl-footer{flex:none}
+  #plScreen.pl-match .pl-footer{padding:6px 10px}
+  #plScreen:not(.pl-match) .pl-stage{height:430px;min-height:430px;aspect-ratio:auto}
+}
+@media(prefers-reduced-motion:reduce){#plScreen *,#cardPool *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+/* POOL STYLE END */
 </style>
 </head>
 <body>
@@ -1278,6 +1349,9 @@ canvas, #soBoard{ touch-action:none; }
   <!-- ================= MENU ================= -->
   <section id="menuScreen" class="screen">
     <div id="gameCards">
+<!-- POOL CARD START -->
+<button class="game-card" id="cardPool" aria-label="Play Juggalo Pool"><span class="pl-new">NEW · THE BILLIARD HALL IS OPEN</span><canvas id="plMenuArt" width="1000" height="600" role="img" aria-label="A jewel-teal pool table with a racked set of balls"></canvas><span class="pl-brand"><small>JUGGALO</small><b>POOL</b></span><span class="pl-card-tagline">CALL YOUR EIGHT. OWN THE TABLE.</span><span class="gc-cta">RACK ’EM UP</span></button>
+<!-- POOL CARD END -->
       <button class="game-card" id="cardLW" aria-label="Play Ladder Wars"><span class="lw-new">NEW · CLIMB FOR THE GOLD</span><span class="lw-card-art"><canvas id="lwMenuArt" width="400" height="300" role="img" aria-label="Lunacy Unlocked wrestlers in the Ladder Wars arena"></canvas></span><span class="lw-brand"><small>JCW</small><b>LADDER WARS</b></span><span class="gc-cta">CLAIM THE GOLD</span></button>
       <button class="game-card" id="cardRU" aria-label="Play JCW Rumble"><span class="ru-new">NEW · LUNACY UNLOCKED ROSTER</span><span class="ru-card-art"><canvas id="ruMenuArt" width="400" height="300" role="img" aria-label="Violent J and Dani Mo in the wrestling ring"></canvas></span><span class="ru-brand"><small>JCW</small><b>RUMBLE</b></span><span class="gc-cta">LAST LUNATIC STANDING</span></button>
       <button class="game-card" id="cardKH" aria-label="Play Chicken Huntin’">
@@ -2351,6 +2425,44 @@ canvas, #soBoard{ touch-action:none; }
   </div>
 </section>
 <!-- RUMBLE LADDER SCREEN END -->
+<!-- POOL SCREEN START -->
+<section id="plScreen" class="screen" hidden>
+  <header class="pl-heading"><div class="pl-brand"><small>JUGGALO</small><b>POOL</b></div><div><span class="pl-eyebrow">THE DARK CARNIVAL BILLIARD HALL</span><p>Call your eight. Own the table.</p></div><span class="pl-table-number">TABLE<br><b>17</b></span></header>
+  <div class="pl-layout">
+    <div class="pl-machine">
+      <div class="pl-players">
+        <div class="pl-player" id="plPlayer0"><div><b id="plName0">YOU</b><span id="plGroup0">OPEN TABLE</span><strong id="plScore0">0</strong></div><div class="pl-ball-tray" id="plBalls0" aria-label="Player one remaining balls"></div></div>
+        <div class="pl-versus" aria-hidden="true">8</div>
+        <div class="pl-player" id="plPlayer1"><div><b id="plName1">THE HUSTLER</b><span id="plGroup1">OPEN TABLE</span><strong id="plScore1">0</strong></div><div class="pl-ball-tray" id="plBalls1" aria-label="Player two remaining balls"></div></div>
+      </div>
+      <div class="pl-message"><b id="plTurn">WELCOME TO THE HALL</b><span id="plStatus" role="status" aria-live="polite">A clean break. A wicked finish.</span></div>
+      <div class="pl-stage" id="plStage">
+        <canvas id="plCanvas" width="1000" height="600" tabindex="0" role="img" aria-label="Pool table. Tap or drag to aim. Left and right arrows fine-tune aim, up and down change power, Space shoots. After a foul, move the cue ball and press Enter to place it." aria-describedby="plInstructions"></canvas>
+        <div id="plSetup" class="pl-overlay"><div class="pl-panel">
+          <span class="pl-eyebrow">COME IN. CHALK UP.</span><h2>JUGGALO POOL</h2><p>Solids. Stripes. One black eight.</p>
+          <label for="plMode">YOUR TABLE</label><select id="plMode"><option value="cpu">Challenge the carnival · VS CPU</option><option value="local">Pass &amp; play · 2 players</option><option value="practice">Practice · clear all 15 balls</option></select>
+          <div id="plDifficultyWrap"><label for="plDifficulty">YOUR OPPONENT</label><select id="plDifficulty"><option value="easy">Rookie · relaxed aim</option><option value="normal" selected>Juggalo · a fair fight</option><option value="hard">Hustler · sharper shots</option></select></div>
+          <button class="pl-primary" id="plStartBtn">RACK ’EM UP</button><p id="plReadyNote" class="pl-note">Aim on the table. Set power. Shoot.</p>
+        </div></div>
+        <div id="plPause" class="pl-overlay" hidden><div class="pl-panel"><span class="pl-eyebrow">SAVE YOUR CHALK</span><h2>TABLE PAUSED</h2><p id="plPauseNote">Your shot can wait.</p><button id="plResumeBtn" class="pl-primary">BACK TO THE TABLE</button><button id="plChooseBtn" class="pl-secondary">CHOOSE A NEW TABLE</button></div></div>
+        <div id="plOver" class="pl-overlay" hidden><div class="pl-panel"><span class="pl-eyebrow">THE LAST BALL DROPS</span><h2 id="plResultTitle">TABLE COMPLETE</h2><p id="plResultDetail"></p><div class="pl-result-score" id="plFinalScore">0</div><p id="plResultStats"></p><button id="plAgainBtn" class="pl-primary">RUN IT BACK</button><button id="plSaveBtn" class="pl-secondary">SAVE YOUR RECORD</button><button id="plOverChooseBtn" class="pl-secondary">CHANGE TABLE</button></div></div>
+      </div>
+      <div class="pl-shot-controls">
+        <div id="plPocketCall" class="pl-pocket-call" hidden><b>CALL THE 8</b><div id="plPocketButtons" role="group" aria-label="Choose the eight-ball pocket"><button data-pl-pocket="0">1</button><button data-pl-pocket="1">2</button><button data-pl-pocket="2">3</button><button data-pl-pocket="3">4</button><button data-pl-pocket="4">5</button><button data-pl-pocket="5">6</button></div></div>
+        <div class="pl-power-row"><label for="plPower">POWER <output id="plPowerValue">65%</output></label><input id="plPower" type="range" min="5" max="100" value="65" aria-label="Shot power"><button id="plShootBtn" class="pl-primary">BREAK</button><button id="plPlaceBtn" class="pl-primary" hidden>PLACE CUE</button></div>
+        <div class="pl-aim-row"><span id="plAimHint">Tap or drag the table to aim</span><div class="pl-nudge" role="group" aria-label="Fine aim"><button id="plAimLeft" aria-label="Aim slightly left">↶</button><span>FINE AIM</span><button id="plAimRight" aria-label="Aim slightly right">↷</button></div><label class="pl-guide-toggle"><input id="plGuide" type="checkbox" checked> Guide</label></div>
+      </div>
+      <div class="ctl-row pl-footer"><button class="pl-secondary" id="plPauseBtn" disabled>PAUSE</button><button class="pl-secondary" id="plNewBtn">NEW RACK</button><button class="pl-secondary" id="plNetBtn">ONLINE VS</button><button id="plSoundBtn" class="img-btn icon" aria-label="Mute sound"><img data-img="icoSoundOn" alt="Sound"></button><button class="pl-secondary" id="plHomeBtn">ARCADE</button></div>
+    </div>
+    <aside class="pl-guide" id="plInstructions">
+      <div><span class="pl-eyebrow">HOUSE RULES · EIGHT-BALL</span><h3>MAKE EVERY<br>SHOT COUNT.</h3><ol><li><b>BREAK IT OPEN</b>The table stays open after the break. Your first legal solid or stripe after that chooses your group.</li><li><b>CLEAR YOUR CREW</b>Hit your group first. Pocket one to keep shooting. If nothing drops, a ball must reach a rail after contact.</li><li><b>CALL YOUR EIGHT</b>Clear your seven, pick a numbered pocket, then sink the 8. An early 8, a wrong pocket, or scratching with it loses the rack.</li></ol></div>
+      <div><h3>YOUR SHOT. YOUR WAY.</h3><p>Tap or drag anywhere on the cloth to aim. Set power with the slider, then press SHOOT. The curved-arrow buttons make tiny aiming adjustments.</p><p><b>After a foul:</b> move the white ball to a clear spot and press PLACE CUE. On a keyboard, use the arrows to move it and Enter to confirm.</p><p><b>Keyboard:</b> ←/→ aim · Shift for finer aim · ↑/↓ power · Space shoot · P pause.</p></div>
+      <details><summary>Scoring &amp; arcade rules</summary><p>Legal pots score 100 plus a run bonus of up to 100 per ball. Win the rack for 1,000 more. CPU victories qualify for device-local records; practice and two-player tables keep separate match scores.</p><p>Ordinary pots are automatically called. If both groups drop on an open table, the first legal pot decides your group. The 8 is always respotted on the break. A scratch or illegal break gives the incoming player cue-ball placement anywhere. No jump shots or spin.</p></details>
+      <p class="pl-career" id="plCareer">0 CPU wins · Best 0</p>
+    </aside>
+  </div>
+</section>
+<!-- POOL SCREEN END -->
   <!-- ================= CHICKEN HUNTIN ================= -->
   <section id="khScreen" class="screen" hidden>
     <header class="kh-heading">
@@ -2747,6 +2859,7 @@ canvas, #soBoard{ touch-action:none; }
 
       <div class="net-lbl" style="text-align:center" id="netPickLbl">PICK YOUR GAME</div>
       <div class="net-games" id="netGamePick">
+        <button class="img-btn" data-g="pool"><span class="spray spray-green" style="font-size:14px; padding:0 6px">JUGGALO POOL</span></button>
         <button class="img-btn on" data-g="ttt"><img data-img="txtTicTacToe" alt="TIC TAC SLAM"></button>
         <button class="img-btn" data-g="chess"><img data-img="ch_txtLogo" alt="JUGGALO CHESS"></button>
         <button class="img-btn" data-g="checkers"><img data-img="ck_txtLogo" alt="JUGGALO CHECKERS"></button>
@@ -2861,7 +2974,7 @@ canvas, #soBoard{ touch-action:none; }
     <span id="tickerText">WELCOME TO THE PSYCHOPATHIC ARCADE — PICK YOUR POISON!</span>
   </div>
 
-  <div id="hint">16 games · Play solo, challenge a friend, or join an online match.</div>
+  <div id="hint">17 games · Play solo, challenge a friend, or join an online match.</div>
 </div>
 
 <script>
@@ -4985,6 +5098,7 @@ function setSoundIcons(){
    ['#soSoundBtn','icoSoundOn','icoSoundOff'],
    ['#j31SoundBtn','icoSoundOn','icoSoundOff'],
    ['#clSoundBtn','icoSoundOn','icoSoundOff'],
+   ['#plSoundBtn','icoSoundOn','icoSoundOff'],
    ['#lwSoundBtn','icoSoundOn','icoSoundOff'],
    ['#ruSoundBtn','icoSoundOn','icoSoundOff'],
    ['#khSoundBtn','icoSoundOn','icoSoundOff'],
@@ -5028,7 +5142,7 @@ const LINES_TTT = {
   win:["RING THE BELL! IT'S OVER!","{n} TAKES THE FALL — WHAT A SHOWING!","THAT'S ALL SHE WROTE — {n} WINS IT!"],
   draw:["NEITHER SIDE CAN GET THE ADVANTAGE!","DOUBLE COUNT-OUT! THE JUDGES CALL IT EVEN!","NINE SQUARES AND NOTHING SETTLED!"],
   denied:["THAT SQUARE'S TAKEN, CHAMP!","THE REF SAYS NO!"],
-  welcome:["WELCOME TO THE PSYCHOPATHIC ARCADE — PICK YOUR POISON!","STEP RIGHT UP — THE CARNIVAL NEVER CLOSES!","SIXTEEN GAMES, ZERO MERCY. CHOOSE."]
+  welcome:["WELCOME TO THE PSYCHOPATHIC ARCADE — PICK YOUR POISON!","STEP RIGHT UP — THE CARNIVAL NEVER CLOSES!","SEVENTEEN GAMES, ZERO MERCY. CHOOSE."]
 };
 const LINES_CH = {
   start:["THE CARNIVAL OPENS THE BOARD — PALE MOVES FIRST!","64 SQUARES OF BAD INTENTIONS. HERE WE GO!"],
@@ -5409,6 +5523,8 @@ function showScreen(name){
   $('#j31Screen').hidden      = name!=='j31';
   $('#ahScreen').hidden       = name!=='hockey';
   $('#shScreen').hidden       = name!=='shooter';
+  $('#plScreen').hidden = name!=='pool';
+  if(window.POOL_READY && name!=='pool') POOL.leave();
   $('#lwScreen').hidden       = name!=='ladder';
   if(window.LADDER_READY && name!=='ladder') LADDER.leave();
   $('#ruScreen').hidden       = name!=='rumble';
@@ -5440,6 +5556,7 @@ function showScreen(name){
   if(name==='chicken') CHICKEN.enter();
   if(name==='rumble') RUMBLE.enter();
   if(name==='ladder') LADDER.enter();
+  if(name==='pool') POOL.enter();
   syncClocks();
   window.scrollTo(0, 0);
 }
@@ -11490,10 +11607,10 @@ const MEMORY = (()=>{
    encrypted DataChannel between the two browsers.
    ============================================================ */
 const NET = (()=>{
-  const SCREENS = { ladder:'ladder',rumble:'rumble',claw:'claw',shooter:'shooter',chicken:'chicken',ttt:'ttt', chess:'chess', checkers:'checkers', faygo:'faygo', memory:'memory', j31:'j31', hockey:'hockey' };
-  const NAMES = { ladder:'LADDER WARS',rumble:'JCW RUMBLE',claw:'CARNIVAL CLAW',shooter:'CARNIVAL CROSSFIRE',chicken:'CHICKEN HUNTIN’',ttt:'TIC TAC SLAM', chess:'JUGGALO CHESS', checkers:'JUGGALO CHECKERS', faygo:'JOKER CARD FOUR', memory:'JOKER CARD MEMORY', j31:'JUGGALO 31', hockey:'JUGGALO AIR HOCKEY' };
-  const HOST_SIDE = { ttt:'X', chess:'w', checkers:'A', faygo:1, memory:1, j31:1, hockey:1 };
-  const JOIN_SIDE = { ttt:'O', chess:'b', checkers:'B', faygo:2, memory:2, j31:2, hockey:2 };
+  const SCREENS = { pool:'pool', ladder:'ladder',rumble:'rumble',claw:'claw',shooter:'shooter',chicken:'chicken',ttt:'ttt', chess:'chess', checkers:'checkers', faygo:'faygo', memory:'memory', j31:'j31', hockey:'hockey' };
+  const NAMES = { pool:'JUGGALO POOL', ladder:'LADDER WARS',rumble:'JCW RUMBLE',claw:'CARNIVAL CLAW',shooter:'CARNIVAL CROSSFIRE',chicken:'CHICKEN HUNTIN’',ttt:'TIC TAC SLAM', chess:'JUGGALO CHESS', checkers:'JUGGALO CHECKERS', faygo:'JOKER CARD FOUR', memory:'JOKER CARD MEMORY', j31:'JUGGALO 31', hockey:'JUGGALO AIR HOCKEY' };
+  const HOST_SIDE = { pool:0, ttt:'X', chess:'w', checkers:'A', faygo:1, memory:1, j31:1, hockey:1 };
+  const JOIN_SIDE = { pool:1, ttt:'O', chess:'b', checkers:'B', faygo:2, memory:2, j31:2, hockey:2 };
   const S = { pc:null, dc:null, role:null, game:'ttt', session:false, connected:false, applying:false, navGuard:false };
 
   /* ---------- code packing ---------- */
@@ -11597,7 +11714,8 @@ const NET = (()=>{
     S.navGuard = true; showScreen(SCREENS[g]); S.navGuard = false;
     S.applying = true;
     try{
-      if(g==='rumble'||g==='ladder'){(g==='rumble'?RUMBLE:LADDER).netStart(S.role);}
+      if(g==='pool'){POOL.netStart(S.role);}
+      else if(g==='rumble'||g==='ladder'){(g==='rumble'?RUMBLE:LADDER).netStart(S.role);}
       else if(['claw','shooter','chicken'].includes(g)){DUELS.start(g,S.role);}
       else if(g==='faygo'){ FAYGO.setGmode('classic'); FAYGO.setMode('2p'); FAYGO.newMatch(); }
       else if(g==='memory'){ if(S.role==='host') MEMORY.setMode('2p'); else MEMORY.prep2p(); }
@@ -11625,7 +11743,7 @@ const NET = (()=>{
     clearTimeout(connectionTimer); connectionTimer=null;
     if(S.game==='j31' && window.ARCADE) try{ J31.netEnd(); }catch(e){}
     if(S.game==='hockey' && window.ARCADE) try{ AIRHOCKEY.netEnd(); }catch(e){}
-    if(window.ARCADE){if(S.game==='rumble')RUMBLE.netEnd();if(S.game==='ladder')LADDER.netEnd();if(['claw','shooter','chicken'].includes(S.game))DUELS.end();}
+    if(window.ARCADE){if(S.game==='pool')POOL.netEnd();if(S.game==='rumble')RUMBLE.netEnd();if(S.game==='ladder')LADDER.netEnd();if(['claw','shooter','chicken'].includes(S.game))DUELS.end();}
     S.session = false; S.connected = false;
     try{ S.dc && S.dc.close(); }catch(e){}
     try{ S.pc && S.pc.close(); }catch(e){}
@@ -11635,6 +11753,7 @@ const NET = (()=>{
 
   /* ---------- game integration ---------- */
   const APPLY = {
+    pool:d=>POOL.netApply(d),
     rumble:d=>RUMBLE.netApply(d),ladder:d=>LADDER.netApply(d),claw:d=>DUELS.apply(d),shooter:d=>DUELS.apply(d),chicken:d=>DUELS.apply(d),
     hockey: d=>AIRHOCKEY.netApply(d),
     j31: d=>J31.netApply(d),
@@ -11931,7 +12050,7 @@ const NET = (()=>{
     try{ await navigator.clipboard.writeText(el.value); return true; }
     catch(e){ try{ document.execCommand('copy'); return true; }catch(e2){ return false; } }
   }
-  const NET_BTNS = { ruNetBtn:'rumble',lwNetBtn:'ladder',clNetBtn:'claw',shNetBtn:'shooter',khNetBtn:'chicken',tttNetBtn:'ttt', chNetBtn:'chess', ckNetBtn:'checkers', fgNetBtn:'faygo', mmNetBtn:'memory', j31NetBtn:'j31', ahNetBtn:'hockey' };
+  const NET_BTNS = { plNetBtn:'pool',ruNetBtn:'rumble',lwNetBtn:'ladder',clNetBtn:'claw',shNetBtn:'shooter',khNetBtn:'chicken',tttNetBtn:'ttt', chNetBtn:'chess', ckNetBtn:'checkers', fgNetBtn:'faygo', mmNetBtn:'memory', j31NetBtn:'j31', ahNetBtn:'hockey' };
   function bind(){
     if(!window.RTCPeerConnection){
       Object.keys(NET_BTNS).forEach(id=>{ const b = $('#'+id); if(b) b.style.display='none'; });
@@ -11939,7 +12058,7 @@ const NET = (()=>{
     }
     Object.entries(NET_BTNS).forEach(([id, g])=>{
       const b = $('#'+id); if(!b) return;
-      b.onclick = ()=>{ Sound.play('move');if(g==='rumble')RUMBLE.pause(true);else if(g==='ladder')LADDER.pause(true);else if(g==='claw')CLAW.pause(true);else if(g==='shooter')SHOOTER.pause(true);else if(g==='chicken')CHICKEN.pause(true);ui.open(g); };
+      b.onclick = ()=>{ Sound.play('move');if(g==='pool')POOL.pause(true);else if(g==='rumble')RUMBLE.pause(true);else if(g==='ladder')LADDER.pause(true);else if(g==='claw')CLAW.pause(true);else if(g==='shooter')SHOOTER.pause(true);else if(g==='chicken')CHICKEN.pause(true);ui.open(g); };
     });
     $('#netClose').onclick = ()=>{ ui.close(); if(!S.connected){ mmStop(); mqtt.close(); teardown(); } };
     $('#netQuickBtn').onclick = async ()=>{
@@ -13112,6 +13231,964 @@ const DUELS=(()=>{
   return{bind,start,apply,end,active,random,pause,ready,rematch,state:()=>S};
 })();
 /* RUMBLE DUELS GAME END */
+/* POOL PHYSICS START */
+/* Shared deterministic table simulation; no DOM, timers, network or randomness.
+ * Small fixed steps plus swept time-of-impact contacts prevent fast balls from
+ * tunneling. The finite cushion segments have circular end caps at each jaw.
+ * Background: https://box2d.org/documentation/md_simulation.html
+ * https://box2d.org/files/ErinCatto_ContinuousCollision_GDC2013.pdf
+ * This is an arcade rolling-ball model: no spin, jump shots or cloth nap.
+ */
+const POOL_PHYSICS = (() => {
+  const W=1000,H=600,R=12.5,MAX_SPEED=1500,ROLL_FRICTION=95;
+  const B=Object.freeze({left:70,right:930,top:85,bottom:515});
+  const FIXED_DT=1/240,BALL_RESTITUTION=.985,RAIL_RESTITUTION=.8,STOP_SPEED=1.5,EPS=1e-8;
+  const pockets=Object.freeze([
+    {x:70,y:85,r:29},{x:500,y:85,r:27},{x:930,y:85,r:29},
+    {x:70,y:515,r:29},{x:500,y:515,r:27},{x:930,y:515,r:29},
+  ].map(Object.freeze));
+  const cushions=Object.freeze([
+    {id:'top-left',ax:110,ay:85,bx:462,by:85,nx:0,ny:1},
+    {id:'top-right',ax:538,ay:85,bx:890,by:85,nx:0,ny:1},
+    {id:'bottom-left',ax:110,ay:515,bx:462,by:515,nx:0,ny:-1},
+    {id:'bottom-right',ax:538,ay:515,bx:890,by:515,nx:0,ny:-1},
+    {id:'left',ax:70,ay:125,bx:70,by:475,nx:1,ny:0},
+    {id:'right',ax:930,ay:125,bx:930,by:475,nx:-1,ny:0},
+  ].map(Object.freeze));
+  const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
+  const live=b=>!b.pocketed;
+
+  function random(seed){
+    let n=2166136261;for(const c of String(seed))n=Math.imul(n^c.charCodeAt(0),16777619);
+    return()=>{let t=n+=0x6D2B79F5;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return((t^t>>>14)>>>0)/4294967296;};
+  }
+  function rack(seed=1){
+    const rng=random(seed),shuffle=list=>{for(let i=list.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));[list[i],list[j]]=[list[j],list[i]];}return list;};
+    const solids=shuffle([1,2,3,4,5,6,7]),stripes=shuffle([9,10,11,12,13,14,15]);
+    const rear=rng()<.5?[solids.pop(),stripes.pop()]:[stripes.pop(),solids.pop()];
+    const remaining=shuffle([...solids,...stripes]);
+    const balls=[{id:0,x:285,y:300,vx:0,vy:0,pocketed:false}],spacing=2*R+.3;
+    for(let row=0;row<5;row++)for(let col=0;col<=row;col++){
+      const id=row===2&&col===1?8:row===4&&col===0?rear[0]:row===4&&col===4?rear[1]:remaining.pop();
+      balls.push({id,x:675+row*spacing*Math.sqrt(3)/2,y:300+(col-row/2)*spacing,vx:0,vy:0,pocketed:false});
+    }
+    return balls.sort((a,b)=>a.id-b.id);
+  }
+  function createShot(){return{first:null,potted:[],rails:[],railAfterContact:false,elapsed:0,_carry:0};}
+  function prepareShot(shot){
+    if(shot.first===undefined)shot.first=null;
+    if(!Array.isArray(shot.potted))shot.potted=[];
+    if(!Array.isArray(shot.rails))shot.rails=[];
+    if(shot.railAfterContact===undefined)shot.railAfterContact=false;
+    if(!Number.isFinite(shot.elapsed))shot.elapsed=0;
+    if(!Number.isFinite(shot._carry))shot._carry=0;
+    return shot;
+  }
+  function moving(balls){return balls.some(b=>live(b)&&Number.isFinite(b.vx)&&Number.isFinite(b.vy)&&Math.hypot(b.vx,b.vy)>STOP_SPEED);}
+  function strike(balls,angle,power){
+    const cue=balls.find(b=>b.id===0&&live(b));
+    if(!cue||!Number.isFinite(angle)||!Number.isFinite(power)||moving(balls))return false;
+    const requested=clamp(power,0,1)*MAX_SPEED,speed=requested>STOP_SPEED?requested:0;
+    cue.vx=Math.cos(angle)*speed;cue.vy=Math.sin(angle)*speed;
+    return speed>0;
+  }
+  function validPlacement(balls,x,y){
+    if(!Number.isFinite(x)||!Number.isFinite(y)||x<B.left+R||x>B.right-R||y<B.top+R||y>B.bottom-R)return false;
+    if(pockets.some(p=>Math.hypot(x-p.x,y-p.y)<=p.r+1))return false;
+    return !balls.some(b=>b.id!==0&&live(b)&&Math.hypot(x-b.x,y-b.y)<2*R+.1);
+  }
+
+  // First time a moving point enters a circle. Using the stable quadratic form
+  // matters for grazing impacts and for balls that start very close together.
+  function circleTime(dx,dy,vx,vy,r,inside=false){
+    const c=dx*dx+dy*dy-r*r,dot=dx*vx+dy*vy;
+    if(c<=EPS)return inside||dot<-EPS*r?0:Infinity;
+    const speed2=vx*vx+vy*vy;if(speed2<EPS||dot>=0)return Infinity;
+    const disc=dot*dot-speed2*c;if(disc<0)return Infinity;
+    return c/(-dot+Math.sqrt(disc));
+  }
+  function railHit(ball,rail,limit){
+    const endX=ball.x+ball.vx*limit,endY=ball.y+ball.vy*limit;
+    if(Math.max(ball.x,endX)<Math.min(rail.ax,rail.bx)-R||Math.min(ball.x,endX)>Math.max(rail.ax,rail.bx)+R||Math.max(ball.y,endY)<Math.min(rail.ay,rail.by)-R||Math.min(ball.y,endY)>Math.max(rail.ay,rail.by)+R)return null;
+    let best=null;
+    const vn=ball.vx*rail.nx+ball.vy*rail.ny;
+    if(vn<-EPS){
+      const d=(ball.x-rail.ax)*rail.nx+(ball.y-rail.ay)*rail.ny;
+      const t=Math.max(0,(R-d)/vn),x=ball.x+ball.vx*t,y=ball.y+ball.vy*t;
+      const sx=rail.bx-rail.ax,sy=rail.by-rail.ay,u=((x-rail.ax)*sx+(y-rail.ay)*sy)/(sx*sx+sy*sy);
+      if(t<=limit+EPS&&u>=0&&u<=1)best={t,nx:rail.nx,ny:rail.ny,plane:true};
+    }
+    for(const [x,y] of [[rail.ax,rail.ay],[rail.bx,rail.by]]){
+      const t=circleTime(ball.x-x,ball.y-y,ball.vx,ball.vy,R);
+      if(t<=limit+EPS&&(!best||t<best.t-EPS)){
+        const dx=ball.x+ball.vx*t-x,dy=ball.y+ball.vy*t-y,d=Math.hypot(dx,dy);
+        best={t,nx:d>EPS?dx/d:rail.nx,ny:d>EPS?dy/d:rail.ny,jawX:x,jawY:y};
+      }
+    }
+    return best;
+  }
+  function openingHit(ball,limit){
+    let best=null;
+    const consider=(t,p)=>{if(t>=0&&t<=limit+EPS&&p>=0&&(!best||t<best.t))best={t,p};};
+    if(Math.abs(ball.vy)>EPS){
+      const top=ball.vy<0,t=((top?B.top:B.bottom)-ball.y)/ball.vy,x=ball.x+ball.vx*t,base=top?0:3;
+      consider(t,x<110?base:x>890?base+2:x>462&&x<538?base+1:-1);
+    }
+    if(Math.abs(ball.vx)>EPS){
+      const left=ball.vx<0,t=((left?B.left:B.right)-ball.x)/ball.vx,y=ball.y+ball.vy*t,side=left?0:2;
+      consider(t,y<125?side:y>475?side+3:-1);
+    }
+    return best;
+  }
+  function pocketBall(ball,index,shot){
+    ball.pocketed=true;ball.vx=0;ball.vy=0;ball.pocket=index;
+    // Keep the mouth position for a renderer's sinking animation.
+    if(!shot.potted.some(p=>p.id===ball.id))shot.potted.push({id:ball.id,pocket:index});
+  }
+  function recordRail(ball,rail,shot){
+    if(!shot.rails.some(r=>r.id===ball.id&&r.rail===rail.id))shot.rails.push({id:ball.id,rail:rail.id});
+    if(shot.first!==null)shot.railAfterContact=true;
+  }
+  function separatePair(a,b){
+    let dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy);
+    if(d>=2*R-1e-7)return;
+    if(d<EPS){dx=a.id<b.id?1:-1;dy=0;d=1;}
+    const shift=(2*R-Math.hypot(b.x-a.x,b.y-a.y)+1e-6)/2;
+    a.x-=dx/d*shift;a.y-=dy/d*shift;b.x+=dx/d*shift;b.y+=dy/d*shift;
+  }
+  function separateRail(ball,rail){
+    const sx=rail.bx-rail.ax,sy=rail.by-rail.ay;
+    const u=clamp(((ball.x-rail.ax)*sx+(ball.y-rail.ay)*sy)/(sx*sx+sy*sy),0,1);
+    const x=rail.ax+u*sx,y=rail.ay+u*sy,dx=ball.x-x,dy=ball.y-y,d=Math.hypot(dx,dy);
+    if(d>=R-1e-7)return;
+    const nx=d>EPS?dx/d:rail.nx,ny=d>EPS?dy/d:rail.ny;
+    ball.x+=nx*(R-d+1e-6);ball.y+=ny*(R-d+1e-6);
+  }
+  function advance(balls,t){for(const b of balls)if(live(b)){b.x+=b.vx*t;b.y+=b.vy*t;}}
+  function integrate(balls,h,shot){
+    let left=h,events=0;
+    while(left>EPS&&events<96){
+      let hit=null;
+      const choose=e=>{if(e.t<=left+EPS&&(!hit||e.t<hit.t-EPS||(Math.abs(e.t-hit.t)<=EPS&&e.priority<hit.priority)))hit=e;};
+      for(let i=0;i<balls.length;i++){
+        const a=balls[i];if(!live(a))continue;
+        for(let j=i+1;j<balls.length;j++){
+          const b=balls[j];if(!live(b))continue;
+          const dx=b.x-a.x,dy=b.y-a.y,vx=b.vx-a.vx,vy=b.vy-a.vy;
+          if(Math.abs(dx)>2*R+Math.abs(vx)*left||Math.abs(dy)>2*R+Math.abs(vy)*left)continue;
+          const t=circleTime(dx,dy,vx,vy,2*R);
+          if(t<=left+EPS)choose({t,priority:1,type:'ball',a,b});
+        }
+        for(let p=0;p<pockets.length;p++){
+          const hole=pockets[p],dx=a.x-hole.x,dy=a.y-hole.y;
+          if(Math.abs(dx)>hole.r+Math.abs(a.vx)*left||Math.abs(dy)>hole.r+Math.abs(a.vy)*left)continue;
+          const t=circleTime(dx,dy,a.vx,a.vy,hole.r,true);
+          if(t<=left+EPS)choose({t,priority:0,type:'pocket',a,p});
+        }
+        if(Math.abs(a.vx)+Math.abs(a.vy)>EPS)for(const rail of cushions){
+          const r=railHit(a,rail,left);if(r)choose({...r,priority:2,type:'rail',a,rail});
+        }
+        const opening=openingHit(a,left);if(opening)choose({...opening,priority:0,type:'pocket',a});
+      }
+      if(!hit){advance(balls,left);left=0;break;}
+      const t=clamp(hit.t,0,left);advance(balls,t);left-=t;events++;
+      const a=hit.a;
+      if(hit.type==='pocket'){pocketBall(a,hit.p,shot);continue;}
+      if(hit.type==='ball'){
+        const b=hit.b,dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy);
+        const nx=d>EPS?dx/d:1,ny=d>EPS?dy/d:0,vn=(b.vx-a.vx)*nx+(b.vy-a.vy)*ny;
+        if(vn<-EPS){
+          const impulse=-(1+BALL_RESTITUTION)*vn/2;
+          a.vx-=impulse*nx;a.vy-=impulse*ny;b.vx+=impulse*nx;b.vy+=impulse*ny;
+          if(shot.first===null&&(a.id===0||b.id===0)){
+            shot.first=a.id===0?b.id:a.id;shot.firstTime=shot.elapsed+h-left;
+          }
+        }
+        separatePair(a,b);
+      }else{
+        const vn=a.vx*hit.nx+a.vy*hit.ny;
+        if(vn<-EPS){a.vx-=(1+RAIL_RESTITUTION)*vn*hit.nx;a.vy-=(1+RAIL_RESTITUTION)*vn*hit.ny;recordRail(a,hit.rail,shot);}
+        separateRail(a,hit.rail);
+      }
+    }
+    // A cap protects pathological coincident inputs. Never advance unchecked
+    // through remaining contacts; normal breaks stay well below this limit.
+    if(left>EPS)shot.solverLimit=(shot.solverLimit||0)+1;
+    for(let pass=0;pass<(events?2:0);pass++)for(let i=0;i<balls.length;i++){
+      const a=balls[i];if(!live(a))continue;
+      for(let j=i+1;j<balls.length;j++)if(live(balls[j]))separatePair(a,balls[j]);
+      for(const rail of cushions)separateRail(a,rail);
+    }
+    for(const b of balls)if(live(b)){
+      // Crossing a pocket opening is also a capture. This closes the tiny
+      // crescent between a circular catchment and its rounded cushion jaws.
+      let p=-1;
+      if(b.y<B.top||b.y>B.bottom){
+        const base=b.y<B.top?0:3;
+        if(b.x<110)p=base;else if(b.x>890)p=base+2;else if(b.x>462&&b.x<538)p=base+1;
+      }
+      if(b.x<B.left||b.x>B.right){
+        const side=b.x<B.left?0:2;if(b.y<125)p=side;else if(b.y>475)p=side+3;
+      }
+      if(p>=0){pocketBall(b,p,shot);continue;}
+      const speed=Math.hypot(b.vx,b.vy),next=Math.max(0,speed-ROLL_FRICTION*h);
+      if(next<=STOP_SPEED){b.vx=0;b.vy=0;}else{b.vx*=next/speed;b.vy*=next/speed;}
+    }
+    shot.elapsed+=h;
+  }
+  function step(balls,dt,shot=createShot()){
+    prepareShot(shot);if(!Number.isFinite(dt)||dt<=0)return shot;
+    for(const b of balls)if(live(b)){
+      if(!Number.isFinite(b.x)||!Number.isFinite(b.y)){b.x=500;b.y=300;}
+      if(!Number.isFinite(b.vx))b.vx=0;if(!Number.isFinite(b.vy))b.vy=0;
+      const speed=Math.hypot(b.vx,b.vy);if(speed>MAX_SPEED){b.vx*=MAX_SPEED/speed;b.vy*=MAX_SPEED/speed;}
+    }
+    if(!shot._initialized){
+      // Repairs small placement/network round-off without manufacturing a hit.
+      for(let pass=0;pass<4;pass++)for(let i=0;i<balls.length;i++)if(live(balls[i])){
+        for(let j=i+1;j<balls.length;j++)if(live(balls[j]))separatePair(balls[i],balls[j]);
+        for(const rail of cushions)separateRail(balls[i],rail);
+      }
+      shot._initialized=true;
+    }
+    // A stalled tab does not fast-forward an entire shot. The game can pause
+    // on visibility change; this is the final guard against a long frame.
+    shot._carry+=Math.min(dt,.1);
+    const count=Math.floor((shot._carry+1e-10)/FIXED_DT);
+    for(let i=0;i<count;i++)integrate(balls,FIXED_DT,shot);
+    shot._carry=Math.max(0,shot._carry-count*FIXED_DT);
+    return shot;
+  }
+  function simulate(input,aim,options={}){
+    const balls=input.map(b=>({...b})),shot=createShot();
+    const dt=Number.isFinite(options.dt)?clamp(options.dt,FIXED_DT,.1):1/60;
+    const maxTime=Number.isFinite(options.maxTime)?clamp(options.maxTime,0,30):20;
+    strike(balls,aim.angle,aim.power);
+    while(moving(balls)&&shot.elapsed+FIXED_DT<=maxTime+EPS)step(balls,Math.min(dt,maxTime-shot.elapsed),shot);
+    return{balls,shot,elapsed:shot.elapsed,settled:!moving(balls)};
+  }
+  function trace(balls,angle){
+    const cue=balls.find(b=>b.id===0&&live(b));if(!cue||!Number.isFinite(angle))return null;
+    const vx=Math.cos(angle),vy=Math.sin(angle),ray={x:cue.x,y:cue.y,vx,vy};
+    let best={t:W*2,type:'none'};
+    for(const b of balls)if(b.id!==0&&live(b)){
+      const t=circleTime(cue.x-b.x,cue.y-b.y,vx,vy,2*R);
+      if(t<best.t)best={t,type:'ball',id:b.id,ball:{id:b.id,x:b.x,y:b.y}};
+    }
+    for(let p=0;p<pockets.length;p++){
+      const hole=pockets[p],t=circleTime(cue.x-hole.x,cue.y-hole.y,vx,vy,hole.r,true);
+      if(t<best.t)best={t,type:'pocket',pocket:p};
+    }
+    for(const rail of cushions){const r=railHit(ray,rail,best.t);if(r&&r.t<best.t)best={...r,type:'cushion',id:rail.id};}
+    const opening=openingHit(ray,best.t);if(opening&&opening.t<best.t)best={t:opening.t,type:'pocket',pocket:opening.p};
+    const x=cue.x+vx*best.t,y=cue.y+vy*best.t;
+    let normal=null;
+    if(best.type==='ball'){const dx=x-best.ball.x,dy=y-best.ball.y,d=Math.hypot(dx,dy);normal={x:dx/d,y:dy/d};}
+    if(best.type==='cushion')normal={x:best.nx,y:best.ny};
+    return{x,y,type:best.type,id:best.id,pocket:best.pocket,ball:best.ball,normal,distance:best.t,points:[{x:cue.x,y:cue.y},{x,y}]};
+  }
+  return Object.freeze({W,H,R,B,pockets,cushions,MAX_SPEED,ROLL_FRICTION,FIXED_DT,BALL_RESTITUTION,RAIL_RESTITUTION,rack,createShot,strike,step,moving,validPlacement,simulate,trace});
+})();
+/* POOL PHYSICS END */
+/* POOL RULES START */
+/* Arcade eight-ball, based on WPA sections 3 and 4. Normal pots are auto-called;
+   every foul gives ball in hand anywhere, and the 8 on a break is always spotted.
+   These are deliberate arcade choices rather than all tournament options. */
+const POOL_RULES = (()=>{
+  const group=id=>Number.isInteger(id)&&id>=1&&id<=7?'solids':Number.isInteger(id)&&id>=9&&id<=15?'stripes':null;
+  const live=S=>S.balls.filter(b=>b.id>0&&!b.pocketed);
+  const inGroup=(S,g)=>live(S).filter(b=>group(b.id)===g).map(b=>b.id);
+  function remaining(S,side=S.turn){return S.groups[side]?inGroup(S,S.groups[side]):live(S).filter(b=>b.id!==8).map(b=>b.id);}
+  function eligible8(S,side=S.turn){
+    if(S.playMode==='practice')return true;
+    return S.groups[side]?remaining(S,side).length===0:!inGroup(S,'solids').length||!inGroup(S,'stripes').length;
+  }
+  function targets(S,side=S.turn){
+    if(S.playMode==='practice'||S.break)return live(S).map(b=>b.id);
+    return eligible8(S,side)?live(S).filter(b=>b.id===8).map(b=>b.id):remaining(S,side);
+  }
+  function prepare(S){
+    return Object.assign(POOL_PHYSICS.createShot(),{shooter:S.turn,wasBreak:!!S.break,eligible8:eligible8(S,S.turn),calledPocket:S.calledPocket,groupBefore:S.groups[S.turn],targetsBefore:targets(S,S.turn),resolved:false});
+  }
+  function stats(S){
+    S.scores||=[0,0];S.stats||=[{},{}];
+    for(let i=0;i<2;i++){S.stats[i]||={};if(!Number.isFinite(S.scores[i]))S.scores[i]=0;for(const key of ['shots','pots','fouls','run','bestRun'])if(!Number.isFinite(S.stats[i][key]))S.stats[i][key]=0;}
+  }
+  function placementClear(S,x,y,id=0){
+    const balls=S.balls.filter(b=>b.id!==id);
+    if(!POOL_PHYSICS.validPlacement(balls,x,y))return false;
+    return id===0||balls.every(b=>b.pocketed||Math.hypot(x-b.x,y-b.y)>=2*POOL_PHYSICS.R+.05);
+  }
+  function findPlacement(S,preferred,id=0){
+    const {B,R}=POOL_PHYSICS,midY=(B.top+B.bottom)/2;
+    const start=preferred||{x:B.left+(B.right-B.left)*(id===8?.75:.25),y:midY};
+    if(placementClear(S,start.x,start.y,id))return {x:start.x,y:start.y};
+    // A respotted eight follows the long string towards the foot rail first.
+    if(id===8)for(const sign of [1,-1])for(let d=2*R+.5;d<B.right-B.left;d+=2*R+.5){const x=start.x+sign*d;if(placementClear(S,x,midY,id))return {x,y:midY};}
+    let best=null,distance=Infinity;
+    for(let y=B.top+R+3;y<=B.bottom-R-3;y+=2*R+3)for(let x=B.left+R+3;x<=B.right-R-3;x+=2*R+3){
+      const d=Math.hypot(x-start.x,y-start.y);if(d<distance&&placementClear(S,x,y,id)){best={x,y};distance=d;}
+    }
+    return best;
+  }
+  function spot(S,id){
+    let b=S.balls.find(v=>v.id===id);if(!b){b={id,x:0,y:0,vx:0,vy:0,pocketed:true};S.balls.push(b);}
+    const p=findPlacement(S,undefined,id);if(!p)return false;
+    Object.assign(b,p,{vx:0,vy:0,pocketed:false});delete b.pocket;return true;
+  }
+  function assign(S,side,g){S.groups[side]=g;S.groups[1-side]=g==='solids'?'stripes':'solids';}
+  function claimEmptyGroup(S){
+    // Rare open-table edge: all seven of a group may fall on the break or a foul.
+    // Automatically give the next shooter the cleared group, permitting an 8 shot
+    // rather than leaving a rack that can no longer assign either player a group.
+    if(S.groups[0]||S.groups[1]||S.playMode==='practice')return;
+    const empty=['solids','stripes'].find(g=>!inGroup(S,g).length);if(empty)assign(S,S.turn,empty);
+  }
+  function credit(S,side,ids,practice=false){
+    for(const id of ids){
+      S.scores[side]+=100+(practice?0:Math.min(100,S.stats[side].run*25));
+      S.stats[side].pots++;S.stats[side].run++;S.stats[side].bestRun=Math.max(S.stats[side].bestRun,S.stats[side].run);
+    }
+  }
+  function resolve(S,shot){
+    if(shot.resolved)return shot.result;
+    shot.resolved=true;stats(S);
+    const shooter=shot.shooter===1?1:0,other=1-shooter,events=[];
+    for(const p of shot.potted||[])if(Number.isInteger(p.id)&&p.id>=0&&p.id<=15&&!events.some(e=>e.id===p.id))events.push(p);
+    const objectPots=events.filter(p=>p.id>0),eight=events.find(p=>p.id===8),scratch=events.some(p=>p.id===0);
+    S.stats[shooter].shots++;S.ballInHand=false;S.calledPocket=null;S.break=false;S.winner=null;
+    // Physics normally marks these. Reapply idempotently so serialized shot results
+    // and the rule engine share the same source of truth.
+    for(const event of events){const b=S.balls.find(v=>v.id===event.id);if(b)Object.assign(b,{pocketed:true,vx:0,vy:0});}
+    const result={shooter,potted:objectPots.map(p=>p.id),foul:false,reason:'',keepTurn:false,winner:null};
+    shot.result=result;
+    if(S.playMode==='practice'){
+      if(scratch){result.foul=true;result.reason='Scratch';S.stats[shooter].fouls++;S.stats[shooter].run=0;S.ballInHand=true;spot(S,0);}
+      else credit(S,shooter,result.potted,true);
+      S.turn=shooter;result.keepTurn=true;S.mode=live(S).length?'aiming':'over';
+      S.notice=S.mode==='over'?'PRACTICE COMPLETE · ALL 15 CLEARED':scratch?'SCRATCH · PLACE THE CUE BALL':objectPots.length?'NICE POT · KEEP PRACTICING':'LINE UP YOUR NEXT SHOT';
+      return result;
+    }
+    let foul=scratch?'Scratch':null;
+    if(!Number.isInteger(shot.first)||shot.first<1||shot.first>15)foul||='No object ball hit';
+    if(shot.wasBreak){
+      const rails=new Set((shot.rails||[]).filter(r=>r.id>0&&r.id<=15).map(r=>r.id));
+      if(!objectPots.length&&rails.size<4)foul||='Break needs a pot or four balls to a rail';
+      if(eight)spot(S,8);
+    }else{
+      const legal=shot.targetsBefore||(shot.eligible8?[8]:shot.groupBefore?S.balls.filter(b=>group(b.id)===shot.groupBefore).map(b=>b.id):S.balls.filter(b=>group(b.id)).map(b=>b.id));
+      if(shot.first!==null&&!legal.includes(shot.first))foul||='Wrong ball first';
+      if(!objectPots.length&&!shot.railAfterContact)foul||='No rail after contact';
+    }
+    if(eight&&!shot.wasBreak){
+      const called=Number.isInteger(shot.calledPocket)&&shot.calledPocket>=0&&shot.calledPocket<6;
+      const reason=!shot.eligible8?'Eight ball too early':foul?foul:!called||eight.pocket!==shot.calledPocket?'Eight ball in the wrong pocket':null;
+      S.mode='over';S.winner=reason?other:shooter;S.scores[S.winner]+=1000;
+      result.foul=!!foul;result.reason=reason||'Called eight ball';result.winner=S.winner;
+      if(foul)S.stats[shooter].fouls++;
+      if(reason)S.stats[shooter].run=0;
+      else{S.stats[shooter].pots++;S.stats[shooter].run++;S.stats[shooter].bestRun=Math.max(S.stats[shooter].bestRun,S.stats[shooter].run);}
+      S.notice=reason?reason.toUpperCase()+' · PLAYER '+(other+1)+' WINS':'CALLED EIGHT · PLAYER '+(shooter+1)+' WINS';
+      return result;
+    }
+    if(foul){
+      result.foul=true;result.reason=foul;S.stats[shooter].fouls++;S.stats[shooter].run=0;S.turn=other;S.ballInHand=true;
+      const cue=S.balls.find(b=>b.id===0);if(!cue||cue.pocketed||!placementClear(S,cue.x,cue.y))spot(S,0);
+      S.notice='FOUL · '+foul.toUpperCase()+' · PLAYER '+(other+1)+' HAS BALL IN HAND';
+    }else{
+      if(!shot.wasBreak&&!S.groups[shooter]){const chosen=objectPots.find(p=>group(p.id));if(chosen)assign(S,shooter,group(chosen.id));}
+      const own=objectPots.filter(p=>p.id!==8&&(shot.wasBreak||group(p.id)===S.groups[shooter])).map(p=>p.id);
+      credit(S,shooter,own);
+      result.keepTurn=shot.wasBreak?objectPots.length>0:own.length>0;
+      S.turn=result.keepTurn?shooter:other;
+      if(!result.keepTurn)S.stats[shooter].run=0;
+      S.notice=shot.wasBreak?(eight?'EIGHT RESPOTTED · ':'')+'BREAK COMPLETE · '+(result.keepTurn?'KEEP SHOOTING':'PLAYER '+(other+1)+' TO SHOOT'):
+        result.keepTurn?'CLEAN POT · KEEP SHOOTING':'PLAYER '+(other+1)+' TO SHOOT';
+    }
+    S.mode='aiming';claimEmptyGroup(S);return result;
+  }
+  return {group,remaining,targets,eligible8,prepare,resolve,findPlacement,placementClear};
+})();
+/* POOL RULES END */
+/* POOL AI START */
+/* CPU picks visible ghost-ball pots, not outcomes. All shots use the same real
+   physics as the player; seeded aim error makes the three levels reproducible. */
+const POOL_AI=(()=>{
+  const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+  const dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
+  const levels={easy:{error:.026,powerError:.07},normal:{error:.009,powerError:.035},hard:{error:.0018,powerError:.012}};
+  function rngFor(S){
+    let seed=(Number(S.seed)>>>0)^Math.imul((S.stats?.[0]?.shots||0)+1,1664525)^Math.imul((S.stats?.[1]?.shots||0)+1,1013904223)^(S.turn*2654435761);
+    return()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
+  }
+  function segmentDistance(p,a,b){
+    const dx=b.x-a.x,dy=b.y-a.y,q=dx*dx+dy*dy;
+    const t=q?clamp(((p.x-a.x)*dx+(p.y-a.y)*dy)/q,0,1):0;
+    return Math.hypot(p.x-a.x-t*dx,p.y-a.y-t*dy);
+  }
+  function clear(balls,a,b,exclude=[]){
+    return !balls.some(v=>!v.pocketed&&v.id!==0&&!exclude.includes(v.id)&&segmentDistance(v,a,b)<POOL_PHYSICS.R*2+.6);
+  }
+  function finish(candidate,level,rng){
+    return {angle:candidate.angle+(rng()-.5)*2*level.error,power:clamp(candidate.power*(1+(rng()-.5)*2*level.powerError),.13,1),calledPocket:candidate.calledPocket??null,...(candidate.placement?{placement:{...candidate.placement}}:{})};
+  }
+  function candidates(S,cue){
+    const P=POOL_PHYSICS,{R,B}=P,legal=new Set(POOL_RULES.targets(S,S.turn)),list=[];
+    for(const target of S.balls)if(!target.pocketed&&legal.has(target.id))for(let pocket=0;pocket<P.pockets.length;pocket++){
+      const hole=P.pockets[pocket],distance=dist(target,hole);if(distance<1)continue;
+      const ux=(hole.x-target.x)/distance,uy=(hole.y-target.y)/distance,ghost={x:target.x-ux*2*R,y:target.y-uy*2*R};
+      if(ghost.x<B.left+R||ghost.x>B.right-R||ghost.y<B.top+R||ghost.y>B.bottom-R||!clear(S.balls,target,hole,[target.id]))continue;
+      const positions=S.ballInHand?[75,125,200].map(d=>({x:ghost.x-ux*d,y:ghost.y-uy*d})).filter(p=>P.validPlacement(S.balls,p.x,p.y)):[cue];
+      for(const from of positions){
+        const travel=dist(from,ghost);if(travel<2||!clear(S.balls,from,ghost,[target.id]))continue;
+        const ax=(ghost.x-from.x)/travel,ay=(ghost.y-from.y)/travel,cut=ax*ux+ay*uy;if(cut<.24)continue;
+        const speed=Math.sqrt(2*P.ROLL_FRICTION*(travel+(distance+65)/(cut*cut*.94)))+22;
+        const power=clamp(speed/P.MAX_SPEED,.16,.88);
+        list.push({angle:Math.atan2(ay,ax),power,calledPocket:target.id===8?pocket:null,pocket,target:target.id,from,ghost,placement:S.ballInHand?from:null,rank:travel*.24+distance+460*(1-cut)});
+      }
+    }
+    return list.sort((a,b)=>a.rank-b.rank||a.target-b.target||a.pocket-b.pocket);
+  }
+  function simulateCandidate(S,candidate){
+    // Geometry reduces the search to two finalists. Predict against the real
+    // full table, with a seven-second cap; never run exhaustive angle searches.
+    const cue={...S.balls.find(b=>b.id===0),...candidate.from,vx:0,vy:0,pocketed:false};
+    const result=POOL_PHYSICS.simulate(S.balls.map(b=>b.id===0?cue:b),candidate,{maxTime:7,dt:1/30});
+    const scratch=result.shot.potted.some(p=>p.id===0),pot=result.shot.potted.some(p=>p.id===candidate.target&&p.pocket===candidate.pocket);
+    return candidate.rank+(pot?-1500:500)+(scratch?4000:0)+(result.shot.first!==candidate.target?2000:0);
+  }
+  function safety(S,cue,legal){
+    const P=POOL_PHYSICS,{B,R}=P,balls=S.balls.filter(b=>!b.pocketed&&legal.has(b.id));
+    let best=null;
+    const accept=(target,point,distance,bank=false)=>{
+      const candidate={angle:Math.atan2(point.y-cue.y,point.x-cue.x),power:clamp(Math.sqrt(2*P.ROLL_FRICTION*(distance+400))/P.MAX_SPEED+(bank?.14:.06),.28,.8),calledPocket:target.id===8?P.pockets.map((p,i)=>({i,d:dist(p,target)})).sort((a,b)=>a.d-b.d)[0].i:null,rank:distance+(bank?700:0)};
+      if(!best||candidate.rank<best.rank)best=candidate;
+    };
+    for(const target of balls){
+      if(clear(S.balls,cue,target,[target.id]))accept(target,target,dist(cue,target));
+      for(const axis of ['x','y'])for(const wall of axis==='x'?[B.left+R,B.right-R]:[B.top+R,B.bottom-R]){
+        // The cushion damps normal velocity but retains tangential velocity, so
+        // a true bank point differs from a perfectly mirrored optical reflection.
+        const across=axis==='x'?'y':'x',before=Math.abs(cue[axis]-wall),after=Math.abs(target[axis]-wall);
+        const fraction=before/(before+after/P.RAIL_RESTITUTION);if(!(fraction>0&&fraction<1))continue;
+        const point={[axis]:wall,[across]:cue[across]+(target[across]-cue[across])*fraction};
+        if(point.x<B.left+R-.01||point.x>B.right-R+.01||point.y<B.top+R-.01||point.y>B.bottom-R+.01||P.pockets.some(p=>dist(p,point)<p.r+R+8))continue;
+        if(clear(S.balls,cue,point,[target.id])&&clear(S.balls,point,target,[target.id]))accept(target,point,dist(cue,point)+dist(point,target),true);
+      }
+    }
+    const target=balls.sort((a,b)=>dist(a,cue)-dist(b,cue))[0];
+    return best||{angle:target?Math.atan2(target.y-cue.y,target.x-cue.x):0,power:.45,calledPocket:target?.id===8?0:null};
+  }
+  function choose(S,difficulty='hustler'){
+    const key=({street:'easy',juggalo:'normal',hustler:'hard'})[difficulty]||difficulty,level=levels[key]||levels.normal,rng=rngFor(S),P=POOL_PHYSICS;
+    let cue=S.balls.find(b=>b.id===0),placement=null;
+    if(!cue)return {angle:0,power:.3,calledPocket:null};
+    if(S.ballInHand){placement=POOL_RULES.findPlacement(S);if(placement)cue={...cue,...placement,pocketed:false};}
+    if(S.break){
+      const apex=S.balls.filter(b=>b.id>0&&!b.pocketed).sort((a,b)=>a.x-b.x||a.id-b.id)[0];
+      return finish({angle:apex?Math.atan2(apex.y-cue.y+(rng()-.5)*P.R*.5,apex.x-cue.x):0,power:key==='easy'?.8:.93,calledPocket:null,placement},level,rng);
+    }
+    const list=candidates(S,cue);
+    if(list.length){
+      // Two predictions can reject an obvious scratch without exhaustive search.
+      const shortlist=list.slice(0,2);let best=shortlist[0],score=Infinity;
+      for(const candidate of shortlist){const value=simulateCandidate(S,candidate);if(value<score){score=value;best=candidate;}}
+      return finish(best,level,rng);
+    }
+    const shot=safety(S,cue,new Set(POOL_RULES.targets(S,S.turn)));if(placement)shot.placement=placement;
+    return finish(shot,level,rng);
+  }
+  return {choose,segmentDistance};
+})();
+/* POOL AI END */
+/* POOL RENDERER START */
+/* Juggalo Pool: cached table artwork and a responsive, invertible camera. */
+const POOL_RENDERER=(()=>{
+  const TAU=Math.PI*2;
+  const colors=['#fff4db','#f5c842','#327be5','#eb4058','#a769df','#f38b36','#25c48b','#ad3764','#151925'];
+  const tiles=new Map();
+  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+  function circle(c,x,y,r,fill,stroke,width=1){c.beginPath();c.arc(x,y,r,0,TAU);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.lineWidth=width;c.strokeStyle=stroke;c.stroke();}}
+  function line(c,points,stroke,width=1){c.beginPath();points.forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));c.strokeStyle=stroke;c.lineWidth=width;c.stroke();}
+  function polygon(c,points,fill,stroke,width=1){c.beginPath();points.forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));c.closePath();if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=width;c.stroke();}}
+  function rounded(c,x,y,w,h,r,fill,stroke,width=1){c.beginPath();c.roundRect(x,y,w,h,r);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=width;c.stroke();}}
+  function spaced(c,text,x,y,spacing=2){
+    const widths=[...text].map(letter=>c.measureText(letter).width),width=widths.reduce((sum,v)=>sum+v,0)+(text.length-1)*spacing;
+    let left=x-width/2;c.textAlign='left';for(let i=0;i<text.length;i++){c.fillText(text[i],left,y);left+=widths[i]+spacing;}
+  }
+  function makeCanvas(w,h){const c=document.createElement('canvas');c.width=w;c.height=h;return c;}
+  function ballTile(id,portrait){
+    const key=id+':'+Number(portrait);if(tiles.has(key))return tiles.get(key);
+    const tile=makeCanvas(88,88),c=tile.getContext('2d'),r=25,x=44,y=42,color=colors[id===0?0:id===8?8:(id-1)%8+1];
+    const shadow=c.createRadialGradient(x+2,y+6,5,x+2,y+6,32);shadow.addColorStop(0,'#0009');shadow.addColorStop(.72,'#0004');shadow.addColorStop(1,'#0000');circle(c,x+2,y+6,32,shadow);
+    circle(c,x,y,r,id>8?'#f7f0dc':color);
+    c.save();c.beginPath();c.arc(x,y,r,0,TAU);c.clip();
+    if(id>8){c.fillStyle=color;c.fillRect(x-r,y-12,r*2,24);}
+    const light=c.createRadialGradient(x-8,y-11,1,x+2,y+4,31);light.addColorStop(0,'#ffffff70');light.addColorStop(.48,'#ffffff05');light.addColorStop(.78,'#00000008');light.addColorStop(1,'#000000b8');circle(c,x,y,r,light);
+    c.restore();circle(c,x,y,r,null,id===8?'#b1bdc3':'#ffffff63',1.3);
+    if(id){
+      c.save();c.translate(x,y);if(portrait)c.rotate(Math.PI/2);
+      circle(c,0,0,15,'#fff9e9','#ffffffad',.7);
+      c.fillStyle='#111722';c.textAlign='center';c.textBaseline='middle';c.font=`900 ${id>9?21:23}px Arial,sans-serif`;c.fillText(String(id),0,.9);c.restore();
+    }else{
+      circle(c,x+4,y+5,2.1,'#a69a80');
+    }
+    c.save();c.translate(x-8,y-12);c.rotate(-.5);c.fillStyle='#ffffffcf';c.beginPath();c.ellipse(0,0,5.5,2.4,0,0,TAU);c.fill();c.restore();
+    tiles.set(key,tile);return tile;
+  }
+  function drawBall(c,id,x,y,r=12.5,portrait=false,alpha=1){
+    c.save();c.globalAlpha*=alpha;const extent=r*88/25;c.drawImage(ballTile(id,portrait),x-r*44/25,y-r*42/25,extent,extent);c.restore();
+  }
+  function joker(c,x,y,size){
+    c.save();c.translate(x,y);c.scale(size/100,size/100);c.lineJoin='round';
+    // A felt-stitched jester crest rather than a high-contrast picture under the balls.
+    polygon(c,[[0,-88],[69,-26],[50,64],[0,91],[-50,64],[-69,-26]],null,'#57bea0',2);
+    polygon(c,[[0,-75],[58,-22],[42,56],[0,78],[-42,56],[-58,-22]],null,'#57bea0',.7);
+    polygon(c,[[-38,-23],[-52,-61],[-16,-40],[0,-73],[16,-40],[52,-61],[38,-23]],'#57bea0');
+    for(const [xx,yy] of [[-52,-61],[0,-73],[52,-61]])circle(c,xx,yy,5,'#57bea0');
+    c.beginPath();c.moveTo(-35,-21);c.quadraticCurveTo(-34,48,0,63);c.quadraticCurveTo(34,48,35,-21);c.quadraticCurveTo(0,-36,-35,-21);c.closePath();c.strokeStyle='#57bea0';c.lineWidth=3;c.stroke();
+    polygon(c,[[-28,-12],[-8,-2],[-25,12]],'#57bea0');polygon(c,[[28,-12],[8,-2],[25,12]],'#57bea0');
+    polygon(c,[[0,2],[7,16],[0,21],[-7,16]],'#57bea0');
+    c.beginPath();c.moveTo(-24,25);c.quadraticCurveTo(0,39,24,25);c.quadraticCurveTo(16,52,0,53);c.quadraticCurveTo(-16,52,-24,25);c.strokeStyle='#57bea0';c.lineWidth=2;c.stroke();
+    for(const xx of [-12,0,12])line(c,[[xx,35],[xx,46]],'#57bea0',2);
+    c.restore();
+  }
+  function background(physics){
+    const {W,H,B,pockets,cushions}=physics,c=makeCanvas(W*2,H*2),g=c.getContext('2d');g.scale(2,2);
+    const room=g.createRadialGradient(W/2,H/2,30,W/2,H/2,W*.62);room.addColorStop(0,'#22152c');room.addColorStop(.7,'#110f1b');room.addColorStop(1,'#08090e');g.fillStyle=room;g.fillRect(0,0,W,H);
+    // Subtle floor seams and table shadow are rendered only once.
+    for(let x=-H;x<W+H;x+=55)line(g,[[x,0],[x+H,H]],'#ffffff03',1);
+    rounded(g,22,42,W-44,H-56,56,'#0009');rounded(g,24,26,W-48,H-52,52,'#0b080e','#a16b70',1);
+    const wood=g.createLinearGradient(0,28,0,H-28);wood.addColorStop(0,'#613443');wood.addColorStop(.13,'#3c1c30');wood.addColorStop(.45,'#281426');wood.addColorStop(.75,'#4c2439');wood.addColorStop(1,'#20101e');
+    rounded(g,30,31,W-60,H-62,47,wood,'#cba66b',2);
+    rounded(g,36,37,W-72,H-74,42,null,'#dcc39550',1);
+    rounded(g,42,43,W-84,H-86,38,null,'#0d0913',3);
+    // Lacquer grain stays on the wooden rails, outside the green playing surface.
+    g.save();g.beginPath();g.roundRect(44,44,W-88,H-88,35);g.clip();
+    for(let i=0;i<7;i++){
+      const y=49+i*3.2;
+      g.beginPath();g.moveTo(62,y);g.bezierCurveTo(280,y+2,620,y-3,938,y+1);g.strokeStyle=i%2?'#dca09116':'#0a071c3b';g.lineWidth=.8;g.stroke();
+      g.beginPath();g.moveTo(62,H-y);g.bezierCurveTo(330,H-y-3,670,H-y+3,938,H-y);g.stroke();
+    }
+    g.restore();
+    const felt=g.createRadialGradient(450,240,40,W/2,H/2,520);felt.addColorStop(0,'#176b67');felt.addColorStop(.55,'#105851');felt.addColorStop(1,'#073d3e');
+    rounded(g,B.left-8,B.top-8,B.right-B.left+16,B.bottom-B.top+16,20,felt,'#030e19',3);
+    g.save();g.beginPath();g.roundRect(B.left-5,B.top-5,B.right-B.left+10,B.bottom-B.top+10,16);g.clip();
+    let seed=491;
+    for(let i=0;i<13000;i++){
+      seed=(Math.imul(seed,1664525)+1013904223)>>>0;const x=B.left+(seed/4294967296)*(B.right-B.left);
+      seed=(Math.imul(seed,1664525)+1013904223)>>>0;const y=B.top+(seed/4294967296)*(B.bottom-B.top);
+      g.fillStyle=i%2?'#a4eac908':'#001b220e';g.fillRect(x,y,.7,1.4);
+    }
+    for(let y=B.top+2;y<B.bottom;y+=4)line(g,[[B.left,y],[B.right,y]],'#8acfb203',.6);
+    g.globalAlpha=.18;joker(g,500,290,87);g.globalAlpha=.2;g.fillStyle='#9bdec3';g.font='700 10px Arial,sans-serif';spaced(g,'DARK CARNIVAL BILLIARDS',500,390,3.1);g.globalAlpha=1;
+    // Head string and foot spot aid placement without distracting from aim lines.
+    const head=B.left+(B.right-B.left)*.25,foot=B.left+(B.right-B.left)*.75;
+    g.setLineDash([4,8]);line(g,[[head,B.top+12],[head,B.bottom-12]],'#a4d7c31a',1);g.setLineDash([]);
+    circle(g,head,H/2,2.4,'#c5e0c65c');circle(g,foot,H/2,2.4,'#c5e0c65c');g.restore();
+    // The rail's inside edge and rounded endpoints use the physics geometry.
+    for(const rail of cushions||[]){
+      const {ax,ay,bx,by,nx,ny}=rail,dx=bx-ax,dy=by-ay,len=Math.hypot(dx,dy),tx=dx/len,ty=dy/len;
+      const depth=22,flare=13;
+      polygon(g,[[ax,ay],[bx,by],[bx-nx*depth+tx*flare,by-ny*depth+ty*flare],[ax-nx*depth-tx*flare,ay-ny*depth-ty*flare]],'#093d38','#082922',1);
+      polygon(g,[[ax-nx*3,ay-ny*3],[bx-nx*3,by-ny*3],[bx-nx*depth+tx*flare,by-ny*depth+ty*flare],[ax-nx*depth-tx*flare,ay-ny*depth-ty*flare]],'#247264');
+      line(g,[[ax,ay],[bx,by]],'#77b99b',1.4);
+      line(g,[[ax-nx*depth-tx*flare,ay-ny*depth-ty*flare],[bx-nx*depth+tx*flare,by-ny*depth+ty*flare]],'#7297817a',1);
+      line(g,[[ax,ay],[ax-nx*depth-tx*flare,ay-ny*depth-ty*flare]],'#051e22',2);
+      line(g,[[bx,by],[bx-nx*depth+tx*flare,by-ny*depth+ty*flare]],'#051e22',2);
+    }
+    for(const pocket of pockets){
+      const {x,y,r}=pocket;
+      const brass=g.createLinearGradient(x-r,y-r,x+r,y+r);brass.addColorStop(0,'#d1ba83');brass.addColorStop(.4,'#725234');brass.addColorStop(.7,'#e2c588');brass.addColorStop(1,'#4b3441');
+      circle(g,x,y,r+5,'#100d18',brass,2.5);
+      const well=g.createRadialGradient(x-5,y-5,1,x,y,r);well.addColorStop(0,'#0c1019');well.addColorStop(.6,'#04070b');well.addColorStop(1,'#020306');circle(g,x,y,r,well);
+      g.save();g.beginPath();g.arc(x,y,r-3,0,TAU);g.clip();
+      for(let i=-3;i<=3;i++){line(g,[[x-r,y+i*8],[x+r,y+i*8]],'#9d93700b',1);line(g,[[x+i*8,y-r],[x+i*8,y+r]],'#9d93700b',1);}g.restore();
+      g.beginPath();g.arc(x,y,r+2,Math.PI*1.08,Math.PI*1.82);g.strokeStyle='#f1dfb55c';g.lineWidth=1.5;g.stroke();
+    }
+    const diamond=(x,y,vertical=false)=>{g.save();g.translate(x,y);if(vertical)g.rotate(Math.PI/2);polygon(g,[[0,-4.5],[3.3,0],[0,4.5],[-3.3,0]],'#dfd5ad','#2a1528',1);g.restore();};
+    for(const k of [1,2,3,5,6,7]){const x=B.left+(B.right-B.left)*k/8;diamond(x,53);diamond(x,H-53);}
+    for(const k of [1,2,3]){const y=B.top+(B.bottom-B.top)*k/4;diamond(47,y,true);diamond(W-47,y,true);}
+    for(const [x,word] of [[285,'JUGGALO'],[715,'POOL · EIGHT BALL']]){
+      rounded(g,x-72,H-41,144,17,5,'#120d18','#ae8a54',.7);g.fillStyle='#d1bb8b';g.font='700 8.5px Arial,sans-serif';spaced(g,word,x,H-29,1.9);
+    }
+    for(const x of [53,W-53])for(const y of [53,H-53]){circle(g,x,y,2.3,'#d0b47d','#352038',.7);line(g,[[x-1.1,y-1.1],[x+1.1,y+1.1]],'#453142',.6);}
+    return c;
+  }
+  function create(canvas,physics=POOL_PHYSICS){
+    const {W,H,R,B,pockets}=physics,ctx=canvas.getContext('2d'),table=background(physics);
+    let width=W,height=H,portrait=false,dpr=1,scale=1,offsetX=0,offsetY=0;
+    function resize(w,h,turned=false){
+      width=Math.max(1,Number.isFinite(w)?w:canvas.clientWidth||W);height=Math.max(1,Number.isFinite(h)?h:canvas.clientHeight||H);portrait=!!turned;
+      dpr=clamp(globalThis.devicePixelRatio||1,1,2);
+      const vw=portrait?H:W,vh=portrait?W:H;scale=Math.min(width/vw,height/vh);offsetX=(width-vw*scale)/2;offsetY=(height-vh*scale)/2;
+      const pixelWidth=Math.max(1,Math.round(width*dpr)),pixelHeight=Math.max(1,Math.round(height*dpr));
+      // Repeated network layouts must not clear and reallocate the backing surface.
+      if(canvas.width!==pixelWidth)canvas.width=pixelWidth;
+      if(canvas.height!==pixelHeight)canvas.height=pixelHeight;
+      return{width,height,portrait,scale};
+    }
+    function point(clientX,clientY){
+      const rect=canvas.getBoundingClientRect();if(!rect.width||!rect.height)return null;
+      const x=((clientX-rect.left)*width/rect.width-offsetX)/scale,y=((clientY-rect.top)*height/rect.height-offsetY)/scale;
+      const wx=portrait?W-y:x,wy=portrait?x:y;
+      if(!Number.isFinite(wx)||!Number.isFinite(wy)||wx<0||wy<0||wx>W||wy>H)return null;
+      return{x:wx,y:wy};
+    }
+    function project(x,y){
+      const rect=canvas.getBoundingClientRect(),sx=portrait?y:x,sy=portrait?W-x:y;
+      return{x:rect.left+(offsetX+sx*scale)*rect.width/width,y:rect.top+(offsetY+sy*scale)*rect.height/height};
+    }
+    function upright(text,x,y,color,font='700 14px Arial,sans-serif'){
+      ctx.save();ctx.translate(x,y);if(portrait)ctx.rotate(Math.PI/2);ctx.fillStyle=color;ctx.font=font;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(text,0,0);ctx.restore();
+    }
+    function arrow(x,y,dx,dy,length,color,width=1.8){
+      const mag=Math.hypot(dx,dy);if(mag<.0001)return;dx/=mag;dy/=mag;
+      const ex=x+dx*length,ey=y+dy*length;
+      line(ctx,[[x,y],[ex,ey]],color,width);
+      polygon(ctx,[[ex,ey],[ex-dx*7-dy*3.5,ey-dy*7+dx*3.5],[ex-dx*7+dy*3.5,ey-dy*7-dx*3.5]],color);
+    }
+    function guides(balls,cue,angle,legalIds){
+      if(typeof physics.trace!=='function')return;
+      const hit=physics.trace(balls,angle);if(!hit||!Number.isFinite(hit.x)||!Number.isFinite(hit.y))return;
+      const dx=Math.cos(angle),dy=Math.sin(angle),legal=hit.type!=='ball'||!Array.isArray(legalIds)||legalIds.includes(hit.id);
+      const color=legal?'#d0ffdce8':'#ff7d9ceb';
+      ctx.save();ctx.beginPath();ctx.rect(B.left-1,B.top-1,B.right-B.left+2,B.bottom-B.top+2);ctx.clip();
+      ctx.setLineDash([7,7]);line(ctx,[[cue.x+dx*(R+4),cue.y+dy*(R+4)],[hit.x,hit.y]],'#effff9b8',Math.max(1.5,1/scale));ctx.setLineDash([]);
+      if(hit.type==='ball'){
+        circle(ctx,hit.x,hit.y,R,'#ffffff12',color,1.7);
+        const target=balls.find(b=>b.id===hit.id&&!b.pocketed);
+        if(target&&Math.hypot(target.x-hit.x,target.y-hit.y)>.0001){
+          const nx=target.x-hit.x,ny=target.y-hit.y,n=Math.hypot(nx,ny),dot=n?(dx*nx+dy*ny)/n:0;
+          arrow(target.x+nx/n*(R+2),target.y+ny/n*(R+2),nx,ny,74,color,2);
+          const tx=dx-(nx/n)*dot,ty=dy-(ny/n)*dot;
+          if(Math.hypot(tx,ty)>.08)arrow(hit.x,hit.y,tx,ty,45,'#f7f5df78',1.5);
+        }
+      }else if(hit.type==='cushion'&&hit.normal){
+        const {x:nx,y:ny}=hit.normal,dot=dx*nx+dy*ny;
+        circle(ctx,hit.x,hit.y,3.2,'#effff9');arrow(hit.x,hit.y,dx-2*nx*dot,dy-2*ny*dot,80,'#eaffef73',1.6);
+      }else circle(ctx,hit.x,hit.y,4,'#e4ffdf');
+      ctx.restore();
+    }
+    function cueStick(cue,angle,power){
+      const pull=16+clamp(power||0,0,1)*28;
+      ctx.save();ctx.translate(cue.x,cue.y);ctx.rotate(angle);ctx.globalAlpha=.94;
+      const start=-(R+pull),end=start-185;
+      const wood=ctx.createLinearGradient(end,-4,start,4);wood.addColorStop(0,'#25172e');wood.addColorStop(.24,'#6d375c');wood.addColorStop(.32,'#d0a568');wood.addColorStop(.91,'#f2dca2');wood.addColorStop(1,'#fff4c8');
+      polygon(ctx,[[start,-2],[start,2],[end,4.5],[end,-4.5]],wood,'#190e24',.8);
+      ctx.fillStyle='#c7f8ff';ctx.fillRect(start-4,-2.2,4,4.4);ctx.fillStyle='#4aa4b0';ctx.fillRect(start-1.7,-2.25,2,4.5);
+      ctx.fillStyle='#b5b696';ctx.fillRect(end+43,-3.9,3,7.8);ctx.fillRect(end+48,-3.8,2,7.6);
+      line(ctx,[[end+7,-2],[start-9,-.6]],'#ffffff63',.8);ctx.restore();
+    }
+    function pocketTargets(options){
+      if(!options.callRequired&&!Number.isInteger(options.calledPocket))return;
+      for(let i=0;i<pockets.length;i++){
+        const p=pockets[i],selected=i===options.calledPocket,r=p.r+9;
+        circle(ctx,p.x,p.y,r,null,selected?'#e2ff6d':'#81e6eb',selected?3.7:1.8);
+        if(selected){
+          ctx.setLineDash([4,5]);circle(ctx,p.x,p.y,r+5,null,'#e2ff6d9c',1.1);ctx.setLineDash([]);
+        }
+        upright(String(i+1),p.x,p.y,selected?'#e7ff87':'#c9ffff','900 20px Arial,sans-serif');
+      }
+    }
+    function draw(state,options={}){
+      ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,width,height);ctx.fillStyle='#090a10';ctx.fillRect(0,0,width,height);
+      ctx.translate(offsetX,offsetY);ctx.scale(scale,scale);if(portrait){ctx.translate(0,W);ctx.rotate(-Math.PI/2);}
+      ctx.drawImage(table,0,0,W,H);
+      const balls=Array.isArray(state.balls)?state.balls:[],cue=balls.find(b=>b.id===0&&!b.pocketed),angle=Number.isFinite(options.angle)?options.angle:0;
+      pocketTargets(options);
+      if(cue&&options.aiming&&options.guide!==false&&!options.placement)guides(balls,cue,angle,options.legalIds);
+      if(cue&&options.aiming&&!options.placement){
+        circle(ctx,cue.x,cue.y,R+5,null,options.turnColor||'#d5ff75',1.25);cueStick(cue,angle,options.power);
+      }
+      for(const ball of balls){
+        if(ball.pocketed||ball.id===0&&options.placement||!Number.isFinite(ball.x)||!Number.isFinite(ball.y))continue;
+        drawBall(ctx,ball.id,ball.x,ball.y,R,portrait);
+      }
+      const p=options.placement;
+      if(p&&Number.isFinite(p.x)&&Number.isFinite(p.y)){
+        const color=p.valid?'#dbff78':'#ff769b';circle(ctx,p.x,p.y,R+8,'#071a2377',color,2);
+        drawBall(ctx,0,p.x,p.y,R,portrait,.68);
+        for(const [dx,dy] of [[-1,0],[1,0],[0,-1],[0,1]])line(ctx,[[p.x+dx*(R+11),p.y+dy*(R+11)],[p.x+dx*(R+17),p.y+dy*(R+17)]],color,2);
+      }
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+    resize(canvas.clientWidth||W,canvas.clientHeight||H,false);
+    return{resize,draw,point,project};
+  }
+  return{create,drawBall};
+})();
+/* POOL RENDERER END */
+/* POOL GAME START */
+/* GAME 17 — Juggalo Pool. The host alone resolves online shots. */
+const POOL=(()=>{
+  const P=POOL_PHYSICS,R=POOL_RULES,store=gameStore('pa_pool_'),$=id=>document.getElementById('pl'+id);
+  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),copy=v=>JSON.parse(JSON.stringify(v));
+  const freshStats=()=>({shots:0,pots:0,fouls:0,run:0,bestRun:0});
+  const validMode=v=>['cpu','local','practice'].includes(v)?v:'cpu';
+  const validDiff=v=>['easy','normal','hard'].includes(v)?v:'normal';
+  const S={mode:'ready',playMode:validMode(store.get('mode','cpu')),difficulty:validDiff(store.get('difficulty','normal')),balls:P.rack(17),turn:0,groups:[null,null],break:true,scores:[0,0],stats:[freshStats(),freshStats()],calledPocket:null,ballInHand:false,winner:null,notice:'A clean break. A wicked finish.',shot:null,elapsed:0,seed:17,best:Math.max(0,store.get('best',0)),wins:Math.max(0,store.get('wins',0)),saved:false,resultSaved:false};
+  const A={angle:0,power:.65,called:null,placement:null,guide:store.get('guide',true)};
+  let canvas,view,menuView,active=false,raf=0,last=0,cpuTimer=0,generation=0,pointer=null,settled=0,N=null,resizeObserver=null,netClock=0,guestPrevious=null,guestAt=0,hudKey='';
+  const side=()=>N?(N.role==='host'?0:1):S.playMode==='local'?S.turn:0;
+  const humanTurn=()=>S.mode==='aiming'&&!(N&&N.pending)&&S.turn===side()&&!(S.playMode==='cpu'&&S.turn===1);
+  const name=i=>S.playMode==='practice'?'PRACTICE':N?(i===side()?'YOU':'YOUR HOMIE'):S.playMode==='local'?'PLAYER '+(i+1):i===0?'YOU':({easy:'THE ROOKIE',normal:'THE JUGGALO',hard:'THE HUSTLER'}[S.difficulty]);
+  function text(id,value){const el=$(id);if(el.textContent!==String(value))el.textContent=String(value);}
+  function stop(){cancelAnimationFrame(raf);raf=0;last=0;clearTimeout(cpuTimer);cpuTimer=0;pointer=null;}
+  function cancelWork(){generation++;stop();}
+  function run(){if(active&&S.mode==='rolling'&&!raf){last=0;raf=requestAnimationFrame(loop);}}
+  function loop(now){raf=0;if(!active||S.mode!=='rolling')return;const dt=last?Math.min(.05,(now-last)/1000):0;last=now;step(dt);draw(now);if(S.mode==='rolling')raf=requestAnimationFrame(loop);}
+  function audio(kind){
+    if(!Sound.on)return;const c=Sound.ensure();if(!c)return;
+    try{const o=c.createOscillator(),g=c.createGain(),t=c.currentTime;o.type=kind==='pot'?'sine':'triangle';o.frequency.setValueAtTime(kind==='pot'?230:kind==='shot'?1100:850,t);o.frequency.exponentialRampToValueAtTime(kind==='pot'?65:350,t+.06);g.gain.setValueAtTime(kind==='pot'?.22:.12,t);g.gain.exponentialRampToValueAtTime(.001,t+.09);o.connect(g);g.connect(Sound.master);o.start(t);o.stop(t+.1);}catch(_e){}
+  }
+  function renderMenu(){if(!menuView)return;const el=$('MenuArt'),r=el.getBoundingClientRect();menuView.resize(r.width||400,r.height||220,false);menuView.draw({balls:P.rack(17),mode:'ready',turn:0,groups:[null,null]},{aiming:true,angle:0,power:.65,guide:true});}
+  function resize(){
+    if(!view)return;const r=$('Stage').getBoundingClientRect(),portrait=matchMedia('(max-width:900px) and (orientation:portrait)').matches;view.resize(Math.max(1,r.width),Math.max(1,r.height),portrait);draw();
+  }
+  function layout(){
+    const match=active&&S.mode!=='ready';$('Screen').classList.toggle('pl-match',match);document.body.classList.toggle('pool-match',match);
+    $('Setup').hidden=S.mode!=='ready';$('Pause').hidden=S.mode!=='paused';$('Over').hidden=S.mode!=='over';
+    $('Mode').disabled=!!N;$('Difficulty').disabled=!!N;$('DifficultyWrap').hidden=S.playMode!=='cpu'||!!N;
+    $('ChooseBtn').hidden=!!N;$('OverChooseBtn').hidden=!!N;$('NewBtn').disabled=!!N;
+    $('StartBtn').disabled=Boolean(N?.ready[side()]);text('StartBtn',N?'READY TO BREAK':'RACK ’EM UP');
+    text('ReadyNote',N?(N.ready[side()]?'Ready. Waiting for your homie…':'Both players ready up before the break.'):'Aim on the table. Set power. Shoot.');
+    $('PauseBtn').disabled=['ready','over'].includes(S.mode);text('PauseBtn',S.mode==='paused'?'RESUME':'PAUSE');
+    text('PauseNote',N?'Both players must resume before the next shot.':'Your shot can wait.');
+    const eligibleRecord=S.mode==='over'&&S.playMode==='cpu'&&S.winner===0;
+    $('SaveBtn').hidden=!eligibleRecord;$('SaveBtn').disabled=S.saved;
+    text('SaveBtn',S.saved?'RECORD SUBMITTED':'SAVE YOUR RECORD');
+    $('AgainBtn').disabled=Boolean(N?.ready[side()]&&N.phase==='over');text('AgainBtn',N?.ready[side()]?'WAITING FOR YOUR HOMIE…':'RUN IT BACK');
+    resize();
+  }
+  function draw(now=performance.now()){
+    if(!view||!active)return;
+    let shown=S;
+    if(N?.role==='join'&&S.mode==='rolling'&&guestPrevious){const t=clamp((now-guestAt)/70,0,1);shown={...S,balls:S.balls.map(b=>{const old=guestPrevious[b.id];return old&&!old.pocketed&&!b.pocketed?{...b,x:old.x+(b.x-old.x)*t,y:old.y+(b.y-old.y)*t}:b;})};}
+    const aim=humanTurn();view.draw(shown,{aiming:aim&&!S.ballInHand,angle:A.angle,power:A.power,calledPocket:aim?A.called:S.calledPocket,callRequired:S.playMode!=='practice'&&R.eligible8(S,S.turn)&&!S.break,placement:aim&&S.ballInHand?A.placement:null,guide:A.guide,legalIds:R.targets(S,S.turn),turnColor:S.turn===0?'#9df6cb':'#ec84bb',time:now/1000});
+  }
+  function tray(i){
+    const el=$('Balls'+i),g=S.groups[i],ids=g==='solids'?[1,2,3,4,5,6,7]:g==='stripes'?[9,10,11,12,13,14,15]:[];
+    el.replaceChildren();if(!ids.length){const em=document.createElement('em');em.textContent=S.playMode==='practice'?POT_COUNT()+' / 15 pocketed':'First legal pot chooses your crew';el.append(em);return;}
+    const colors=['#e2b829','#4081df','#e64f62','#ae74d6','#e99640','#42b890','#aa4168'];
+    for(const id of ids){const b=S.balls.find(v=>v.id===id),dot=document.createElement('i');dot.textContent=id;dot.style.setProperty('--ball',colors[(id-1)%8]);dot.className=(id>8?'stripe ':'')+(b?.pocketed?'gone':'');dot.setAttribute('aria-label',id+(b?.pocketed?' pocketed':' remaining'));el.append(dot);}
+    if(!R.remaining(S,i).length){const eight=document.createElement('i');eight.textContent='8';eight.className='eight';el.append(eight);}
+  }
+  function POT_COUNT(){return S.balls.filter(b=>b.id!==0&&b.pocketed).length;}
+  function hud(){
+    const key=JSON.stringify([S.mode,S.turn,S.groups,S.scores,S.balls.filter(b=>b.pocketed).map(b=>b.id),S.notice,S.ballInHand,S.playMode,S.difficulty,A.called,N?.pending,N?.ready]);
+    if(key!==hudKey){hudKey=key;
+      for(let i=0;i<2;i++){text('Name'+i,name(i));text('Group'+i,S.playMode==='practice'?'ANY BALL, ANY ORDER':S.groups[i]?S.groups[i].toUpperCase():'OPEN TABLE');text('Score'+i,S.scores[i].toLocaleString());$('Player'+i).classList.toggle('active',S.turn===i&&!['ready','over'].includes(S.mode));tray(i);}
+      $('Player1').style.opacity=S.playMode==='practice'?'.35':'1';
+      text('Turn',S.mode==='ready'?'WELCOME TO THE HALL':S.mode==='over'?'RACK COMPLETE':S.mode==='paused'?'TABLE PAUSED':S.mode==='rolling'?'BALLS IN MOTION':N?.pending?'SENDING YOUR SHOT…':S.playMode==='cpu'&&S.turn===1?name(1)+' IS LINING IT UP':name(S.turn)+(S.ballInHand?' · CUE BALL IN HAND':S.break?' · THE BREAK':' · AT THE TABLE'));
+      text('Status',S.notice);text('Career',S.wins+' CPU win'+(S.wins===1?'':'s')+' · Best '+S.best.toLocaleString());
+    }
+    const can=humanTurn(),call=can&&!S.break&&R.eligible8(S,S.turn)&&S.playMode!=='practice';
+    const callChanged=$('PocketCall').hidden===call;$('PocketCall').hidden=!call;
+    $('ShootBtn').hidden=can&&S.ballInHand;$('PlaceBtn').hidden=!can||!S.ballInHand;
+    $('ShootBtn').disabled=!can||S.ballInHand||(call&&A.called===null);$('PlaceBtn').disabled=!A.placement?.valid;
+    $('Power').disabled=!can||S.ballInHand;$('AimLeft').disabled=!can||S.ballInHand;$('AimRight').disabled=!can||S.ballInHand;
+    text('ShootBtn',call&&A.called===null?'CALL POCKET':S.break?'BREAK':'SHOOT');
+    text('AimHint',S.ballInHand?'Move the white ball. Confirm its spot.':call?'Pick a numbered pocket for the 8.':'Tap or drag the table to aim');
+    for(const el of $('PocketButtons').children)el.setAttribute('aria-pressed',String(Number(el.dataset.plPocket)===A.called));
+    text('PowerValue',Math.round(A.power*100)+'%');$('Power').value=Math.round(A.power*100);
+    if(callChanged)resize();
+  }
+  function cuePlacement(){
+    const cue=S.balls.find(b=>b.id===0);const proposed=cue&&!cue.pocketed?{x:cue.x,y:cue.y}:{x:285,y:300};
+    if(P.validPlacement(S.balls,proposed.x,proposed.y))return{...proposed,valid:true};
+    for(let x=110;x<=890;x+=35)for(let y=120;y<=480;y+=35)if(P.validPlacement(S.balls,x,y))return{x,y,valid:true};
+    return{...proposed,valid:false};
+  }
+  function prepareTurn(){
+    A.called=null;A.placement=S.ballInHand?cuePlacement():null;
+    const cue=S.balls.find(b=>b.id===0),targets=S.balls.filter(b=>!b.pocketed&&R.targets(S,S.turn).includes(b.id)),target=S.break?targets.sort((a,b)=>a.x-b.x)[0]:targets[0];
+    if(cue&&target)A.angle=Math.atan2(target.y-cue.y,target.x-cue.x);
+    A.power=S.break ? .82 : .48;settled=0;hudKey='';hud();draw();scheduleCPU();
+  }
+  function reset(mode,seed,starter=0){
+    cancelWork();Object.assign(S,{mode:'aiming',playMode:mode,balls:P.rack(seed),turn:starter,groups:[null,null],break:true,scores:[0,0],stats:[freshStats(),freshStats()],calledPocket:null,ballInHand:false,winner:null,notice:'Break the rack. The table stays open after the break.',shot:null,elapsed:0,seed,saved:false,resultSaved:false});
+    prepareTurn();layout();canvas.focus({preventScroll:true});
+  }
+  function start(){
+    if(N){ready();return;}
+    const mode=validMode($('Mode').value);S.difficulty=validDiff($('Difficulty').value);store.set('mode',mode);store.set('difficulty',S.difficulty);
+    reset(mode,(Date.now()^Math.floor(Math.random()*0xffffffff))>>>0);
+  }
+  function choose(){
+    if(N)return;cancelWork();Object.assign(S,{mode:'ready',playMode:validMode($('Mode').value),balls:P.rack(17),groups:[null,null],scores:[0,0],stats:[freshStats(),freshStats()],turn:0,winner:null,ballInHand:false,break:true,notice:'A clean break. A wicked finish.',shot:null});A.placement=null;A.called=null;hudKey='';layout();hud();draw();
+  }
+  function place(x,y,actor=side()){
+    if(S.mode!=='aiming'||!S.ballInHand||actor!==S.turn||!P.validPlacement(S.balls,x,y))return false;
+    if(N?.role==='join'){N.pending=true;send({k:'place',request:++N.requests,x,y});hud();return true;}
+    const cue=S.balls.find(b=>b.id===0);Object.assign(cue,{x,y,vx:0,vy:0,pocketed:false});S.ballInHand=false;A.placement=null;S.notice='Cue ball placed. Aim your shot.';hud();draw();sendFrame();return true;
+  }
+  function shoot(params={},actor=side()){
+    if(S.mode!=='aiming'||S.ballInHand||actor!==S.turn||N?.pending||P.moving(S.balls))return false;
+    const angle=params.angle??A.angle,power=params.power??A.power,called=params.calledPocket??A.called;
+    if(!Number.isFinite(angle)||Math.abs(angle)>Math.PI*100||!Number.isFinite(power)||power<.05||power>1)return false;
+    const needsCall=!S.break&&S.playMode!=='practice'&&R.eligible8(S,S.turn);
+    if(needsCall&&(!Number.isInteger(called)||called<0||called>5))return false;
+    if(N?.role==='join'){N.pending=true;send({k:'shot',request:++N.requests,angle,power,calledPocket:needsCall?called:null});hud();return true;}
+    clearTimeout(cpuTimer);cpuTimer=0;pointer=null;A.angle=angle;A.power=power;S.calledPocket=needsCall?called:null;
+    S.shot=R.prepare(S);if(!P.strike(S.balls,angle,power)){S.shot=null;return false;}
+    S.mode='rolling';S.notice=needsCall?'Eight ball called to pocket '+(called+1)+'.':'Let the balls settle…';settled=0;audio('shot');hud();draw();sendFrame();run();return true;
+  }
+  function complete(){
+    if(S.resultSaved)return;S.resultSaved=true;stop();
+    const win=S.winner===side(),practice=S.playMode==='practice';
+    if(S.playMode==='cpu'&&S.winner===0){S.wins++;S.best=Math.max(S.best,S.scores[0]);store.set('wins',S.wins);store.set('best',S.best);}
+    text('ResultTitle',practice?'TABLE CLEARED':N?(win?'THE TABLE IS YOURS':'YOUR HOMIE TAKES IT'):S.playMode==='cpu'?(win?'YOU OWN THE TABLE':'THE CARNIVAL TAKES IT'):name(S.winner)+' TAKES THE TABLE');
+    text('ResultDetail',S.notice);text('FinalScore',(practice?S.scores[0]:S.scores[S.winner??0]).toLocaleString());
+    const st=S.stats[practice?0:(S.winner??0)];text('ResultStats',st.shots+' shots · '+st.pots+' balls · Best run '+st.bestRun);
+    if(N){N.phase='over';N.ready=[false,false];}
+    if(win&&!practice)Sound.play('fanfare',.35);layout();hud();draw();
+  }
+  function step(dt){
+    if(S.mode!=='rolling'||!Number.isFinite(dt)||dt<=0)return;
+    if(N?.role==='join')return;
+    dt=Math.min(.05,dt);const pots=S.shot.potted.length,first=S.shot.first,rails=S.shot.rails.length;P.step(S.balls,dt,S.shot);S.elapsed+=dt;
+    if(S.shot.potted.length>pots)audio('pot');else if(first===null&&S.shot.first!==null||S.shot.rails.length>rails)audio('hit');
+    settled=P.moving(S.balls)?0:settled+dt;
+    if(settled>=.09||S.shot.elapsed>=25){
+      for(const ball of S.balls){ball.vx=0;ball.vy=0;}
+      R.resolve(S,S.shot);S.shot=null;
+      if(S.mode==='over')complete();else{S.mode='aiming';prepareTurn();}
+      sendFrame();hud();draw();
+    }else if(N){netClock+=dt;if(netClock>=1/15){netClock=0;sendFrame();}}
+  }
+  function scheduleCPU(){
+    clearTimeout(cpuTimer);cpuTimer=0;if(!active||S.playMode!=='cpu'||S.turn!==1||S.mode!=='aiming')return;
+    const token=generation;cpuTimer=setTimeout(()=>{
+      cpuTimer=0;if(token!==generation||!active||S.playMode!=='cpu'||S.turn!==1||S.mode!=='aiming')return;
+      const aim=POOL_AI.choose(S,S.difficulty);if(!aim)return;
+      if(S.ballInHand){const p=aim.placement||cuePlacement();if(!place(p.x,p.y,1))return;}
+      shoot(aim,1);
+    },650);
+  }
+  function pause(force){
+    if(['ready','over'].includes(S.mode))return;
+    const value=typeof force==='boolean'?force:S.mode!=='paused';
+    if(N){N.pauses[side()]=value;if(N.role==='join'){N.waitingPause=value;send({k:'pause',paused:value});if(value&&S.mode!=='paused'){S.resumeMode=S.mode;S.mode='paused';stop();layout();hud();}return;}applyPauses();return;}
+    if(value&&S.mode!=='paused'){S.resumeMode=S.mode;S.mode='paused';cancelWork();}
+    else if(!value&&S.mode==='paused'){S.mode=S.resumeMode||'aiming';delete S.resumeMode;run();scheduleCPU();}
+    layout();hud();draw();
+  }
+  function aimAt(point){
+    if(!point||!humanTurn())return;
+    if(S.ballInHand){const x=clamp(point.x,P.B.left+P.R,P.B.right-P.R),y=clamp(point.y,P.B.top+P.R,P.B.bottom-P.R);A.placement={x,y,valid:P.validPlacement(S.balls,x,y)};}
+    else{const cue=S.balls.find(b=>b.id===0);if(Math.hypot(point.x-cue.x,point.y-cue.y)>4)A.angle=Math.atan2(point.y-cue.y,point.x-cue.x);}
+    hud();draw();
+  }
+  function aimBy(delta){if(!humanTurn()||S.ballInHand)return;A.angle+=delta;draw();}
+  function callPocket(index){if(!humanTurn()||!Number.isInteger(index)||index<0||index>5)return;A.called=index;hud();draw();}
+  function pointerStart(e){
+    if(e.button!==0||pointer!==null||!humanTurn())return;const point=view.point(e.clientX,e.clientY);if(!point)return;
+    if(S.playMode!=='practice'&&!S.ballInHand&&!S.break&&R.eligible8(S,S.turn)){const index=P.pockets.findIndex(p=>Math.hypot(point.x-p.x,point.y-p.y)<p.r+20);if(index>=0){callPocket(index);return;}}
+    e.preventDefault();pointer=e.pointerId;canvas.setPointerCapture(e.pointerId);canvas.focus({preventScroll:true});aimAt(point);
+  }
+  function enter(){active=true;document.body.classList.add('pool-selected');layout();hud();resize();TICK.set('JUGGALO POOL — CLEAR YOUR CREW. CALL YOUR EIGHT.','BILLIARD HALL');scheduleCPU();run();}
+  function leave(){document.body.classList.remove('pool-selected');if(active&&['rolling','aiming'].includes(S.mode))pause(true);active=false;cancelWork();$('Screen').classList.remove('pl-match');document.body.classList.remove('pool-match');renderMenu();}
+  function send(data){if(N)NET.push('pool',{round:N.round,...data});}
+  function snapshot(){return{mode:S.mode,playMode:'online',balls:S.balls.map(b=>({id:b.id,x:b.x,y:b.y,vx:b.vx,vy:b.vy,pocketed:b.pocketed})),turn:S.turn,groups:S.groups,break:S.break,scores:S.scores,stats:S.stats,calledPocket:S.calledPocket,ballInHand:S.ballInHand,winner:S.winner,notice:S.notice,seed:S.seed,elapsed:S.elapsed,resumeMode:S.resumeMode||null};}
+  function sendFrame(kind='frame'){if(N?.role==='host')send({k:kind,seq:++N.tx,state:snapshot(),pauses:N.pauses});}
+  function validSnapshot(s){
+    const finite=n=>typeof n==='number'&&Number.isFinite(n),pair=a=>Array.isArray(a)&&a.length===2;
+    if(!s||typeof s!=='object'||Array.isArray(s)||s.playMode!=='online')return false;
+    if(!Array.isArray(s.balls)||s.balls.length!==16||!s.balls.every(b=>b&&typeof b==='object'&&Number.isInteger(b.id)&&b.id>=0&&b.id<=15&&finite(b.x)&&finite(b.y)&&b.x>=0&&b.x<=P.W&&b.y>=0&&b.y<=P.H&&finite(b.vx)&&finite(b.vy)&&Math.abs(b.vx)<=P.MAX_SPEED+1&&Math.abs(b.vy)<=P.MAX_SPEED+1&&typeof b.pocketed==='boolean')||new Set(s.balls.map(b=>b.id)).size!==16)return false;
+    return ['aiming','rolling','paused','over'].includes(s.mode)&&[0,1].includes(s.turn)&&typeof s.break==='boolean'&&typeof s.ballInHand==='boolean'&&finite(s.elapsed)&&s.elapsed>=0&&finite(s.seed)&&typeof s.notice==='string'&&s.notice.length<350&&(s.mode==='over'?[0,1].includes(s.winner):s.winner===null)&&pair(s.groups)&&((s.groups[0]===null&&s.groups[1]===null)||(s.groups[0]==='solids'&&s.groups[1]==='stripes')||(s.groups[0]==='stripes'&&s.groups[1]==='solids'))&&pair(s.scores)&&s.scores.every(n=>finite(n)&&n>=0&&n<=1e7)&&pair(s.stats)&&s.stats.every(t=>t&&['shots','pots','fouls','run','bestRun'].every(k=>Number.isInteger(t[k])&&t[k]>=0&&t[k]<=1e6))&&[null,0,1,2,3,4,5].includes(s.calledPocket)&&[null,'aiming','rolling'].includes(s.resumeMode)&&(s.mode!=='paused'||s.resumeMode!==null);
+  }
+  function netStart(role){
+    cancelWork();N={role,round:0,phase:'lobby',ready:[false,false],pauses:[false,false],tx:0,rx:0,requests:0,remoteRequest:0,pending:false};
+    Object.assign(S,{mode:'ready',playMode:'online',balls:P.rack(17),turn:0,groups:[null,null],scores:[0,0],stats:[freshStats(),freshStats()],notice:'Your homie is here. Both players ready up to break.',winner:null,resultSaved:false});hudKey='';layout();hud();draw();
+  }
+  function ready(){
+    if(!N||!['lobby','over'].includes(N.phase)||N.ready[side()])return;
+    N.ready[side()]=true;send({k:'ready'});maybeStartOnline();layout();
+  }
+  function maybeStartOnline(){
+    if(!N||N.role!=='host'||!N.ready.every(Boolean))return;
+    const starter=N.round%2;N.round++;N.phase='playing';N.pauses=[false,false];N.ready=[false,false];N.tx=0;N.rx=0;N.remoteRequest=0;N.pending=false;
+    reset('online',(Date.now()^0xcafef00d^N.round)>>>0,starter);sendFrame('start');
+  }
+  function applyPauses(){
+    if(!N||S.mode==='over'||S.mode==='ready')return;
+    if(N.pauses.some(Boolean)&&S.mode!=='paused'){S.resumeMode=S.mode;S.mode='paused';stop();}
+    else if(!N.pauses.some(Boolean)&&S.mode==='paused'){S.mode=S.resumeMode||'aiming';delete S.resumeMode;run();}
+    layout();hud();draw();sendFrame();
+  }
+  function netApply(d){
+    if(!N||!d||typeof d!=='object'||!Number.isSafeInteger(d.round)||d.round<0)return;
+    if(N.role==='join'&&['frame','start'].includes(d.k)){
+      if((d.k==='start'?d.round!==N.round+1||!['lobby','over'].includes(N.phase)||d.state?.mode!=='aiming':d.round!==N.round)||!Number.isSafeInteger(d.seq)||d.seq<=0||(d.k==='frame'&&d.seq<=N.rx)||!validSnapshot(d.state)||!Array.isArray(d.pauses)||d.pauses.length!==2||d.pauses.some(p=>typeof p!=='boolean'))return;
+      if(d.k==='start'){cancelWork();N.round=d.round;N.phase='playing';N.ready=[false,false];N.rx=0;N.requests=0;N.waitingPause=false;S.resultSaved=false;S.saved=false;}
+      const changedTurn=S.turn!==d.state.turn||S.mode==='rolling'&&d.state.mode==='aiming';
+      guestPrevious=Object.fromEntries(S.balls.map(b=>[b.id,{...b}]));guestAt=performance.now();N.rx=d.seq;N.pauses=d.pauses.slice();N.pending=false;
+      // A peer owns the shared rack, never this device's records or UI flags.
+      const shared={};for(const key of ['mode','balls','turn','groups','break','scores','stats','calledPocket','ballInHand','winner','notice','seed','elapsed','resumeMode'])shared[key]=copy(d.state[key]);
+      Object.assign(S,shared,{playMode:'online',shot:null});
+      // A rolling frame already in flight must not undo an immediate local
+      // pause while that pause request is still travelling to the host.
+      if(N.waitingPause&&S.mode!=='over'){
+        if(N.pauses[side()])N.waitingPause=false;
+        else{N.pauses[side()]=true;if(S.mode!=='paused')S.resumeMode=S.mode;S.mode='paused';stop();}
+      }
+      if(S.mode==='over')complete();else{if(changedTurn||d.k==='start')prepareTurn();layout();hud();draw();run();}
+      return;
+    }
+    if(d.round!==N.round)return;
+    if(d.k==='ready'&&['lobby','over'].includes(N.phase)){N.ready[1-side()]=true;maybeStartOnline();layout();return;}
+    if(N.role!=='host')return;
+    if(d.k==='pause'&&typeof d.paused==='boolean'){N.pauses[1]=d.paused;applyPauses();return;}
+    if(!['shot','place'].includes(d.k)||!Number.isSafeInteger(d.request)||d.request<=N.remoteRequest)return;
+    // Network input must be explicit; shoot()'s local aim defaults must not be
+    // used for missing or null fields received from the other player.
+    if(d.k==='shot'&&(!Number.isFinite(d.angle)||Math.abs(d.angle)>Math.PI*100||!Number.isFinite(d.power)||d.power<.05||d.power>1||![null,0,1,2,3,4,5].includes(d.calledPocket)))return;
+    if(d.k==='place'&&(!Number.isFinite(d.x)||!Number.isFinite(d.y)))return;
+    N.remoteRequest=d.request;
+    if(N.phase!=='playing'||S.mode!=='aiming'||S.turn!==1||N.pauses.some(Boolean)){sendFrame();return;}
+    if(d.k==='place')place(d.x,d.y,1);else shoot({angle:d.angle,power:d.power,calledPocket:d.calledPocket},1);
+    sendFrame();
+  }
+  function netEnd(){
+    if(!N)return;N=null;guestPrevious=null;cancelWork();S.playMode=validMode(store.get('mode','cpu'));$('Mode').value=S.playMode;choose();S.notice='Online table closed. Start a fresh local rack any time.';hud();
+  }
+  function bind(){
+    canvas=$('Canvas');view=POOL_RENDERER.create(canvas,P);menuView=POOL_RENDERER.create($('MenuArt'),P);renderMenu();
+    $('Mode').value=S.playMode;$('Difficulty').value=S.difficulty;$('Guide').checked=A.guide;
+    $('Mode').onchange=()=>{S.playMode=validMode($('Mode').value);layout();hud();};$('Difficulty').onchange=()=>{S.difficulty=validDiff($('Difficulty').value);hud();};
+    $('StartBtn').onclick=start;$('AgainBtn').onclick=()=>N?ready():start();$('ChooseBtn').onclick=choose;$('OverChooseBtn').onclick=choose;$('NewBtn').onclick=choose;
+    $('ShootBtn').onclick=()=>{if(humanTurn())shoot();canvas.focus({preventScroll:true});};$('PlaceBtn').onclick=()=>{if(humanTurn()&&A.placement)place(A.placement.x,A.placement.y);canvas.focus({preventScroll:true});};
+    $('PauseBtn').onclick=()=>pause();$('ResumeBtn').onclick=()=>pause(false);$('HomeBtn').onclick=()=>showScreen('menu');$('SoundBtn').onclick=toggleSound;
+    $('SaveBtn').onclick=()=>{if(S.mode!=='over'||S.playMode!=='cpu'||S.winner!==0||S.saved)return;S.saved=true;LB.check('pool',S.scores[0],S.difficulty+' CPU · '+S.stats[0].shots+' shots');layout();};
+    $('Power').oninput=()=>{A.power=Number($('Power').value)/100;hud();draw();};$('Guide').onchange=()=>{A.guide=$('Guide').checked;store.set('guide',A.guide);draw();};
+    $('AimLeft').onclick=()=>aimBy(-Math.PI/360);$('AimRight').onclick=()=>aimBy(Math.PI/360);
+    for(const el of $('PocketButtons').children)el.onclick=()=>callPocket(Number(el.dataset.plPocket));
+    canvas.addEventListener('pointerdown',pointerStart);canvas.addEventListener('pointermove',e=>{if(e.pointerId===pointer)aimAt(view.point(e.clientX,e.clientY));});
+    for(const type of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(type,e=>{if(e.pointerId===pointer)pointer=null;});
+    document.addEventListener('keydown',e=>{
+      if(!active||gameKeysBlocked(e)||e.target.closest('button,input,select,textarea'))return;
+      if(['p','P','Escape'].includes(e.key)){e.preventDefault();pause();return;}
+      if(!humanTurn())return;
+      if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown',' ','Enter'].includes(e.key))e.preventDefault();
+      if(S.ballInHand){
+        if(e.key==='Enter'){if(A.placement)place(A.placement.x,A.placement.y);return;}
+        const p=A.placement||cuePlacement(),amount=e.shiftKey?2:10;
+        if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key)){const screen=view.project(p.x,p.y),delta={ArrowLeft:[-amount,0],ArrowRight:[amount,0],ArrowUp:[0,-amount],ArrowDown:[0,amount]}[e.key];aimAt(view.point(screen.x+delta[0],screen.y+delta[1]));}return;
+      }
+      if(e.key==='ArrowLeft')aimBy(-(e.shiftKey?.15:.75)*Math.PI/180);
+      if(e.key==='ArrowRight')aimBy((e.shiftKey?.15:.75)*Math.PI/180);
+      if(e.key==='ArrowUp'||e.key==='ArrowDown'){A.power=clamp(A.power+(e.key==='ArrowUp'?.05:-.05),.05,1);hud();draw();}
+      if(e.key===' '&&!e.repeat)shoot();if(/^[1-6]$/.test(e.key))callPocket(Number(e.key)-1);
+    });
+    window.addEventListener('blur',()=>{pointer=null;pause(true);});document.addEventListener('visibilitychange',()=>{if(document.hidden)pause(true);});
+    window.addEventListener('resize',()=>{if(active)resize();else renderMenu();});
+    if(window.ResizeObserver){resizeObserver=new ResizeObserver(()=>{if(active)resize();});resizeObserver.observe($('Stage'));}
+    layout();hud();
+  }
+  return{bind,enter,leave,start,choose,pause,step,draw,shoot,place,callPocket,aimAt,state:S,aim:A,physics:P,rules:R,ai:POOL_AI,netStart,netApply,netEnd,netState:()=>N,debug:{stop,resize,project:(x,y)=>view.project(x,y),point:(x,y)=>view.point(x,y),humanTurn,complete}};
+})();
+/* POOL GAME END */
 /* CLAW CATALOG START */
 const CLAW_CATALOG = {"source":"https://jcwlunacy.net/#crew","checkedAt":"2026-10-01","roster":[{"name":"Caleb Konley","id":"caleb-konley","role":"Lunacy World Champion","group":"Champions","items":[{"kind":"belt","name":"Belt"},{"kind":"robe","name":"Entrance Robe"},{"kind":"boots","name":"Ring Boots"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Josh Bishop","id":"josh-bishop","role":"World Heavyweight Champion","group":"Champions","items":[{"kind":"belt","name":"Belt"},{"kind":"robe","name":"Entrance Robe"},{"kind":"boots","name":"Ring Boots"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Dani Mo","id":"dani-mo","role":"Women’s World Champion","group":"Champions","items":[{"kind":"belt","name":"Belt"},{"kind":"robe","name":"Entrance Robe"},{"kind":"boots","name":"Ring Boots"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Father Bronson","id":"father-bronson","role":"American Champion","group":"Champions","items":[{"kind":"belt","name":"Belt"},{"kind":"robe","name":"Entrance Robe"},{"kind":"boots","name":"Ring Boots"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Choppa City","id":"choppa-city","role":"World Tag Team Champions","group":"Champions","items":[{"kind":"belt","name":"Belt"},{"kind":"robe","name":"Entrance Robe"},{"kind":"boots","name":"Ring Boots"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"2 Tuff Tony","id":"2-tuff-tony","role":"JCW Roster","group":"Roster","items":[{"kind":"glove","name":"Flame Glove"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Alice Crowley","id":"alice-crowley","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Midnight Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Backseat Boyz","id":"backseat-boyz","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Barnabas the Bizarre","id":"barnabas-the-bizarre","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Bizarre Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Big Vito","id":"big-vito","role":"JCW Roster","group":"Roster","items":[{"kind":"hat","name":"Street-Fight Fedora"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Breyer Wellington","id":"breyer-wellington","role":"JCW Roster","group":"Roster","items":[{"kind":"bowtie","name":"Bow Tie"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Cokane","id":"cokane","role":"JCW Roster","group":"Roster","items":[{"kind":"chain","name":"Entrance Chain"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Donovan Dijak","id":"donovan-dijak","role":"JCW Roster","group":"Roster","items":[{"kind":"glasses","name":"Entrance Shades"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"EC3","id":"ec3","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Main-Event Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Facade","id":"facade","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Neon Bandana"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Forty Winks","id":"forty-winks","role":"JCW Roster","group":"Roster","items":[{"kind":"cap","name":"Sleep Cap"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Freya the Slaya","id":"freya-the-slaya","role":"JCW Roster","group":"Roster","items":[{"kind":"glove","name":"Battle Gauntlet"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Gisele Shaw","id":"gisele-shaw","role":"JCW Roster","group":"Roster","items":[{"kind":"robe","name":"Spotlight Robe"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"The Green Phantom","id":"the-green-phantom","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Green Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Hollyhood Haley J","id":"hollyhood-haley-j","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Hollyhood Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Hokane","id":"hokane","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Monster Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"J-Rod","id":"j-rod","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"James Storm","id":"james-storm","role":"JCW Roster","group":"Roster","items":[{"kind":"hat","name":"Cowboy Hat"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Jasmin St. Claire","id":"jasmine-st-claire","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Monster Corp Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Jeeves","id":"jeeves","role":"JCW Roster","group":"Roster","items":[{"kind":"bowtie","name":"Butler Bow Tie"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Joel Gertner","id":"joel-gertner","role":"JCW Roster","group":"Roster","items":[{"kind":"bowtie","name":"Ringside Bow Tie"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Kerry Morton","id":"kerry-morton","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Rock-Star Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Kongo Kong","id":"kongo-kong","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Monster Faceplate"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Krule","id":"krule","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Atrocity Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Luigi Primo","id":"luigi-primo","role":"JCW Roster","group":"Roster","items":[{"kind":"hat","name":"Chef Hat"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Mad Man Pondo","id":"mad-man-pondo","role":"JCW Roster","group":"Roster","items":[{"kind":"sign","name":"Stop Sign"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Matt Cross","id":"matt-cross","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Mecha Wolf","id":"mecha-wolf","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Wolf Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Mickie Knuckles","id":"mickie-knuckles","role":"JCW Roster","group":"Roster","items":[{"kind":"glove","name":"Brawler Gloves"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Mosh Pit Mike","id":"moshpit-mike","role":"JCW Roster","group":"Roster","items":[{"kind":"vest","name":"Mosh Pit Vest"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Mr. Anderson","id":"mr-anderson","role":"JCW Roster","group":"Roster","items":[{"kind":"mic","name":"Drop Mic"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Mr. Happy","id":"mr-happy","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Happy Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Nic Nemeth","id":"nic-nemeth","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Showtime Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Ninja Mack","id":"ninja-mack","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Ninja Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"The Outbreak","id":"outbreak","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Outbreak Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"7 Foot Tall Painful Paul","id":"7-foot-tall-painful-paul","role":"JCW Roster","group":"Roster","items":[{"kind":"glove","name":"Giant Gloves"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Ricky Morton","id":"ricky-morton","role":"JCW Roster","group":"Roster","items":[{"kind":"bandana","name":"Rock & Roll Bandana"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"The Ring Rat","id":"the-ring-rat","role":"JCW Roster","group":"Roster","items":[{"kind":"pants","name":"Pants"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Sally Boy","id":"sally-boy","role":"JCW Roster","group":"Roster","items":[{"kind":"hat","name":"Street-Fight Fedora"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Sewacide","id":"sewacide","role":"JCW Roster","group":"Roster","items":[{"kind":"chair","name":"Hardcore Chair"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Shane Mercer","id":"shane-mercer","role":"JCW Roster","group":"Roster","items":[{"kind":"chain","name":"Iron Chain"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Sonny Kiss","id":"sonny-kiss","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Spotlight Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Sophia Rose","id":"sohpia-rose","role":"JCW Roster","group":"Roster","items":[{"kind":"robe","name":"Rose Robe"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Steven Flowe","id":"steven-flowe","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Vincenzo","id":"vincenzo","role":"JCW Roster","group":"Roster","items":[{"kind":"hat","name":"Street-Fight Fedora"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Zach Gowen","id":"zach-gowen","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Willie Mack","id":"willie-mack","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Violent J","id":"violent-j","role":"Owner","group":"Crew","items":[{"kind":"chain","name":"Hatchet Pendant"},{"kind":"headphones","name":"Broadcast Headset"},{"kind":"mic","name":"Ringside Mic"},{"kind":"pass","name":"Backstage Pass"},{"kind":"clipboard","name":"Match Card Clipboard"}]},{"name":"Joe Dombrowski","id":"joe-dombrowski","role":"Commentary","group":"Crew","items":[{"kind":"headphones","name":"Broadcast Headset"},{"kind":"mic","name":"Ringside Mic"},{"kind":"pass","name":"Backstage Pass"},{"kind":"clipboard","name":"Match Card Clipboard"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Mark Roberts","id":"mark-roberts","role":"Commentary","group":"Crew","items":[{"kind":"headphones","name":"Broadcast Headset"},{"kind":"mic","name":"Ringside Mic"},{"kind":"pass","name":"Backstage Pass"},{"kind":"clipboard","name":"Match Card Clipboard"},{"kind":"poster","name":"Foil Poster"}]},{"name":"DJ Clay","id":"dj-clay","role":"House DJ","group":"Crew","items":[{"kind":"record","name":"Signed Vinyl"},{"kind":"headphones","name":"Broadcast Headset"},{"kind":"mic","name":"Ringside Mic"},{"kind":"pass","name":"Backstage Pass"},{"kind":"clipboard","name":"Match Card Clipboard"}]},{"name":"Veda Scott","id":"veda-scott","role":"Commentary","group":"Crew","items":[{"kind":"headphones","name":"Broadcast Headset"},{"kind":"mic","name":"Ringside Mic"},{"kind":"pass","name":"Backstage Pass"},{"kind":"clipboard","name":"Match Card Clipboard"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Zac Amico","id":"zac-amico","role":"Commentary","group":"Crew","items":[{"kind":"headphones","name":"Broadcast Headset"},{"kind":"mic","name":"Ringside Mic"},{"kind":"pass","name":"Backstage Pass"},{"kind":"clipboard","name":"Match Card Clipboard"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Mac Davis","id":"mac-davis","role":"Roving Reporter","group":"Crew","items":[{"kind":"headphones","name":"Broadcast Headset"},{"kind":"mic","name":"Ringside Mic"},{"kind":"pass","name":"Backstage Pass"},{"kind":"clipboard","name":"Match Card Clipboard"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Kid Cadet","id":"kid-cadet","role":"Ring Announcer","group":"Crew","items":[{"kind":"headphones","name":"Broadcast Headset"},{"kind":"mic","name":"Ringside Mic"},{"kind":"pass","name":"Backstage Pass"},{"kind":"clipboard","name":"Match Card Clipboard"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Jeff the Ref","id":"jeff-the-ref","role":"Referee","group":"Crew","items":[{"kind":"refshirt","name":"Referee Shirt"},{"kind":"whistle","name":"Referee Whistle"},{"kind":"boots","name":"Ring Boots"},{"kind":"clipboard","name":"Match Card Clipboard"},{"kind":"pass","name":"Backstage Pass"}]},{"name":"George Ross","id":"george-ross","role":"Referee","group":"Crew","items":[{"kind":"refshirt","name":"Referee Shirt"},{"kind":"whistle","name":"Referee Whistle"},{"kind":"boots","name":"Ring Boots"},{"kind":"clipboard","name":"Match Card Clipboard"},{"kind":"pass","name":"Backstage Pass"}]},{"name":"The Iron Sheik","id":"the-iron-sheik","role":"Night One · 1999","group":"Legends & Alumni","items":[{"kind":"flag","name":"Entrance Flag"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"King Kong Bundy","id":"king-kong-bundy","role":"Night One · 1999","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Abdullah the Butcher","id":"abdullah-the-butcher","role":"Night One · 1999","group":"Legends & Alumni","items":[{"kind":"robe","name":"Butcher Robe"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Handsome Harley Guestella & Diamond Donovan Douglas","id":"icp-founders","role":"Founders · First Tag Champs","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Evil Dead","id":"evil-dead","role":"First Champion","group":"Champions","items":[{"kind":"mask","name":"Horror Mask"},{"kind":"belt","name":"Belt"},{"kind":"robe","name":"Entrance Robe"},{"kind":"boots","name":"Ring Boots"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Corporal Robinson","id":"corporal-robinson","role":"Original · Creative","group":"Legends & Alumni","items":[{"kind":"vest","name":"Camo Vest"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"The Rude Boy","id":"the-rude-boy","role":"JCW Legend","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Vampiro","id":"vampiro","role":"Champion · Consultant","group":"Champions","items":[{"kind":"jacket","name":"Midnight Jacket"},{"kind":"belt","name":"Belt"},{"kind":"robe","name":"Entrance Robe"},{"kind":"boots","name":"Ring Boots"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Necro Butcher","id":"necro-butcher","role":"Vol. 3 · 2003","group":"Legends & Alumni","items":[{"kind":"chair","name":"Hardcore Chair"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Human Tornado","id":"human-tornado","role":"SlamTV! Era","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Dance-Floor Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Trent Acid","id":"trent-acid","role":"PWU Alliance","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"The Great Muta","id":"the-great-muta","role":"Icon","group":"Legends & Alumni","items":[{"kind":"mask","name":"Dragon Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Chris Hero","id":"chris-hero","role":"Young Blood","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Scott Hall","id":"scott-hall","role":"Executive Consultant","group":"Legends & Alumni","items":[{"kind":"vest","name":"Outsider Vest"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Raven","id":"raven","role":"2008 Arrival","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Raven Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Scott D’Amore","id":"scott-damore","role":"Manager · 2008","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Officer Colt Cabana","id":"officer-colt-cabana","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"cap","name":"Officer Cap"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Cash Flo","id":"cash-flo","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Rob Conway","id":"rob-conway","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"JWO","id":"jwo","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"shirt","name":"JWO Shirt"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Kevin Nash","id":"kevin-nash","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"vest","name":"Big-Man Vest"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Sean Waltman","id":"sean-waltman","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"bandana","name":"Bandana"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"The Weedman","id":"the-weedman","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"cap","name":"Green Cap"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Vanilla Ice","id":"vanilla-ice","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"mic","name":"Stage Mic"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Terry Funk","id":"terry-funk","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"hat","name":"Cowboy Hat"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Dusty Rhodes","id":"dusty-rhodes","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"elbow","name":"Polka-Dot Elbow Pad"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Pat Tanaka","id":"pat-tanaka","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"The Ring Ryders","id":"the-ring-ryders","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"The Thomaselli Brothers","id":"the-thomaselli-brothers","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Hollywood Chuck Hogan","id":"hollywood-chuck-hogan","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"bandana","name":"Hollywood Bandana"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Tracy Smothers","id":"tracy-smothers","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Steve Corino","id":"steve-corino","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"“Rowdy” Roddy Piper","id":"roddy-piper","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"kilt","name":"Tartan Kilt"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Greg “The Hammer” Valentine","id":"greg-valentine","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"elbow","name":"Hammer Elbow Pad"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Kamala","id":"kamala","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"mask","name":"Warrior Faceplate"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Tito Santana","id":"tito-santana","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Kid Kash","id":"kid-kash","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Monty Brown","id":"monty-brown","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Kevin Thorn","id":"kevin-thorn","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Bobby Lashley","id":"bobby-lashley","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"glove","name":"Power Gloves"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Balls Mahoney","id":"balls-mahoney","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"chair","name":"Hardcore Chair"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Ian Rotten","id":"ian-rotten","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"chair","name":"Hardcore Chair"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Bull Pain","id":"bull-pain","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"vest","name":"Brawler Vest"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Sabu","id":"sabu","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"chair","name":"Airborne Chair"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]}]};
 /* CLAW CATALOG END */
@@ -13446,6 +14523,7 @@ const CLAW = (()=>{
 
 const LB = (()=>{
   const CFG = {
+    pool: {name:'JUGGALO POOL',metric:'BEST RACK WON VS CPU',higher:true,screen:'plScreen'},
     ladder: {name:'LADDER WARS',metric:'HIGH SCORE',higher:true,screen:'lwScreen'},
     rumble: {name:'JCW RUMBLE',metric:'HIGH SCORE',higher:true,screen:'ruScreen'},
     chicken: {name:'CHICKEN HUNTIN’',metric:'HIGH SCORE',higher:true,screen:'khScreen'},
@@ -13463,7 +14541,7 @@ const LB = (()=>{
     j31:     { name:'JUGGALO 31',           metric:'TABLES SWEPT IN A ROW VS CPU', higher:true, screen:'j31Screen' },
     hockey:  { name:'JUGGALO AIR HOCKEY',   metric:'WIN STREAK VS CPU', higher:true, screen:'ahScreen' },
   };
-  const SHORT = { ladder:'LADDER WARS', rumble:'RUMBLE', chicken:'CHICKEN HUNTIN’', claw:'CLAW', shooter:'CROSSFIRE', ttt:'SLAM', chess:'CHESS', checkers:'CHECKERS', pinball:'PINBALL', faygo:'JOKER CARD FOUR', bj:'21', memory:'MEMORY', camper:'CAMPER', solitaire:'SOLITAIRE', j31:'31', hockey:'HOCKEY' };
+  const SHORT = { pool:'POOL', ladder:'LADDER WARS', rumble:'RUMBLE', chicken:'CHICKEN HUNTIN’', claw:'CLAW', shooter:'CROSSFIRE', ttt:'SLAM', chess:'CHESS', checkers:'CHECKERS', pinball:'PINBALL', faygo:'JOKER CARD FOUR', bj:'21', memory:'MEMORY', camper:'CAMPER', solitaire:'SOLITAIRE', j31:'31', hockey:'HOCKEY' };
   let data = {}, pending = null, queue = [], current = 'ttt';
   try{ data = JSON.parse(localStorage.getItem('pa_lb') || '{}') || {}; }catch(e){ data = {}; }
   if(!data || typeof data!=='object' || Array.isArray(data)) data={};
@@ -13558,6 +14636,7 @@ const LB = (()=>{
     });
   }
   function show(g){
+    if(!$('#plScreen').hidden) POOL.pause(true);
     if(!$('#lwScreen').hidden) LADDER.pause(true);
     if(!$('#ruScreen').hidden) RUMBLE.pause(true);
     if(!$('#khScreen').hidden) CHICKEN.pause(true);
@@ -13595,6 +14674,7 @@ window.LB_READY = true;
 
 /* ================= hub + boot ================= */
 function bindHub(){
+  $('#cardPool').onclick = ()=>{Sound.play('move');showScreen('pool');};
   $('#cardLW').onclick = ()=>{ Sound.play('move'); showScreen('ladder'); };
   $('#cardRU').onclick = ()=>{ Sound.play('move'); showScreen('rumble'); };
   $('#cardKH').onclick = ()=>{ Sound.play('move'); showScreen('chicken'); };
@@ -13606,7 +14686,7 @@ function bindHub(){
   $('#cardPinball').onclick = ()=>{ Sound.play('move'); showScreen('pinball'); };
   $('#cardFaygo').onclick = ()=>{ Sound.play('move'); showScreen('faygo'); };
 }
-window.ARCADE = { showScreen, DUELS, LADDER, RUMBLE, CHICKEN, CLAW, SHOOTER, TTT, CHESS, CHECKERS, FAYGO, PINBALL, BLACKJACK, MEMORY, CAMPER, SOLITAIRE, J31, AIRHOCKEY, NET, LB, Sound, T, TICK, ASSETS };
+window.ARCADE = { showScreen, POOL, DUELS, LADDER, RUMBLE, CHICKEN, CLAW, SHOOTER, TTT, CHESS, CHECKERS, FAYGO, PINBALL, BLACKJACK, MEMORY, CAMPER, SOLITAIRE, J31, AIRHOCKEY, NET, LB, Sound, T, TICK, ASSETS };
 
 applyDataImgs();
 TTT.bind();
@@ -13634,6 +14714,8 @@ SHOOTER.bind();
 window.SHOOTER_READY = true;
 DUELS.bind();
 window.DUELS_READY=true;
+POOL.bind();
+window.POOL_READY=true;
 NET.bind();
 LB.bind();
 window.PINBALL_READY = true;
@@ -13670,7 +14752,7 @@ document.addEventListener('visibilitychange', ()=>{
 /* Play counter hook: when the arcade runs inside jcwlunacy.net the host page
    counts plays (stats/arcade/<game>, read by admin.html). No-op standalone. */
 (function(){
-  var GAMES={ladder:1,rumble:1,chicken:1,claw:1,shooter:1,ttt:1,chess:1,checkers:1,faygo:1,pinball:1,bj:1,memory:1,camper:1,solitaire:1,j31:1,hockey:1};
+  var GAMES={pool:1,ladder:1,rumble:1,chicken:1,claw:1,shooter:1,ttt:1,chess:1,checkers:1,faygo:1,pinball:1,bj:1,memory:1,camper:1,solitaire:1,j31:1,hockey:1};
   var last=null;
   /* progress for the site's locker badges (Carnival Claw cabinet, Crossfire rounds) */
   window.__arcSend=function(o){ try{ if(window.parent!==window) window.parent.postMessage(Object.assign({type:'jcw-arcade'},o),'*'); }catch(e){} };
