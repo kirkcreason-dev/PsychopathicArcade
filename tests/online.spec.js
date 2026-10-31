@@ -110,3 +110,93 @@ for(const game of ['rumble','ladder','shooter','chicken','claw'])test(`online ${
     await join.evaluate(()=>ARCADE.NET.leave());await host.waitForFunction(()=>!ARCADE.NET.state.session);expect(await host.evaluate(({m,w})=>w?ARCADE[m].netState():ARCADE.DUELS.state(),{m:module,w:wrestling})).toBe(null);expect(errors).toEqual([]);
   }finally{await host.close();await join.close();}
 });
+
+test('online pool: ready, authorized shots, placement, called eight, pause and rematch',async({browser,baseURL})=>{
+  test.setTimeout(75000);
+  const host=await browser.newPage(),join=await browser.newPage(),errors=[];
+  const waitBoth=async predicate=>{for(const page of [host,join])await page.waitForFunction(predicate);};
+  const settle=async()=>host.evaluate(()=>{const g=ARCADE.POOL;g.debug.stop();for(let i=0;i<1200&&g.state.mode==='rolling';i++)g.step(.05);g.draw();return{mode:g.state.mode,turn:g.state.turn,shots:g.state.stats.map(s=>s.shots)};});
+  const table=page=>page.evaluate(()=>{const s=ARCADE.POOL.state;return{mode:s.mode,turn:s.turn,groups:s.groups,break:s.break,ballInHand:s.ballInHand,winner:s.winner,scores:s.scores,stats:s.stats,balls:s.balls.map(b=>({id:b.id,x:b.x,y:b.y,vx:b.vx,vy:b.vy,pocketed:b.pocketed}))};});
+  try{
+    for(const page of [host,join]){
+      page.on('pageerror',e=>errors.push(e.message));await page.goto(baseURL+'/game.html');await page.waitForFunction(()=>window.ARCADE?.POOL);
+      await page.evaluate(()=>{ARCADE.Sound.on=false;const RTC=window.RTCPeerConnection;window.RTCPeerConnection=class extends RTC{constructor(){super({iceServers:[]});}};});
+    }
+    const records=await Promise.all([host,join].map(page=>page.evaluate(()=>({wins:ARCADE.POOL.state.wins,best:ARCADE.POOL.state.best}))));
+    const offer=await host.evaluate(()=>{ARCADE.NET.state.game='pool';return ARCADE.NET.hostCreate();});
+    const answer=await join.evaluate(offer=>ARCADE.NET.joinAccept(offer),offer);await host.evaluate(answer=>ARCADE.NET.hostConnect(answer),answer);
+    await waitBoth(()=>ARCADE.NET.state.session&&ARCADE.POOL.netState()?.phase==='lobby');
+    await host.locator('#plStartBtn').click();expect(await host.evaluate(()=>ARCADE.POOL.state.mode)).toBe('ready');
+    await join.locator('#plStartBtn').click();await waitBoth(()=>ARCADE.POOL.state.mode==='aiming'&&ARCADE.POOL.netState().round===1);
+    expect(await table(host)).toEqual(await table(join));
+    expect(await join.evaluate(()=>ARCADE.POOL.shoot({angle:0,power:1}))).toBe(false);
+
+    // The host's legitimate break is simulated once and reaches both peers.
+    expect(await host.evaluate(()=>ARCADE.POOL.shoot({angle:.004,power:1}))).toBe(true);
+    await join.waitForFunction(()=>ARCADE.POOL.state.mode==='rolling');
+    expect(await settle()).toMatchObject({mode:'aiming',turn:1,shots:[1,0]});
+    await join.waitForFunction(()=>ARCADE.POOL.state.mode==='aiming'&&ARCADE.POOL.state.turn===1&&ARCADE.POOL.state.stats[0].shots===1);
+    expect(await table(host)).toEqual(await table(join));
+
+    // Missing/null shot fields must not borrow the host's current aim defaults.
+    const before=await table(host),remoteRequest=await host.evaluate(()=>ARCADE.POOL.netState().remoteRequest);
+    await join.evaluate(()=>{const n=ARCADE.POOL.netState();for(const payload of [{},{angle:null,power:.5,calledPocket:null},{angle:0,power:2,calledPocket:null},{angle:0,power:.5,calledPocket:'1'}])ARCADE.NET.push('pool',{k:'shot',round:n.round,request:n.requests+1,...payload});});
+    await host.waitForTimeout(120);expect(await table(host)).toEqual(before);expect(await host.evaluate(()=>ARCADE.POOL.netState().remoteRequest)).toBe(remoteRequest);
+
+    // Malformed snapshots cannot crash the guest or change local CPU records.
+    await host.evaluate(()=>{
+      const g=ARCADE.POOL,n=g.netState(),s=g.state;
+      const state={mode:s.mode,playMode:'online',balls:s.balls.map(b=>({id:b.id,x:b.x,y:b.y,vx:b.vx,vy:b.vy,pocketed:b.pocketed})),turn:s.turn,groups:s.groups,break:s.break,scores:s.scores,stats:s.stats,calledPocket:s.calledPocket,ballInHand:s.ballInHand,winner:s.winner,notice:s.notice,seed:s.seed,elapsed:s.elapsed,resumeMode:s.resumeMode||null};
+      const send=state=>ARCADE.NET.push('pool',{k:'frame',round:n.round,seq:++n.tx,state,pauses:n.pauses});
+      send({...state,balls:state.balls.map((b,i)=>i===4?null:b)});
+      send({...state,mode:'over',winner:0,playMode:'cpu'});
+      send({...state,wins:900,best:999999,resultSaved:true,saved:true});
+    });
+    await join.waitForTimeout(120);
+    expect(await join.evaluate(()=>({wins:ARCADE.POOL.state.wins,best:ARCADE.POOL.state.best}))).toEqual(records[1]);
+    expect(await join.evaluate(()=>({mode:ARCADE.POOL.state.playMode,saved:ARCADE.POOL.state.saved,resultSaved:ARCADE.POOL.state.resultSaved}))).toEqual({mode:'online',saved:false,resultSaved:false});
+
+    // Both players can hold a pause; releasing one must not resume the other.
+    await join.evaluate(()=>ARCADE.POOL.pause(true));await waitBoth(()=>ARCADE.POOL.state.mode==='paused');
+    await host.evaluate(()=>ARCADE.POOL.pause(true));
+    expect(await join.evaluate(()=>ARCADE.POOL.shoot({angle:0,power:.5}))).toBe(false);
+    const paused=await table(host);await host.waitForTimeout(100);expect(await table(host)).toEqual(paused);
+    await join.evaluate(()=>ARCADE.POOL.pause(false));await host.waitForTimeout(100);expect(await host.evaluate(()=>ARCADE.POOL.state.mode)).toBe('paused');
+    await host.evaluate(()=>ARCADE.POOL.pause(false));await waitBoth(()=>ARCADE.POOL.state.mode==='aiming');
+
+    // A short miss gives host placement; a second miss gives guest placement.
+    expect(await join.evaluate(()=>ARCADE.POOL.shoot({angle:Math.PI,power:.05}))).toBe(true);
+    await host.waitForFunction(()=>ARCADE.POOL.state.mode==='rolling');await settle();
+    await waitBoth(()=>ARCADE.POOL.state.mode==='aiming'&&ARCADE.POOL.state.turn===0&&ARCADE.POOL.state.ballInHand);
+    expect(await host.evaluate(()=>ARCADE.POOL.place(400,400))).toBe(true);
+    await join.waitForFunction(()=>!ARCADE.POOL.state.ballInHand&&ARCADE.POOL.state.balls.find(b=>b.id===0).x===400);
+    expect(await host.evaluate(()=>ARCADE.POOL.shoot({angle:Math.PI,power:.05}))).toBe(true);await settle();
+    await waitBoth(()=>ARCADE.POOL.state.mode==='aiming'&&ARCADE.POOL.state.turn===1&&ARCADE.POOL.state.ballInHand);
+    expect(await join.evaluate(()=>ARCADE.POOL.place(70,85))).toBe(false);
+    expect(await join.evaluate(()=>ARCADE.POOL.place(450,400))).toBe(true);
+    await waitBoth(()=>!ARCADE.POOL.state.ballInHand&&ARCADE.POOL.state.balls.find(b=>b.id===0).x===450);
+    expect(await table(host)).toEqual(await table(join));
+
+    // The called-eight decision is still made from actual host-side physics.
+    await host.evaluate(()=>{
+      const g=ARCADE.POOL,s=g.state;g.debug.stop();
+      for(const b of s.balls)Object.assign(b,{pocketed:b.id!==0&&b.id!==8,vx:0,vy:0});
+      Object.assign(s.balls.find(b=>b.id===0),{x:500,y:300});Object.assign(s.balls.find(b=>b.id===8),{x:500,y:190});
+      Object.assign(s,{mode:'aiming',groups:['solids','stripes'],turn:1,break:false,ballInHand:false,calledPocket:null,winner:null,notice:'Call your eight.'});
+      g.pause(true);g.pause(false);
+    });
+    await join.waitForFunction(()=>ARCADE.POOL.state.mode==='aiming'&&ARCADE.POOL.rules.eligible8(ARCADE.POOL.state,1));
+    expect(await join.evaluate(()=>ARCADE.POOL.shoot({angle:-Math.PI/2,power:.3}))).toBe(false);
+    await join.locator('[data-pl-pocket="1"]').click();
+    expect(await join.evaluate(()=>ARCADE.POOL.shoot({angle:-Math.PI/2,power:.3}))).toBe(true);
+    await host.waitForFunction(()=>ARCADE.POOL.state.mode==='rolling');await settle();await waitBoth(()=>ARCADE.POOL.state.mode==='over');
+    expect(await host.evaluate(()=>ARCADE.POOL.state.winner)).toBe(1);expect(await table(host)).toEqual(await table(join));
+    await expect(join.locator('#plResultTitle')).toHaveText('THE TABLE IS YOURS');await expect(join.locator('#plSaveBtn')).toBeHidden();
+    for(let i=0;i<2;i++)expect(await [host,join][i].evaluate(()=>({wins:ARCADE.POOL.state.wins,best:ARCADE.POOL.state.best}))).toEqual(records[i]);
+    await join.locator('#plAgainBtn').click();expect(await join.evaluate(()=>ARCADE.POOL.state.mode)).toBe('over');
+    await host.locator('#plAgainBtn').click();await waitBoth(()=>ARCADE.POOL.state.mode==='aiming'&&ARCADE.POOL.netState().round===2);
+    expect(await join.evaluate(()=>ARCADE.POOL.state.turn)).toBe(1);expect(await table(host)).toEqual(await table(join));
+    await join.evaluate(()=>ARCADE.NET.leave());await host.waitForFunction(()=>!ARCADE.NET.state.session&&ARCADE.POOL.netState()===null);
+    expect(await host.evaluate(()=>ARCADE.POOL.state.mode)).toBe('ready');expect(errors).toEqual([]);
+  }finally{await host.close();await join.close();}
+});

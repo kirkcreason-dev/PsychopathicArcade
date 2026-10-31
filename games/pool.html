@@ -1,0 +1,36 @@
+<section id="plScreen" class="screen" hidden>
+  <header class="pl-heading"><div class="pl-brand"><small>JUGGALO</small><b>POOL</b></div><div><span class="pl-eyebrow">THE DARK CARNIVAL BILLIARD HALL</span><p>Call your eight. Own the table.</p></div><span class="pl-table-number">TABLE<br><b>17</b></span></header>
+  <div class="pl-layout">
+    <div class="pl-machine">
+      <div class="pl-players">
+        <div class="pl-player" id="plPlayer0"><div><b id="plName0">YOU</b><span id="plGroup0">OPEN TABLE</span><strong id="plScore0">0</strong></div><div class="pl-ball-tray" id="plBalls0" aria-label="Player one remaining balls"></div></div>
+        <div class="pl-versus" aria-hidden="true">8</div>
+        <div class="pl-player" id="plPlayer1"><div><b id="plName1">THE HUSTLER</b><span id="plGroup1">OPEN TABLE</span><strong id="plScore1">0</strong></div><div class="pl-ball-tray" id="plBalls1" aria-label="Player two remaining balls"></div></div>
+      </div>
+      <div class="pl-message"><b id="plTurn">WELCOME TO THE HALL</b><span id="plStatus" role="status" aria-live="polite">A clean break. A wicked finish.</span></div>
+      <div class="pl-stage" id="plStage">
+        <canvas id="plCanvas" width="1000" height="600" tabindex="0" role="img" aria-label="Pool table. Tap or drag to aim. Left and right arrows fine-tune aim, up and down change power, Space shoots. After a foul, move the cue ball and press Enter to place it." aria-describedby="plInstructions"></canvas>
+        <div id="plSetup" class="pl-overlay"><div class="pl-panel">
+          <span class="pl-eyebrow">COME IN. CHALK UP.</span><h2>JUGGALO POOL</h2><p>Solids. Stripes. One black eight.</p>
+          <label for="plMode">YOUR TABLE</label><select id="plMode"><option value="cpu">Challenge the carnival · VS CPU</option><option value="local">Pass &amp; play · 2 players</option><option value="practice">Practice · clear all 15 balls</option></select>
+          <div id="plDifficultyWrap"><label for="plDifficulty">YOUR OPPONENT</label><select id="plDifficulty"><option value="easy">Rookie · relaxed aim</option><option value="normal" selected>Juggalo · a fair fight</option><option value="hard">Hustler · sharper shots</option></select></div>
+          <button class="pl-primary" id="plStartBtn">RACK ’EM UP</button><p id="plReadyNote" class="pl-note">Aim on the table. Set power. Shoot.</p>
+        </div></div>
+        <div id="plPause" class="pl-overlay" hidden><div class="pl-panel"><span class="pl-eyebrow">SAVE YOUR CHALK</span><h2>TABLE PAUSED</h2><p id="plPauseNote">Your shot can wait.</p><button id="plResumeBtn" class="pl-primary">BACK TO THE TABLE</button><button id="plChooseBtn" class="pl-secondary">CHOOSE A NEW TABLE</button></div></div>
+        <div id="plOver" class="pl-overlay" hidden><div class="pl-panel"><span class="pl-eyebrow">THE LAST BALL DROPS</span><h2 id="plResultTitle">TABLE COMPLETE</h2><p id="plResultDetail"></p><div class="pl-result-score" id="plFinalScore">0</div><p id="plResultStats"></p><button id="plAgainBtn" class="pl-primary">RUN IT BACK</button><button id="plSaveBtn" class="pl-secondary">SAVE YOUR RECORD</button><button id="plOverChooseBtn" class="pl-secondary">CHANGE TABLE</button></div></div>
+      </div>
+      <div class="pl-shot-controls">
+        <div id="plPocketCall" class="pl-pocket-call" hidden><b>CALL THE 8</b><div id="plPocketButtons" role="group" aria-label="Choose the eight-ball pocket"><button data-pl-pocket="0">1</button><button data-pl-pocket="1">2</button><button data-pl-pocket="2">3</button><button data-pl-pocket="3">4</button><button data-pl-pocket="4">5</button><button data-pl-pocket="5">6</button></div></div>
+        <div class="pl-power-row"><label for="plPower">POWER <output id="plPowerValue">65%</output></label><input id="plPower" type="range" min="5" max="100" value="65" aria-label="Shot power"><button id="plShootBtn" class="pl-primary">BREAK</button><button id="plPlaceBtn" class="pl-primary" hidden>PLACE CUE</button></div>
+        <div class="pl-aim-row"><span id="plAimHint">Tap or drag the table to aim</span><div class="pl-nudge" role="group" aria-label="Fine aim"><button id="plAimLeft" aria-label="Aim slightly left">↶</button><span>FINE AIM</span><button id="plAimRight" aria-label="Aim slightly right">↷</button></div><label class="pl-guide-toggle"><input id="plGuide" type="checkbox" checked> Guide</label></div>
+      </div>
+      <div class="ctl-row pl-footer"><button class="pl-secondary" id="plPauseBtn" disabled>PAUSE</button><button class="pl-secondary" id="plNewBtn">NEW RACK</button><button class="pl-secondary" id="plNetBtn">ONLINE VS</button><button id="plSoundBtn" class="img-btn icon" aria-label="Mute sound"><img data-img="icoSoundOn" alt="Sound"></button><button class="pl-secondary" id="plHomeBtn">ARCADE</button></div>
+    </div>
+    <aside class="pl-guide" id="plInstructions">
+      <div><span class="pl-eyebrow">HOUSE RULES · EIGHT-BALL</span><h3>MAKE EVERY<br>SHOT COUNT.</h3><ol><li><b>BREAK IT OPEN</b>The table stays open after the break. Your first legal solid or stripe after that chooses your group.</li><li><b>CLEAR YOUR CREW</b>Hit your group first. Pocket one to keep shooting. If nothing drops, a ball must reach a rail after contact.</li><li><b>CALL YOUR EIGHT</b>Clear your seven, pick a numbered pocket, then sink the 8. An early 8, a wrong pocket, or scratching with it loses the rack.</li></ol></div>
+      <div><h3>YOUR SHOT. YOUR WAY.</h3><p>Tap or drag anywhere on the cloth to aim. Set power with the slider, then press SHOOT. The curved-arrow buttons make tiny aiming adjustments.</p><p><b>After a foul:</b> move the white ball to a clear spot and press PLACE CUE. On a keyboard, use the arrows to move it and Enter to confirm.</p><p><b>Keyboard:</b> ←/→ aim · Shift for finer aim · ↑/↓ power · Space shoot · P pause.</p></div>
+      <details><summary>Scoring &amp; arcade rules</summary><p>Legal pots score 100 plus a run bonus of up to 100 per ball. Win the rack for 1,000 more. CPU victories qualify for device-local records; practice and two-player tables keep separate match scores.</p><p>Ordinary pots are automatically called. If both groups drop on an open table, the first legal pot decides your group. The 8 is always respotted on the break. A scratch or illegal break gives the incoming player cue-ball placement anywhere. No jump shots or spin.</p></details>
+      <p class="pl-career" id="plCareer">0 CPU wins · Best 0</p>
+    </aside>
+  </div>
+</section>

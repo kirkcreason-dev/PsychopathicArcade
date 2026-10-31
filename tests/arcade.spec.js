@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 const games = [
+  ['pool','cardPool','plScreen'],
   ['ladder','cardLW','lwScreen'],
   ['rumble','cardRU','ruScreen'],
   ['chicken','cardKH','khScreen'],
@@ -23,8 +24,8 @@ test.beforeEach(async ({page}) => {
 test.afterEach(()=>expect(errors).toEqual([]));
 
 for (const width of [1440, 390, 320]) {
-  test(`all sixteen games open and fit at ${width}px`, async ({page})=>{
-    // This tour opens 16 complete screens; Linux WebKit can exceed 30s in CI.
+  test(`all seventeen games open and fit at ${width}px`, async ({page})=>{
+    // This tour opens 17 complete screens; Linux WebKit can exceed 30s in CI.
     // Individual visibility assertions retain their 5s limit.
     test.setTimeout(60000);
     await page.setViewportSize({width, height:900});

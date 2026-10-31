@@ -1,7 +1,7 @@
 # Psychopathic Arcade
 
-Sixteen browser games with carnival artwork, synthesized audio, CPU opponents,
-local multiplayer, and twelve online modes. Open `public/game.html` directly for
+Seventeen browser games with carnival artwork, synthesized audio, CPU opponents,
+local multiplayer, and thirteen online modes. Open `public/game.html` directly for
 local play, or serve the Vite build. No backend is needed for solo/local games.
 
 ## Run and check
@@ -37,6 +37,48 @@ editor's script-message handler into the published site.
 The executable arcade code and embedded assets live in `public/game.html`.
 `npm run check:game` validates the inline scripts, which Vite otherwise copies
 without checking. Keep the bundled chess engine's license intact.
+
+## Juggalo Pool
+
+The seventeenth game is a complete eight-ball table: three CPU difficulties,
+pass-and-play, an unranked practice rack, and online versus. Tap or drag the cloth
+to aim, adjust power, and shoot. The guide shows the first contact and short
+outgoing paths; it can be switched off. After a foul, place the cue ball in any
+clear spot. When your group is cleared, choose one of the six numbered pockets
+before shooting the eight. The table rotates for portrait play, with controls
+kept beside or below the playfield. Both online players ready up before a rack;
+either can pause it, and both must resume.
+
+The rules follow the [WPA eight-ball fundamentals](https://www.wpapool.com/wp-content/uploads/2026/01/2026.01.02-WPA-Rules.pdf)
+with explicit arcade variations: ordinary pots are auto-called, the first legal
+non-break pot assigns the group, an eight on the break is automatically spotted,
+and all fouls (including an illegal break) give ball in hand anywhere. A legal
+break needs a pot or four different object balls to reach a rail. If a group is
+completely cleared while the table is still open, the next shooter receives that
+empty group. Practice allows any object ball in any order, including the eight.
+There is no jump or spin mechanic. These are house rules, not a full tournament
+rules implementation.
+
+Ordinary legal pots earn 100 points plus a consecutive-pot bonus up to 100 per
+ball. Winning earns another 1,000. Only CPU victories can be submitted to the
+arcade's device-local record board; practice and two-player scores do not qualify.
+No changes to the separate host website or its badge definitions are required.
+
+Ball motion uses a fixed 240 Hz simulation with swept circle contacts, rounded
+cushion ends, six pocket openings, friction, and energy-losing rebounds. Fast
+shots cannot skip through a ball between frames. The approach follows the fixed
+step and substep guidance in [Box2D's simulation documentation](https://box2d.org/documentation/md_simulation.html)
+and [Erin Catto's continuous collision lecture](https://box2d.org/files/ErinCatto_ContinuousCollision_GDC2013.pdf).
+The CPU checks ghost-ball paths and verifies its two best candidates against the
+actual physics. Canvas artwork is generated locally and cached; the game needs
+no downloaded sprites, fonts, or images. Online clients submit shot intentions;
+the host resolves the physics and rules and sends validated snapshots.
+
+Pool sources are in `games/pool*`. Run `node scripts/sync-pool.mjs` after editing
+them to update the standalone `public/game.html`; `npm run check:game` checks
+that they match. Focused tests cover physics, rules, CPU choices, real browser
+input, mobile layouts, and two real Chromium peers. Safari behavior is checked
+in Playwright WebKit, with physical iOS testing still recommended.
 
 ## Ladder Wars
 
@@ -258,7 +300,7 @@ networks may prevent connections. Failed invite connections now time out with
 recovery instructions. Public broker availability and cross-network connectivity
 are not guaranteed by the automated suite.
 
-All twelve online games are tested with real Chromium peers on the same machine,
+All thirteen online games are tested with real Chromium peers on the same machine,
 without public brokers or STUN. Local game flows and layouts are also tested in
 Playwright WebKit. WebKit peer connections in the macOS test runner require public STUN rather
 than only mDNS host candidates, so those network-dependent checks are opt-in:
