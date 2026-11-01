@@ -19,7 +19,7 @@ const RACING_MULTI=(()=>{
     let state=R.create({playerRacer:chosen}),mapping=[],members=new Map();
     let started=false,paused=false,ended=false,synced=false,congested=false,localReady=false,localPause=false;
     let notice='Choose a ride. Everybody gets ready, then the host launches.',lastSeen=0,lastSend=-Infinity,lastSnapshot=-Infinity,waiting=false;
-    let currentInput=neutral(),routeSeed=null,routeCache=[];
+    let currentInput=neutral(),localBoostPending=false,routeSeed=null,routeCache=[];
     const liveRace=()=>started&&state.phase!=='finished';
     const connected=()=>active&&(role==='host'||members.get(0)?.connected===true);
     const localActor=()=>started?Math.max(0,mapping.indexOf(seat)):0;
@@ -28,7 +28,7 @@ const RACING_MULTI=(()=>{
     function netState(){return{party:true,role,seat,transport:connected(),synced,congested,localReady,localPause,canLaunch:canLaunch(),members:summary(),round,epoch,barrier};}
     function emit(){onChange({state,started,paused,ended,notice,localSeat:localActor(),net:netState()});}
     function preview(){state=R.create({playerRacer:chosen});}
-    function member(id,isConnected=true){return{seat:id,racerId:id===seat?chosen:ids[id%ids.length],ready:false,paused:false,connected:isConnected,barrier:0,ack:0,lastSeen:now(),lastInput:-Infinity,input:neutral(),stalled:false};}
+    function member(id,isConnected=true){return{seat:id,racerId:id===seat?chosen:ids[id%ids.length],ready:false,paused:false,connected:isConnected,barrier:0,ack:0,lastSeen:now(),lastInput:-Infinity,input:neutral(),boostPending:false,stalled:false};}
     function write(data,target){if(!active||congested)return false;return transport.send(data,target)!==false;}
     function pack(){const{objects,...rest}=state;return{...rest,collected:objects.filter(o=>o.collectedBy.length).map(o=>[o.id,...o.collectedBy])};}
     function snapshot(force=false){
@@ -48,8 +48,8 @@ const RACING_MULTI=(()=>{
     function syncRequest(){lastSend=now();return write({v:1,k:'sync',barrier});}
     function hostPause(message){
       if(!liveRace())return;
-      epoch++;paused=true;localPause=true;currentInput=neutral();
-      for(const m of members.values()){m.paused=true;m.input=neutral();m.lastInput=-Infinity;}
+      epoch++;paused=true;localPause=true;currentInput=neutral();localBoostPending=false;
+      for(const m of members.values()){m.paused=true;m.input=neutral();m.boostPending=false;m.lastInput=-Infinity;}
       notice=message;snapshot(true);emit();
     }
     function guestBarrier(message){
@@ -68,7 +68,7 @@ const RACING_MULTI=(()=>{
       active=true;role=newRole;seat=newSeat;round=epoch=tx=rx=barrier=intentSeq=0;started=paused=ended=congested=localReady=localPause=waiting=false;
       synced=role==='host';mapping=[];members=new Map();members.set(seat,member(seat));if(role==='join')members.set(0,member(0,false));
       chosen=typeof choice==='function'?choice():chosen;if(!ids.includes(chosen))chosen=ids[0];members.get(seat).racerId=chosen;
-      currentInput=neutral();lastSeen=now();lastSend=lastSnapshot=-Infinity;routeSeed=null;preview();
+      currentInput=neutral();localBoostPending=false;lastSeen=now();lastSend=lastSnapshot=-Infinity;routeSeed=null;preview();
       notice='Choose a ride. Everybody gets ready, then the host launches.';emit();
       if(role==='host')roster(transport.state?.members||[{seat:0,connected:true}]);else syncRequest();
     }
@@ -115,15 +115,16 @@ const RACING_MULTI=(()=>{
       if(raw.version!==1||!integer(raw.seed,4294967295)||raw.length!==15000||!['countdown','racing','finished'].includes(raw.phase)||!number(raw.time,0,180.000001)||!number(raw.countdown,0,3)||!integer(raw.tick,21960)||!number(raw.remainder,0,.25)||typeof raw.timedOut!=='boolean'||!Array.isArray(raw.racers)||raw.racers.length!==n)return null;
       if(raw.phase==='countdown'?(raw.tick>=360||raw.time!==0||Math.abs(raw.countdown-(3-raw.tick/120))>.00001):(raw.tick<360||raw.countdown!==0||Math.abs(raw.time-(raw.tick-360)/120)>.00001))return null;
       if(raw.timedOut&&(raw.phase!=='finished'||raw.time<180))return null;
-      const racerKeys=['id','racerId','human','x','z','speed','boost','health','tickets','hits','invulnerable','steer','boosting','drafting','drifting','driftCharge','driftDirection','driftTurbo','drifts','finishTime','dnf','playerSeat'];
+      const racerKeys=['id','racerId','human','x','z','speed','boost','health','tickets','hits','invulnerable','steer','boosting','boostTime','boostHeld','drafting','drifting','driftCharge','driftDirection','driftTurbo','drifts','finishTime','dnf','playerSeat'];
       for(let i=0;i<n;i++){
         const r=raw.racers[i];if(!keys(r,racerKeys)||r.id!==i||!ids.includes(r.racerId)||r.human!==(i<map.length)||r.human&&r.playerSeat!==map[i]||!r.human&&r.playerSeat!==undefined)return null;
-        for(const [key,a,b]of[['x',-1,1],['z',0,15000],['speed',0,250],['boost',0,100],['health',0,100],['invulnerable',0,2],['steer',-1,1],['driftCharge',0,2],['driftTurbo',0,2]])if(!number(r[key],a,b))return null;
-        if(['boosting','drafting','drifting','dnf'].some(k=>typeof r[k]!=='boolean')||['tickets','hits','drifts'].some(k=>!integer(r[k],1000))||![-1,0,1].includes(r.driftDirection))return null;
+        for(const [key,a,b]of[['x',-1,1],['z',0,15000],['speed',0,R.constants.MAX_SPEED],['boost',0,100],['boostTime',0,3],['health',0,100],['invulnerable',0,2],['steer',-1,1],['driftCharge',0,2],['driftTurbo',0,2]])if(!number(r[key],a,b))return null;
+        if(['boosting','boostHeld','drafting','drifting','dnf'].some(k=>typeof r[k]!=='boolean')||['tickets','hits','drifts'].some(k=>!integer(r[k],1000))||![-1,0,1].includes(r.driftDirection))return null;
+        if(r.boosting!==(r.boostTime>0)||r.boosting&&(r.drifting||r.driftTurbo>0))return null;
         if(!r.drifting&&(r.driftCharge!==0||r.driftDirection!==0)||r.drifting&&(r.driftDirection===0||r.driftTurbo!==0)||r.dnf&&!raw.timedOut)return null;
-        if(r.finishTime!==null&&(!number(r.finishTime,0,300)||r.z!==15000||r.speed!==0||r.drifting||r.driftTurbo!==0||r.boosting||r.drafting||r.steer!==0))return null;
+        if(r.finishTime!==null&&(!number(r.finishTime,0,300)||r.z!==15000||r.speed!==0||r.drifting||r.driftTurbo!==0||r.boosting||r.boostHeld||r.drafting||r.steer!==0))return null;
         if(raw.phase!=='finished'&&r.finishTime!==null&&r.finishTime>raw.time+.00001)return null;
-        if(raw.phase==='countdown'&&(r.speed!==0||r.human&&r.z!==0||!r.human&&r.z>500||r.finishTime!==null||r.tickets||r.hits||r.drifts))return null;
+        if(raw.phase==='countdown'&&(r.speed!==0||r.human&&r.z!==0||!r.human&&r.z>500||r.finishTime!==null||r.tickets||r.hits||r.drifts||r.boostTime||r.boostHeld))return null;
       }
       if(!Array.isArray(raw.finishOrder)||raw.finishOrder.length>n||new Set(raw.finishOrder).size!==raw.finishOrder.length||raw.finishOrder.some(i=>!integer(i,n-1)||raw.racers[i].finishTime===null)||raw.racers.some(r=>r.finishTime!==null&&!raw.finishOrder.includes(r.id)))return null;
       if(raw.phase==='finished'&&(raw.finishOrder.length!==n||R.standings(raw).some((r,i)=>raw.finishOrder[i]!==r.id)))return null;
@@ -136,7 +137,7 @@ const RACING_MULTI=(()=>{
       for(const e of raw.events){
         if(!keys(e,['id','time','type','racer','object','kind','amount','tier','zone','finishTime','projected'])||typeof e.id!=='string'||e.id.length>100||!number(e.time,0,raw.time)||!integer(e.racer,n-1))return null;
         // Subtracting two valid floating-point meter values can leave a tiny
-        // positive rounding residue (for example28.000000000000004).
+        // positive rounding residue (for example 28.000000000000004).
         if(e.type==='pickup'||e.type==='hit'){const o=known.get(e.object);if(!o||e.kind!==o.kind||!taken.get(o.id)?.includes(e.racer)||!!R.kinds[o.kind].pickup!==(e.type==='pickup'))return null;if(e.type==='pickup'&&!number(e.amount,0,R.kinds[o.kind].amount+1e-8))return null;}
         else if(e.type==='drift'){if(![1,2].includes(e.tier)||!number(e.amount,0,(e.tier===1?12:22)+1e-8))return null;}
         else if(e.type==='zone'){if(![1,2].includes(e.zone))return null;}
@@ -183,6 +184,9 @@ const RACING_MULTI=(()=>{
       if(p.k!=='input'||!keys(p,['v','k','round','epoch','seq','racerId','ready','paused','controls'])||p.round!==round||p.epoch!==epoch||!integer(p.seq)||p.seq<=m.ack||!ids.includes(p.racerId)||typeof p.ready!=='boolean'||typeof p.paused!=='boolean')return;
       const input=cleanInput(p.controls);if(!input)return;
       const priorPause=paused,priorMemberPause=m.paused,priorReady=m.ready,priorChoice=m.racerId;
+      // Preserve a short tap across two packets received before the next
+      // physics frame. It buys at most one engine attempt, never extra time.
+      if(input.boost&&!m.input.boost&&liveRace()&&!paused&&!m.paused)m.boostPending=true;
       m.ack=p.seq;m.lastSeen=m.lastInput=now();m.input=input;m.stalled=false;
       if(!liveRace()){m.racerId=p.racerId;m.ready=p.ready;m.paused=false;}
       else{
@@ -207,14 +211,14 @@ const RACING_MULTI=(()=>{
       mapping=[...members.keys()].sort((a,b)=>a-b);round++;
       state=R.create({seed:value[0],humanRacers:mapping.map(s=>members.get(s).racerId)});
       for(let i=0;i<mapping.length;i++)state.racers[i].playerSeat=mapping[i];
-      for(const m of members.values()){m.ready=m.paused=m.stalled=false;m.input=neutral();m.lastInput=m.lastSeen=now();}
-      started=true;paused=ended=localReady=localPause=false;currentInput=neutral();transport.lock(true);
+      for(const m of members.values()){m.ready=m.paused=m.stalled=false;m.input=neutral();m.boostPending=false;m.lastInput=m.lastSeen=now();}
+      started=true;paused=ended=localReady=localPause=false;currentInput=neutral();localBoostPending=false;transport.lock(true);
       notice=`${mapping.length} homies. One road to the show.`;snapshot(true);emit();return true;
     }
     function pause(value){
       if(!active||!liveRace()||typeof value!=='boolean'||!value&&(!connected()||!synced||congested))return false;
       if(value===localPause)return true;
-      localPause=value;currentInput=neutral();
+      localPause=value;currentInput=neutral();localBoostPending=false;
       if(role==='host'){
         if(value){hostPause('A rider paused. Everyone must resume together.');return true;}
         members.get(0).paused=false;paused=[...members.values()].some(m=>m.paused||!m.connected);snapshot(true);
@@ -222,10 +226,18 @@ const RACING_MULTI=(()=>{
       else{if(value)paused=true;sendInput(true);}
       notice=value?'The race is paused. Resume when everyone is ready.':'Waiting for every paused rider to resume.';emit();return true;
     }
-    function input(value){const valid=cleanInput(value);if(!valid)return false;currentInput=valid;if(role==='join')sendInput();return true;}
+    function input(value){const valid=cleanInput(value);if(!valid)return false;if(role==='host'&&valid.boost&&!currentInput.boost&&liveRace()&&!paused)localBoostPending=true;currentInput=valid;if(role==='join')sendInput();return true;}
     function advance(dt,inputs){
       if(!active||role!=='host'||!liveRace()||paused)return false;
-      const phase=state.phase;R.update(state,dt,inputs);
+      const phase=state.phase,tick=state.tick;
+      if(phase==='racing'&&number(dt,0,.25)&&state.remainder+dt+1e-10>=R.constants.FIXED_DT){
+        // A physical release followed by a new press can arrive between two
+        // physics frames. Its authenticated edge rearms the latch once, only
+        // after the previous burst has ended; active bursts cannot be queued.
+        mapping.forEach((s,i)=>{if(inputs[i]?.boost&&(s===0?localBoostPending:members.get(s).boostPending)&&state.racers[i].boostTime===0)state.racers[i].boostHeld=false;});
+      }
+      R.update(state,dt,inputs);
+      if(state.tick!==tick&&state.time>0){localBoostPending=false;for(const m of members.values())m.boostPending=false;}
       if(phase!=='finished'&&state.phase==='finished'){
         localReady=localPause=paused=false;for(const m of members.values()){m.ready=m.paused=false;}
         transport.lock(false);notice='Race complete. Get ready for a rematch.';snapshot(true);
@@ -248,7 +260,10 @@ const RACING_MULTI=(()=>{
         const stale=[...members.values()].filter(m=>m.seat!==0&&now()-m.lastSeen>2200&&!m.stalled);
         if(stale.length){for(const m of stale)m.stalled=true;hostPause('A rider stopped responding. Everyone must resume after the connection recovers.');}
       }
-      if(liveRace()&&!paused&&!congested){const inputs=mapping.map(s=>s===0?currentInput:now()-members.get(s).lastInput<=350?members.get(s).input:stop());advance(dt,inputs);}
+      if(liveRace()&&!paused&&!congested){const inputs=mapping.map(s=>{
+        if(s===0)return{...currentInput,boost:currentInput.boost||localBoostPending};
+        const m=members.get(s);return now()-m.lastInput<=350?{...m.input,boost:m.input.boost||m.boostPending}:stop();
+      });advance(dt,inputs);}
       else snapshot();
     }
     function end(reason='The online room closed.'){

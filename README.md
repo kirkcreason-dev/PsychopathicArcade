@@ -73,8 +73,12 @@ barriers and tires. Five CPU rivals compete in solo play; online rooms support
 two to eight friends. Completed solo race scores can enter device and shared
 website rankings. No host-site achievements or badges are added.
 
-Boost recharges to a usable burst before firing again, so holding it on an
-empty meter does not stutter. Mini bikes change lines more quickly; karts hold
+Tap BOOST, Space or Shift for a three-second burst at 25% extra speed. Each
+burst costs 30% charge; releasing the button does not cut it short. Holding the
+button or tapping again during a burst cannot extend it. Release and press again
+after it ends for another burst, once enough charge has returned. The HUD shows
+the remaining turbo time and pauses it with the race. Mini bikes change lines
+more quickly; karts hold
 bends more steadily, and a brake tap improves turn control. The convoy leaves
 room to overtake, and damage affects speed without turning a missed obstacle
 into an unrecoverable race. The HUD shows boost, condition and three-leg progress,
@@ -101,6 +105,11 @@ The finish screen adds a recap of drift turbos, hits and collected tickets.
 The track uses distinct industrial, carnival and arena verges, with roadside
 lighting, fences, flags and sparse bend markings outside the driving area.
 These decorations do not change the road edges or collision widths.
+
+Riders turn their heads with steering and lean into corners. Tire texture and
+hub movement follow distance traveled, so wheels stop when the vehicle stops;
+exposed front tires also steer. Cached head and wheel layers preserve the
+original artwork, and reduced motion suppresses rolling textures and bounce.
 
 The original **JCW Theme** and **Fight Club** MP3s from Lunacy Unlocked v0.7.0
 are bundled with source hashes in `assets/racing/music/`. Select a track or turn

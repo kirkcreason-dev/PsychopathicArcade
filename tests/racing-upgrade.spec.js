@@ -190,3 +190,121 @@ test('race music starts on a user gesture and follows pause, track selection, mu
   })).toBe(false);
   await page.evaluate(() => { delete document.hidden; ARCADE.RACING.netEnd('Test complete.'); });
 });
+
+test('manual turbo shows its three-second countdown, freezes on pause and needs a fresh press after expiry', async ({ page }) => {
+  const fired = await page.evaluate(() => {
+    const g = ARCADE.RACING;
+    g.start();
+    for (let i = 0; i < 13; i++) g.debug.advance(.25, { steer: 0, brake: false, boost: false });
+    const charge = g.state.racers[0].boost;
+    document.getElementById('rcBoostBtn').dispatchEvent(new KeyboardEvent('keydown', { key: ' ', code: 'Space', bubbles: true }));
+    document.getElementById('rcBoostBtn').dispatchEvent(new KeyboardEvent('keyup', { key: ' ', code: 'Space', bubbles: true }));
+    // A complete tap between frames must still fire exactly one burst.
+    g.debug.advance(.05);
+    g.pause(true);
+    return { charge, racer: g.state.racers[0] };
+  });
+  expect(fired.racer.boosting).toBe(true);
+  expect(fired.racer.boostTime).toBeCloseTo(2.95, 5);
+  expect(fired.racer.boost).toBeCloseTo(fired.charge - 30, 5);
+  await expect(page.locator('#rcBoost')).toHaveText('+25% 3.0s');
+  await expect(page.locator('#rcBoostBtnLabel')).toHaveText('TURBO 3.0s');
+  await page.waitForTimeout(250);
+  expect(await page.evaluate(() => ARCADE.RACING.state.racers[0].boostTime)).toBe(fired.racer.boostTime);
+
+  const retried = await page.evaluate(() => {
+    const g = ARCADE.RACING;
+    g.pause(false);
+    for (let i = 0; i < 4; i++) g.debug.advance(.25);
+    document.body.dispatchEvent(new KeyboardEvent('keydown', { key: 'Shift', code: 'ShiftLeft', bubbles: true }));
+    g.debug.advance(.05);
+    const during = g.state.racers[0];
+    // Keep the key down beyond expiry: it must not buy another burst.
+    for (let i = 0; i < 8; i++) g.debug.advance(.25);
+    const expired = g.state.racers[0];
+    document.body.dispatchEvent(new KeyboardEvent('keyup', { key: 'Shift', code: 'ShiftLeft', bubbles: true }));
+    g.debug.advance(.025);
+    const beforeFresh = g.state.racers[0].boost;
+    document.body.dispatchEvent(new KeyboardEvent('keydown', { key: 'Shift', code: 'ShiftLeft', bubbles: true }));
+    g.debug.advance(.025);
+    const fresh = g.state.racers[0];
+    document.body.dispatchEvent(new KeyboardEvent('keyup', { key: 'Shift', code: 'ShiftLeft', bubbles: true }));
+    g.pause(true);
+    return { during, expired, beforeFresh, fresh };
+  });
+  expect(retried.during.boostTime).toBeCloseTo(1.9, 5);
+  expect(retried.during.boost).toBe(fired.racer.boost);
+  expect(retried.expired.boosting).toBe(false); expect(retried.expired.boostTime).toBe(0);
+  expect(retried.expired.boostHeld).toBe(true);
+  expect(retried.fresh.boosting).toBe(true); expect(retried.fresh.boostTime).toBeCloseTo(2.975, 5);
+  expect(retried.fresh.boost).toBeCloseTo(retried.beforeFresh - 30, 5);
+});
+
+test('legacy friend snapshots accept authoritative turbo and reject malformed burst state', async ({ page }) => {
+  const outcome = await page.evaluate(() => {
+    const g = ARCADE.RACING, rules = RACING_RULES;
+    const s = rules.create({ seed: 71, online: true, playerRacer: 'violent-j', guestRacer: 'mad-man-pondo' });
+    const neutral = { steer: 0, brake: false, boost: false };
+    for (let i = 0; i < 13; i++) rules.update(s, .25, [neutral, neutral]);
+    rules.update(s, .05, [neutral, { ...neutral, boost: true }]);
+    g.netStart('join');
+    const { objects, ...wire } = s;
+    wire.collected = objects.filter(o => o.collectedBy.length).map(o => [o.id, ...o.collectedBy]);
+    const packet = { v: 1, k: 'snapshot', round: 1, epoch: 0, barrier: 0, seq: 1, ack: 0, started: true, paused: false, ready: [false, false], choices: ['violent-j', 'mad-man-pondo'], state: wire };
+    g.netApply(packet);
+    const accepted = g.state.racers[1].boostTime;
+    const bad = [{ boostTime: 3.1 }, { boostTime: -1 }, { boostHeld: 1 }, { boosting: false }, { drifting: true, driftDirection: 1 }, { driftTurbo: .5 }];
+    const rejected = bad.map(change => {
+      const next = JSON.parse(JSON.stringify(packet)); next.seq = 2;
+      Object.assign(next.state.racers[1], change);
+      g.netApply(next);
+      return g.netState().rx === 1 && g.state.racers[1].boostTime === accepted;
+    });
+    const countdown = rules.create({ online: true }); countdown.racers[1].boostHeld = true;
+    const countdownRejected = g.debug.cleanState(countdown) === null;
+    return { accepted, rejected, countdownRejected, seat: g.state.seat };
+  });
+  expect(outcome.accepted).toBeCloseTo(2.95, 5); expect(outcome.seat).toBe(1);
+  expect(outcome.rejected).toEqual(Array(6).fill(true)); expect(outcome.countdownRejected).toBe(true);
+  await expect(page.locator('#rcBoost')).toHaveText('+25% 3.0s');
+  const quickGuest = await page.evaluate(() => {
+    const g = ARCADE.RACING, controls = { steer: 0, brake: false, boost: false };
+    g.netEnd('Previous fixture complete.'); g.netStart('host'); g.ready();
+    const packet = { v: 1, k: 'input', round: 0, epoch: 0, seq: 1, choice: 'mad-man-pondo', ready: true, paused: false, loaded: true, controls };
+    g.netApply(packet);
+    for (let i = 0; i < 13; i++) g.debug.advance(.25, controls);
+    const round = g.netState().round, charge = g.state.racers[1].boost;
+    g.netApply({ ...packet, round, seq: 2, ready: false, controls: { ...controls, boost: true } });
+    g.netApply({ ...packet, round, seq: 3, ready: false });
+    const heldAfterRelease = g.netState().controls.boost;
+    g.debug.advance(.05, controls);
+    const racer = g.state.racers[1];
+    g.netEnd('Test complete.');
+    return { charge, heldAfterRelease, racer };
+  });
+  expect(quickGuest.heldAfterRelease).toBe(false);
+  expect(quickGuest.racer.boostTime).toBeCloseTo(2.95, 5);
+  expect(quickGuest.racer.boost).toBeCloseTo(quickGuest.charge - 30, 5);
+});
+
+test('the active turbo HUD and touch controls fit small portrait and landscape screens', async ({ page }, testInfo) => {
+  for (const viewport of [{ width: 320, height: 568 }, { width: 667, height: 375 }]) {
+    await page.setViewportSize(viewport);
+    await page.evaluate(() => {
+      const g = ARCADE.RACING;
+      g.start();
+      for (let i = 0; i < 13; i++) g.debug.advance(.25, { steer: 0, brake: false, boost: false });
+      document.body.dispatchEvent(new KeyboardEvent('keydown', { key: 'Shift', code: 'ShiftLeft', bubbles: true }));
+      g.debug.advance(.05);
+      document.body.dispatchEvent(new KeyboardEvent('keyup', { key: 'Shift', code: 'ShiftLeft', bubbles: true }));
+    });
+    await expect(page.locator('#rcBoost')).toContainText('+25%');
+    await expect(page.locator('#rcBoostBtn')).toHaveClass(/turbo-active/);
+    const fit = await page.evaluate(() => ['rcBoost', 'rcBoostBtnLabel', 'rcLeftBtn', 'rcRightBtn', 'rcBrakeBtn', 'rcBoostBtn'].map(id => {
+      const el = document.getElementById(id), b = el.getBoundingClientRect(), parent = el.parentElement.getBoundingClientRect();
+      return { id, visible: b.left >= 0 && b.top >= 0 && b.right <= innerWidth && b.bottom <= innerHeight, fits: el.scrollWidth <= el.clientWidth && b.right <= parent.right + 1 };
+    }));
+    expect(fit.every(row => row.visible && row.fits), JSON.stringify(fit)).toBe(true);
+    await page.screenshot({ path: testInfo.outputPath('turbo-' + viewport.width + '.png') });
+  }
+});

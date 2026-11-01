@@ -105,6 +105,7 @@ test('lobby departure preserves the room, while a closed active racer ends the e
 test('impossible snapshots never overwrite the last good guest race state',()=>{
   const h=room([0,2,7]);h.launch();h.tick();const good=copy(h.guest(7).view.state),base=h.latest(7);
   const changes=[p=>p.mapping=[0,7,2],p=>p.state.racers[2].playerSeat=2,p=>p.state.racers[2].speed=Infinity,p=>p.state.racers[0].driftCharge=1,
+    p=>p.state.racers[0].speed=312.501,p=>p.state.racers[0].boostTime=4,p=>p.state.racers[0].boostTime=1,p=>p.state.racers[0].boostHeld=1,p=>{p.state.racers[0].boostTime=1;p.state.racers[0].boosting=true;p.state.racers[0].driftTurbo=.5;},
     p=>p.state.racers[0].tickets=5,p=>p.state.collected=[[0,8]],p=>p.state.objects=[],p=>p.state.tick+=400,p=>p.state.phase='finished',p=>p.state.racers.push(copy(p.state.racers[0])),
     p=>p.state.racers[0].human=false,p=>p.members[0].seat=7,p=>p.members[2].barrier+=1,p=>p.state.finishOrder=[0],p=>p.state.events=[{id:'bad',type:'drift',racer:7,time:0,tier:3,amount:100}]];
   for(const change of changes){const packet=copy(base);packet.seq+=100;change(packet);h.inject(7,packet);expect(copy(h.guest(7).view.state)).toEqual(good);}
@@ -179,4 +180,30 @@ test('idle states heartbeat at2Hz while live racing keeps14Hz and forced intents
   let loops=0;while(h.host().view.state.phase!=='finished'&&loops++<1000)h.host().controller.debug.advanceAll(.25,[neutral(),neutral()]);h.flush();
   expect(h.guest().view.state.phase).toBe('finished');before=count();for(let i=0;i<10;i++)h.tick(100,.1);expect(count()-before).toBe(2);
   expect(h.guest().view.net.synced).toBe(true);expect(h.guest().view.state.phase).toBe('finished');
+});
+
+test('quick local and remote boost taps survive packet coalescing, stay authoritative and freeze during an eight-player pause',()=>{
+  const h=room([0,1,2,3,4,5,6,7]);h.launch();for(let i=0;i<13;i++)h.host().controller.debug.advanceAll(.25,Array.from({length:8},neutral));h.flush();
+  h.host().view.state.racers[7].speed=230;
+  for(const node of [h.host(),h.guest(7)]){node.controller.input({steer:0,brake:false,boost:true});node.controller.input(neutral());}h.flush();
+  h.wait(100);h.host().controller.update(.1,neutral());h.flush();
+  for(const id of [0,7])expect(h.host().view.state.racers[id].boostTime).toBeCloseTo(2.9,8);
+  expect(h.host().view.state.racers[7].speed).toBeGreaterThan(250);
+  for(const n of h.nodes.values())expect(n.view.state.racers[7].boostTime).toBeCloseTo(2.9,8);
+  h.guest(3).controller.pause(true);h.flush();const frozen=h.host().view.state.racers[7].boostTime;
+  for(let i=0;i<40;i++)h.tick(100,.1);expect(h.host().view.state.racers[7].boostTime).toBe(frozen);
+  for(const n of h.nodes.values())n.controller.pause(false);h.flush();
+  for(let i=0;i<29;i++)h.tick(100,.1);
+  expect(h.host().view.state.racers[7].boostTime).toBe(0);expect(h.host().view.state.racers[7].boosting).toBe(false);
+  for(const n of h.nodes.values()){expect(n.view.state.racers[7].boostTime).toBe(0);expect(n.view.net.synced).toBe(true);}
+});
+
+test('a fresh remote release-press after expiry rearms even when both edges arrive between physics ticks',()=>{
+  const h=room();h.launch();for(let i=0;i<13;i++)h.host().controller.debug.advanceAll(.25,[neutral(),neutral()]);h.flush();
+  const held={steer:0,brake:false,boost:true};h.guest().controller.input(held);h.flush();
+  for(let i=0;i<12;i++)h.host().controller.debug.advanceAll(.25,[neutral(),held]);
+  expect(h.host().view.state.racers[1].boostTime).toBe(0);expect(h.host().view.state.racers[1].boostHeld).toBe(true);
+  const charge=h.host().view.state.racers[1].boost;
+  h.guest().controller.input(neutral());h.guest().controller.input(held);h.guest().controller.input(neutral());h.flush();
+  h.host().controller.update(.1,neutral());expect(h.host().view.state.racers[1].boostTime).toBeCloseTo(2.9,8);expect(h.host().view.state.racers[1].boost).toBeCloseTo(charge-30,8);
 });

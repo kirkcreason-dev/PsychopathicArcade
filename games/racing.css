@@ -37,3 +37,8 @@ body.racing-match:has(#netPill:not([hidden])) #rcScreen{padding-top:29px;height:
 @media(max-width:900px) and (orientation:landscape){#rcScreen.rc-match .rc-pause-panel>.rc-primary{vertical-align:middle;margin-right:8px}#rcScreen.rc-match .rc-pause-panel .rc-music-picker{display:inline-grid;vertical-align:middle;width:200px;grid-template-columns:1fr 112px;gap:7px;margin:5px 0 0}#rcScreen.rc-match .rc-pause-panel .rc-music-picker>span{font-size:6px}#rcScreen.rc-match .rc-pause-panel .rc-music-picker select{font-size:9px;min-height:33px}}
 
 .rc-party-members{display:grid;grid-template-columns:1fr 1fr;gap:4px;list-style:none;padding:0;margin:8px 0;text-align:left}.rc-party-members li{min-width:0;padding:6px 7px;border:1px solid #63817b5c;border-radius:5px;background:#0b1b24;font:700 9px/1.3 Arial,sans-serif;color:#e8f4d2}.rc-party-members[hidden]{display:none}#rcLaunchBtn,#rcLaunchAgainBtn{margin-top:8px}#rcLaunchBtn:disabled,#rcLaunchAgainBtn:disabled{opacity:.5}
+
+/* One burst timer reuses the charge readout instead of adding another HUD panel. */
+#rcScreen .rc-hud-bottom .rc-boost-stat{min-width:116px}#rcScreen .rc-boost-stat.turbo-active strong{font-size:16px;white-space:nowrap;color:#edffb2}#rcScreen .rc-boost.turbo-active{border-color:#edffb2;background:linear-gradient(#88a938,#4c6922);box-shadow:0 3px 0 #080d10,inset 0 0 0 1px #e8ffc34d}#rcBoostBtnLabel{white-space:nowrap;font-variant-numeric:tabular-nums}
+@media(max-width:900px){#rcScreen .rc-hud-bottom .rc-boost-stat{min-width:0;flex:1.6}#rcScreen .rc-boost-stat.turbo-active strong{font-size:12px}}
+@media(max-width:900px) and (orientation:landscape){#rcScreen.rc-match .rc-hud-bottom{grid-template-columns:100px 70px 1fr 62px 62px}}

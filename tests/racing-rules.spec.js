@@ -10,10 +10,12 @@ function advance(R,s,seconds,inputs={},fps=60) {for(let n=0;n<Math.round(seconds
 function emptyTrack(R,options={}) {const s=racing(R,options);s.objects=[];s.racers[0].x=0;s.racers[0].z=100;s.racers[0].speed=100;return s;}
 function finiteRace(s) {
   for(const r of s.racers) {
-    for(const key of ['x','z','speed','boost','health','tickets','hits','invulnerable','steer','driftCharge','driftDirection','driftTurbo','drifts'])expect(Number.isFinite(r[key])).toBe(true);
+    for(const key of ['x','z','speed','boost','boostTime','health','tickets','hits','invulnerable','steer','driftCharge','driftDirection','driftTurbo','drifts'])expect(Number.isFinite(r[key])).toBe(true);
     expect(Math.abs(r.x)).toBeLessThanOrEqual(1);expect(r.z).toBeGreaterThanOrEqual(0);expect(r.z).toBeLessThanOrEqual(s.length);
-    expect(r.speed).toBeGreaterThanOrEqual(0);expect(r.speed).toBeLessThanOrEqual(250);
+    expect(r.speed).toBeGreaterThanOrEqual(0);expect(r.speed).toBeLessThanOrEqual(312.5);
     expect(r.boost).toBeGreaterThanOrEqual(0);expect(r.boost).toBeLessThanOrEqual(100);
+    expect(r.boostTime).toBeGreaterThanOrEqual(0);expect(r.boostTime).toBeLessThanOrEqual(3);expect(typeof r.boostHeld).toBe('boolean');
+    expect(r.boosting).toBe(r.boostTime>0);if(r.boosting){expect(r.drifting).toBe(false);expect(r.driftTurbo).toBe(0);}
     expect(r.health).toBeGreaterThanOrEqual(0);expect(r.health).toBeLessThanOrEqual(100);
     expect(r.driftCharge).toBeGreaterThanOrEqual(0);expect(r.driftCharge).toBeLessThanOrEqual(2);
     expect(r.driftTurbo).toBeGreaterThanOrEqual(0);expect(r.driftTurbo).toBeLessThanOrEqual(2);
@@ -90,24 +92,63 @@ test('nitro accelerates, braking slows, and running onto the shoulder costs spee
   expect(brake.racers[0].speed).toBe(0);
 });
 
-test('an empty held boost recharges into stable bursts instead of flickering every frame',()=>{
-  const R=load(),s=emptyTrack(R);s.racers[0].boost=1;s.racers[0].x=0;
-  let transitions=0,wasBoosting=false,firstStart=null;
-  for(let i=0;i<1200;i++) {
-    const charge=s.racers[0].boost;R.update(s,1/120,{0:{boost:true}});
-    const boosting=s.racers[0].boosting;
-    if(boosting!==wasBoosting) {
-      transitions++;
-      if(boosting){expect(charge).toBeGreaterThanOrEqual(12);firstStart??=i/120;}
+test('a fresh boost press buys exactly3seconds of25% extra ordinary velocity without lingering speed',()=>{
+  const R=load();expect(R.constants.BOOST_DURATION).toBe(3);expect(R.constants.BOOST_MULTIPLIER).toBe(1.25);expect(R.constants.BOOST_COST).toBe(30);
+  for(const racer of R.roster){
+    const normal=emptyTrack(R,{playerRacer:racer.id}),boost=emptyTrack(R,{playerRacer:racer.id});
+    for(const s of [normal,boost]){s.racers[0].z=0;s.racers[0].speed=0;for(const r of s.racers.slice(1))r.z=5000+r.id*1000;}
+    for(let tick=0;tick<360;tick++){
+      R.update(normal,1/120,{});R.update(boost,1/120,{0:{boost:tick===0}});
+      expect(boost.racers[0].boostTime).toBeCloseTo(3-(tick+1)/120,8);
+      expect(boost.racers[0].speed).toBeCloseTo(normal.racers[0].speed*(tick===359?1:1.25),8);
     }
-    wasBoosting=boosting;
+    expect(boost.racers[0].z).toBeCloseTo(normal.racers[0].z*1.25,7);expect(boost.racers[0].boost).toBe(30);
+    expect(boost.racers[0].boosting).toBe(false);expect(boost.racers[0].boostTime).toBe(0);finiteRace(boost);
   }
-  expect(firstStart).toBeGreaterThan(.65);expect(transitions).toBeGreaterThan(2);expect(transitions).toBeLessThan(18);
-  // A burst already underway may spend its last 12%; releasing the button
-  // stops it immediately rather than latching acceleration behind the UI.
-  s.racers[0].boost=4;s.racers[0].boosting=true;s.racers[0].x=0;
-  R.update(s,1/120,{0:{boost:true}});expect(s.racers[0].boosting).toBe(true);
-  R.update(s,1/120,{0:{boost:false}});expect(s.racers[0].boosting).toBe(false);
+});
+
+test('holding or repeatedly pressing cannot extend a burst or automatically trigger after recharge',()=>{
+  const R=load(),held=emptyTrack(R),tapped=emptyTrack(R);held.racers[0].boost=100;tapped.racers[0].boost=100;
+  for(let tick=0;tick<360;tick++){
+    R.update(held,1/120,{0:{boost:true}});R.update(tapped,1/120,{0:{boost:Math.floor(tick/12)%2===0}});
+    expect(held.racers[0].boostTime).toBe(tapped.racers[0].boostTime);expect(held.racers[0].boost).toBe(70);expect(tapped.racers[0].boost).toBe(70);
+  }
+  advance(R,held,8,{0:{boost:true}});expect(held.racers[0].boostTime).toBe(0);expect(held.racers[0].boost).toBe(100);
+  held.racers[0].x=0;R.update(held,1/120,{});R.update(held,1/120,{0:{boost:true}});expect(held.racers[0].boostTime).toBeCloseTo(3-1/120,8);expect(held.racers[0].boost).toBe(70);
+  const empty=emptyTrack(R);empty.racers[0].boost=1;advance(R,empty,8,{0:{boost:true}});expect(empty.racers[0].boostTime).toBe(0);expect(empty.racers[0].boost).toBeGreaterThan(30);
+  empty.racers[0].x=0;R.update(empty,1/120,{});R.update(empty,1/120,{0:{boost:true}});expect(empty.racers[0].boosting).toBe(true);
+});
+
+test('the3second burst has identical duration and speed at30,60 and120fps',()=>{
+  const R=load(),states=[30,60,120].map(fps=>{
+    const s=emptyTrack(R);advance(R,s,2.5,{0:{boost:true}},fps);expect(s.racers[0].boostTime).toBeCloseTo(.5,8);
+    advance(R,s,.5,{},fps);expect(s.racers[0].boostTime).toBe(0);expect(s.racers[0].boosting).toBe(false);return s;
+  });
+  for(const s of states.slice(1))for(const field of ['z','speed','boost','boostTime'])expect(s.racers[0][field]).toBeCloseTo(states[0].racers[0][field],8);
+});
+
+test('braking and impacts still slow an active burst and a stopped clock cannot consume it',()=>{
+  const R=load(),s=emptyTrack(R);s.racers[0].speed=189;R.update(s,1/120,{0:{boost:true}});
+  const time=s.racers[0].boostTime,speed=s.racers[0].speed;R.update(s,0,{});expect(s.racers[0].boostTime).toBe(time);expect(s.racers[0].speed).toBe(speed);
+  s.objects=[{id:0,kind:'barrier',x:0,z:s.racers[0].z+9,collectedBy:[]}];advance(R,s,.1,{});expect(s.racers[0].hits).toBe(1);expect(s.racers[0].speed).toBeLessThan(150);expect(s.racers[0].boostTime).toBeCloseTo(time-.1,8);
+  advance(R,s,1.3,{0:{brake:true}});expect(s.racers[0].speed).toBe(0);expect(s.racers[0].boosting).toBe(true);finiteRace(s);
+});
+
+test('drift mini turbo and manual burst never stack and finishing clears the entire boost state',()=>{
+  const R=load(),drift=driftReady(R);advance(R,drift,.8,{0:{brake:true,steer:1}});R.update(drift,1/120,{});
+  const r=drift.racers[0];r.boost=100;R.update(drift,1/120,{0:{boost:true}});expect(r.driftTurbo).toBeGreaterThan(0);expect(r.boostTime).toBe(0);expect(r.boost).toBe(100);
+  advance(R,drift,1,{0:{boost:true}});expect(r.boostTime).toBe(0);R.update(drift,1/120,{});R.update(drift,1/120,{0:{boost:true}});expect(r.boosting).toBe(true);expect(r.driftTurbo).toBe(0);
+  R.update(drift,.2,{0:{brake:true,steer:1}});expect(r.drifting).toBe(false);expect(r.driftCharge).toBe(0);
+  r.z=drift.length-.1;r.speed=100;R.update(drift,1/120,{});expect(r.finishTime).not.toBeNull();expect(r.boostTime).toBe(0);expect(r.boostHeld).toBe(false);expect(r.boosting).toBe(false);finiteRace(drift);
+});
+
+test('manual boost preserves the exact25% factor on residual drift momentum without clipping',()=>{
+  const R=load(),s=driftReady(R);advance(R,s,.8,{0:{brake:true,steer:1}});R.update(s,1/120,{});
+  while(s.racers[0].driftTurbo>0)R.update(s,1/120,{});
+  expect(s.racers[0].speed).toBeGreaterThan(200);s.racers[0].boost=100;s.racers[0].x=0;s.racers[0].z=0;
+  for(const r of s.racers.slice(1))r.z=5000+r.id*1000;
+  const ordinary=JSON.parse(JSON.stringify(s));R.update(ordinary,1/120,{});R.update(s,1/120,{0:{boost:true}});
+  expect(s.racers[0].speed).toBeGreaterThan(250);expect(s.racers[0].speed).toBeCloseTo(ordinary.racers[0].speed*1.25,9);expect(R.constants.MAX_SPEED).toBe(312.5);finiteRace(s);
 });
 
 test('an impact still costs speed but damaged rides recover a competitive cruising pace',()=>{
@@ -174,8 +215,8 @@ test('pickup feedback reports only the gain actually applied, including zero at 
 test('swept impacts catch a full-speed obstacle, protect recovery, and respect lateral clearance',()=>{
   const R=load(),s=racing(R);s.racers[0].x=0;s.racers[0].speed=250;s.racers[0].boost=100;
   s.objects=[{id:0,kind:'barrier',x:0,z:20,collectedBy:[]},{id:1,kind:'tire',x:0,z:24,collectedBy:[]}];
-  R.update(s,.25,{0:{boost:true}});
-  expect(s.racers[0].hits).toBe(1);expect(s.racers[0].health).toBeLessThan(90);expect(s.racers[0].speed).toBeLessThan(170);
+  const clear=JSON.parse(JSON.stringify(s));clear.objects=[];R.update(clear,.25,{0:{boost:true}});R.update(s,.25,{0:{boost:true}});
+  expect(s.racers[0].hits).toBe(1);expect(s.racers[0].health).toBeLessThan(90);expect(s.racers[0].speed).toBeLessThan(clear.racers[0].speed*.75);
   advance(R,s,2);expect(s.racers[0].hits).toBe(1);
   const miss=racing(R);miss.racers[0].x=-.58;miss.racers[0].speed=250;
   miss.objects=[{id:0,kind:'barrier',x:.58,z:20,collectedBy:[]}];R.update(miss,.25,{});
@@ -236,7 +277,7 @@ test('coarse digital steering and boost can contend without using the expert rou
     const s=R.create({seed});let input={},frames=0;
     while(s.phase!=='finished'&&frames++<6000) {
       // A deliberately simple policy: react only every 267ms, notice hazards
-      // 240 units ahead, use full left/right presses, and hold the boost key.
+      // 240 units ahead, use full left/right presses, and tap boost when ready.
       // It does not collect optimal rewards or call the game's AI planner.
       if(frames%8===1) {
         const r=s.racers[0],hazards=s.objects.filter(o=>!R.kinds[o.kind].pickup&&o.z-r.z>0&&o.z-r.z<240);
@@ -244,7 +285,7 @@ test('coarse digital steering and boost can contend without using the expert rou
         if(hazards.some(o=>Math.abs(o.x-r.x)<R.kinds[o.kind].width+.16)) {
           target=[-.58,0,.58].map(x=>({x,cost:Math.abs(x-r.x)+hazards.reduce((total,o)=>total+(Math.abs(x-o.x)<R.kinds[o.kind].width+.13?4:0),0)})).sort((a,b)=>a.cost-b.cost)[0].x;
         }
-        input={steer:Math.abs(target-r.x)>.09?Math.sign(target-r.x):R.curveAt(r.z)*.15,boost:true,brake:false};
+        input={steer:Math.abs(target-r.x)>.09?Math.sign(target-r.x):R.curveAt(r.z)*.15,boost:r.boost>=30&&r.boostTime===0&&!r.boostHeld,brake:false};
       }
       R.update(s,1/30,{0:input});
     }
