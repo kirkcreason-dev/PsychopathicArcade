@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320" role="img" aria-labelledby="warning-arrow-title warning-arrow-desc">
+ <title id="warning-arrow-title">Bend warning arrow</title>
+ <desc id="warning-arrow-desc">Bolted amber chevron sign on a sturdy post. The arrow points right; reflect the image for a left-turn marker.</desc>
+ <defs>
+  <linearGradient id="warning-arrow-steel" x1="0" y1="0" x2="0.8" y2="1"><stop stop-color="#60686c"/><stop offset=".48" stop-color="#333b40"/><stop offset="1" stop-color="#1c2227"/></linearGradient>
+  <linearGradient id="warning-arrow-bone" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff7e6"/><stop offset="1" stop-color="#c5b9a0"/></linearGradient>
+  <linearGradient id="warning-arrow-green" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#d5ff72"/><stop offset=".56" stop-color="#b9ef42"/><stop offset="1" stop-color="#719c26"/></linearGradient>
+  <linearGradient id="warning-arrow-red" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#ee6264"/><stop offset=".5" stop-color="#ce3647"/><stop offset="1" stop-color="#762733"/></linearGradient>
+  <linearGradient id="warning-arrow-gold" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff09e"/><stop offset=".48" stop-color="#f5b94c"/><stop offset="1" stop-color="#a66b29"/></linearGradient>
+ </defs>
+ <g stroke="#101316" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(160.0 160.0) scale(0.99) translate(-160.0 -160.0)"><ellipse cx="160" cy="267" rx="77" ry="12" fill="#0a0e10" opacity=".33" stroke="none"/>
+ <path d="M149 174h24v94h-24Z" fill="url(#warning-arrow-steel)"/>
+ <path d="m127 265 34-7 35 7v10h-69Z" fill="#596065" stroke-width="5"/>
+ <path d="m155 46 104 88-90 91-104-88Z" fill="#9c6225"/>
+ <path d="m152 42 100 88-90 89-100-88Z" fill="url(#warning-arrow-gold)"/>
+ <path d="m145 81 62 49-62 51-16-18 38-33-38-32Z" fill="#171d21" stroke-width="5"/>
+ <circle cx="151" cy="62" r="4" fill="#f4ebd6" stroke-width="2"/><path d="M149.2 62h3.6" fill="none" stroke-width="1.5"/><circle cx="231" cy="130" r="4" fill="#f4ebd6" stroke-width="2"/><path d="M229.2 130h3.6" fill="none" stroke-width="1.5"/><circle cx="162" cy="199" r="4" fill="#f4ebd6" stroke-width="2"/><path d="M160.2 199h3.6" fill="none" stroke-width="1.5"/><circle cx="83" cy="131" r="4" fill="#f4ebd6" stroke-width="2"/><path d="M81.2 131h3.6" fill="none" stroke-width="1.5"/></g></g>
+</svg>

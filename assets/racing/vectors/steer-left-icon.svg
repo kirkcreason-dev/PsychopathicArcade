@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="steer-left-icon-title steer-left-icon-desc">
+ <title id="steer-left-icon-title">Steer left</title>
+ <desc id="steer-left-icon-desc">Bold bone left arrow on a bevelled charcoal steering pad. Designed for readable thumb controls.</desc>
+ <defs>
+  <linearGradient id="steer-left-icon-steel" x1="0" y1="0" x2="0.8" y2="1"><stop stop-color="#60686c"/><stop offset=".48" stop-color="#333b40"/><stop offset="1" stop-color="#1c2227"/></linearGradient>
+  <linearGradient id="steer-left-icon-bone" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff7e6"/><stop offset="1" stop-color="#c5b9a0"/></linearGradient>
+  <linearGradient id="steer-left-icon-green" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#d5ff72"/><stop offset=".56" stop-color="#b9ef42"/><stop offset="1" stop-color="#719c26"/></linearGradient>
+  <linearGradient id="steer-left-icon-red" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#ee6264"/><stop offset=".5" stop-color="#ce3647"/><stop offset="1" stop-color="#762733"/></linearGradient>
+  <linearGradient id="steer-left-icon-gold" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff09e"/><stop offset=".48" stop-color="#f5b94c"/><stop offset="1" stop-color="#a66b29"/></linearGradient>
+ </defs>
+ <g stroke="#101316" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(64.0 64.0) scale(0.97) translate(-64.0 -64.0)"><circle cx="64" cy="66" r="45" fill="#101316" stroke="none"/><circle cx="64" cy="62" r="44" fill="url(#steer-left-icon-steel)" stroke="#101316" stroke-width="5"/><path d="M31 42a37 37 0 0 1 63-2" fill="none" stroke="#778389" stroke-width="3"/><path d="M51 38 28 62l23 24V73h40V51H51Z" fill="#f4ebd6" stroke-width="4"/></g></g>
+</svg>

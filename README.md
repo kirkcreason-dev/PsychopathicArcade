@@ -1,7 +1,7 @@
 # Psychopathic Arcade
 
-Seventeen browser games with carnival artwork, synthesized audio, CPU opponents,
-local multiplayer, and thirteen online modes. Open `public/game.html` directly for
+Nineteen browser games with carnival artwork, synthesized audio, CPU opponents,
+local multiplayer, and fifteen online modes. Open `public/game.html` directly for
 local play, or serve the Vite build. No backend is needed for solo/local games.
 
 ## Run and check
@@ -18,7 +18,7 @@ npm test
 
 `npm test` builds the production site and runs Playwright against its preview,
 including game rules, interrupted rounds, CPU cancellation, score persistence,
-keyboard controls, phone layouts, and real two-peer WebRTC matches.
+keyboard controls, phone layouts, two-peer matches, and eight-player WebRTC races.
 The test server uses port 4713 (`ARCADE_TEST_PORT` can override it) and never
 silently reuses another project's server.
 
@@ -37,6 +37,167 @@ editor's script-message handler into the published site.
 The executable arcade code and embedded assets live in `public/game.html`.
 `npm run check:game` validates the inline scripts, which Vite otherwise copies
 without checking. Keep the bundled chess engine's license intact.
+
+## Leaderboards
+
+All nineteen games have a trophy button and independent device records. The
+records dialog also offers **JCW WEBSITE** rankings when the arcade is embedded
+on JCW Lunacy and the player is signed in. It shows the top ten and the player's
+personal best; Chess and Checkers rank fewer moves first. Each valid completed
+run is submitted even when it does not enter this device's top ten. Online peer
+matches do not award competitive scores for Poker or Road to the Show.
+
+The shared board uses the separate, acknowledged `jcw-arcade-rankings` protocol.
+The host selects the authenticated member identity and saves one improving best
+per game in `arcadeRankings/<game>/<uid>`. This requires the companion
+`arcade-rankings.js` bridge and database rules in the JCWLUNACY website repo.
+Until that service is activated, the dialog reports that website rankings are
+unavailable and device records continue to work. A submitted score is only shown
+as saved after the host acknowledges it. These records do not add website badges
+or change the existing locker event bridge.
+
+Edit `games/leaderboards.{js,html,css}` and run
+`node scripts/sync-leaderboards.mjs` to update the standalone arcade.
+
+## JCW × ICP: Road to the Show
+
+The nineteenth game is a behind-the-rider arcade race to the next JCW show.
+Choose Violent J, Shaggy 2 Dope, Dani Mo, 2 Tuff Tony, Mad Man Pondo, or Big Foot:
+three mini bikes and three go-karts. The route moves from Detroit at sunset,
+through the carnival after dark, to a floodlit JCW arena. This is a fictional
+race destination, not an advertised event date.
+
+Auto-accelerate, steer, brake into bends, draft behind rivals and spend boost
+on open straights. Tickets, boost and repair pickups share the road with cones,
+barriers and tires. Five CPU rivals compete in solo play; online rooms support
+two to eight friends. Completed solo race scores can enter device and shared
+website rankings. No host-site achievements or badges are added.
+
+Tap BOOST, Space or Shift for a three-second burst at 25% extra speed. Each
+burst costs 30% charge; releasing the button does not cut it short. Holding the
+button or tapping again during a burst cannot extend it. Release and press again
+after it ends for another burst, once enough charge has returned. The HUD shows
+the remaining turbo time and pauses it with the race. Mini bikes change lines
+more quickly; karts hold
+bends more steadily, and a brake tap improves turn control. The convoy leaves
+room to overtake, and damage affects speed without turning a missed obstacle
+into an unrecoverable race. The HUD shows boost, condition and three-leg progress,
+with short messages for pickups, drafting, overtakes and hits. Pickups report
+only the amount actually restored. Results show personal-best scores and label
+unfinished CPU rivals as behind the player rather than presenting estimated
+times as recorded finishes. Idle menus and paused races avoid repeated drawing.
+
+Hold brake while steering at speed to charge a drift, then release for a turbo
+burst. A clean 0.65-second drift earns a mini turbo; 1.4 seconds earns a stronger
+burst. The meter and tire sparks show when to release. Going off-road, hitting
+an obstacle or reversing the drift direction cancels the charge. Braking alone
+stops the vehicle, and drift turbo does not stack with manual boost. The host
+simulates and validates the same drift state for every online player. Extra
+sparks and speed effects respect the system's reduced-motion preference.
+
+Convoy Run creates a fresh road layout each race. Daily Route repeats a seeded
+layout for the current UTC date, with a separate best score saved on this device.
+Completed daily runs count toward that day's record; timeouts and interrupted
+runs do not. A run crossing midnight belongs to its starting day. Up to seven
+days of daily records are kept, and online racing uses the normal convoy mode.
+The finish screen adds a recap of drift turbos, hits and collected tickets.
+
+The track uses distinct industrial, carnival and arena verges, with roadside
+lighting, fences, flags and sparse bend markings outside the driving area.
+These decorations do not change the road edges or collision widths.
+
+Riders turn their heads with steering and lean into corners. Tire texture and
+hub movement follow distance traveled, so wheels stop when the vehicle stops;
+exposed front tires also steer. Cached head and wheel layers preserve the
+original artwork, and reduced motion suppresses rolling textures and bounce.
+
+The original **JCW Theme** and **Fight Club** MP3s from Lunacy Unlocked v0.7.0
+are bundled with source hashes in `assets/racing/music/`. Select a track or turn
+music off from ride selection or the pause screen. The existing sound button
+mutes music and effects together. Music starts with a race/ready gesture,
+pauses with the race or when leaving it, and resumes from the same position.
+The player is created lazily, and an audio failure never blocks driving.
+The embedded tracks also work in the host site's blob iframe without separate
+music requests. Run `node scripts/import-racing-music.mjs` after replacing source
+audio, then synchronize the game as below. Playback follows the browser's
+[media autoplay guidance](https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Autoplay).
+
+All artwork was completed and reviewed before gameplay assembly. The original
+six transparent rider PNGs, three panoramas, twenty separate SVGs, exact image
+prompts, source hashes and placement metadata are in `assets/racing/`.
+Open `assets/racing/contact-sheet.html` to inspect the complete original pack.
+No sprite atlas cuts are needed. The built-in image generator made the raster
+art; native SVG defines signs, controls and track props.
+
+The game embeds smaller WebP copies of the originals without cropping. Rebuild
+them with `node scripts/import-racing-assets.mjs --convert`; normal import and
+`--check` use the checked-in runtime files without requiring a browser.
+Edit the modules in `games/racing*`, then run `node scripts/sync-racing.mjs`.
+Timing and drawing follow the browser guidance on
+[animation timestamps](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame)
+and [cached canvas images](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Optimizing_canvas).
+
+Online racing supports rooms of two to eight players. Everyone chooses a ride
+and readies up; the host explicitly starts the group race. Six character choices
+can be reused, with player numbers distinguishing matching rides. Smaller groups
+race alongside CPU rivals to fill a six-rider field; seven- and eight-player
+rooms use an entirely human field. New joins are locked once the race starts.
+Room codes use the existing matchmaking brokers, pinned to the host's broker;
+manual invite/reply codes remain available per guest if signaling is unavailable.
+
+The host simulates collisions, pickups and finish order and sends snapshots to
+each guest, while guests send only their own validated controls. Pauses, missing
+heartbeats and brief interruptions stop the group race. A closed connection ends
+the race without awarding a result. Every player must finish before results, and
+each rematch requires fresh readiness and a host start. This is friendly peer
+play, with the connection limits described below; the host is not a trusted server.
+
+Racing also watches the data channel's
+[outgoing buffer](https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel/bufferedAmount).
+If it exceeds 64 KiB, the race pauses instead of queuing more stale moves. Sending
+resumes below 16 KiB, but all players must explicitly resume the race. Players
+who finish early see a waiting message and their driving inputs are released.
+
+## Big Money Rustlas Poker
+
+The eighteenth game is a Western saloon heads-up no-limit Texas Hold’em table.
+Play against the CPU or invite a friend through the arcade’s online lobby. Each
+player starts with 1,000 play chips; there are no purchases, deposits, or cash
+prizes. Blinds begin at 10/20 and double every six hands, up to 80/160. The dealer
+button alternates each hand. Buttons explicitly show the call cost and total
+raise amount, with minimum, half-pot, pot, and all-in shortcuts. Both players must
+ready up before the initial online deal, each new hand, and a rematch.
+
+The rules use the [Poker TDA’s heads-up order, raising, and odd-chip rules](https://www.pokertda.com/view-poker-tda-rules/)
+and the [standard Hold’em best-five-card structure](https://www.pokerstars.com/poker/games/texas-holdem/).
+The button posts the small blind and acts first before the flop, then last after
+it. A limped small blind leaves the big blind its option. Short all-ins do not
+reopen a completed raise; unmatched chips are returned. If the board is tied,
+the pot splits and any odd chip goes to the non-button seat. Folded hands stay
+face down. All-ins run the remaining board to showdown once no betting decision
+remains. CPU victories score 1,000 plus ten points per hand below 60 hands and
+can be saved to device records and shared website rankings. Online matches do not
+award competitive records or change the host website’s badges.
+
+`games/poker-rules.js` owns the private deal and chip accounting; the renderer
+and CPU receive only their own cards and public information. The engine shuffles
+with the browser’s cryptographic random generator. Online play uses the host’s
+engine and sends the guest a recipient-specific view without the host’s hidden
+hand, the deck, burn cards, or future community cards. Requests carry their hand,
+revision, seat, and request ID; stale or repeated actions cannot be applied twice.
+This is a trusted-peer play-chip game: the hosting browser runs the dealer, so it
+is not a tamper-proof server-authoritative or real-money poker service.
+
+A brief disconnected state pauses the online table for up to 20 seconds.
+Recovery resynchronizes the private view and requires both players to resume.
+A closed connection ends the table without awarding a win; it does not silently
+replace an opponent with a CPU. Reloading either page requires a new table.
+Manual invite replies have two minutes to be copied back to the host.
+
+Edit the modules in `games/poker*`, then run `node scripts/sync-poker.mjs` to embed
+them into the standalone arcade. `npm run check:game` verifies the embedded copy.
+The visual design uses original DOM, CSS, and inline SVG artwork, without new
+external images or fonts.
 
 ## Juggalo Pool
 
@@ -300,7 +461,7 @@ networks may prevent connections. Failed invite connections now time out with
 recovery instructions. Public broker availability and cross-network connectivity
 are not guaranteed by the automated suite.
 
-All thirteen online games are tested with real Chromium peers on the same machine,
+All fifteen online games are tested with real Chromium peers on the same machine,
 without public brokers or STUN. Local game flows and layouts are also tested in
 Playwright WebKit. WebKit peer connections in the macOS test runner require public STUN rather
 than only mDNS host candidates, so those network-dependent checks are opt-in:

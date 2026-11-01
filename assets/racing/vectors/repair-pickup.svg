@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320" role="img" aria-labelledby="repair-pickup-title repair-pickup-desc">
+ <title id="repair-pickup-title">Repair tool pickup</title>
+ <desc id="repair-pickup-desc">Bone wrench crossed over a crimson field in a beveled steel hexagonal casing. A repair item shaped around tools rather than a medical emblem.</desc>
+ <defs>
+  <linearGradient id="repair-pickup-steel" x1="0" y1="0" x2="0.8" y2="1"><stop stop-color="#60686c"/><stop offset=".48" stop-color="#333b40"/><stop offset="1" stop-color="#1c2227"/></linearGradient>
+  <linearGradient id="repair-pickup-bone" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff7e6"/><stop offset="1" stop-color="#c5b9a0"/></linearGradient>
+  <linearGradient id="repair-pickup-green" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#d5ff72"/><stop offset=".56" stop-color="#b9ef42"/><stop offset="1" stop-color="#719c26"/></linearGradient>
+  <linearGradient id="repair-pickup-red" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#ee6264"/><stop offset=".5" stop-color="#ce3647"/><stop offset="1" stop-color="#762733"/></linearGradient>
+  <linearGradient id="repair-pickup-gold" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff09e"/><stop offset=".48" stop-color="#f5b94c"/><stop offset="1" stop-color="#a66b29"/></linearGradient>
+ </defs>
+ <g stroke="#101316" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="160" cy="267" rx="74" ry="12" fill="#0a0e10" opacity=".33" stroke="none"/>
+ <path d="m154 64 80 35 12 121-82 38-85-36 9-122Z" fill="#762733"/>
+ <path d="m150 55 82 36 5 121-83 38-80-38 7-121Z" fill="url(#repair-pickup-steel)"/>
+ <path d="m150 72 65 29 5 101-66 31-63-29 5-101Z" fill="url(#repair-pickup-red)" stroke="#f4ebd6" stroke-width="4"/>
+ <path d="m182 95-5 24-17 10-14-15 11-24c-27 1-42 21-36 43l10 12-25 41q-8 17 8 25 15 7 24-8l24-42 16-1c26-9 34-43 4-65Z" fill="url(#repair-pickup-bone)" stroke-width="6"/>
+ <circle cx="122" cy="194" r="7" fill="#ce3647" stroke-width="4"/>
+ <path d="m104 107 11-5" stroke="#ffb5a4" stroke-width="4"/>
+ </g>
+</svg>

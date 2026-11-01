@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320" role="img" aria-labelledby="ticket-pickup-title ticket-pickup-desc">
+ <title id="ticket-pickup-title">Show ticket pickup</title>
+ <desc id="ticket-pickup-desc">Amber admission ticket with circular side notches, dark ICP/JCW event text and a tear-off barcode. The ticket is drawn at a slight angle with a solid dimensional edge.</desc>
+ <defs>
+  <linearGradient id="ticket-pickup-steel" x1="0" y1="0" x2="0.8" y2="1"><stop stop-color="#60686c"/><stop offset=".48" stop-color="#333b40"/><stop offset="1" stop-color="#1c2227"/></linearGradient>
+  <linearGradient id="ticket-pickup-bone" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff7e6"/><stop offset="1" stop-color="#c5b9a0"/></linearGradient>
+  <linearGradient id="ticket-pickup-green" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#d5ff72"/><stop offset=".56" stop-color="#b9ef42"/><stop offset="1" stop-color="#719c26"/></linearGradient>
+  <linearGradient id="ticket-pickup-red" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#ee6264"/><stop offset=".5" stop-color="#ce3647"/><stop offset="1" stop-color="#762733"/></linearGradient>
+  <linearGradient id="ticket-pickup-gold" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff09e"/><stop offset=".48" stop-color="#f5b94c"/><stop offset="1" stop-color="#a66b29"/></linearGradient>
+ </defs>
+ <g stroke="#101316" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="160" cy="267" rx="91" ry="12" fill="#0a0e10" opacity=".33" stroke="none"/>
+ <path d="m65 117 164-41 21 77q-22 6-16 26l14 6 11 43-167 42-12-45q24-7 17-26l-17-4Z" fill="#a66b29"/>
+ <path d="m61 105 164-41 21 77q-24 6-18 25l18 6 11 44-166 42-12-46q23-6 17-25l-15-4Z" fill="url(#ticket-pickup-gold)"/>
+ <path d="m174 83 36 145" stroke="#825428" stroke-width="3" stroke-dasharray="6 7"/>
+ <g transform="rotate(-14 153 155)" stroke="none">
+  <text x="137" y="132" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-size="18" font-weight="900" fill="#101316">JCW × ICP</text>
+  <text x="137" y="159" text-anchor="middle" font-family="Impact,Arial Black,sans-serif" font-size="25" font-weight="900" fill="#101316">ADMIT 1</text>
+  <path d="M95 173h84v4H95Zm0 10h84v3H95Zm3 11h5v15h-5Zm10 0h3v15h-3Zm7 0h7v15h-7Zm12 0h3v15h-3Zm8 0h5v15h-5Zm10 0h8v15h-8Zm12 0h3v15h-3Zm7 0h8v15h-8Z" fill="#101316"/>
+ </g>
+ <path d="m79 116 57-14" stroke="#fff3b5" stroke-width="4"/>
+ </g>
+</svg>

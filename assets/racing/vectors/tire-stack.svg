@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320" role="img" aria-labelledby="tire-stack-title tire-stack-desc">
+ <title id="tire-stack-title">Trackside tire stack</title>
+ <desc id="tire-stack-desc">Three thick racing tires with offset tread, visible rubber highlights and an elliptical top opening. Grounded frontal three-quarter prop.</desc>
+ <defs>
+  <linearGradient id="tire-stack-steel" x1="0" y1="0" x2="0.8" y2="1"><stop stop-color="#60686c"/><stop offset=".48" stop-color="#333b40"/><stop offset="1" stop-color="#1c2227"/></linearGradient>
+  <linearGradient id="tire-stack-bone" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff7e6"/><stop offset="1" stop-color="#c5b9a0"/></linearGradient>
+  <linearGradient id="tire-stack-green" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#d5ff72"/><stop offset=".56" stop-color="#b9ef42"/><stop offset="1" stop-color="#719c26"/></linearGradient>
+  <linearGradient id="tire-stack-red" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#ee6264"/><stop offset=".5" stop-color="#ce3647"/><stop offset="1" stop-color="#762733"/></linearGradient>
+  <linearGradient id="tire-stack-gold" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff09e"/><stop offset=".48" stop-color="#f5b94c"/><stop offset="1" stop-color="#a66b29"/></linearGradient>
+ </defs>
+ <g stroke="#101316" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="160" cy="267" rx="113" ry="12" fill="#0a0e10" opacity=".33" stroke="none"/>
+ <path d="M61 218q0-26 97-26t100 26v29q0 26-100 26t-97-26Z" fill="#20272b"/>
+ <ellipse cx="159" cy="218" rx="99" ry="27" fill="#454e53"/>
+ <path d="M62 172q0-26 97-26t100 26v29q0 26-100 26t-97-26Z" fill="#252c30"/>
+ <ellipse cx="160" cy="172" rx="99" ry="27" fill="#505a5e"/>
+ <path d="M65 124q0-28 97-28t97 28v31q0 28-97 28t-97-28Z" fill="#272e32"/>
+ <ellipse cx="162" cy="124" rx="97" ry="29" fill="#5b6467"/>
+ <ellipse cx="162" cy="124" rx="51" ry="12" fill="#101316" stroke-width="5"/>
+ <path d="M85 142l12 12-6 11M123 151l11 13-8 13M199 151l-10 13 8 13M233 140l-9 15 6 10M84 190l11 14-6 10M122 198l11 13-7 10M198 198l-9 13 7 10M231 189l-9 14 6 10M84 236l12 13-7 10M123 244l11 12-7 11M197 244l-9 12 7 11M231 236l-9 13 6 10" fill="none" stroke="#101316" stroke-width="6"/>
+ <path d="M83 114q24-12 50-13m69 6 21 7" fill="none" stroke="#8a9696" stroke-width="4"/>
+ <path d="m107 177 37 5m-38 44 37 5" stroke="#616d70" stroke-width="4"/>
+ </g>
+</svg>

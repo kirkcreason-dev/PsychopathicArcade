@@ -12,7 +12,7 @@ export default defineConfig({
   projects: [
     { name: 'chromium', use: { browserName: 'chromium', channel: process.env.CI ? undefined : 'chrome' } },
     // WebKit peer tests need public STUN here; opt in to network-dependent checks.
-    { name: 'webkit', testIgnore: process.env.ARCADE_NETWORK_TESTS ? undefined : '**/online.spec.js', use: { browserName: 'webkit' } },
+    { name: 'webkit', testIgnore: process.env.ARCADE_NETWORK_TESTS ? undefined : ['**/online.spec.js', '**/poker-online.spec.js', '**/racing-online.spec.js'], use: { browserName: 'webkit' } },
   ],
   webServer: {
     command: `npm run preview -- --host 127.0.0.1 --port ${port} --strictPort`,

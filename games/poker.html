@@ -1,0 +1,51 @@
+<section id="pkScreen" class="screen" hidden aria-label="Big Money Rustlas Poker">
+  <header class="pk-heading">
+    <div class="pk-brand"><span>THE DARK CARNIVAL SALOON</span><h1>BIG MONEY <b>RUSTLAS</b></h1><small>HEADS-UP TEXAS HOLD’EM</small></div>
+    <div class="pk-house-mark" aria-hidden="true"><span>★</span><b>NO LIMIT</b><small>EST. AFTER DARK</small></div>
+  </header>
+  <div class="pk-layout">
+    <div class="pk-table" id="pkStage">
+      <div class="pk-rail-label" aria-hidden="true">THE HOUSE DEALS. YOU DECIDE.</div>
+      <div class="pk-seat pk-opponent">
+        <div class="pk-seat-avatar pk-outlaw" aria-hidden="true">♠</div>
+        <div class="pk-seat-info"><span class="pk-seat-name" id="pkOppName">THE SALOON DEALER</span><strong id="pkOppStack">1,000</strong><small>PLAY CHIPS</small><span class="pk-seat-action" id="pkOppAction">WAITING FOR THE DEAL</span></div>
+        <div class="pk-hole-cards" id="pkOppCards" aria-label="Opponent’s private cards"></div>
+        <span class="pk-dealer" id="pkOppDealer" aria-label="Opponent is the dealer" hidden>D</span>
+        <span class="pk-bet"><span class="pk-chip pk-chip-red" aria-hidden="true"></span><span id="pkOppBet">0</span><small>BET</small></span>
+      </div>
+      <div class="pk-center">
+        <div class="pk-pot-line"><span class="pk-street" id="pkStreet">THE SALOON IS OPEN</span><div class="pk-pot"><span class="pk-chip-stack" aria-hidden="true"><i></i><i></i><i></i></span><span>POT <strong id="pkPot">0</strong></span></div></div>
+        <div class="pk-board" id="pkBoard" aria-label="Five community cards"></div>
+        <div class="pk-felt-sign" aria-hidden="true"><span>♦</span> BIG MONEY RUSTLAS <span>♦</span></div>
+      </div>
+      <div class="pk-seat pk-player">
+        <div class="pk-seat-avatar pk-jester" aria-hidden="true">♣</div>
+        <div class="pk-seat-info"><span class="pk-seat-name" id="pkPlayerName">YOU</span><strong id="pkPlayerStack">1,000</strong><small>PLAY CHIPS</small><span class="pk-seat-action" id="pkPlayerAction">TAKE YOUR SEAT</span></div>
+        <div class="pk-hole-cards" id="pkPlayerCards" aria-label="Your private cards"></div>
+        <span class="pk-dealer" id="pkPlayerDealer" aria-label="You are the dealer" hidden>D</span>
+        <span class="pk-bet"><span class="pk-chip pk-chip-gold" aria-hidden="true"></span><span id="pkPlayerBet">0</span><small>BET</small></span>
+      </div>
+      <div id="pkSetup" class="pk-overlay"><div class="pk-panel pk-welcome">
+        <svg class="pk-saloon-crest" viewBox="0 0 180 138" aria-hidden="true"><path d="M90 7 109 36 143 27 135 67 166 84 133 103 135 130 90 116 45 130 47 103 14 84 45 67 37 27 71 36Z" fill="#b79b63" opacity=".22"/><path d="M41 68Q90 50 139 68L132 77Q90 68 48 77Z" fill="#deb775"/><path d="M57 61 67 23Q90 35 113 23L123 61Q90 51 57 61Z" fill="#311928" stroke="#deb775" stroke-width="3"/><path d="M69 79Q90 71 111 79L107 103 90 116 73 103Z" fill="#e7d7b4"/><path d="m74 80 9 7-10 5m33-12-9 7 10 5" fill="none" stroke="#31202a" stroke-width="5"/><path d="M78 99Q90 108 102 99M89 88l-4 8h10" fill="none" stroke="#7e3047" stroke-width="3"/><path d="m23 42 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1Zm134 0 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1Z" fill="#deb775"/></svg>
+        <span class="pk-eyebrow">PULL UP A CHAIR, OUTLAW</span><h2>BIG MONEY<br><em>RUSTLAS POKER</em></h2>
+        <p>Two players. One deck. A whole lot of nerve.</p><p class="pk-buy-in">1,000 PLAY CHIPS EACH · NO REAL MONEY</p>
+        <input type="hidden" id="pkMode" value="cpu">
+        <button id="pkStartBtn" class="pk-primary">DEAL ME IN</button><p id="pkReadyNote" class="pk-note">Face the saloon dealer, or choose ONLINE below.</p>
+      </div></div>
+      <div id="pkPause" class="pk-overlay" hidden><div class="pk-panel"><span class="pk-eyebrow">THE SALOON CAN WAIT</span><h2>TABLE PAUSED</h2><p id="pkPauseNote">Your chips aren’t going anywhere.</p><button id="pkResumeBtn" class="pk-primary">BACK TO THE TABLE</button></div></div>
+    </div>
+    <div class="pk-controls">
+      <div id="pkResult" class="pk-overlay" hidden><div class="pk-panel"><span class="pk-eyebrow">THE CARDS HAVE SPOKEN</span><h2 id="pkResultTitle">HAND COMPLETE</h2><p id="pkResultDetail"></p><button id="pkNextBtn" class="pk-primary">NEXT HAND</button><button id="pkAgainBtn" class="pk-primary" hidden>BUY IN AGAIN · 1,000 CHIPS</button><button id="pkSaveBtn" class="pk-secondary" hidden>SAVE YOUR RECORD</button><p class="pk-note">Play chips only. No purchases. No cash prizes.</p></div></div>
+      <div class="pk-control-title"><span>THE OUTLAW’S PLAYBOOK</span><h2>PLAY YOUR HAND.</h2></div>
+      <div class="pk-status"><span class="pk-status-light" aria-hidden="true"></span><p id="pkStatus" role="status" aria-live="polite">Take a seat to start a heads-up game.</p></div>
+      <div class="pk-raise-panel" id="pkRaisePanel">
+        <label for="pkRaiseAmount">RAISE TO <output id="pkRaiseValue">40</output></label><input id="pkRaiseAmount" type="range" min="40" max="1000" value="40" step="1" aria-label="Raise to total chips">
+        <div class="pk-presets" role="group" aria-label="Raise amount presets"><button id="pkMinBtn">MIN</button><button id="pkHalfPotBtn">½ POT</button><button id="pkPotBtn">POT</button><button id="pkAllInPreset">ALL IN</button></div>
+      </div>
+      <div class="pk-actions"><button id="pkFoldBtn" class="pk-fold">FOLD</button><button id="pkCallBtn" class="pk-call">CHECK</button><button id="pkRaiseBtn" class="pk-raise">RAISE TO 40</button><button id="pkAllInBtn" class="pk-all-in">ALL IN</button></div>
+      <p class="pk-raise-help">“Raise to” is your total bet for this round.</p>
+      <div class="pk-house-rules"><span>KNOW WHEN TO HOLD ’EM</span><p>Make your best five-card hand from your two cards and the five shared cards. Win the pot, or make your rival fold.</p><p>Opponent cards stay face down until showdown. Folded hands stay face down.</p><b>PLAY CHIPS. BRAGGING RIGHTS. THAT’S IT.</b></div>
+    </div>
+    <div class="ctl-row pk-footer"><button id="pkPauseBtn" class="pk-secondary" disabled>PAUSE</button><button id="pkNetBtn" class="pk-secondary">ONLINE VS</button><button id="pkSoundBtn" class="img-btn icon" aria-label="Mute sound"><img data-img="icoSoundOn" alt="Sound"></button><button id="pkHomeBtn" class="pk-secondary">ARCADE</button><span class="pk-footer-note">NO REAL MONEY · JUST PLAY</span></div>
+  </div>
+</section>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320" role="img" aria-labelledby="silver-medal-title silver-medal-desc">
+ <title id="silver-medal-title">Silver race medal</title>
+ <desc id="silver-medal-desc">Original silver podium medal with a large 2, checkered ribbon and beveled rim. An in-game race reward asset only.</desc>
+ <defs>
+  <linearGradient id="silver-medal-steel" x1="0" y1="0" x2="0.8" y2="1"><stop stop-color="#60686c"/><stop offset=".48" stop-color="#333b40"/><stop offset="1" stop-color="#1c2227"/></linearGradient>
+  <linearGradient id="silver-medal-bone" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff7e6"/><stop offset="1" stop-color="#c5b9a0"/></linearGradient>
+  <linearGradient id="silver-medal-green" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#d5ff72"/><stop offset=".56" stop-color="#b9ef42"/><stop offset="1" stop-color="#719c26"/></linearGradient>
+  <linearGradient id="silver-medal-red" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#ee6264"/><stop offset=".5" stop-color="#ce3647"/><stop offset="1" stop-color="#762733"/></linearGradient>
+  <linearGradient id="silver-medal-gold" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff09e"/><stop offset=".48" stop-color="#f5b94c"/><stop offset="1" stop-color="#a66b29"/></linearGradient>
+ </defs>
+ <g stroke="#101316" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+ <path d="m89 44 53 5 20 66-47 31-26-27Zm142 0-53 5-20 66 47 31 26-27Z" fill="#ce3647"/>
+ <path d="m104 47 14 2 20 69-15 9Zm111 0-14 2-20 69 15 9Z" fill="#f4ebd6" stroke="none"/>
+ <path d="m135 98 26-14 25 15-6 32h-39Z" fill="#5d727e" stroke-width="5"/>
+ <circle cx="164" cy="192" r="81" fill="#5d727e"/>
+ <circle cx="158" cy="184" r="81" fill="#bccacc"/>
+ <circle cx="158" cy="184" r="65" fill="#5d727e" stroke="#eff8f6" stroke-width="4"/>
+ <path d="m104 153 11-18 17-12m-27 99 11 15 14 9m80-93-11-18-17-12m26 99-10 15-14 9" fill="none" stroke="#bccacc" stroke-width="8"/>
+ <text x="158" y="214" text-anchor="middle" font-family="Impact,Arial Black,sans-serif" font-size="86" font-weight="900" fill="#eff8f6" stroke="#101316" stroke-width="5" paint-order="stroke">2</text>
+ <path d="m100 135 15-13m-15 9 12-12" stroke="#eff8f6" stroke-width="4"/>
+ </g>
+</svg>
