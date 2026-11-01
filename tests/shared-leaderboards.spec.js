@@ -121,11 +121,11 @@ test('standalone and untrusted embeds do not send website ranking requests',asyn
   await expect(frame.locator('#lbCloudStatus')).toContainText('unavailable');expect(await page.evaluate(()=>rankRequests)).toEqual([]);
 });
 
-for(const[width,height]of[[320,568],[568,320],[1280,800]])test(`shared rankings remain readable and reachable at ${width}x${height}`,async({page,baseURL})=>{
+for(const[width,height]of[[320,568],[568,320],[1280,800]])test(`shared rankings remain readable and reachable at ${width}x${height}`,async({page,baseURL},testInfo)=>{
   await page.setViewportSize({width,height});const frame=await embedded(page,baseURL);
   await page.evaluate(rows=>{rankRows.racing=rows;rankOwn.racing={uid:'own',name:'My personal racing record',v:300,tag:'DAILY · DETROIT TO THE ARENA',t:1700000000000};},Array.from({length:10},(_,i)=>row('u'+i,'The Carnival Champion '+i,1000000-i)));
   await frame.evaluate(()=>ARCADE.LB.show('racing'));await frame.locator('#lbWebsiteTab').click();await expect(frame.locator('#lbRows .shared')).toHaveCount(10);
-  await frame.locator('.lb-card').screenshot({path:'/private/tmp/shared-rankings-'+width+'x'+height+'.png'});
+  await frame.locator('.lb-card').screenshot({path:testInfo.outputPath('shared-rankings-'+width+'x'+height+'.png')});
   for(const id of['lbWebsiteTab','lbRefresh','lbOwn','lbClose']){const e=frame.locator('#'+id);await e.scrollIntoViewIfNeeded();expect(await e.evaluate(el=>{const r=el.getBoundingClientRect();return el.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2));})).toBe(true);}
   expect(await frame.locator('.lb-card').evaluate(el=>el.scrollWidth>el.clientWidth)).toBe(false);
 });

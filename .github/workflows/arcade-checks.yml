@@ -9,6 +9,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -19,10 +23,11 @@ jobs:
       - run: npx playwright install --with-deps chromium webkit
       - run: npm run lint
       - run: npm run typecheck
-      - run: npm test
+      - run: npm run build
+      - run: npx playwright test --shard=${{ matrix.shard }}/4 --reporter=line
       - uses: actions/upload-artifact@v4
-        if: failure()
+        if: ${{ always() && !success() }}
         with:
-          name: browser-test-results
+          name: browser-test-results-${{ matrix.shard }}
           path: test-results/
           retention-days: 7

@@ -123,6 +123,8 @@ test('braking into a turn charges the drift meter and releasing awards the adver
     for (let i = 0; i < 50; i++) ARCADE.RACING.debug.advance(.05, { steer: 0, brake: false, boost: false });
     for (const [key, code] of [['ArrowRight', 'ArrowRight'], ['ArrowDown', 'ArrowDown']]) document.body.dispatchEvent(new KeyboardEvent('keydown', { key, code, bubbles: true }));
     for (let i = 0; i < 15; i++) ARCADE.RACING.debug.advance(.05);
+    // UI assertions must not keep charging toward tier II on slower CI browsers.
+    ARCADE.RACING.pause(true);
   });
   const charging = await page.evaluate(() => ARCADE.RACING.state.racers[0]);
   expect(charging.drifting).toBe(true); expect(charging.driftDirection).toBe(1); expect(charging.driftCharge).toBeGreaterThanOrEqual(.65);
@@ -130,6 +132,7 @@ test('braking into a turn charges the drift meter and releasing awards the adver
   await expect.poll(() => page.locator('#rcDriftMeter').evaluate(el => el.value)).toBeGreaterThan(0);
   await expect(page.locator('#rcDriftLabel')).toContainText(/drift|release|turbo/i);
   const released = await page.evaluate(() => {
+    ARCADE.RACING.pause(false);
     for (const [key, code] of [['ArrowRight', 'ArrowRight'], ['ArrowDown', 'ArrowDown']]) document.body.dispatchEvent(new KeyboardEvent('keyup', { key, code, bubbles: true }));
     ARCADE.RACING.debug.advance(.05);
     const s = ARCADE.RACING.state;
