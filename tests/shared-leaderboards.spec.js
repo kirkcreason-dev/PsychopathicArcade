@@ -44,6 +44,16 @@ test('shared requests dispatch three at a time in FIFO order with a bounded queu
   await page.clock.fastForward(8001);await frame.evaluate(()=>ARCADE.LB.show('racing'));await expect(frame.locator('#lbCloudStatus')).toContainText('unavailable');
 });
 
+test('a resumed background tab never dispatches already expired queued results',async({page,baseURL})=>{
+  await page.clock.install();const frame=await embedded(page,baseURL,{auto:false});
+  await frame.evaluate(()=>{for(let i=1;i<=8;i++)ARCADE.LB.check('racing',i,'RUN');});
+  await expect.poll(()=>page.evaluate(()=>rankRequests.length)).toBe(3);
+  await frame.evaluate(()=>{const clock=Date.now;Date.now=()=>clock()+31000;});
+  const first=await page.evaluate(()=>rankRequests[0]);await page.evaluate(r=>reply(r,{accepted:true}),first);
+  await expect(frame.locator('#lbCloudStatus')).toContainText('unavailable');
+  expect(await page.evaluate(()=>rankRequests.length)).toBe(3);
+});
+
 test('website rankings show top10 and your separate best while device records remain intact',async({page,baseURL})=>{
   const frame=await embedded(page,baseURL);await page.evaluate(({top,own})=>{rankRows.poker=top;rankOwn.poker=own;},{top:[row('other','Carnival Champion',550)],own:row('me','My JCW Name',300)});
   await frame.evaluate(()=>{ARCADE.LB.board('poker').push({name:'ICP',v:250,tag:'LOCAL',t:1700000000000});ARCADE.LB.show('poker');});

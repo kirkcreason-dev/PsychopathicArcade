@@ -16966,6 +16966,7 @@ const LB = (()=>{
       let sent=[...requests.values()].filter(value=>value.sent).length;
       for(const[id,value]of requests){
         if(sent>=3)break;if(value.sent)continue;
+        if(value.deadline<=Date.now()){settleShared(id,{ok:false,error:'unavailable'});continue;}
         clearTimeout(value.timer);value.sent=true;
         value.timer=setTimeout(()=>settleShared(id,{ok:false,error:'unavailable'}),Math.max(1,Math.min(8000,value.deadline-Date.now())));
         try{window.parent.postMessage(value.packet,hostOrigin);sent++;}
