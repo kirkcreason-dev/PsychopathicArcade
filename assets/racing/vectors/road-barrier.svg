@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320" role="img" aria-labelledby="road-barrier-title road-barrier-desc">
+ <title id="road-barrier-title">Striped road barrier</title>
+ <desc id="road-barrier-desc">Heavy black and bone striped sawhorse barrier with crimson top edge and amber lamps. Short wide collision hazard.</desc>
+ <defs>
+  <linearGradient id="road-barrier-steel" x1="0" y1="0" x2="0.8" y2="1"><stop stop-color="#60686c"/><stop offset=".48" stop-color="#333b40"/><stop offset="1" stop-color="#1c2227"/></linearGradient>
+  <linearGradient id="road-barrier-bone" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff7e6"/><stop offset="1" stop-color="#c5b9a0"/></linearGradient>
+  <linearGradient id="road-barrier-green" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#d5ff72"/><stop offset=".56" stop-color="#b9ef42"/><stop offset="1" stop-color="#719c26"/></linearGradient>
+  <linearGradient id="road-barrier-red" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#ee6264"/><stop offset=".5" stop-color="#ce3647"/><stop offset="1" stop-color="#762733"/></linearGradient>
+  <linearGradient id="road-barrier-gold" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff09e"/><stop offset=".48" stop-color="#f5b94c"/><stop offset="1" stop-color="#a66b29"/></linearGradient>
+ </defs>
+ <g stroke="#101316" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="160" cy="267" rx="113" ry="12" fill="#0a0e10" opacity=".33" stroke="none"/>
+ <path d="m78 176-19 89h34l20-89Zm137 0 20 89h30l-22-89Z" fill="url(#road-barrier-steel)"/>
+ <path d="M52 121h214v75H52Z" fill="url(#road-barrier-bone)"/>
+ <path d="m61 127 34-1-42 58v-45Zm72-1h37l-46 64H87Zm75 0h37l-46 64h-37Zm58 25v39h-28Z" fill="#252b2e" stroke="none"/>
+ <path d="M52 121h214v13H52Z" fill="#ce3647" stroke-width="4"/>
+ <path d="M266 121 277 113v75l-11 8Z" fill="#b3aa95" stroke-width="5"/>
+ <path d="m52 121 10-8h215l-11 8Z" fill="#697270" stroke-width="4"/>
+ <path d="M77 109V92m166 17V92" stroke="#697270" stroke-width="10"/>
+ <circle cx="77" cy="81" r="16" fill="url(#road-barrier-gold)" stroke-width="5"/>
+ <circle cx="243" cy="81" r="16" fill="url(#road-barrier-gold)" stroke-width="5"/>
+ <path d="m70 78 6-6m160 6 6-6" stroke="#fff09e" stroke-width="4"/>
+ <circle cx="68" cy="148" r="3" fill="#f4ebd6" stroke-width="2"/><path d="M66.65 148h2.7" fill="none" stroke-width="1.5"/><circle cx="250" cy="148" r="3" fill="#f4ebd6" stroke-width="2"/><path d="M248.65 148h2.7" fill="none" stroke-width="1.5"/><circle cx="68" cy="182" r="3" fill="#f4ebd6" stroke-width="2"/><path d="M66.65 182h2.7" fill="none" stroke-width="1.5"/><circle cx="250" cy="182" r="3" fill="#f4ebd6" stroke-width="2"/><path d="M248.65 182h2.7" fill="none" stroke-width="1.5"/></g>
+</svg>

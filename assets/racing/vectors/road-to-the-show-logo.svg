@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="368" viewBox="0 0 768 368" role="img" aria-labelledby="road-to-the-show-logo-title road-to-the-show-logo-desc">
+ <title id="road-to-the-show-logo-title">JCW × ICP · Road to the Show</title>
+ <desc id="road-to-the-show-logo-desc">Original typography, a mischievous jester mask, racing pennants and a bolted blacktop plaque. Transparent title artwork, no borrowed band insignia.</desc>
+ <defs>
+  <linearGradient id="road-to-the-show-logo-steel" x1="0" y1="0" x2="0.8" y2="1"><stop stop-color="#60686c"/><stop offset=".48" stop-color="#333b40"/><stop offset="1" stop-color="#1c2227"/></linearGradient>
+  <linearGradient id="road-to-the-show-logo-bone" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff7e6"/><stop offset="1" stop-color="#c5b9a0"/></linearGradient>
+  <linearGradient id="road-to-the-show-logo-green" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#d5ff72"/><stop offset=".56" stop-color="#b9ef42"/><stop offset="1" stop-color="#719c26"/></linearGradient>
+  <linearGradient id="road-to-the-show-logo-red" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#ee6264"/><stop offset=".5" stop-color="#ce3647"/><stop offset="1" stop-color="#762733"/></linearGradient>
+  <linearGradient id="road-to-the-show-logo-gold" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff09e"/><stop offset=".48" stop-color="#f5b94c"/><stop offset="1" stop-color="#a66b29"/></linearGradient>
+ </defs>
+ <g stroke="#101316" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(384.0 184.0) scale(0.99) translate(-384.0 -184.0)">
+ <path d="M109 105 155 83 609 83 660 106 647 282 613 317H151l-36-34Z" fill="#171d21"/>
+ <path d="M135 110 161 99h442l30 17-12 153-19 23H167l-24-22Z" fill="url(#road-to-the-show-logo-steel)" stroke="#697270" stroke-width="3"/>
+ <path d="m138 167-39-8 9 44-13 24 42 4m490-64 42-8-9 44 13 24-42 4" fill="#ce3647"/>
+ <path d="m178 100 13-24 38 24m335 0 13-24 39 24" fill="#b9ef42"/>
+ <path d="m315 92 13-32 23 12 33-23 32 23 24-12 15 32-26 36h-88Z" fill="#ce3647"/>
+ <path d="m349 83 35-16 35 16-5 24-30 18-29-18Z" fill="url(#road-to-the-show-logo-bone)" stroke-width="4"/>
+ <path d="m359 86 14 8-13 5m49-13-14 8 12 5" fill="#101316" stroke-width="3"/>
+ <path d="m369 106 15 8 14-8" fill="none" stroke="#101316" stroke-width="4"/>
+ <path d="M173 139h94m235 0h93" stroke="#b9ef42" stroke-width="4"/>
+ <text x="384" y="151" text-anchor="middle" font-family="Impact,Arial Black,sans-serif" font-size="30" letter-spacing="5" fill="#b9ef42" stroke="none">JCW × ICP</text>
+ <text x="384" y="208" text-anchor="middle" font-family="Impact,Arial Black,sans-serif" font-size="54" font-weight="900" letter-spacing="2" fill="#f4ebd6" stroke="#101316" stroke-width="9" paint-order="stroke">ROAD TO</text>
+ <text x="384" y="269" text-anchor="middle" font-family="Impact,Arial Black,sans-serif" font-size="65" font-weight="900" letter-spacing="1" fill="#f5b94c" stroke="#101316" stroke-width="10" paint-order="stroke">THE SHOW</text>
+ <path d="M176 286h416" stroke="#b9ef42" stroke-width="5"/>
+ <circle cx="149" cy="119" r="5" fill="#f4ebd6" stroke-width="2"/><path d="M146.75 119h4.5" fill="none" stroke-width="1.5"/><circle cx="619" cy="119" r="5" fill="#f4ebd6" stroke-width="2"/><path d="M616.75 119h4.5" fill="none" stroke-width="1.5"/><circle cx="152" cy="276" r="5" fill="#f4ebd6" stroke-width="2"/><path d="M149.75 276h4.5" fill="none" stroke-width="1.5"/><circle cx="615" cy="276" r="5" fill="#f4ebd6" stroke-width="2"/><path d="M612.75 276h4.5" fill="none" stroke-width="1.5"/></g></g>
+</svg>

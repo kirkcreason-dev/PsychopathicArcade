@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320" role="img" aria-labelledby="destination-pin-title destination-pin-desc">
+ <title id="destination-pin-title">Show destination pin</title>
+ <desc id="destination-pin-desc">Crimson location marker with a bone star and a charcoal dimensional edge. Can sit above the destination on the route.</desc>
+ <defs>
+  <linearGradient id="destination-pin-steel" x1="0" y1="0" x2="0.8" y2="1"><stop stop-color="#60686c"/><stop offset=".48" stop-color="#333b40"/><stop offset="1" stop-color="#1c2227"/></linearGradient>
+  <linearGradient id="destination-pin-bone" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff7e6"/><stop offset="1" stop-color="#c5b9a0"/></linearGradient>
+  <linearGradient id="destination-pin-green" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#d5ff72"/><stop offset=".56" stop-color="#b9ef42"/><stop offset="1" stop-color="#719c26"/></linearGradient>
+  <linearGradient id="destination-pin-red" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#ee6264"/><stop offset=".5" stop-color="#ce3647"/><stop offset="1" stop-color="#762733"/></linearGradient>
+  <linearGradient id="destination-pin-gold" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff09e"/><stop offset=".48" stop-color="#f5b94c"/><stop offset="1" stop-color="#a66b29"/></linearGradient>
+ </defs>
+ <g stroke="#101316" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="160" cy="267" rx="61" ry="12" fill="#0a0e10" opacity=".33" stroke="none"/>
+ <path d="M164 51c-51 0-84 34-84 77 0 57 61 105 84 132 23-27 84-75 84-132 0-43-33-77-84-77Z" fill="#762733"/>
+ <path d="M155 44c-51 0-82 34-82 77 0 57 59 105 82 132 23-27 82-75 82-132 0-43-31-77-82-77Z" fill="url(#destination-pin-red)"/>
+ <circle cx="155" cy="126" r="49" fill="#171d21" stroke="#f4ebd6" stroke-width="4"/>
+ <path d="m155 91 11 24 27 4-20 19 5 27-23-13-23 13 5-27-20-19 27-4Z" fill="url(#destination-pin-bone)" stroke-width="4"/>
+ <path d="M100 88q11-17 29-21" fill="none" stroke="#ffa79a" stroke-width="5"/>
+ </g>
+</svg>

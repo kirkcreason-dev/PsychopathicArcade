@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320" role="img" aria-labelledby="boost-pickup-title boost-pickup-desc">
+ <title id="boost-pickup-title">Nitro spark pickup</title>
+ <desc id="boost-pickup-desc">Toxic green lightning token in a beveled charcoal casing with three small charge marks. No external product branding.</desc>
+ <defs>
+  <linearGradient id="boost-pickup-steel" x1="0" y1="0" x2="0.8" y2="1"><stop stop-color="#60686c"/><stop offset=".48" stop-color="#333b40"/><stop offset="1" stop-color="#1c2227"/></linearGradient>
+  <linearGradient id="boost-pickup-bone" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff7e6"/><stop offset="1" stop-color="#c5b9a0"/></linearGradient>
+  <linearGradient id="boost-pickup-green" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#d5ff72"/><stop offset=".56" stop-color="#b9ef42"/><stop offset="1" stop-color="#719c26"/></linearGradient>
+  <linearGradient id="boost-pickup-red" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#ee6264"/><stop offset=".5" stop-color="#ce3647"/><stop offset="1" stop-color="#762733"/></linearGradient>
+  <linearGradient id="boost-pickup-gold" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff09e"/><stop offset=".48" stop-color="#f5b94c"/><stop offset="1" stop-color="#a66b29"/></linearGradient>
+ </defs>
+ <g stroke="#101316" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="160" cy="267" rx="74" ry="12" fill="#0a0e10" opacity=".33" stroke="none"/>
+ <path d="m154 64 80 35 12 121-82 38-85-36 9-122Z" fill="#52791e"/>
+ <path d="m150 55 82 36 5 121-83 38-80-38 7-121Z" fill="url(#boost-pickup-steel)"/>
+ <path d="m150 72 65 29 5 101-66 31-63-29 5-101Z" fill="#17251d" stroke="#b9ef42" stroke-width="4"/>
+ <path d="m169 88-53 71h36l-17 58 65-87h-38Z" fill="url(#boost-pickup-green)" stroke-width="6"/>
+ <path d="M127 237v9m26-3v11m26-17v10" stroke="#b9ef42" stroke-width="5"/>
+ <path d="m104 107 26-12" stroke="#f1ffc5" stroke-width="4"/>
+ </g>
+</svg>

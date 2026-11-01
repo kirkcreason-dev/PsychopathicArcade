@@ -1,0 +1,334 @@
+{
+  "version": 1,
+  "name": "JCW × ICP — Road to the Show",
+  "phase": "assets-only",
+  "pathBase": "repository root",
+  "art": {
+    "riders": "Separate transparent PNGs, neutral rear view. No atlas cuts or inferred frame grids.",
+    "backgrounds": "Opaque panoramic original art; road and gameplay remain separate.",
+    "generation": "Built-in image generation. Original output alpha is preserved.",
+    "riderPrompts": "assets/racing/riders/prompts.json",
+    "vectorManifest": "assets/racing/vectors/manifest.json",
+    "alphaBoundsThreshold": 8,
+    "anchorConvention": "Normalized full-image coordinates. Rider x=0.5; y=visible alpha bounds bottom/image height. The original image is never recut.",
+    "groundAnchorNote": "Alpha values below 8 are recorded in rawAlphaBounds but excluded from visible clipping and anchor calculations; generated near-invisible speckles can otherwise extend to the image edge.",
+    "backgroundProvenance": "assets/racing/backgrounds/provenance.json"
+  },
+  "budgets": {
+    "maxRiderBytes": 4194304,
+    "maxBackgroundBytes": 6291456,
+    "maxTotalRasterBytes": 25165824,
+    "maxTotalDecodedBytes": 83886080,
+    "minRiderVisiblePadding": 16,
+    "maxImageDimension": 4096
+  },
+  "racers": [
+    {
+      "id": "violent-j",
+      "name": "Violent J",
+      "vehicle": "minibike",
+      "color": "#76cd24",
+      "reference": "assets/rumble/violent-j.webp",
+      "traits": "White/green baseball gear, light-brown swept hair, black-and-white face paint.",
+      "sprite": {
+        "src": "assets/racing/riders/violent-j-bike.png",
+        "pose": "rear-neutral",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 1049439,
+        "sha256": "c86cc8b6bffb3bf32a63dcba48cb0eb2d586e8bcda05722b91531eb029cfee65",
+        "mode": "RGBA",
+        "decodedBytes": 6290064,
+        "status": "ready",
+        "rawAlphaBounds": {
+          "x": 0,
+          "y": 17,
+          "w": 1240,
+          "h": 1237
+        },
+        "alphaBounds": {
+          "x": 276,
+          "y": 32,
+          "w": 705,
+          "h": 1175
+        },
+        "padding": {
+          "left": 276,
+          "top": 32,
+          "right": 273,
+          "bottom": 47
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.96251994
+        }
+      }
+    },
+    {
+      "id": "shaggy-2-dope",
+      "name": "Shaggy 2 Dope",
+      "vehicle": "kart",
+      "color": "#db303d",
+      "reference": "Dark Chaos Carnival supplied shaggy-v2.png",
+      "traits": "Red/black sleeveless jersey, close-cropped hair, black-and-white face paint, tattooed arms.",
+      "sprite": {
+        "src": "assets/racing/riders/shaggy-kart.png",
+        "pose": "rear-neutral",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 1289275,
+        "sha256": "d42a1f67c4ca2619a5bae7b1f8054b04ba7fc56bff4298ee07d933a5145a8162",
+        "mode": "RGBA",
+        "decodedBytes": 6290064,
+        "status": "ready",
+        "rawAlphaBounds": {
+          "x": 0,
+          "y": 9,
+          "w": 1224,
+          "h": 1245
+        },
+        "alphaBounds": {
+          "x": 74,
+          "y": 81,
+          "w": 1106,
+          "h": 1036
+        },
+        "padding": {
+          "left": 74,
+          "top": 81,
+          "right": 74,
+          "bottom": 137
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.8907496
+        }
+      }
+    },
+    {
+      "id": "dani-mo",
+      "name": "Dani Mo",
+      "vehicle": "kart",
+      "color": "#edb843",
+      "reference": "assets/rumble/dani-mo.webp",
+      "traits": "Long blonde hair, green/black wrestling gear with orange/gold trim, tattooed arms.",
+      "sprite": {
+        "src": "assets/racing/riders/dani-mo-kart.png",
+        "pose": "rear-neutral",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 1724655,
+        "sha256": "f45d3389fe3ecf1ffa2a060514d9553c43cf098b15e6071c8af8ca90f52a3209",
+        "mode": "RGBA",
+        "decodedBytes": 6290064,
+        "status": "ready",
+        "rawAlphaBounds": {
+          "x": 0,
+          "y": 31,
+          "w": 1236,
+          "h": 1223
+        },
+        "alphaBounds": {
+          "x": 29,
+          "y": 44,
+          "w": 1196,
+          "h": 1128
+        },
+        "padding": {
+          "left": 29,
+          "top": 44,
+          "right": 29,
+          "bottom": 82
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.93460925
+        }
+      }
+    },
+    {
+      "id": "2-tuff-tony",
+      "name": "2 Tuff Tony",
+      "vehicle": "minibike",
+      "color": "#f78d30",
+      "reference": "assets/rumble/2-tuff-tony.webp",
+      "traits": "Black cowboy hat, dark beard, yellow jersey with star sleeves, black/yellow trousers.",
+      "sprite": {
+        "src": "assets/racing/riders/2-tuff-tony-bike.png",
+        "pose": "rear-neutral",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 978488,
+        "sha256": "3cb134a0e4d7d0f791352ce6ab4a6bf4a251c2479d17cbc8813d4bd20fa20bfe",
+        "mode": "RGBA",
+        "decodedBytes": 6290064,
+        "status": "ready",
+        "rawAlphaBounds": {
+          "x": 17,
+          "y": 35,
+          "w": 1219,
+          "h": 1219
+        },
+        "alphaBounds": {
+          "x": 275,
+          "y": 90,
+          "w": 704,
+          "h": 1089
+        },
+        "padding": {
+          "left": 275,
+          "top": 90,
+          "right": 275,
+          "bottom": 75
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.94019139
+        }
+      }
+    },
+    {
+      "id": "mad-man-pondo",
+      "name": "Mad Man Pondo",
+      "vehicle": "kart",
+      "color": "#aa5bd4",
+      "reference": "Supplied Mad Man Pondo - Roster Shell - 06.07.26.psd composite; data/claw-roster.json",
+      "traits": "Short dark center strip of hair, black jersey with red neckline/sleeve trim, taped wrists, black elbow pads.",
+      "sprite": {
+        "src": "assets/racing/riders/pondo-kart.png",
+        "pose": "rear-neutral",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 1377409,
+        "sha256": "98999dceaf6b3254eb86b4d0092e09d9d202b00c1108cf1541b3ad7eee4ea246",
+        "mode": "RGBA",
+        "decodedBytes": 6290064,
+        "status": "ready",
+        "rawAlphaBounds": {
+          "x": 0,
+          "y": 19,
+          "w": 1236,
+          "h": 1235
+        },
+        "alphaBounds": {
+          "x": 64,
+          "y": 116,
+          "w": 1126,
+          "h": 993
+        },
+        "padding": {
+          "left": 64,
+          "top": 116,
+          "right": 64,
+          "bottom": 145
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.88437002
+        }
+      }
+    },
+    {
+      "id": "big-foot",
+      "name": "Big Foot",
+      "vehicle": "minibike",
+      "color": "#39a9e5",
+      "reference": "assets/rumble/big-foot-source/movement.png",
+      "traits": "Bulky orange/chestnut fur, broad brow, tall hair ridge, exposed brown hands and feet.",
+      "sprite": {
+        "src": "assets/racing/riders/big-foot-bike.png",
+        "pose": "rear-neutral",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 1430599,
+        "sha256": "02b5356230d6198096637546f44986729a346c6601c0aa5688e4a10825de163e",
+        "mode": "RGBA",
+        "decodedBytes": 6290064,
+        "status": "ready",
+        "rawAlphaBounds": {
+          "x": 23,
+          "y": 15,
+          "w": 1221,
+          "h": 1239
+        },
+        "alphaBounds": {
+          "x": 186,
+          "y": 18,
+          "w": 887,
+          "h": 1201
+        },
+        "padding": {
+          "left": 186,
+          "top": 18,
+          "right": 181,
+          "bottom": 35
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.97208931
+        }
+      }
+    }
+  ],
+  "backgrounds": [
+    {
+      "id": "detroit-sunset",
+      "name": "Detroit Sunset",
+      "src": "assets/racing/backgrounds/detroit-sunset-v2.png",
+      "horizon": 0.51,
+      "width": 1774,
+      "height": 887,
+      "bytes": 1958015,
+      "sha256": "66cdd8b8a9f31ee71fd841f3fede7586e012dcb06ad4ba3e946c328d8e4fa94e",
+      "mode": "RGB",
+      "decodedBytes": 6294152,
+      "status": "ready"
+    },
+    {
+      "id": "carnival-night",
+      "name": "Carnival Night",
+      "src": "assets/racing/backgrounds/carnival-night.png",
+      "horizon": 0.45,
+      "width": 1774,
+      "height": 887,
+      "bytes": 2032123,
+      "sha256": "f3fd2c4b357937e57aeb04a6d41918ab1dad40542ab1d9c2cb805f06c18a009a",
+      "mode": "RGB",
+      "decodedBytes": 6294152,
+      "status": "ready"
+    },
+    {
+      "id": "jcw-arena-night",
+      "name": "JCW Arena Night",
+      "src": "assets/racing/backgrounds/jcw-arena-night.png",
+      "horizon": 0.435,
+      "width": 1774,
+      "height": 887,
+      "bytes": 1752534,
+      "sha256": "60655d38208bff23409d5215fe1f7d8a96f32a5adc6b3ca3bd592e3c9a889044",
+      "mode": "RGB",
+      "decodedBytes": 6294152,
+      "status": "ready"
+    }
+  ],
+  "qa": {
+    "status": "pass",
+    "visualApproval": "Approved by root after inspecting all six riders, three selected backgrounds and vector contact sheet",
+    "note": "Technical checks never imply visual approval or authorization to assemble gameplay.",
+    "rasterAssetsReady": 9,
+    "rasterAssetsExpected": 9,
+    "vectorAssets": 20,
+    "totalRasterBytes": 13592537,
+    "totalVectorBytes": 61114,
+    "totalDecodedBytes": 56622840,
+    "errors": [],
+    "warnings": [
+      "Near-invisible alpha below threshold reaches image edge: assets/racing/riders/violent-j-bike.png",
+      "Near-invisible alpha below threshold reaches image edge: assets/racing/riders/shaggy-kart.png",
+      "Near-invisible alpha below threshold reaches image edge: assets/racing/riders/dani-mo-kart.png",
+      "Near-invisible alpha below threshold reaches image edge: assets/racing/riders/2-tuff-tony-bike.png",
+      "Near-invisible alpha below threshold reaches image edge: assets/racing/riders/pondo-kart.png",
+      "Near-invisible alpha below threshold reaches image edge: assets/racing/riders/big-foot-bike.png"
+    ]
+  }
+}

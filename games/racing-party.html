@@ -1,0 +1,16 @@
+<div id="rpModal" class="rp-overlay" role="dialog" aria-modal="true" aria-labelledby="rpTitle" hidden>
+  <section class="rp-panel">
+    <header class="rp-heading"><div><span>ROAD TO THE SHOW · UP TO 8 RIDERS</span><h2 id="rpTitle">ONLINE CONVOY</h2></div><button id="rpCloseBtn" class="rp-icon" aria-label="Close online lobby">×</button></header>
+    <p class="rp-intro">Share a room code, pick your rides, and get ready together.</p>
+    <div class="rp-connect"><button id="rpHostBtn" class="rp-primary">CREATE A ROOM</button><div class="rp-join"><label for="rpRoomInput">JOIN A FRIEND</label><div><input id="rpRoomInput" type="text" maxlength="32" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="RACE-A-ABCDEFGH"><button id="rpJoinBtn" class="rp-secondary">JOIN</button></div></div></div>
+    <div class="rp-room"><output id="rpRoomCode">CREATE OR JOIN A ROOM</output><button id="rpCopyRoom" class="rp-secondary" disabled>COPY</button></div>
+    <div id="rpStatus" class="rp-status" role="status" aria-live="polite"></div>
+    <div class="rp-roster-heading"><strong id="rpCount">0 / 8 RIDERS</strong><span id="rpRoomHint">Pick your ride and get ready after everyone has joined.</span></div>
+    <ul id="rpMembers" class="rp-members" aria-label="Riders in this room"></ul>
+    <details class="rp-manual"><summary>Manual invite codes</summary><p>If room codes cannot connect, exchange an invite and reply. Each invite connects one guest.</p><div class="rp-manual-grid">
+      <div><h3>HOST A RIDER</h3><button id="rpCreateInviteBtn" class="rp-secondary">CREATE GUEST INVITE</button><label for="rpInviteOut">SEND THIS INVITE</label><textarea id="rpInviteOut" rows="3" readonly spellcheck="false" placeholder="Your invite will appear here"></textarea><button id="rpCopyInvite" class="rp-small">COPY INVITE</button><label for="rpReplyIn">PASTE THEIR REPLY</label><textarea id="rpReplyIn" rows="3" spellcheck="false" placeholder="Paste the guest’s reply"></textarea><button id="rpAcceptReplyBtn" class="rp-secondary">CONNECT GUEST</button></div>
+      <div><h3>JOIN THE HOST</h3><label for="rpInviteIn">PASTE THEIR INVITE</label><textarea id="rpInviteIn" rows="3" spellcheck="false" placeholder="Paste the host’s invite"></textarea><button id="rpAcceptInviteBtn" class="rp-secondary">CREATE MY REPLY</button><label for="rpReplyOut">SEND THIS REPLY BACK</label><textarea id="rpReplyOut" rows="3" readonly spellcheck="false" placeholder="Your reply will appear here"></textarea><button id="rpCopyReply" class="rp-small">COPY REPLY</button></div>
+    </div></details>
+    <footer class="rp-footer"><button id="rpBackBtn" class="rp-primary">BACK TO MY RIDE</button><button id="rpLeaveBtn" class="rp-secondary" hidden>LEAVE ROOM</button></footer>
+  </section>
+</div>

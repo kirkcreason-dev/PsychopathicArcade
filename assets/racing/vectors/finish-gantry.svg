@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="512" viewBox="0 0 768 512" role="img" aria-labelledby="finish-gantry-title finish-gantry-desc">
+ <title id="finish-gantry-title">JCW Tonight finish gantry</title>
+ <desc id="finish-gantry-desc">Festival arrival structure with JCW TONIGHT marquee, finish checker strip, bolted steel columns and amber lamps. Center opening is transparent; the racing lane passes beneath.</desc>
+ <defs>
+  <linearGradient id="finish-gantry-steel" x1="0" y1="0" x2="0.8" y2="1"><stop stop-color="#60686c"/><stop offset=".48" stop-color="#333b40"/><stop offset="1" stop-color="#1c2227"/></linearGradient>
+  <linearGradient id="finish-gantry-bone" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff7e6"/><stop offset="1" stop-color="#c5b9a0"/></linearGradient>
+  <linearGradient id="finish-gantry-green" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#d5ff72"/><stop offset=".56" stop-color="#b9ef42"/><stop offset="1" stop-color="#719c26"/></linearGradient>
+  <linearGradient id="finish-gantry-red" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#ee6264"/><stop offset=".5" stop-color="#ce3647"/><stop offset="1" stop-color="#762733"/></linearGradient>
+  <linearGradient id="finish-gantry-gold" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff09e"/><stop offset=".48" stop-color="#f5b94c"/><stop offset="1" stop-color="#a66b29"/></linearGradient>
+ </defs>
+ <g stroke="#101316" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(384.0 256.0) scale(0.99) translate(-384.0 -256.0)">
+ <ellipse cx="384" cy="444" rx="282" ry="7" fill="#0a0e10" opacity=".35" stroke="none"/>
+ <path d="m111 129 38-13v318l-38 8Z" fill="#535e63"/>
+ <path d="M149 116h24v316l-24 2Zm446 0h25v318l-25-2Z" fill="#222b30"/>
+ <path d="m620 116 36 13v313l-36-8Z" fill="#535e63"/>
+ <path d="M111 209h38m-38 48h38m-38 48h38m-38 48h38m-38 48h38m471-192h36m-36 48h36m-36 48h36m-36 48h36m-36 48h36" stroke="#8c9697" stroke-width="7"/>
+ <path d="m115 215 29 36-29 47 29 46-29 48m510-177 26 36-26 47 26 46-26 48" fill="none" stroke-width="5"/>
+ <path d="m102 431 60-8 24 18-4 7h-80Zm503-8 60 8v17h-79l-5-7Z" fill="#737a78" stroke-width="5"/>
+ <path d="m120 91 27-15h473l28 15v123H120Z" fill="#171d21"/>
+ <path d="M141 87h484v66H141Z" fill="url(#finish-gantry-red)" stroke-width="5"/>
+ <text x="383" y="135" text-anchor="middle" font-family="Impact,Arial Black,sans-serif" font-size="43" font-weight="900" letter-spacing="5" fill="#f4ebd6" stroke="#762733" stroke-width="3" paint-order="stroke">JCW TONIGHT</text>
+ <path d="M144 158h480v46H144Z" fill="#101316" stroke-width="3"/>
+ <rect x="147" y="161" width="20" height="20" fill="#f4ebd6" stroke="none"/><rect x="167" y="181" width="20" height="20" fill="#f4ebd6" stroke="none"/><rect x="187" y="161" width="20" height="20" fill="#f4ebd6" stroke="none"/><rect x="207" y="181" width="20" height="20" fill="#f4ebd6" stroke="none"/><rect x="227" y="161" width="20" height="20" fill="#f4ebd6" stroke="none"/><rect x="247" y="181" width="20" height="20" fill="#f4ebd6" stroke="none"/><rect x="267" y="161" width="20" height="20" fill="#f4ebd6" stroke="none"/><rect x="287" y="181" width="20" height="20" fill="#f4ebd6" stroke="none"/><rect x="307" y="161" width="20" height="20" fill="#f4ebd6" stroke="none"/><rect x="327" y="181" width="20" height="20" fill="#f4ebd6" stroke="none"/><rect x="347" y="161" width="20" height="20" fill="#f4ebd6" stroke="none"/><rect x="367" y="181" width="20" height="20" fill="#f4ebd6" stroke="none"/><rect x="387" y="161" width="20" height="20" fill="#f4ebd6" stroke="none"/><rect x="407" y="181" width="20" height="20" fill="#f4ebd6" stroke="none"/><rect x="427" y="161" width="20" height="20" fill="#f4ebd6" stroke="none"/><rect x="447" y="181" width="20" height="20" fill="#f4ebd6" stroke="none"/><rect x="467" y="161" width="20" height="20" fill="#f4ebd6" stroke="none"/><rect x="487" y="181" width="20" height="20" fill="#f4ebd6" stroke="none"/><rect x="507" y="161" width="20" height="20" fill="#f4ebd6" stroke="none"/><rect x="527" y="181" width="20" height="20" fill="#f4ebd6" stroke="none"/><rect x="547" y="161" width="20" height="20" fill="#f4ebd6" stroke="none"/><rect x="567" y="181" width="20" height="20" fill="#f4ebd6" stroke="none"/><rect x="587" y="161" width="20" height="20" fill="#f4ebd6" stroke="none"/><rect x="607" y="181" width="20" height="20" fill="#f4ebd6" stroke="none"/>
+ <path d="M257 160h254v43H257Z" fill="#b9ef42" stroke-width="3"/>
+ <text x="384" y="192" text-anchor="middle" font-family="Impact,Arial Black,sans-serif" font-size="31" font-weight="900" letter-spacing="9" fill="#101316" stroke="none">FINISH</text>
+ <path d="M159 66h20v12h-20zm431 0h20v12h-20Z" fill="#f5b94c" stroke-width="5"/>
+ <path d="M124 228h11v164h-11Zm511 0h11v164h-11Z" fill="#b9ef42" stroke="none"/>
+ <circle cx="129" cy="107" r="5" fill="#f4ebd6" stroke-width="2"/><path d="M126.75 107h4.5" fill="none" stroke-width="1.5"/><circle cx="638" cy="107" r="5" fill="#f4ebd6" stroke-width="2"/><path d="M635.75 107h4.5" fill="none" stroke-width="1.5"/><circle cx="129" cy="200" r="5" fill="#f4ebd6" stroke-width="2"/><path d="M126.75 200h4.5" fill="none" stroke-width="1.5"/><circle cx="638" cy="200" r="5" fill="#f4ebd6" stroke-width="2"/><path d="M635.75 200h4.5" fill="none" stroke-width="1.5"/></g></g>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="256" viewBox="0 0 512 256" role="img" aria-labelledby="checkpoint-banner-title checkpoint-banner-desc">
+ <title id="checkpoint-banner-title">Checkpoint banner</title>
+ <desc id="checkpoint-banner-desc">Toxic green timing banner stretched between two short steel track posts, with checkerboard ends. Place across the track using the central ground anchor.</desc>
+ <defs>
+  <linearGradient id="checkpoint-banner-steel" x1="0" y1="0" x2="0.8" y2="1"><stop stop-color="#60686c"/><stop offset=".48" stop-color="#333b40"/><stop offset="1" stop-color="#1c2227"/></linearGradient>
+  <linearGradient id="checkpoint-banner-bone" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff7e6"/><stop offset="1" stop-color="#c5b9a0"/></linearGradient>
+  <linearGradient id="checkpoint-banner-green" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#d5ff72"/><stop offset=".56" stop-color="#b9ef42"/><stop offset="1" stop-color="#719c26"/></linearGradient>
+  <linearGradient id="checkpoint-banner-red" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#ee6264"/><stop offset=".5" stop-color="#ce3647"/><stop offset="1" stop-color="#762733"/></linearGradient>
+  <linearGradient id="checkpoint-banner-gold" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff09e"/><stop offset=".48" stop-color="#f5b94c"/><stop offset="1" stop-color="#a66b29"/></linearGradient>
+ </defs>
+ <g stroke="#101316" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+ <ellipse cx="256" cy="216" rx="190" ry="8" fill="#0a0e10" opacity=".3" stroke="none"/>
+ <path d="M75 70h14v142H75zm348 0h14v142h-14Z" fill="url(#checkpoint-banner-steel)" stroke-width="5"/>
+ <path d="M66 210h34v12H66zm348 0h34v12h-34Z" fill="#697270" stroke-width="4"/>
+ <path d="M70 43h372v70H70Z" fill="#171d21"/>
+ <path d="M153 43h206v70H153Z" fill="url(#checkpoint-banner-green)" stroke-width="4"/>
+ <rect x="78" y="49" width="14" height="14" fill="#f4ebd6" stroke="none"/><rect x="78" y="77" width="14" height="14" fill="#f4ebd6" stroke="none"/><rect x="92" y="63" width="14" height="14" fill="#f4ebd6" stroke="none"/><rect x="92" y="91" width="14" height="14" fill="#f4ebd6" stroke="none"/><rect x="106" y="49" width="14" height="14" fill="#f4ebd6" stroke="none"/><rect x="106" y="77" width="14" height="14" fill="#f4ebd6" stroke="none"/><rect x="120" y="63" width="14" height="14" fill="#f4ebd6" stroke="none"/><rect x="120" y="91" width="14" height="14" fill="#f4ebd6" stroke="none"/><rect x="134" y="49" width="14" height="14" fill="#f4ebd6" stroke="none"/><rect x="134" y="77" width="14" height="14" fill="#f4ebd6" stroke="none"/><rect x="148" y="63" width="14" height="14" fill="#f4ebd6" stroke="none"/><rect x="148" y="91" width="14" height="14" fill="#f4ebd6" stroke="none"/><rect x="358" y="49" width="14" height="14" fill="#f4ebd6" stroke="none"/><rect x="358" y="77" width="14" height="14" fill="#f4ebd6" stroke="none"/><rect x="372" y="63" width="14" height="14" fill="#f4ebd6" stroke="none"/><rect x="372" y="91" width="14" height="14" fill="#f4ebd6" stroke="none"/><rect x="386" y="49" width="14" height="14" fill="#f4ebd6" stroke="none"/><rect x="386" y="77" width="14" height="14" fill="#f4ebd6" stroke="none"/><rect x="400" y="63" width="14" height="14" fill="#f4ebd6" stroke="none"/><rect x="400" y="91" width="14" height="14" fill="#f4ebd6" stroke="none"/><rect x="414" y="49" width="14" height="14" fill="#f4ebd6" stroke="none"/><rect x="414" y="77" width="14" height="14" fill="#f4ebd6" stroke="none"/><rect x="428" y="63" width="14" height="14" fill="#f4ebd6" stroke="none"/><rect x="428" y="91" width="14" height="14" fill="#f4ebd6" stroke="none"/>
+ <text x="256" y="88" text-anchor="middle" font-family="Impact,Arial Black,sans-serif" font-size="27" font-weight="900" letter-spacing="1" fill="#101316" stroke="none">CHECKPOINT</text>
+ <path d="M168 102h176" stroke="#52791e" stroke-width="3"/>
+ <circle cx="82" cy="52" r="4" fill="#f4ebd6" stroke-width="2"/><path d="M80.2 52h3.6" fill="none" stroke-width="1.5"/><circle cx="430" cy="52" r="4" fill="#f4ebd6" stroke-width="2"/><path d="M428.2 52h3.6" fill="none" stroke-width="1.5"/></g>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320" role="img" aria-labelledby="traffic-cone-title traffic-cone-desc">
+ <title id="traffic-cone-title">Crimson traffic cone</title>
+ <desc id="traffic-cone-desc">Wide rubber base and crimson cone with high-visibility bone stripes. Thick outlines keep the hazard readable at racing scale.</desc>
+ <defs>
+  <linearGradient id="traffic-cone-steel" x1="0" y1="0" x2="0.8" y2="1"><stop stop-color="#60686c"/><stop offset=".48" stop-color="#333b40"/><stop offset="1" stop-color="#1c2227"/></linearGradient>
+  <linearGradient id="traffic-cone-bone" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff7e6"/><stop offset="1" stop-color="#c5b9a0"/></linearGradient>
+  <linearGradient id="traffic-cone-green" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#d5ff72"/><stop offset=".56" stop-color="#b9ef42"/><stop offset="1" stop-color="#719c26"/></linearGradient>
+  <linearGradient id="traffic-cone-red" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#ee6264"/><stop offset=".5" stop-color="#ce3647"/><stop offset="1" stop-color="#762733"/></linearGradient>
+  <linearGradient id="traffic-cone-gold" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff09e"/><stop offset=".48" stop-color="#f5b94c"/><stop offset="1" stop-color="#a66b29"/></linearGradient>
+ </defs>
+ <g stroke="#101316" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(160.0 160.0) scale(0.98) translate(-160.0 -160.0)"><ellipse cx="160" cy="267" rx="106" ry="12" fill="#0a0e10" opacity=".33" stroke="none"/>
+ <path d="m56 240 100-20 108 21v23l-101 15-107-15Z" fill="#20272b"/>
+ <path d="m56 240 100-20 108 21-101 18Z" fill="#4a5458" stroke-width="5"/>
+ <path d="m107 233 35-151q3-10 18-10t19 10l38 151q-53 20-110 0Z" fill="url(#traffic-cone-red)"/>
+ <path d="m132 126-8 33q37 10 70 0l-8-33q-25 7-54 0Z" fill="url(#traffic-cone-bone)" stroke-width="4"/>
+ <path d="m116 194-8 33q57 21 108 0l-8-33q-45 14-92 0Z" fill="url(#traffic-cone-bone)" stroke-width="4"/>
+ <path d="m150 92-6 20m-24 67-2 8" fill="none" stroke="#ff9b83" stroke-width="5"/>
+ </g></g>
+</svg>

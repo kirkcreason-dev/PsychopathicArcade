@@ -1,0 +1,5 @@
+Use case: precise-object-edit
+Asset type: opaque panoramic arcade racing backdrop, alignment correction.
+Edit target: the supplied Detroit industrial sunset panorama.
+Change only its composition: move the entire existing skyline upward so the horizontal ground seam at the BASES of the buildings is exactly 45 percent down the final image, instead of approximately 64 percent. Keep every building's proportions and the same colorful hand-painted arcade art; do not squash the buildings. Preserve the entire industrial skyline and warm sunset atmosphere. The skyline should rise above this 45-percent ground line. Extend the unobtrusive dark teal open ground to fill the lower 55 percent, with low-contrast restrained terrain texture and no roads. Keep the center foreground simple.
+Preserve: the 2:1 wide aspect ratio, opaque edge-to-edge image, recognizable Detroit-inspired factories and towers, orange/crimson sunset, teal sky and shadows, chunky painted style, no people, no vehicles, no text, no logos, no Faygo, no roads, no paths, no interface or borders. This is the same backdrop with an aligned horizon, not a new scene.

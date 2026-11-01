@@ -1,0 +1,430 @@
+{
+  "version": 1,
+  "sourceManifestSha256": "e235b974849772df6fc9a7c87be129ad8613421304608eccc7d889287414ae10",
+  "vectorManifestSha256": "71ca1b5e33c5ded2e5a3ad6fd60571664965e13686758499fc8a7f049f6055c1",
+  "conversion": {
+    "method": "Canvas downsample and WebP encoding only; full source rectangle, unchanged composition and alpha.",
+    "engine": "156.0.8078.74",
+    "config": {
+      "rider": {
+        "width": 512,
+        "height": 512,
+        "quality": 0.9
+      },
+      "background": {
+        "width": 1200,
+        "height": 600,
+        "quality": 0.88
+      }
+    }
+  },
+  "riders": {
+    "violent-j": {
+      "id": "violent-j",
+      "src": "assets/racing/runtime/violent-j.webp",
+      "width": 512,
+      "height": 512,
+      "bytes": 46186,
+      "sha256": "ccf2114df7dd8d5cc47f07c41c3ea62d729b21a82441cde9b1527c94d95e064b",
+      "mime": "image/webp",
+      "quality": 0.9,
+      "decodedBytes": 1048576,
+      "alphaBounds": {
+        "x": 112,
+        "y": 13,
+        "w": 289,
+        "h": 480
+      },
+      "rawAlphaBounds": {
+        "x": 76,
+        "y": 12,
+        "w": 401,
+        "h": 482
+      },
+      "alpha": {
+        "transparent": 177816,
+        "opaque": 0,
+        "partial": 84328,
+        "solid": 77946,
+        "maxDownsampleAlphaDifference": 0
+      },
+      "padding": {
+        "left": 112,
+        "top": 13,
+        "right": 111,
+        "bottom": 19
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.96251994
+      },
+      "original": {
+        "src": "assets/racing/riders/violent-j-bike.png",
+        "sha256": "c86cc8b6bffb3bf32a63dcba48cb0eb2d586e8bcda05722b91531eb029cfee65",
+        "width": 1254,
+        "height": 1254
+      }
+    },
+    "shaggy-2-dope": {
+      "id": "shaggy-2-dope",
+      "src": "assets/racing/runtime/shaggy-2-dope.webp",
+      "width": 512,
+      "height": 512,
+      "bytes": 53058,
+      "sha256": "3700422a432e867eaf8830809fa69b4fd46ccc59f5d79af4b074758115341125",
+      "mime": "image/webp",
+      "quality": 0.9,
+      "decodedBytes": 1048576,
+      "alphaBounds": {
+        "x": 30,
+        "y": 33,
+        "w": 452,
+        "h": 423
+      },
+      "rawAlphaBounds": {
+        "x": 23,
+        "y": 32,
+        "w": 460,
+        "h": 480
+      },
+      "alpha": {
+        "transparent": 150602,
+        "opaque": 0,
+        "partial": 111542,
+        "solid": 105070,
+        "maxDownsampleAlphaDifference": 0
+      },
+      "padding": {
+        "left": 30,
+        "top": 33,
+        "right": 30,
+        "bottom": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8907496
+      },
+      "original": {
+        "src": "assets/racing/riders/shaggy-kart.png",
+        "sha256": "d42a1f67c4ca2619a5bae7b1f8054b04ba7fc56bff4298ee07d933a5145a8162",
+        "width": 1254,
+        "height": 1254
+      }
+    },
+    "dani-mo": {
+      "id": "dani-mo",
+      "src": "assets/racing/runtime/dani-mo.webp",
+      "width": 512,
+      "height": 512,
+      "bytes": 70354,
+      "sha256": "7b1486fa0ae45dfd173b9d78f4c81cd45de90d17c2633559f589bb0a86ef5480",
+      "mime": "image/webp",
+      "quality": 0.9,
+      "decodedBytes": 1048576,
+      "alphaBounds": {
+        "x": 11,
+        "y": 18,
+        "w": 490,
+        "h": 461
+      },
+      "rawAlphaBounds": {
+        "x": 10,
+        "y": 17,
+        "w": 491,
+        "h": 474
+      },
+      "alpha": {
+        "transparent": 118266,
+        "opaque": 0,
+        "partial": 143878,
+        "solid": 137398,
+        "maxDownsampleAlphaDifference": 0
+      },
+      "padding": {
+        "left": 11,
+        "top": 18,
+        "right": 11,
+        "bottom": 33
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93460925
+      },
+      "original": {
+        "src": "assets/racing/riders/dani-mo-kart.png",
+        "sha256": "f45d3389fe3ecf1ffa2a060514d9553c43cf098b15e6071c8af8ca90f52a3209",
+        "width": 1254,
+        "height": 1254
+      }
+    },
+    "2-tuff-tony": {
+      "id": "2-tuff-tony",
+      "src": "assets/racing/runtime/2-tuff-tony.webp",
+      "width": 512,
+      "height": 512,
+      "bytes": 42770,
+      "sha256": "7368ac9c883c94666d664a69687b3e2b03ba99e6c44e1cd093501947497cca48",
+      "mime": "image/webp",
+      "quality": 0.9,
+      "decodedBytes": 1048576,
+      "alphaBounds": {
+        "x": 112,
+        "y": 36,
+        "w": 288,
+        "h": 446
+      },
+      "rawAlphaBounds": {
+        "x": 111,
+        "y": 36,
+        "w": 366,
+        "h": 447
+      },
+      "alpha": {
+        "transparent": 181228,
+        "opaque": 0,
+        "partial": 80916,
+        "solid": 74663,
+        "maxDownsampleAlphaDifference": 0
+      },
+      "padding": {
+        "left": 112,
+        "top": 36,
+        "right": 112,
+        "bottom": 30
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.94019139
+      },
+      "original": {
+        "src": "assets/racing/riders/2-tuff-tony-bike.png",
+        "sha256": "3cb134a0e4d7d0f791352ce6ab4a6bf4a251c2479d17cbc8813d4bd20fa20bfe",
+        "width": 1254,
+        "height": 1254
+      }
+    },
+    "mad-man-pondo": {
+      "id": "mad-man-pondo",
+      "src": "assets/racing/runtime/mad-man-pondo.webp",
+      "width": 512,
+      "height": 512,
+      "bytes": 51920,
+      "sha256": "e21a6ae4064bba760dc5b0122bf9687a7023aad6fcca316c984f0aac42d35bb0",
+      "mime": "image/webp",
+      "quality": 0.9,
+      "decodedBytes": 1048576,
+      "alphaBounds": {
+        "x": 26,
+        "y": 47,
+        "w": 460,
+        "h": 406
+      },
+      "rawAlphaBounds": {
+        "x": 25,
+        "y": 10,
+        "w": 463,
+        "h": 498
+      },
+      "alpha": {
+        "transparent": 145569,
+        "opaque": 0,
+        "partial": 116575,
+        "solid": 109210,
+        "maxDownsampleAlphaDifference": 0
+      },
+      "padding": {
+        "left": 26,
+        "top": 47,
+        "right": 26,
+        "bottom": 59
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.88437002
+      },
+      "original": {
+        "src": "assets/racing/riders/pondo-kart.png",
+        "sha256": "98999dceaf6b3254eb86b4d0092e09d9d202b00c1108cf1541b3ad7eee4ea246",
+        "width": 1254,
+        "height": 1254
+      }
+    },
+    "big-foot": {
+      "id": "big-foot",
+      "src": "assets/racing/runtime/big-foot.webp",
+      "width": 512,
+      "height": 512,
+      "bytes": 64080,
+      "sha256": "989d33d54b0ef5b5048df52b63ac0aa65e8310226680ee61da6d91013797043d",
+      "mime": "image/webp",
+      "quality": 0.9,
+      "decodedBytes": 1048576,
+      "alphaBounds": {
+        "x": 76,
+        "y": 7,
+        "w": 363,
+        "h": 491
+      },
+      "rawAlphaBounds": {
+        "x": 20,
+        "y": 7,
+        "w": 448,
+        "h": 493
+      },
+      "alpha": {
+        "transparent": 152207,
+        "opaque": 0,
+        "partial": 109937,
+        "solid": 99875,
+        "maxDownsampleAlphaDifference": 0
+      },
+      "padding": {
+        "left": 76,
+        "top": 7,
+        "right": 73,
+        "bottom": 14
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.97208931
+      },
+      "original": {
+        "src": "assets/racing/riders/big-foot-bike.png",
+        "sha256": "02b5356230d6198096637546f44986729a346c6601c0aa5688e4a10825de163e",
+        "width": 1254,
+        "height": 1254
+      }
+    }
+  },
+  "backgrounds": [
+    {
+      "id": "detroit-sunset",
+      "src": "assets/racing/runtime/detroit-sunset.webp",
+      "width": 1200,
+      "height": 600,
+      "bytes": 115612,
+      "sha256": "3851d75ddecfdd101cb246e31a3fd57f9f995636a607ed77f94facfd86c70bdf",
+      "mime": "image/webp",
+      "quality": 0.88,
+      "decodedBytes": 2880000,
+      "alphaBounds": {
+        "x": 0,
+        "y": 0,
+        "w": 1200,
+        "h": 600
+      },
+      "rawAlphaBounds": {
+        "x": 0,
+        "y": 0,
+        "w": 1200,
+        "h": 600
+      },
+      "alpha": {
+        "transparent": 0,
+        "opaque": 720000,
+        "partial": 0,
+        "solid": 720000,
+        "maxDownsampleAlphaDifference": 0
+      },
+      "padding": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "horizon": 0.51,
+      "original": {
+        "src": "assets/racing/backgrounds/detroit-sunset-v2.png",
+        "sha256": "66cdd8b8a9f31ee71fd841f3fede7586e012dcb06ad4ba3e946c328d8e4fa94e",
+        "width": 1774,
+        "height": 887
+      }
+    },
+    {
+      "id": "carnival-night",
+      "src": "assets/racing/runtime/carnival-night.webp",
+      "width": 1200,
+      "height": 600,
+      "bytes": 104254,
+      "sha256": "409faf6ec40623ad8b03b41fadd0beb262785db82b579e2866589ad425b07b33",
+      "mime": "image/webp",
+      "quality": 0.88,
+      "decodedBytes": 2880000,
+      "alphaBounds": {
+        "x": 0,
+        "y": 0,
+        "w": 1200,
+        "h": 600
+      },
+      "rawAlphaBounds": {
+        "x": 0,
+        "y": 0,
+        "w": 1200,
+        "h": 600
+      },
+      "alpha": {
+        "transparent": 0,
+        "opaque": 720000,
+        "partial": 0,
+        "solid": 720000,
+        "maxDownsampleAlphaDifference": 0
+      },
+      "padding": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "horizon": 0.45,
+      "original": {
+        "src": "assets/racing/backgrounds/carnival-night.png",
+        "sha256": "f3fd2c4b357937e57aeb04a6d41918ab1dad40542ab1d9c2cb805f06c18a009a",
+        "width": 1774,
+        "height": 887
+      }
+    },
+    {
+      "id": "jcw-arena-night",
+      "src": "assets/racing/runtime/jcw-arena-night.webp",
+      "width": 1200,
+      "height": 600,
+      "bytes": 75334,
+      "sha256": "bd629aa6e4a9c728d399a28fa0bf29dd96a3d906bcdebbf9e456ca4cea18392c",
+      "mime": "image/webp",
+      "quality": 0.88,
+      "decodedBytes": 2880000,
+      "alphaBounds": {
+        "x": 0,
+        "y": 0,
+        "w": 1200,
+        "h": 600
+      },
+      "rawAlphaBounds": {
+        "x": 0,
+        "y": 0,
+        "w": 1200,
+        "h": 600
+      },
+      "alpha": {
+        "transparent": 0,
+        "opaque": 720000,
+        "partial": 0,
+        "solid": 720000,
+        "maxDownsampleAlphaDifference": 0
+      },
+      "padding": {
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "horizon": 0.435,
+      "original": {
+        "src": "assets/racing/backgrounds/jcw-arena-night.png",
+        "sha256": "60655d38208bff23409d5215fe1f7d8a96f32a5adc6b3ca3bd592e3c9a889044",
+        "width": 1774,
+        "height": 887
+      }
+    }
+  ]
+}

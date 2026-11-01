@@ -1,0 +1,39 @@
+#recordsBtn{ margin:14px auto 0; display:flex; align-items:center; gap:10px; justify-content:center;
+  width:min(420px,92%); font-size:14px; padding:12px 18px; }
+#recordsBtn img{ height:26px; }
+#lbModal{ position:fixed; inset:0; z-index:62; display:grid; place-items:center; background:rgba(0,0,0,.86); }
+#lbModal[hidden]{ display:none; }
+.lb-card{ position:relative; width:min(470px,94vw); max-height:92vh; overflow:auto; text-align:center;
+  background:#0b0b0d; border:3px solid var(--yellow); border-radius:16px; padding:18px 20px;
+  box-shadow:0 0 0 3px #000, 0 0 0 5px var(--yellow-d), 0 0 60px -10px var(--yellow), 0 26px 70px rgba(0,0,0,.8);
+  animation:cardIn .4s cubic-bezier(.2,1.4,.4,1); }
+.lb-card .lb-trophy{ height:52px; display:block; margin:0 auto 4px; }
+#lbGameName{ font-size:24px; }
+#lbMetric{ font-size:10px; letter-spacing:.26em; color:#77778a; margin:4px 0 10px; }
+#lbTabs{ display:flex; flex-wrap:wrap; gap:5px; justify-content:center; margin-bottom:10px; }
+#lbTabs button{ font-family:var(--display); font-size:10px; letter-spacing:.06em; cursor:pointer;
+  background:#121216; color:#9a9aa5; border:1px solid var(--edge); border-radius:6px; padding:5px 8px; }
+#lbTabs button.on{ background:var(--yellow); color:#231b00; border-color:var(--yellow); }
+#lbRows{ display:flex; flex-direction:column; gap:3px; min-height:120px; }
+.lb-row{ display:grid; grid-template-columns:34px 64px 1fr auto; gap:8px; align-items:center;
+  background:#101014; border:1px solid #1c1c22; border-radius:7px; padding:6px 10px;
+  font-family:var(--display); letter-spacing:.05em; font-size:14px; text-align:left; }
+.lb-row .rk{ color:#77778a; } .lb-row:nth-child(1) .rk{ color:var(--yellow); }
+.lb-row:nth-child(2) .rk{ color:#cfcfd8; } .lb-row:nth-child(3) .rk{ color:#c88a4a; }
+.lb-row .nm{ color:var(--pink-hi); letter-spacing:.2em; }
+.lb-row .vl{ color:#fff; text-align:right; }
+.lb-row .tg{ color:#63636f; font-size:10px; letter-spacing:.14em; }
+.lb-row.fresh{ border-color:var(--green); box-shadow:0 0 16px -4px var(--green); animation:tickIn .3s ease-out; }
+.lb-empty{ color:#63636f; font-size:12px; letter-spacing:.12em; padding:30px 0; }
+#lbEntry{ margin-top:12px; border-top:1px solid var(--edge); padding-top:12px; }
+#lbEntry[hidden]{ display:none; }
+#lbEntryTitle{ font-size:16px; }
+#lbInitials{ width:120px; margin:10px auto; display:block; background:#101014; color:var(--green-hi);
+  border:2px solid var(--green-d); border-radius:9px; font-family:var(--display); font-size:28px;
+  letter-spacing:.4em; text-indent:.2em; text-align:center; padding:8px 0 8px 8px; text-transform:uppercase; }
+#lbInitials:focus{ outline:none; border-color:var(--green); }
+.lb-close{ position:absolute; top:10px; right:12px; background:none; border:0; color:#77778a; cursor:pointer;
+  font-family:var(--display); font-size:18px; }
+.lb-close:hover{ color:#fff; }
+.ctl .img-btn.lb-mini img{ height:30px; }
+#lbModal [hidden]{display:none!important}.lb-card{max-height:calc(100dvh - 24px);overscroll-behavior:contain}.lb-close{min-width:40px;min-height:40px;top:4px;right:4px}#lbGameName{display:block;padding-inline:14px;line-height:1.15}#lbSources{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:12px 0}#lbSources button{min-height:44px;border:1px solid #5d5963;border-radius:7px;background:#15151a;color:#c6c2cd;font:800 12px Arial,sans-serif;cursor:pointer}#lbSources button[aria-selected="true"]{background:var(--yellow);color:#1a1504;border-color:var(--yellow)}#lbCloudStatus{font:12px/1.45 Arial,sans-serif;color:#c8c4d0;padding:7px 2px 12px;overflow-wrap:anywhere}#lbSharedTools{margin-bottom:10px}#lbRefresh{font-size:11px;min-height:36px}#lbTabs{max-height:130px;overflow-y:auto;padding:3px}#lbTabs button{min-height:30px}#lbOwn{margin-top:14px;border-top:1px solid #4c493e;padding-top:10px}.lb-own-title{font:800 10px Arial,sans-serif;color:#cac9ab;margin-bottom:7px}.lb-row.shared{grid-template-columns:27px minmax(0,1fr) auto;row-gap:3px;min-height:46px;padding:8px}.lb-row.shared .nm{grid-column:2;grid-row:1;font:800 12px/1.3 Arial,sans-serif;letter-spacing:0;color:#f1e1a0;overflow-wrap:anywhere}.lb-row.shared .tg{grid-column:2;grid-row:2;letter-spacing:0;font:10px/1.3 Arial,sans-serif;overflow-wrap:anywhere}.lb-row.shared .vl{grid-column:3;grid-row:1 / 3;font-size:14px}.lb-row.shared .rk{grid-row:1 / 3;font:800 10px Arial,sans-serif}.lb-row.shared.own{border-color:#6d9255;background:#152016}#lbSources button:focus-visible,#lbTabs button:focus-visible,#lbRefresh:focus-visible{outline:3px solid var(--green);outline-offset:2px}@media(max-width:400px){.lb-card{padding:16px 10px;border-width:2px}.lb-card .lb-trophy{height:36px}#lbGameName{font-size:21px}#lbMetric{font-size:9px;letter-spacing:.08em}#lbTabs{max-height:110px}#lbSources button{font-size:11px}.lb-row{grid-template-columns:20px 45px 1fr auto;gap:5px;padding:6px;font-size:13px}.lb-row .tg{font-size:9px;letter-spacing:0}.lb-row.shared .vl{font-size:12px}}
