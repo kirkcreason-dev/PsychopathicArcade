@@ -133,6 +133,8 @@ test('braking into a turn charges the drift meter and releasing awards the adver
     for (const [key, code] of [['ArrowRight', 'ArrowRight'], ['ArrowDown', 'ArrowDown']]) document.body.dispatchEvent(new KeyboardEvent('keyup', { key, code, bubbles: true }));
     ARCADE.RACING.debug.advance(.05);
     const s = ARCADE.RACING.state;
+    // Freeze after the award so a later roadside pickup cannot replace its UI message.
+    ARCADE.RACING.pause(true);
     return { racer: s.racers[0], event: s.events.findLast(e => e.type === 'drift' && e.racer === 0) };
   });
   expect(released.racer.drifting).toBe(false); expect(released.racer.driftCharge).toBe(0); expect(released.racer.driftTurbo).toBeGreaterThan(0);

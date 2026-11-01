@@ -316,7 +316,7 @@ test('racing disconnects preserve the guest viewpoint and award no result', asyn
 });
 
 
-test('RACER room codes complete automatic signaling with real local racing peers', async ({ browser, baseURL }) => {
+test('legacy RACER room codes complete automatic signaling with real local racing peers', async ({ browser, baseURL }) => {
   test.setTimeout(60000);
   const { host, join, pages, errors } = await createPeers(browser, baseURL), retained = new Map(), subscribers = new Map();
   try {
@@ -342,10 +342,12 @@ test('RACER room codes complete automatic signaling with real local racing peers
         m.close = () => { m.ready = false; subs.clear(); void racingBroker({ op: 'close' }); };
       });
     }
-    await host.locator('#rcNetBtn').click(); await host.locator('#netRoomBtn').click();
+    // The racing ONLINE button now opens the eight-player party lobby. Exercise
+    // the retained two-peer signaling API explicitly; party UI has its own suite.
+    await host.evaluate(async () => { ARCADE.NET.state.game = 'racing'; await ARCADE.NET.createRoom(); });
     await expect(host.locator('#netRoomCode')).toHaveText(/^RACER-\d{6}$/);
     const code = await host.locator('#netRoomCode').textContent();
-    await join.locator('#rcNetBtn').click(); await join.locator('#netRoomIn').fill(code); await join.locator('#netJoinRoomBtn').click();
+    await join.evaluate(code => ARCADE.NET.joinRoom(code), code);
     for (const page of pages) await page.waitForFunction(() => ARCADE.NET.state.session && ARCADE.RACING.netState()?.synced);
     await ready(host, join); await pauseBoth(host, join);
     expect(await world(join)).toEqual(await world(host)); expect(errors).toEqual([]);
