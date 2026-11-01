@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="brake-icon-title brake-icon-desc">
+ <title id="brake-icon-title">Brake</title>
+ <desc id="brake-icon-desc">Crimson brake disc with opposing bone calipers and a clear dark center. Compact control icon.</desc>
+ <defs>
+  <linearGradient id="brake-icon-steel" x1="0" y1="0" x2="0.8" y2="1"><stop stop-color="#60686c"/><stop offset=".48" stop-color="#333b40"/><stop offset="1" stop-color="#1c2227"/></linearGradient>
+  <linearGradient id="brake-icon-bone" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff7e6"/><stop offset="1" stop-color="#c5b9a0"/></linearGradient>
+  <linearGradient id="brake-icon-green" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#d5ff72"/><stop offset=".56" stop-color="#b9ef42"/><stop offset="1" stop-color="#719c26"/></linearGradient>
+  <linearGradient id="brake-icon-red" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#ee6264"/><stop offset=".5" stop-color="#ce3647"/><stop offset="1" stop-color="#762733"/></linearGradient>
+  <linearGradient id="brake-icon-gold" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff09e"/><stop offset=".48" stop-color="#f5b94c"/><stop offset="1" stop-color="#a66b29"/></linearGradient>
+ </defs>
+ <g stroke="#101316" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(64.0 64.0) scale(0.97) translate(-64.0 -64.0)"><circle cx="64" cy="66" r="45" fill="#101316" stroke="none"/><circle cx="64" cy="62" r="44" fill="url(#brake-icon-red)" stroke="#101316" stroke-width="5"/><path d="M31 42a37 37 0 0 1 63-2" fill="none" stroke="#ff9c8c" stroke-width="3"/>
+ <circle cx="64" cy="62" r="19" fill="#101316" stroke="#f4ebd6" stroke-width="7"/>
+ <path d="M38 43q-10 20 0 38m52-38q10 20 0 38" stroke="#f4ebd6" stroke-width="7" fill="none"/>
+ <path d="M64 51v15m0 9v1" stroke="#f4ebd6" stroke-width="5"/>
+ </g></g>
+</svg>

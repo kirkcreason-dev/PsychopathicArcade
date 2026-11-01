@@ -1,0 +1,702 @@
+{
+  "pack": "Road to the Show — native vector pack",
+  "version": 1,
+  "phase": "assets-only; not integrated into gameplay",
+  "license": "Original artwork created for this project; user-supplied JCW and ICP names are plain text. No external logos or third-party artwork embedded.",
+  "palette": {
+    "ink": "#101316",
+    "charcoal": "#252b2e",
+    "metal": "#596065",
+    "bone": "#f4ebd6",
+    "green": "#b9ef42",
+    "greenDark": "#52791e",
+    "red": "#ce3647",
+    "redDark": "#762733",
+    "amber": "#f5b94c",
+    "asphalt": "#303538",
+    "dirt": "#95633f"
+  },
+  "rendering": {
+    "format": "SVG",
+    "filters": false,
+    "externalResources": false,
+    "isolatedAssetPadding": "At least 12% transparent margin, excluding tile textures. Ground shadows included inside the safe bounds.",
+    "worldAssetAnchor": "Use anchor.x/y as the ground contact point; main front-view props share a normalized [0.5,0.875] ground anchor.",
+    "iconAnchor": "Control icons use [0.5,0.5] for centered button placement.",
+    "textureAnchor": "Surface tiles use [0,0] and fill the canvas.",
+    "text": "Native SVG text uses system Impact/Arial Black/sans-serif fallback. All important labels are spelled out; no font download is required.",
+    "separateFiles": "Each object is an independent image, so no atlas clipping or sprite cuts are needed."
+  },
+  "assets": [
+    {
+      "id": "road-to-the-show-logo",
+      "file": "road-to-the-show-logo.svg",
+      "title": "JCW × ICP · Road to the Show",
+      "description": "Original typography, a mischievous jester mask, racing pennants and a bolted blacktop plaque. Transparent title artwork, no borrowed band insignia.",
+      "width": 768,
+      "height": 368,
+      "viewBox": [
+        0,
+        0,
+        768,
+        368
+      ],
+      "anchor": {
+        "x": 384,
+        "y": 322,
+        "normalized": [
+          0.5,
+          0.875
+        ]
+      },
+      "safeInset": 0.12,
+      "orientation": "front view, slight right-side depth",
+      "group": "Identity",
+      "transparent": true,
+      "tileable": false,
+      "alphaBounds": [
+        94,
+        47,
+        674,
+        320
+      ]
+    },
+    {
+      "id": "checkpoint-banner",
+      "file": "checkpoint-banner.svg",
+      "title": "Checkpoint banner",
+      "description": "Toxic green timing banner stretched between two short steel track posts, with checkerboard ends. Place across the track using the central ground anchor.",
+      "width": 512,
+      "height": 256,
+      "viewBox": [
+        0,
+        0,
+        512,
+        256
+      ],
+      "anchor": {
+        "x": 256,
+        "y": 224,
+        "normalized": [
+          0.5,
+          0.875
+        ]
+      },
+      "safeInset": 0.12,
+      "orientation": "front view, slight right-side depth",
+      "group": "Track props",
+      "transparent": true,
+      "tileable": false,
+      "alphaBounds": [
+        64,
+        39,
+        450,
+        224
+      ]
+    },
+    {
+      "id": "finish-gantry",
+      "file": "finish-gantry.svg",
+      "title": "JCW Tonight finish gantry",
+      "description": "Festival arrival structure with JCW TONIGHT marquee, finish checker strip, bolted steel columns and amber lamps. Center opening is transparent; the racing lane passes beneath.",
+      "width": 768,
+      "height": 512,
+      "viewBox": [
+        0,
+        0,
+        768,
+        512
+      ],
+      "anchor": {
+        "x": 384,
+        "y": 448,
+        "normalized": [
+          0.5,
+          0.875
+        ]
+      },
+      "safeInset": 0.12,
+      "orientation": "front view, slight right-side depth",
+      "group": "Track props",
+      "transparent": true,
+      "tileable": false,
+      "alphaBounds": [
+        102,
+        65,
+        665,
+        450
+      ]
+    },
+    {
+      "id": "tire-stack",
+      "file": "tire-stack.svg",
+      "title": "Trackside tire stack",
+      "description": "Three thick racing tires with offset tread, visible rubber highlights and an elliptical top opening. Grounded frontal three-quarter prop.",
+      "width": 320,
+      "height": 320,
+      "viewBox": [
+        0,
+        0,
+        320,
+        320
+      ],
+      "anchor": {
+        "x": 160,
+        "y": 280,
+        "normalized": [
+          0.5,
+          0.875
+        ]
+      },
+      "safeInset": 0.12,
+      "orientation": "front view, slight right-side depth",
+      "group": "Track props",
+      "transparent": true,
+      "tileable": false,
+      "alphaBounds": [
+        47,
+        91,
+        273,
+        279
+      ]
+    },
+    {
+      "id": "traffic-cone",
+      "file": "traffic-cone.svg",
+      "title": "Crimson traffic cone",
+      "description": "Wide rubber base and crimson cone with high-visibility bone stripes. Thick outlines keep the hazard readable at racing scale.",
+      "width": 320,
+      "height": 320,
+      "viewBox": [
+        0,
+        0,
+        320,
+        320
+      ],
+      "anchor": {
+        "x": 160,
+        "y": 280,
+        "normalized": [
+          0.5,
+          0.875
+        ]
+      },
+      "safeInset": 0.12,
+      "orientation": "front view, slight right-side depth",
+      "group": "Track props",
+      "transparent": true,
+      "tileable": false,
+      "alphaBounds": [
+        54,
+        70,
+        266,
+        280
+      ]
+    },
+    {
+      "id": "road-barrier",
+      "file": "road-barrier.svg",
+      "title": "Striped road barrier",
+      "description": "Heavy black and bone striped sawhorse barrier with crimson top edge and amber lamps. Short wide collision hazard.",
+      "width": 320,
+      "height": 320,
+      "viewBox": [
+        0,
+        0,
+        320,
+        320
+      ],
+      "anchor": {
+        "x": 160,
+        "y": 280,
+        "normalized": [
+          0.5,
+          0.875
+        ]
+      },
+      "safeInset": 0.12,
+      "orientation": "front view, slight right-side depth",
+      "group": "Track props",
+      "transparent": true,
+      "tileable": false,
+      "alphaBounds": [
+        47,
+        62,
+        280,
+        279
+      ]
+    },
+    {
+      "id": "warning-arrow",
+      "file": "warning-arrow.svg",
+      "title": "Bend warning arrow",
+      "description": "Bolted amber chevron sign on a sturdy post. The arrow points right; reflect the image for a left-turn marker.",
+      "width": 320,
+      "height": 320,
+      "viewBox": [
+        0,
+        0,
+        320,
+        320
+      ],
+      "anchor": {
+        "x": 160,
+        "y": 280,
+        "normalized": [
+          0.5,
+          0.875
+        ]
+      },
+      "safeInset": 0.12,
+      "orientation": "front view, slight right-side depth",
+      "group": "Track props",
+      "transparent": true,
+      "tileable": false,
+      "alphaBounds": [
+        59,
+        39,
+        262,
+        278
+      ]
+    },
+    {
+      "id": "boost-pickup",
+      "file": "boost-pickup.svg",
+      "title": "Nitro spark pickup",
+      "description": "Toxic green lightning token in a beveled charcoal casing with three small charge marks. No external product branding.",
+      "width": 320,
+      "height": 320,
+      "viewBox": [
+        0,
+        0,
+        320,
+        320
+      ],
+      "anchor": {
+        "x": 160,
+        "y": 280,
+        "normalized": [
+          0.5,
+          0.875
+        ]
+      },
+      "safeInset": 0.12,
+      "orientation": "front view, slight right-side depth",
+      "group": "Pickups",
+      "transparent": true,
+      "tileable": false,
+      "alphaBounds": [
+        70,
+        51,
+        250,
+        279
+      ]
+    },
+    {
+      "id": "repair-pickup",
+      "file": "repair-pickup.svg",
+      "title": "Repair tool pickup",
+      "description": "Bone wrench crossed over a crimson field in a beveled steel hexagonal casing. A repair item shaped around tools rather than a medical emblem.",
+      "width": 320,
+      "height": 320,
+      "viewBox": [
+        0,
+        0,
+        320,
+        320
+      ],
+      "anchor": {
+        "x": 160,
+        "y": 280,
+        "normalized": [
+          0.5,
+          0.875
+        ]
+      },
+      "safeInset": 0.12,
+      "orientation": "front view, slight right-side depth",
+      "group": "Pickups",
+      "transparent": true,
+      "tileable": false,
+      "alphaBounds": [
+        70,
+        51,
+        250,
+        279
+      ]
+    },
+    {
+      "id": "ticket-pickup",
+      "file": "ticket-pickup.svg",
+      "title": "Show ticket pickup",
+      "description": "Amber admission ticket with circular side notches, dark ICP/JCW event text and a tear-off barcode. The ticket is drawn at a slight angle with a solid dimensional edge.",
+      "width": 320,
+      "height": 320,
+      "viewBox": [
+        0,
+        0,
+        320,
+        320
+      ],
+      "anchor": {
+        "x": 160,
+        "y": 280,
+        "normalized": [
+          0.5,
+          0.875
+        ]
+      },
+      "safeInset": 0.12,
+      "orientation": "front view, slight right-side depth",
+      "group": "Pickups",
+      "transparent": true,
+      "tileable": false,
+      "alphaBounds": [
+        57,
+        60,
+        263,
+        279
+      ]
+    },
+    {
+      "id": "gold-medal",
+      "file": "gold-medal.svg",
+      "title": "Gold race medal",
+      "description": "Original gold podium medal with a large 1, checkered ribbon and beveled rim. An in-game race reward asset only.",
+      "width": 320,
+      "height": 320,
+      "viewBox": [
+        0,
+        0,
+        320,
+        320
+      ],
+      "anchor": {
+        "x": 160,
+        "y": 280,
+        "normalized": [
+          0.5,
+          0.875
+        ]
+      },
+      "safeInset": 0.12,
+      "orientation": "front view, slight right-side depth",
+      "group": "Podium medals",
+      "transparent": true,
+      "tileable": false,
+      "alphaBounds": [
+        73,
+        40,
+        249,
+        277
+      ]
+    },
+    {
+      "id": "silver-medal",
+      "file": "silver-medal.svg",
+      "title": "Silver race medal",
+      "description": "Original silver podium medal with a large 2, checkered ribbon and beveled rim. An in-game race reward asset only.",
+      "width": 320,
+      "height": 320,
+      "viewBox": [
+        0,
+        0,
+        320,
+        320
+      ],
+      "anchor": {
+        "x": 160,
+        "y": 280,
+        "normalized": [
+          0.5,
+          0.875
+        ]
+      },
+      "safeInset": 0.12,
+      "orientation": "front view, slight right-side depth",
+      "group": "Podium medals",
+      "transparent": true,
+      "tileable": false,
+      "alphaBounds": [
+        73,
+        40,
+        249,
+        277
+      ]
+    },
+    {
+      "id": "bronze-medal",
+      "file": "bronze-medal.svg",
+      "title": "Bronze race medal",
+      "description": "Original bronze podium medal with a large 3, checkered ribbon and beveled rim. An in-game race reward asset only.",
+      "width": 320,
+      "height": 320,
+      "viewBox": [
+        0,
+        0,
+        320,
+        320
+      ],
+      "anchor": {
+        "x": 160,
+        "y": 280,
+        "normalized": [
+          0.5,
+          0.875
+        ]
+      },
+      "safeInset": 0.12,
+      "orientation": "front view, slight right-side depth",
+      "group": "Podium medals",
+      "transparent": true,
+      "tileable": false,
+      "alphaBounds": [
+        73,
+        40,
+        249,
+        277
+      ]
+    },
+    {
+      "id": "steer-left-icon",
+      "file": "steer-left-icon.svg",
+      "title": "Steer left",
+      "description": "Bold bone left arrow on a bevelled charcoal steering pad. Designed for readable thumb controls.",
+      "width": 128,
+      "height": 128,
+      "viewBox": [
+        0,
+        0,
+        128,
+        128
+      ],
+      "anchor": {
+        "x": 64,
+        "y": 64,
+        "normalized": [
+          0.5,
+          0.5
+        ]
+      },
+      "safeInset": 0.12,
+      "orientation": "front view, slight right-side depth",
+      "group": "Control icons",
+      "transparent": true,
+      "tileable": false,
+      "alphaBounds": [
+        18,
+        16,
+        110,
+        110
+      ]
+    },
+    {
+      "id": "steer-right-icon",
+      "file": "steer-right-icon.svg",
+      "title": "Steer right",
+      "description": "Bold bone right arrow on a bevelled charcoal steering pad. Designed for readable thumb controls.",
+      "width": 128,
+      "height": 128,
+      "viewBox": [
+        0,
+        0,
+        128,
+        128
+      ],
+      "anchor": {
+        "x": 64,
+        "y": 64,
+        "normalized": [
+          0.5,
+          0.5
+        ]
+      },
+      "safeInset": 0.12,
+      "orientation": "front view, slight right-side depth",
+      "group": "Control icons",
+      "transparent": true,
+      "tileable": false,
+      "alphaBounds": [
+        18,
+        16,
+        110,
+        110
+      ]
+    },
+    {
+      "id": "brake-icon",
+      "file": "brake-icon.svg",
+      "title": "Brake",
+      "description": "Crimson brake disc with opposing bone calipers and a clear dark center. Compact control icon.",
+      "width": 128,
+      "height": 128,
+      "viewBox": [
+        0,
+        0,
+        128,
+        128
+      ],
+      "anchor": {
+        "x": 64,
+        "y": 64,
+        "normalized": [
+          0.5,
+          0.5
+        ]
+      },
+      "safeInset": 0.12,
+      "orientation": "front view, slight right-side depth",
+      "group": "Control icons",
+      "transparent": true,
+      "tileable": false,
+      "alphaBounds": [
+        18,
+        16,
+        110,
+        110
+      ]
+    },
+    {
+      "id": "boost-icon",
+      "file": "boost-icon.svg",
+      "title": "Boost",
+      "description": "Toxic green touch pad with a charcoal lightning bolt. Compact high-contrast boost control.",
+      "width": 128,
+      "height": 128,
+      "viewBox": [
+        0,
+        0,
+        128,
+        128
+      ],
+      "anchor": {
+        "x": 64,
+        "y": 64,
+        "normalized": [
+          0.5,
+          0.5
+        ]
+      },
+      "safeInset": 0.12,
+      "orientation": "front view, slight right-side depth",
+      "group": "Control icons",
+      "transparent": true,
+      "tileable": false,
+      "alphaBounds": [
+        18,
+        16,
+        110,
+        110
+      ]
+    },
+    {
+      "id": "destination-pin",
+      "file": "destination-pin.svg",
+      "title": "Show destination pin",
+      "description": "Crimson location marker with a bone star and a charcoal dimensional edge. Can sit above the destination on the route.",
+      "width": 320,
+      "height": 320,
+      "viewBox": [
+        0,
+        0,
+        320,
+        320
+      ],
+      "anchor": {
+        "x": 160,
+        "y": 280,
+        "normalized": [
+          0.5,
+          0.875
+        ]
+      },
+      "safeInset": 0.12,
+      "orientation": "front view, slight right-side depth",
+      "group": "Track props",
+      "transparent": true,
+      "tileable": false,
+      "alphaBounds": [
+        69,
+        40,
+        252,
+        279
+      ]
+    },
+    {
+      "id": "asphalt-tile",
+      "file": "asphalt-tile.svg",
+      "title": "Asphalt surface tile",
+      "description": "Subtle original seamless 256px asphalt texture with fixed grain and a small amount of worn aggregate. Repeats along both axes; no shadow or padding.",
+      "width": 256,
+      "height": 256,
+      "viewBox": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "anchor": {
+        "x": 0,
+        "y": 0,
+        "normalized": [
+          0,
+          0
+        ]
+      },
+      "safeInset": 0,
+      "orientation": "top-down seamless surface",
+      "group": "Surface tiles",
+      "transparent": false,
+      "tileable": true,
+      "alphaBounds": [
+        0,
+        0,
+        256,
+        256
+      ]
+    },
+    {
+      "id": "dirt-tile",
+      "file": "dirt-tile.svg",
+      "title": "Off-road dirt surface tile",
+      "description": "Warm ochre dirt with small polygon pebbles and short tire scuffs. A restrained seamless texture to sit beneath racing action.",
+      "width": 256,
+      "height": 256,
+      "viewBox": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "anchor": {
+        "x": 0,
+        "y": 0,
+        "normalized": [
+          0,
+          0
+        ]
+      },
+      "safeInset": 0,
+      "orientation": "top-down seamless surface",
+      "group": "Surface tiles",
+      "transparent": false,
+      "tileable": true,
+      "alphaBounds": [
+        0,
+        0,
+        256,
+        256
+      ]
+    }
+  ],
+  "validation": {
+    "browsers": [
+      "Chrome",
+      "WebKit"
+    ],
+    "decoded": 20,
+    "minimumTransparentPadding": 0.12,
+    "edgePixelsMatchForBothTextureAxes": true,
+    "passed": true
+  }
+}

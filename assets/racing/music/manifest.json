@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "sourceProject": "Lunacy Unlocked",
+  "sourceBuild": "2026-09-13/co/work/lunacy-unlocked/dist",
+  "sourceAudioController": "dist/src/audio.js",
+  "provenance": "Exact supplied MP3 originals reused at the project owner’s request. No audio editing, transcoding or new ownership claim.",
+  "playback": {
+    "loop": true,
+    "volume": 0.22,
+    "defaultTrack": "theme",
+    "lazy": true
+  },
+  "tracks": [
+    {
+      "id": "theme",
+      "title": "JCW Theme",
+      "file": "jcw-theme.mp3",
+      "bytes": 4142925,
+      "sha256": "5c4f72683117fa4f2ea2609191ecfaca479a94ac20bb08a92c308deaa57afe29",
+      "durationSeconds": 207.12,
+      "sourcePath": "dist/assets/jcw-theme.mp3",
+      "assetPath": "assets/racing/music/jcw-theme.mp3"
+    },
+    {
+      "id": "fight-club",
+      "title": "Fight Club",
+      "file": "fight-club.mp3",
+      "bytes": 2033277,
+      "sha256": "523287a3666d4c532a9dcb0df112db01b5167c07b202a1acae7ab5197f9e6e4c",
+      "durationSeconds": 207.12,
+      "sourcePath": "dist/assets/fight-club.mp3",
+      "assetPath": "assets/racing/music/fight-club.mp3"
+    }
+  ]
+}
