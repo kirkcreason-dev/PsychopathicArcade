@@ -1191,6 +1191,60 @@ canvas, #soBoard{ touch-action:none; }
 .ru-panel button[hidden]{display:none}
 
 @media(max-width:360px){.ru-overlay{padding:8px}.ru-panel h2{font-size:18px;line-height:1.05;margin:4px 0 6px}.ru-pick canvas{width:54px;height:72px}.ru-pick select{padding:4px 2px;line-height:1.2}.ru-pick label{font-size:8px;line-height:1.1}.ru-pick p{font-size:9px;line-height:1.25}.ru-panel .ru-short{font-size:9px;line-height:1.3;margin:5px 0}.ru-panel .ru-primary{min-height:34px;font-size:15px}.ru-panel .ru-secondary{margin-top:5px;padding:7px;font-size:11px}.ru-panel #ruLoadStatus{font-size:9px;line-height:1.2;margin:4px 0}}
+
+/* Controller help lives in the guide so the touch cabinet keeps its space. */
+.ru-guide > .ru-controller-guide {
+  grid-column: 1 / -1;
+  padding: 14px 16px;
+}
+.ru-guide .ru-controller-status {
+  margin: 0 0 8px;
+  color: #e9dfeb;
+  font-size: .875rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+.ru-controller-status[data-state="connected"] {
+  color: #dcff87;
+}
+.ru-controller-help summary {
+  color: #dcff87;
+  font-size: .875rem;
+  font-weight: 700;
+  line-height: 1.5;
+  cursor: pointer;
+  padding: 3px 0;
+}
+.ru-controller-help summary:focus-visible {
+  outline: 2px solid #dcff87;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+.ru-controller-help dl {
+  margin: 12px 0 0;
+  font-size: .875rem;
+  line-height: 1.5;
+}
+.ru-controller-help dl > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 10px;
+  padding: 6px 0;
+  border-top: 1px solid #594154;
+}
+.ru-controller-help dt {
+  color: #e9dfeb;
+  font-weight: 700;
+}
+.ru-controller-help dd {
+  margin: 0;
+  color: #d0bdcd;
+}
+.ru-guide .ru-controller-help p {
+  margin: 12px 0 0;
+  font-size: .875rem;
+  line-height: 1.5;
+}
 /* RUMBLE STYLE END */
 /* RUMBLE LADDER STYLE START */
 /* Ladder Wars */
@@ -1254,6 +1308,60 @@ canvas, #soBoard{ touch-action:none; }
   #lwScreen.lw-match .ctl-row{grid-column:2;grid-row:4;grid-template-columns:1fr 28px 1fr 1.4fr 28px;gap:3px;padding:4px 0}
   #lwScreen.lw-match .ctl-row button{font-size:9px}
   #lwScreen.lw-match .ctl-row .icon{width:28px;height:28px}
+}
+
+/* Controller help lives in the guide so the touch cabinet keeps its space. */
+.lw-guide > .lw-controller-guide {
+  grid-column: 1 / -1;
+  padding: 14px 16px;
+}
+.lw-guide .lw-controller-status {
+  margin: 0 0 8px;
+  color: #e9dfeb;
+  font-size: .875rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+.lw-controller-status[data-state="connected"] {
+  color: #ffe2a1;
+}
+.lw-controller-help summary {
+  color: #ffe2a1;
+  font-size: .875rem;
+  font-weight: 700;
+  line-height: 1.5;
+  cursor: pointer;
+  padding: 3px 0;
+}
+.lw-controller-help summary:focus-visible {
+  outline: 2px solid #ffe2a1;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+.lw-controller-help dl {
+  margin: 12px 0 0;
+  font-size: .875rem;
+  line-height: 1.5;
+}
+.lw-controller-help dl > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 10px;
+  padding: 6px 0;
+  border-top: 1px solid #594154;
+}
+.lw-controller-help dt {
+  color: #e9dfeb;
+  font-weight: 700;
+}
+.lw-controller-help dd {
+  margin: 0;
+  color: #d0bdcd;
+}
+.lw-guide .lw-controller-help p {
+  margin: 12px 0 0;
+  font-size: .875rem;
+  line-height: 1.5;
 }
 /* RUMBLE LADDER STYLE END */
 /* RUMBLE DUELS STYLE START */
@@ -1438,6 +1546,53 @@ body.racing-match:has(#netPill:not([hidden])) #rcScreen{padding-top:29px;height:
 @media(max-width:600px){.rp-overlay{padding:8px}.rp-panel{padding:15px;max-height:calc(100dvh - 16px);border-radius:10px}.rp-heading h2{font-size:26px}.rp-heading span{font-size:8px}.rp-intro{font-size:11px}.rp-connect{grid-template-columns:1fr;gap:6px}.rp-connect>.rp-primary{min-height:44px}.rp-room output{font-size:13px}.rp-room{padding:9px;gap:8px}.rp-roster-heading{align-items:flex-start}.rp-roster-heading span{font-size:10px}.rp-members li{font-size:9px;padding:8px}.rp-manual-grid{grid-template-columns:1fr;gap:16px}.rp-manual-grid>div+div{padding-top:10px;border-top:1px solid #536f6f}.rp-footer{justify-content:center}.rp-footer button{flex:1;font-size:10px!important;padding-inline:8px}.rp-join input,.rp-manual textarea{font-size:16px}}
 @media(prefers-reduced-motion:reduce){#rpModal *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 /* RACING PARTY STYLE END */
+/* ROAD RIOT STYLE START */
+/* Road Riot has its own layout. The running machine always fits the viewport. */
+#rrScreen{--rr-paper:#fff0d5;--rr-red:#ef6247;--rr-lime:#d6ed72;width:100%;max-width:1400px;margin:0 auto;color:var(--rr-paper);font-family:Arial,sans-serif;box-sizing:border-box}#rrScreen *,#cardRoadRiot *{box-sizing:border-box}#rrScreen[hidden],#rrScreen [hidden]{display:none!important}body.riot-selected #app{width:min(1400px,100%)}#rrScreen button{cursor:pointer}#rrScreen button:disabled{opacity:.45;cursor:default}#rrScreen button:focus-visible,#rrScreen select:focus-visible{outline:3px solid #d6ed72;outline-offset:2px}
+.rr-heading{display:flex;align-items:center;gap:35px;padding:12px 10px 18px}.rr-brand small,.rr-kicker{font:800 10px/1.4 Arial,sans-serif;letter-spacing:.15em;color:#e2a780}.rr-brand h1{font:900 63px/.86 Impact,'Arial Black',sans-serif;margin:5px 0 0;letter-spacing:-.015em}.rr-brand em,.rr-card-title em{color:#ef6247;font-style:normal}.rr-heading p{flex:1;font:800 12px Arial,sans-serif;letter-spacing:.2em;color:#b7b9ab}.rr-heading>span{font:800 9px/1.5 Arial,sans-serif;letter-spacing:.15em;color:#e2a780;text-align:right}.rr-machine{border:1px solid #79695a;border-radius:14px;overflow:hidden;background:#171b1c;box-shadow:0 20px 65px #0008}.rr-stage{position:relative;isolation:isolate;height:660px;min-height:0;background:#17252a;overflow:hidden}.rr-stage canvas{display:block;width:100%;height:100%}.rr-hud{position:absolute;inset:0;pointer-events:none;text-shadow:0 2px 4px #000b}.rr-hud-top{position:absolute;top:14px;left:16px;right:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.rr-position,.rr-speed{padding:9px 13px;background:#10191ee6;border:1px solid #d8bf9a55;border-radius:5px}.rr-position small,.rr-speed small{display:block;font:800 8px/1 Arial,sans-serif;letter-spacing:.14em;color:#c0c7bf}.rr-position strong,.rr-speed strong{display:block;font:900 36px/1 Impact,'Arial Black',sans-serif;margin-top:4px;color:#f6e9cf}.rr-position strong{color:#d6ed72}.rr-position strong span{font-size:18px;color:#b2b7ad}.rr-speed{text-align:right}.rr-route{width:min(38%,220px);padding:8px 10px;text-align:center;background:#10191ed9;border:1px solid #d8bf9a40;border-radius:5px}.rr-route small{display:block;font:800 10px Arial,sans-serif;letter-spacing:.13em;color:#e8bc7f}.rr-route span{display:block;font:700 8px Arial,sans-serif;color:#d9dccf}.rr-route progress{width:100%;height:5px;margin:9px 0 5px;accent-color:#ef6247}.rr-combat-readout{position:absolute;top:104px;left:17px;display:flex;gap:5px}.rr-combat-readout>span{background:#0d171dc7;border-left:2px solid #ef6247;padding:7px 10px}.rr-combat-readout small{display:block;font:800 7px Arial,sans-serif;color:#d2c8b3;letter-spacing:.08em}.rr-combat-readout b{display:block;font:900 22px Impact,sans-serif;color:#fff1d2;margin-top:3px}.rr-hud-bottom{position:absolute;bottom:12px;left:16px;right:16px;display:flex;gap:12px;max-width:400px}.rr-hud-bottom>div{flex:1;min-width:0;background:#10191ee8;border:1px solid #d8bf9a40;border-radius:5px;padding:7px 10px}.rr-hud-bottom span{display:flex;justify-content:space-between;font:800 9px Arial,sans-serif;letter-spacing:.09em}.rr-hud-bottom b{color:#fff0d5}.rr-hud-bottom progress{display:block;width:100%;height:6px;margin-top:6px;accent-color:#ef6247}.rr-turbo-meter progress{accent-color:#d6ed72}.rr-feedback{position:absolute;left:50%;top:28%;transform:translateX(-50%);width:max-content;max-width:80%;text-align:center;background:#1d1c19e8;border:1px solid #ef6247;padding:9px 15px;border-radius:4px;font:900 14px/1.25 Arial,sans-serif;color:#ffdb9d;box-shadow:0 4px 15px #0006}.rr-feedback[data-kind=hit]{color:#ffb29d}.rr-feedback[data-kind=block]{border-color:#b9dbf1;color:#b9dbf1}
+.rr-overlay{position:absolute;inset:0;z-index:3;display:flex;align-items:flex-start;justify-content:center;padding:24px;overflow:auto;background:#0c1218e8;backdrop-filter:blur(7px)}.rr-panel{flex-shrink:0;margin:auto 0;width:min(100%,1000px);border:1px solid #79614c;border-radius:9px;background:linear-gradient(125deg,#263032,#151e24 60%);box-shadow:0 16px 55px #0008}.rr-setup-panel{display:grid;grid-template-columns:.9fr 1fr;overflow:hidden}.rr-brief{padding:34px 30px;background:linear-gradient(155deg,#422a26 0,#262524 65%);border-right:1px solid #79614c}.rr-brief h2{font:900 clamp(28px,3.7vw,48px)/.99 Impact,'Arial Black',sans-serif;letter-spacing:.005em;margin:18px 0}.rr-brief h2 em{font-style:normal;color:#ef795b}.rr-brief>p{font:13px/1.6 Arial,sans-serif;color:#c6c5b9;max-width:320px}.rr-rules{display:grid;gap:20px;margin-top:28px}.rr-rules>span{display:block;position:relative;padding-left:35px;font:11px/1.55 Arial,sans-serif;color:#bfc1b5}.rr-rules b{position:absolute;left:0;top:0;font:900 23px Impact,sans-serif;color:#d3835d}.rr-rules strong{display:block;font:800 10px/1.6 Arial,sans-serif;letter-spacing:.1em;color:#f4dfc1;margin-bottom:3px}.rr-pick{padding:25px}.rr-roster{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:12px 0 16px}.rr-rider{position:relative;border:1px solid #61716c;border-radius:5px;min-width:0;padding:6px 3px 9px;background:radial-gradient(ellipse at 50% 30%,#3b4c49,#1b282d);color:#f6e7cc;overflow:hidden}.rr-rider img{display:block;width:100%;height:100px;object-fit:contain;filter:drop-shadow(0 4px 4px #0009)}.rr-rider strong{display:block;font:800 10px Arial,sans-serif;margin-top:5px}.rr-rider small{display:block;font:700 6px Arial,sans-serif;letter-spacing:.08em;margin-top:5px;color:#c1c6b5}.rr-rider[aria-pressed=true]{border-color:#eab77b;box-shadow:inset 0 0 0 2px #eab77b;background:radial-gradient(ellipse at 50% 25%,#665842,#242d28)}.rr-rider[aria-pressed=true]:after{content:'✓';position:absolute;top:4px;right:5px;color:#f6cb8f;font:900 14px Arial,sans-serif}.rr-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:13px}.rr-options label{font:800 8px Arial,sans-serif;letter-spacing:.12em;color:#c5c3af}.rr-options select{display:block;width:100%;font:700 11px Arial,sans-serif;min-height:37px;background:#152025;color:#f2e2c7;border:1px solid #65716b;border-radius:4px;padding:5px;margin-top:5px}.rr-primary,.rr-secondary{border-radius:4px;min-height:40px;font:800 11px Arial,sans-serif;letter-spacing:.08em;padding:10px 14px}.rr-primary{background:#ef6247;border:1px solid #ffc591;color:#1c1918;box-shadow:0 3px 0 #7e3326;display:block;width:100%;font-size:13px;min-height:46px}.rr-primary:hover:not(:disabled){background:#ff8764}.rr-secondary{background:#273236;border:1px solid #6e7970;color:#f7e8ca}.rr-keys{font:10px/1.6 Arial,sans-serif;color:#bec5b8;text-align:center;margin:12px 0 8px}.rr-best{display:block;font:10px Arial,sans-serif;color:#d4dc9d;text-align:center}.rr-dialog{width:min(100%,430px);padding:28px;text-align:center}.rr-dialog h2{font:900 34px/1 Impact,sans-serif;margin:12px 0;color:#f6e3be}.rr-dialog p{font:12px/1.5 Arial,sans-serif;color:#c5cbbf}.rr-dialog>.rr-secondary{margin-top:13px;width:100%}.rr-score{display:block;font:900 52px Impact,sans-serif;color:#d6ed72;margin-top:15px}.rr-score-label{font:800 8px Arial,sans-serif;letter-spacing:.16em;color:#c8c6ae}.rr-placements{list-style:none;display:grid;gap:4px;padding:0;margin:18px 0;font:11px Arial,sans-serif;text-align:left}.rr-placements li{display:flex;justify-content:space-between;gap:10px;padding:7px 9px;background:#0e191ea8;border:1px solid #6a736438;border-radius:3px}.rr-placements li.rr-you{border-color:#d6ed7299;color:#e5f6a7}.rr-result-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.rr-console{background:linear-gradient(115deg,#242a2a,#152027);border-top:1px solid #83715b}.rr-status{min-height:26px;display:flex;align-items:center;justify-content:center;text-align:center;padding:5px 10px;font:10px/1.3 Arial,sans-serif;color:#d2c6ac;background:#101b21}.rr-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 16px}.rr-drive,.rr-fight{display:flex;gap:7px}.rr-control{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:59px;min-width:66px;padding:5px 12px;border:1px solid #7b8c85;border-radius:6px;background:linear-gradient(#354649,#223239);color:#f8ecd2;box-shadow:0 3px 0 #070e12;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}.rr-control b{font:900 25px/1 Arial,sans-serif}.rr-control small{font:800 8px/1 Arial,sans-serif;letter-spacing:.04em}.rr-strike{min-width:90px;background:linear-gradient(#764735,#4b2e2a);border-color:#b87251}.rr-strike.in-range{background:linear-gradient(#b0643e,#7e3c2c);border-color:#ffce81;box-shadow:0 0 0 2px #ffce8138,0 3px 0 #070e12;color:#fff4b7}.rr-block{border-color:#7c9aa6}.rr-boost{background:linear-gradient(#63753d,#3c4e28);border-color:#aec079;color:#efffc8}.rr-control.held{transform:translateY(2px);filter:brightness(1.3);box-shadow:0 1px 0 #070e12}.rr-footer.ctl-row{display:flex;align-items:center;justify-content:center;gap:9px;min-height:46px;padding:5px 12px;margin:0;border-top:1px solid #6e7a6744}.rr-footer .rr-secondary{min-height:34px;font-size:8px;padding:7px 11px}.rr-footer .lb-mini{width:30px;height:30px;min-width:30px}.rr-footer .lb-mini img{width:100%;height:100%;object-fit:contain}
+body.riot-match{overflow:hidden}#rrScreen.rr-match{position:fixed;inset:0;z-index:25;max-width:none;width:100%;height:100dvh;margin:0;padding:max(5px,env(safe-area-inset-top)) max(5px,env(safe-area-inset-right)) max(5px,env(safe-area-inset-bottom)) max(5px,env(safe-area-inset-left));background:#0a1319}#rrScreen.rr-match .rr-heading{display:none}#rrScreen.rr-match .rr-machine{height:100%;display:flex;flex-direction:column}#rrScreen.rr-match .rr-stage{height:auto;min-height:0;flex:1}#rrScreen.rr-match .rr-console{flex:none}
+#cardRoadRiot{padding:25px 17px;gap:10px;border-color:#a76449;background:linear-gradient(150deg,#3b302a,#19252a 65%,#171416);overflow:hidden}.rr-card-kicker{font:800 8px Arial,sans-serif;letter-spacing:.15em;color:#dfaf82}.rr-card-art{display:block;position:relative;height:222px;width:100%;overflow:hidden;border-radius:6px;background:#2b3534}.rr-card-sky{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.8}.rr-card-rider{position:absolute;bottom:-3px;width:200px;height:217px;object-fit:contain;filter:drop-shadow(0 7px 8px #0009)}.rr-card-j{left:-8px;transform:rotate(9deg)}.rr-card-tony{right:-10px;transform:rotate(-11deg)}.rr-card-slash{position:absolute;top:20px;left:48%;width:5px;height:180px;transform:rotate(18deg);background:#f5b269;box-shadow:5px 0 #a34c36}.rr-card-title{font:900 58px/.95 Impact,'Arial Black',sans-serif;letter-spacing:-.03em;color:#f8e5bd;white-space:nowrap;margin:2px 0}.rr-card-tag{font:800 8px Arial,sans-serif;letter-spacing:.17em;color:#d3b797;margin:1px 0 12px}#cardRoadRiot .gc-cta{border-color:#c57a4e;color:#f1c393}
+@media(max-width:760px){.rr-heading{padding:5px 6px 12px}.rr-brand h1{font-size:47px}.rr-brand small{font-size:7px}.rr-heading>p,.rr-heading>span{display:none}.rr-heading{justify-content:center}.rr-stage{height:700px}.rr-overlay{padding:12px}.rr-setup-panel{grid-template-columns:1fr}.rr-brief{padding:17px 20px;border-right:0;border-bottom:1px solid #79614c}.rr-brief h2{font-size:30px;margin:8px 0}.rr-brief h2 br{display:none}.rr-brief>p{max-width:none;font-size:11px;margin:8px 0 0}.rr-rules{display:flex;gap:12px;margin-top:13px}.rr-rules>span{flex:1;padding:0;font-size:9px}.rr-rules b{display:none}.rr-rules strong{font-size:8px;letter-spacing:0}.rr-kicker{font-size:8px}.rr-pick{padding:15px 18px}.rr-roster{margin:9px 0 12px}.rr-rider img{height:77px}.rr-rider strong{font-size:9px}.rr-control{min-width:50px;min-height:50px;padding:5px 7px}.rr-strike{min-width:57px}.rr-controls{padding:8px;gap:12px}.rr-drive,.rr-fight{gap:5px}.rr-control small{font-size:7px}.rr-footer.ctl-row{min-height:42px;padding:4px 8px}.rr-status{font-size:9px;min-height:25px}.rr-hud-top{top:8px;left:8px;right:8px;gap:6px}.rr-position,.rr-speed{padding:6px 8px}.rr-position strong,.rr-speed strong{font-size:27px}.rr-position strong span{font-size:15px}.rr-position small,.rr-speed small{font-size:6px}.rr-route{padding:7px;width:40%}.rr-route small{font-size:8px;letter-spacing:.03em}.rr-route span{font-size:6px}.rr-route progress{margin:7px 0 3px}.rr-combat-readout{top:77px;left:8px}.rr-combat-readout>span{padding:5px 7px}.rr-combat-readout small{font-size:6px}.rr-combat-readout b{font-size:18px}.rr-hud-bottom{bottom:8px;left:8px;right:8px;gap:7px;max-width:310px}.rr-hud-bottom>div{padding:6px 8px}.rr-hud-bottom span{font-size:8px}.rr-feedback{font-size:11px;padding:7px 10px;top:22%}.rr-dialog{padding:20px}.rr-dialog h2{font-size:27px}.rr-dialog p{font-size:11px}.rr-score{font-size:43px}.rr-placements{margin:12px 0;font-size:10px}}
+@media(max-width:480px){.rr-fight{display:grid;grid-template-columns:1fr 1fr;flex:1;max-width:165px}.rr-drive{align-self:stretch;align-items:center}.rr-control{min-height:43px;min-width:42px;padding:4px 7px}.rr-control b{font-size:22px}.rr-strike{min-width:56px}.rr-drive .rr-control{min-height:60px}.rr-controls{gap:10px}.rr-control small{font-size:7px}.rr-rules{gap:8px}.rr-brief{padding:15px}.rr-brief h2{font-size:26px}.rr-pick{padding:14px}.rr-rider img{height:70px}.rr-rider strong{font-size:8px}.rr-roster{gap:5px}.rr-primary{font-size:11px}.rr-best{font-size:9px}.rr-rules>span{font-size:8px}.rr-options select{font-size:10px}}
+@media(orientation:landscape) and (max-height:520px){#rrScreen.rr-match .rr-machine{display:grid;grid-template-columns:minmax(0,1fr) 198px;gap:0}#rrScreen.rr-match .rr-console{display:flex;flex-direction:column;min-height:0;border-top:0;border-left:1px solid #79695a}.rr-console .rr-controls{flex:1;flex-direction:column;justify-content:center;gap:12px;padding:8px}.rr-console .rr-drive{align-self:auto;align-items:center;display:flex}.rr-console .rr-fight{display:grid;grid-template-columns:1fr 1fr;flex:0;max-width:none;width:100%}.rr-control{min-width:50px;min-height:44px;padding:5px}.rr-drive .rr-control{min-height:48px}.rr-strike{min-width:0}.rr-footer.ctl-row{flex-wrap:wrap;gap:4px;padding:5px}.rr-footer .rr-secondary{font-size:7px;min-height:32px;padding:5px 8px}.rr-status{font-size:8px;min-height:34px;padding:5px 6px}.rr-hud-top{top:7px;left:7px;right:7px}.rr-combat-readout{top:77px}.rr-hud-bottom{max-width:280px}.rr-feedback{top:27%;font-size:10px}.rr-overlay{padding:9px}.rr-dialog{padding:16px}.rr-dialog h2{font-size:25px}.rr-score{font-size:34px;margin-top:8px}.rr-setup-panel{grid-template-columns:1fr 1.2fr}.rr-brief{border-right:1px solid #79614c;border-bottom:0}.rr-brief h2{font-size:26px}.rr-rules{display:grid}.rr-stage{height:540px}.rr-pick{padding:15px}.rr-rider img{height:65px}}
+@media(prefers-reduced-motion:reduce){.rr-control.held{transform:none}}
+
+.rr-hud-bottom i{font-style:normal}
+
+/* Fight instruments communicate readiness without enlarging the touch dock. */
+.rr-route .rr-rival-gap{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;margin-top:6px;padding-top:5px;border-top:1px solid #e8bc7f35;font:800 9px/1.2 Arial,sans-serif;color:#d6ed72;text-transform:uppercase;letter-spacing:.02em}
+.rr-strike{position:relative;overflow:hidden}.rr-strike progress{appearance:none;-webkit-appearance:none;display:block;position:absolute;left:5px;bottom:2px;width:calc(100% - 10px);height:3px;margin:0;border:0;border-radius:2px;background:#1a211e;pointer-events:none;accent-color:#dcc090}.rr-strike progress::-webkit-progress-bar{background:#1a211e;border-radius:2px}.rr-strike progress::-webkit-progress-value{background:#dcc090;border-radius:2px}.rr-strike progress::-moz-progress-bar{background:#dcc090;border-radius:2px}.rr-strike[data-state=ready] progress::-webkit-progress-value{background:#e9ff97}.rr-strike[data-state=ready] progress::-moz-progress-bar{background:#e9ff97}.rr-strike[data-state=cooldown] b{font-variant-numeric:tabular-nums;color:#cebeaa;font-size:19px}.rr-strike[data-state=guarding] b{color:#a6deed}.rr-strike[data-state=line-up] b,.rr-strike[data-state=slow] b{opacity:.65}.rr-boost[data-state=empty]{background:linear-gradient(#404c32,#2f3928);color:#b9c4a2}.rr-boost[data-state=active]{box-shadow:inset 0 0 0 1px #e6ffad,0 3px 0 #070e12}
+.rr-status[data-warning=true]{color:#ffe8b1;background:#5a3025;font-weight:800}.rr-feedback[data-kind=ko]{border-color:#d6ed72;color:#efffb4}.rr-feedback[data-kind=crash]{border-color:#fa967b;color:#ffcab1}.rr-feedback[data-kind=miss],.rr-feedback[data-kind=hint]{color:#e0d8c9;border-color:#a89778;font-size:12px}
+.rr-score-breakdown{display:grid;grid-template-columns:1fr 1fr;gap:5px 12px;padding:12px;margin:12px 0;background:#0e191e9c;border:1px solid #6a736450;border-radius:5px;text-align:left}.rr-score-breakdown>div{display:flex;align-items:center;justify-content:space-between;gap:7px;min-width:0}.rr-score-breakdown dt{font:700 8px/1.4 Arial,sans-serif;letter-spacing:.04em;color:#c8ccb9}.rr-score-breakdown dd{font:800 11px/1.4 Arial,sans-serif;color:#eee3c9;margin:0;font-variant-numeric:tabular-nums}.rr-score-breakdown #rrPenaltyRow dd{color:#f5ac93}.rr-dialog .rr-result-recap{font:800 9px/1.4 Arial,sans-serif;letter-spacing:.04em;color:#d6ed72;margin:8px 0}
+@media(max-width:760px){.rr-route .rr-rival-gap{font-size:7px;margin-top:4px;padding-top:4px}.rr-strike[data-state=cooldown] b{font-size:18px}.rr-score-breakdown{padding:9px;margin:10px 0;gap:4px 10px}.rr-score-breakdown dt{font-size:7px}.rr-score-breakdown dd{font-size:10px}.rr-feedback[data-kind=miss],.rr-feedback[data-kind=hint]{font-size:10px}}
+@media(max-width:760px){.rr-feedback{left:auto;right:8px;top:84px;transform:none;width:calc(100% - 145px);max-width:260px}}
+@media(orientation:landscape) and (max-height:520px){.rr-feedback{left:auto;right:8px;top:82px;transform:none;width:calc(100% - 145px);max-width:260px}}
+
+/* The duel replaces the old gap line, sharing the route panel's existing space. */
+.rr-route .rr-leg-line{display:flex;justify-content:space-between;align-items:baseline;gap:4px;font-variant-numeric:tabular-nums}
+.rr-leg-line #rrDuelLeg{font-weight:900;color:#e1c1ff}
+.rr-route[data-state=active]{border-color:#b995ce99}
+.rr-route[data-state=active] .rr-rival-gap{border-color:#c7a9dc55;color:#f0dcff}
+.rr-route[data-state=active] .rr-rival-gap:before{content:"";display:inline-block;width:9px;height:8px;margin-right:4px;vertical-align:baseline;background:conic-gradient(#674178 25%,#fff0d6 0 50%,#674178 0 75%,#fff0d6 0) 0 0/6px 6px}
+.rr-feedback[data-kind=duel]{color:#fbebff;border-color:#d0a5ea;background:#322336f2}
+.rr-duel-card{padding:10px 12px;margin:10px 0 14px;background:#191820;border:1px solid #94719a66;border-left:3px solid #bb8ed0;border-radius:3px;text-align:left}
+.rr-duel-card>small{display:block;color:#e3c5ec;font:800 9px/1.2 Arial,sans-serif;letter-spacing:.1em}
+.rr-duel-card ol{padding:0;margin:6px 0 0;list-style:none;display:grid;gap:0}
+.rr-duel-card li{display:grid;grid-template-columns:minmax(68px,.8fr) 1.2fr auto;align-items:center;gap:6px;min-height:24px;border-top:1px solid #58475c75}
+.rr-duel-card li>small{text-transform:uppercase;font:700 8px/1.25 Arial,sans-serif;color:#cec0ce;letter-spacing:.02em}
+.rr-duel-card li>span{font:700 11px/1.25 Arial,sans-serif;color:#f6ebd8}
+.rr-duel-card li>b{font:800 9px/1.25 Arial,sans-serif;color:#c8bdc9;white-space:nowrap}
+.rr-duel-card li[data-state=won]>b{color:#d6ed72}.rr-duel-card li[data-state=lost]>b{color:#ffb8a4}.rr-duel-card li[data-state=active]>b{color:#e3baff}
+@media(max-width:760px),(orientation:landscape) and (max-height:520px){
+  .rr-hud-top{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:5px}
+  .rr-route{width:min(100%,230px);min-width:0;justify-self:center}
+  .rr-route .rr-leg-line span{font-size:8px}
+  .rr-route .rr-rival-gap{font-size:9px;margin-top:3px;padding-top:3px}
+  .rr-duel-card{padding:7px 9px;margin:8px 0}.rr-duel-card li{min-height:22px}
+}
+/* ROAD RIOT STYLE END */
 </style>
 </head>
 <body>
@@ -1459,6 +1614,13 @@ body.racing-match:has(#netPill:not([hidden])) #rcScreen{padding-top:29px;height:
   <!-- ================= MENU ================= -->
   <section id="menuScreen" class="screen">
     <div id="gameCards">
+<!-- ROAD RIOT CARD START -->
+<button class="game-card" id="cardRoadRiot" aria-label="Play JCW Road Riot">
+  <span class="rr-card-kicker">JCW × ICP · COMBAT RACING</span>
+  <span class="rr-card-art"><img class="rr-card-sky" data-racing-background="0" alt=""><img class="rr-card-rider rr-card-j" data-racing-rider="violent-j" alt="Violent J on a mini bike"><img class="rr-card-rider rr-card-tony" data-racing-rider="2-tuff-tony" alt="2 Tuff Tony on a mini bike"><span class="rr-card-slash" aria-hidden="true"></span></span>
+  <span class="rr-card-title">ROAD <em>RIOT</em></span><span class="rr-card-tag">THE ROAD IS YOUR RING.</span><span class="gc-cta">START A RIOT</span>
+</button>
+<!-- ROAD RIOT CARD END -->
 <!-- RACING CARD START -->
 <button class="card gc" id="cardRacing" aria-label="Play JCW and ICP Road to the Show">
   <span class="rc-card-eyebrow">JCW × ICP · MINI BIKES + GO-KARTS</span>
@@ -2520,7 +2682,20 @@ body.racing-match:has(#netPill:not([hidden])) #rcScreen{padding-top:29px;height:
       <div id="ruStatus" role="status" aria-live="polite">Choose your wrestler. Own the ring.</div>
       <div class="ctl-row"><button class="ru-secondary" id="ruPauseBtn" disabled>PAUSE</button><button id="ruSoundBtn" class="img-btn icon" aria-label="Mute sound"><img data-img="icoSoundOn" alt="Sound"></button><button id="ruNetBtn" class="new-net-btn">VERSUS</button><button class="ru-secondary" id="ruHomeBtn">ARCADE MENU</button></div>
     </div>
-    <aside class="ru-guide" id="ruInstructions"><div><span class="ru-kicker">NO PINFALLS. NO HIDING.</span><h3>MAKE THE RING YOURS.</h3><ol><li><b>SOFTEN THEM UP</b>Move close and strike. The pink target and name above your controls show who you will hit.</li><li><b>WORK THE ROPES</b>WHIP sends your target toward the nearest rope. Follow them and strike until their health turns pink (35 or less).</li><li><b>SEND THEM OUT</b>When the green button changes to TOSS OUT, press it. Only a weakened opponent close to the ropes can be eliminated.</li></ol><p>Hold guard to absorb hits and resist throws. Guard drains while held; let go to recover. Land hits to charge a finisher that knocks nearby opponents toward the ropes.</p></div><div><h3>EVERY ENTRANT COUNTS</h3><p>A fresh wrestler enters every 8 seconds when there’s space. Up to four fight at once. Rivals fight each other, too. Clear the entire field to win.</p><p><b>Scoring:</b> 25 per clean hit, 500 per elimination, 2,000 for winning. Chain eliminations within 12 seconds for a bonus.</p><p class="ru-credit">Wrestler artwork from Lunacy Unlocked, plus Big Foot’s supplied character art. Best scores and wins save on this device.</p><p id="ruCareer">0 career wins</p></div></aside>
+    <aside class="ru-guide" id="ruInstructions"><div class="ru-controller-guide">
+        <p id="ruGamepadStatus" class="ru-controller-status" role="status" aria-live="polite">Press a controller button to connect.</p>
+        <details class="ru-controller-help"><summary>PC controller controls</summary>
+          <dl>
+            <div><dt>MOVE</dt><dd>Left stick or D-pad</dd></div>
+            <div><dt>STRIKE</dt><dd>A / Cross</dd></div>
+            <div><dt>WHIP / TOSS OUT</dt><dd>X / Square</dd></div>
+            <div><dt>HOLD GUARD</dt><dd>B / Circle or RB / R1</dd></div>
+            <div><dt>FINISHER</dt><dd>Y / Triangle</dd></div>
+            <div><dt>PAUSE</dt><dd>Start / Options</dd></div>
+          </dl>
+          <p>On wrestler selection, LB / L1 and RB / R1, or left / right on the D-pad, choose your fighter. Press A / Cross or Start / Options to begin.</p>
+        </details>
+      </div><div><span class="ru-kicker">NO PINFALLS. NO HIDING.</span><h3>MAKE THE RING YOURS.</h3><ol><li><b>SOFTEN THEM UP</b>Move close and strike. The pink target and name above your controls show who you will hit.</li><li><b>WORK THE ROPES</b>WHIP sends your target toward the nearest rope. Follow them and strike until their health turns pink (35 or less).</li><li><b>SEND THEM OUT</b>When the green button changes to TOSS OUT, press it. Only a weakened opponent close to the ropes can be eliminated.</li></ol><p>Hold guard to absorb hits and resist throws. Guard drains while held; let go to recover. Land hits to charge a finisher that knocks nearby opponents toward the ropes.</p></div><div><h3>EVERY ENTRANT COUNTS</h3><p>A fresh wrestler enters every 8 seconds when there’s space. Up to four fight at once. Rivals fight each other, too. Clear the entire field to win.</p><p><b>Scoring:</b> 25 per clean hit, 500 per elimination, 2,000 for winning. Chain eliminations within 12 seconds for a bonus.</p><p class="ru-credit">Wrestler artwork from Lunacy Unlocked, plus Big Foot’s supplied character art. Best scores and wins save on this device.</p><p id="ruCareer">0 career wins</p></div></aside>
   </div>
 </section>
 <!-- RUMBLE SCREEN END -->
@@ -2547,10 +2722,59 @@ body.racing-match:has(#netPill:not([hidden])) #rcScreen{padding-top:29px;height:
       <div id="lwStatus" role="status" aria-live="polite">Choose your wrestler. Own the ring.</div>
       <div class="ctl-row"><button class="lw-secondary" id="lwPauseBtn" disabled>PAUSE</button><button id="lwSoundBtn" class="img-btn icon" aria-label="Mute sound"><img data-img="icoSoundOn" alt="Sound"></button><button id="lwNetBtn" class="new-net-btn">VERSUS</button><button class="lw-secondary" id="lwHomeBtn">ARCADE MENU</button></div>
     </div>
-    <aside class="lw-guide" id="lwInstructions"><div><span class="lw-kicker">ONE BELT. NO EASY WAY UP.</span><h3>CLIMB. FIGHT. CLAIM.</h3><ol><li><b>SET THE STAGE</b>Move close to the ladder and tap LADDER to carry it. Put it down on the glowing centre mark. SET HERE lights green when you’re lined up.</li><li><b>TAKE THE HIGH GROUND</b>Tap CLIMB at the base. You climb automatically; move down to get off. Strike a ladder’s base to knock a rival down.</li><li><b>GRAB THE GOLD</b>At the top, press GRAB when the marker is inside the green zone. Four good grabs free the belt.</li></ol><p>Every wrestler keeps their own grab progress. A bad grab shakes your balance. Two misses in a row send you tumbling.</p></div><div><h3>MAKE YOUR OPENING</h3><p>Strikes knock rivals down for seven seconds when their health runs out. That’s your opening to climb. Use your charged finisher to clear space for a climb. A defender at the base can tip the ladder.</p><p><b>Controls:</b> thumb stick or arrows/WASD to move, J/Space to strike, K for the ladder, L/Shift to guard, F for a finisher. P pauses.</p><p><b>Scoring:</b> clean hits +25, timed grabs +250. Claim the belt for +2,000 plus a time bonus. You have 120 seconds.</p><p><b>35 LOCKER ACHIEVEMENTS:</b> claim the belt, win as each original wrestler, finish in 30 seconds, recover from a fall, and conquer Chaos. Finished matches using the original 21 wrestlers count toward your signed-in Lunacy locker. Big Foot’s records save on this device.</p><p class="lw-credit">Lunacy Unlocked wrestlers plus Big Foot’s supplied character art. Custom dark-carnival arena.</p><p id="lwCareer">0 career wins</p></div></aside>
+    <aside class="lw-guide" id="lwInstructions"><div class="lw-controller-guide">
+        <p id="lwGamepadStatus" class="lw-controller-status" role="status" aria-live="polite">Press a controller button to connect.</p>
+        <details class="lw-controller-help"><summary>PC controller controls</summary>
+          <dl>
+            <div><dt>MOVE</dt><dd>Left stick or D-pad</dd></div>
+            <div><dt>STRIKE</dt><dd>A / Cross</dd></div>
+            <div><dt>LADDER / GRAB</dt><dd>X / Square</dd></div>
+            <div><dt>HOLD GUARD</dt><dd>B / Circle or RB / R1</dd></div>
+            <div><dt>FINISHER</dt><dd>Y / Triangle</dd></div>
+            <div><dt>PAUSE</dt><dd>Start / Options</dd></div>
+          </dl>
+          <p>On wrestler selection, LB / L1 and RB / R1, or left / right on the D-pad, choose your fighter. Press A / Cross or Start / Options to begin.</p>
+        </details>
+      </div><div><span class="lw-kicker">ONE BELT. NO EASY WAY UP.</span><h3>CLIMB. FIGHT. CLAIM.</h3><ol><li><b>SET THE STAGE</b>Move close to the ladder and tap LADDER to carry it. Put it down on the glowing centre mark. SET HERE lights green when you’re lined up.</li><li><b>TAKE THE HIGH GROUND</b>Tap CLIMB at the base. You climb automatically; move down to get off. Strike a ladder’s base to knock a rival down.</li><li><b>GRAB THE GOLD</b>At the top, press GRAB when the marker is inside the green zone. Four good grabs free the belt.</li></ol><p>Every wrestler keeps their own grab progress. A bad grab shakes your balance. Two misses in a row send you tumbling.</p></div><div><h3>MAKE YOUR OPENING</h3><p>Strikes knock rivals down for seven seconds when their health runs out. That’s your opening to climb. Use your charged finisher to clear space for a climb. A defender at the base can tip the ladder.</p><p><b>Controls:</b> thumb stick or arrows/WASD to move, J/Space to strike, K for the ladder, L/Shift to guard, F for a finisher. P pauses.</p><p><b>Scoring:</b> clean hits +25, timed grabs +250. Claim the belt for +2,000 plus a time bonus. You have 120 seconds.</p><p><b>35 LOCKER ACHIEVEMENTS:</b> claim the belt, win as each original wrestler, finish in 30 seconds, recover from a fall, and conquer Chaos. Finished matches using the original 21 wrestlers count toward your signed-in Lunacy locker. Big Foot’s records save on this device.</p><p class="lw-credit">Lunacy Unlocked wrestlers plus Big Foot’s supplied character art. Custom dark-carnival arena.</p><p id="lwCareer">0 career wins</p></div></aside>
   </div>
 </section>
 <!-- RUMBLE LADDER SCREEN END -->
+<!-- ROAD RIOT SCREEN START -->
+<section id="rrScreen" class="screen" hidden aria-label="JCW Road Riot combat racing">
+  <header class="rr-heading"><div class="rr-brand"><small>JCW × ICP / COMBAT RACING</small><h1>ROAD <em>RIOT</em></h1></div><p>THE ROAD IS YOUR RING.</p><span>MINI BIKES<br>GO-KARTS<br>BAD INTENTIONS</span></header>
+  <div class="rr-machine">
+    <div class="rr-stage" id="rrStage">
+      <canvas id="rrCanvas" width="1200" height="700" role="img" aria-label="Combat race. Arrow keys steer and brake. J strikes left, L strikes right, K blocks. Space gives a three-second turbo. Your ride accelerates automatically."></canvas>
+      <div class="rr-hud" aria-label="Race information">
+        <div class="rr-hud-top"><div class="rr-position"><small>POSITION</small><strong id="rrPosition">1<span>/6</span></strong></div><div class="rr-route" id="rrDuel" data-state="idle" role="group" aria-label="Rival duel">
+          <small id="rrZone">DETROIT SUNSET</small>
+          <progress id="rrProgress" max="100" value="0" aria-label="Route progress"></progress>
+          <div class="rr-leg-line"><span id="rrDuelLeg">LEG 1/3</span><span id="rrDistance">500m TO FLAG</span></div>
+          <b id="rrRivalGap" class="rr-rival-gap">GET READY TO RUMBLE</b>
+        </div><div class="rr-speed"><strong id="rrSpeed">0</strong><small>KM/H</small></div></div>
+        <div class="rr-combat-readout"><span><small>KNOCKOUTS</small><b id="rrKnockouts">0</b></span><span><small>HIT STREAK</small><b id="rrCombo">—</b></span></div>
+        <div class="rr-hud-bottom"><div><span>RIDE <b id="rrHealth">100%</b></span><progress id="rrHealthMeter" max="100" value="100" aria-label="Ride health"></progress></div><div class="rr-turbo-meter"><span><i id="rrTurboLabel">TURBO</i><b id="rrBoost">60%</b></span><progress id="rrBoostMeter" max="100" value="60" aria-label="Turbo charge"></progress></div></div>
+        <div id="rrFeedback" class="rr-feedback" role="status" aria-live="polite" hidden></div>
+      </div>
+      <div id="rrSetup" class="rr-overlay"><div class="rr-setup-panel rr-panel">
+        <div class="rr-brief"><span class="rr-kicker">SIX RIDERS. ONE ROAD. NO REFEREE.</span><h2>MAKE THE SHOW. <br><em>RAISE SOME HELL.</em></h2><p>Race through Detroit and the Dark Carnival to the JCW show. Every stretch gives you a shot at a rival duel.</p><div class="rr-rules"><span><b>01</b><strong>GET ALONGSIDE</strong>Close the gap. A lit strike button means a rival is in reach.</span><span><b>02</b><strong>SWING OR BLOCK</strong>Time your hits. Watch the recovery bars. Block a rival’s windup.</span><span><b>03</b><strong>WIN THE DUEL · +250</strong>Beat the marked rival to the checkered flags. Losing a duel costs no points.</span></div></div>
+        <div class="rr-pick"><span class="rr-kicker">CHOOSE YOUR TROUBLE</span><div id="rrRoster" class="rr-roster" role="group" aria-label="Choose your rider"></div><div class="rr-options"><label>RIVALS<select id="rrDifficulty"><option value="easy">ROOKIE</option><option value="normal" selected>ROWDY</option><option value="hard">RIOT</option></select></label><label>SOUNDTRACK<select id="rrMusicSelect"><option value="fight-club">Fight Club</option><option value="theme">JCW Theme</option><option value="off">Music off</option></select></label></div><button id="rrStartBtn" class="rr-primary" disabled>LOADING RIDES…</button><p class="rr-keys">← → / A D steer · ↓ / S brake<br>J / L strike · K block · Space turbo · P pause</p><small id="rrBest" class="rr-best">Your first riot starts here.</small></div>
+      </div></div>
+      <div id="rrPause" class="rr-overlay" hidden><div class="rr-panel rr-dialog"><span class="rr-kicker">PULLED OVER</span><h2>TAKE A BREATHER.</h2><p class="rr-pause-copy">Beat the marked rival to the next flag for <strong>250 points</strong>.</p>
+        <div class="rr-duel-card"><small>YOUR DUEL CARD</small><ol id="rrPauseDuels" aria-label="Rival duels so far"></ol></div><button id="rrResumeBtn" class="rr-primary">BACK INTO THE RIOT</button><button id="rrRestartBtn" class="rr-secondary">PICK A NEW RIDE</button></div></div>
+      <div id="rrResult" class="rr-overlay" hidden><div class="rr-panel rr-dialog"><span class="rr-kicker">THE ROAD HAS SPOKEN</span><h2 id="rrResultTitle">MADE THE SHOW!</h2><strong id="rrScore" class="rr-score">0</strong><span class="rr-score-label">RIOT SCORE</span><p id="rrResultDetail"></p><p id="rrResultRecap" class="rr-result-recap"></p><dl id="rrScoreBreakdown" class="rr-score-breakdown" aria-label="Riot score breakdown"><div><dt>FINISH</dt><dd id="rrScoreFinish">0</dd></div><div><dt>CLEAN HITS</dt><dd id="rrScoreHits">0</dd></div><div><dt>KNOCKOUTS</dt><dd id="rrScoreKnockouts">0</dd></div><div><dt>TICKETS</dt><dd id="rrScoreTickets">0</dd></div><div><dt>RIVAL DUELS</dt><dd id="rrScoreDuels">0</dd></div><div><dt>TIME BONUS</dt><dd id="rrScoreTime">0</dd></div><div id="rrPenaltyRow" hidden><dt>TIME LIMIT</dt><dd id="rrScorePenalty">0</dd></div></dl><div class="rr-duel-card"><small id="rrDuelsWon">YOUR DUEL CARD</small><ol id="rrDuelRecap" aria-labelledby="rrDuelsWon"></ol></div><ol id="rrPlacements" class="rr-placements" aria-label="Finishing order"></ol><button id="rrAgainBtn" class="rr-primary">ONE MORE RIOT</button><div class="rr-result-actions"><button id="rrSaveBtn" class="rr-secondary">SAVE RECORD</button><button id="rrChangeBtn" class="rr-secondary">CHANGE RIDE</button></div></div></div>
+    </div>
+    <div class="rr-console">
+      <div id="rrStatus" class="rr-status" role="status">Pick your ride. Finish first. Settle scores on the way.</div>
+      <div class="rr-controls" aria-label="Driving and fighting controls">
+        <div class="rr-drive"><button id="rrLeftBtn" class="rr-control" aria-label="Steer left"><b>←</b><small>LEFT</small></button><button id="rrRightBtn" class="rr-control" aria-label="Steer right"><b>→</b><small>RIGHT</small></button><button id="rrBrakeBtn" class="rr-control rr-brake" aria-label="Hold to brake"><b>↓</b><small>BRAKE</small></button></div>
+        <div class="rr-fight"><button id="rrAttackLeftBtn" class="rr-control rr-strike" aria-label="Strike rival on your left" data-state="unavailable"><b id="rrAttackLeftGlyph">↖</b><small>STRIKE L</small><progress id="rrAttackLeftMeter" max="100" value="100" aria-label="Left strike readiness"></progress></button><button id="rrAttackRightBtn" class="rr-control rr-strike" aria-label="Strike rival on your right" data-state="unavailable"><b id="rrAttackRightGlyph">↗</b><small>STRIKE R</small><progress id="rrAttackRightMeter" max="100" value="100" aria-label="Right strike readiness"></progress></button><button id="rrBlockBtn" class="rr-control rr-block" aria-label="Hold to block incoming strikes"><b>◇</b><small>BLOCK</small></button><button id="rrBoostBtn" class="rr-control rr-boost" aria-label="Turbo: 25 percent faster for three seconds, costs 30 charge"><b>»</b><small id="rrBoostBtnLabel">TURBO</small></button></div>
+      </div>
+      <div class="ctl-row rr-footer"><button id="rrPauseBtn" class="rr-secondary" disabled>PAUSE</button><button id="rrSoundBtn" class="rr-secondary" aria-label="Mute sound">SOUND ON</button><button id="rrHomeBtn" class="rr-secondary">ARCADE</button></div>
+    </div>
+  </div>
+</section>
+<!-- ROAD RIOT SCREEN END -->
 <!-- RACING SCREEN START -->
 <section id="rcScreen" class="screen" hidden aria-label="JCW and ICP Road to the Show racing">
   <header class="rc-heading"><img data-racing-vector="road-to-the-show-logo" alt="JCW × ICP — Road to the Show"><div><span>ONE CONVOY. THREE STOPS. NO SLOW RIDES.</span><p>Detroit → Dark Carnival → JCW Tonight</p></div><b>8 ONLINE<br><small>ONE FINISH LINE</small></b></header>
@@ -3208,7 +3432,7 @@ body.racing-match:has(#netPill:not([hidden])) #rcScreen{padding-top:29px;height:
     <span id="tickerText">WELCOME TO THE PSYCHOPATHIC ARCADE — PICK YOUR POISON!</span>
   </div>
 
-  <div id="hint">19 games · Play solo, challenge a friend, or join an online match.</div>
+  <div id="hint">20 games · Play solo, challenge a friend, or join an online match.</div>
 </div>
 
 <script>
@@ -5378,7 +5602,7 @@ const LINES_TTT = {
   win:["RING THE BELL! IT'S OVER!","{n} TAKES THE FALL — WHAT A SHOWING!","THAT'S ALL SHE WROTE — {n} WINS IT!"],
   draw:["NEITHER SIDE CAN GET THE ADVANTAGE!","DOUBLE COUNT-OUT! THE JUDGES CALL IT EVEN!","NINE SQUARES AND NOTHING SETTLED!"],
   denied:["THAT SQUARE'S TAKEN, CHAMP!","THE REF SAYS NO!"],
-  welcome:["WELCOME TO THE PSYCHOPATHIC ARCADE — PICK YOUR POISON!","STEP RIGHT UP — THE CARNIVAL NEVER CLOSES!","SEVENTEEN GAMES, ZERO MERCY. CHOOSE."]
+  welcome:["WELCOME TO THE PSYCHOPATHIC ARCADE — PICK YOUR POISON!","STEP RIGHT UP — THE CARNIVAL NEVER CLOSES!","TWENTY GAMES, ZERO MERCY. CHOOSE."]
 };
 const LINES_CH = {
   start:["THE CARNIVAL OPENS THE BOARD — PALE MOVES FIRST!","64 SQUARES OF BAD INTENTIONS. HERE WE GO!"],
@@ -5762,6 +5986,8 @@ function showScreen(name){
   $('#plScreen').hidden = name!=='pool';
   $('#pkScreen').hidden = name!=='poker';
   $('#rcScreen').hidden = name!=='racing';
+  $('#rrScreen').hidden = name!=='riot';
+  if(window.ROAD_RIOT_READY && name!=='riot') ROAD_RIOT.leave();
   if(window.RACING_READY && name!=='racing') RACING.leave();
   if(window.POKER_READY && name!=='poker') POKER.leave();
   if(window.POOL_READY && name!=='pool') POOL.leave();
@@ -5799,6 +6025,7 @@ function showScreen(name){
   if(name==='pool') POOL.enter();
   if(name==='poker') POKER.enter();
   if(name==='racing') RACING.enter();
+  if(name==='riot') ROAD_RIOT.enter();
   syncClocks();
   window.scrollTo(0, 0);
 }
@@ -13024,6 +13251,97 @@ function createWrestlingGame(ladderMode=false){
   let arenaImage=null,arenaPromise=null;
   function loadArena(){if(!arenaPromise){arenaImage=new Image();arenaImage.src=LADDER_BACKDROP;arenaPromise=arenaImage.decode().then(()=>makeScenery()).catch(e=>{arenaPromise=null;throw e;});}return arenaPromise;}
   let canvas,ctx,scenery,active=false,raf=0,last=0,generation=0,portraitGeneration=0,stickId=null,stick={x:0,y:0},hudKey='';
+  // Controller state stays separate from keys and touch so releasing one input
+  // source never cancels another. Poll while selected, including pause/setup.
+  let padRaf=0,padFocused=true,padNotice='';
+  const pad={identity:null,index:null,armed:false,previous:[],mode:'',x:0,y:0,guard:false};
+  function padStatus(message,state){
+    const el=$('#ruGamepadStatus');if(!el)return;
+    if(el.textContent!==message)el.textContent=message;
+    if(el.dataset.state!==state)el.dataset.state=state;
+  }
+  function clearPad(disarm=false){
+    pad.x=pad.y=0;pad.guard=false;
+    if(disarm){pad.armed=false;pad.previous=[];}
+    const guard=$('#ruGuardBtn'),pressed=String(guards.size>0);
+    if(guard&&guard.getAttribute('aria-pressed')!==pressed)guard.setAttribute('aria-pressed',pressed);
+  }
+  function losePad(message,state='disconnected'){
+    const hadPad=pad.identity!==null;
+    pad.identity=null;pad.index=null;clearPad(true);padStatus(message,state);
+    if(hadPad&&S.mode==='playing'){padNotice=message+' Reconnect or use the keyboard, then resume.';pause(true);status(padNotice);text('ruPauseNote',padNotice);}
+  }
+  function selectWithPad(direction){
+    const select=$('#ruRoster');if(select.disabled)return;
+    select.selectedIndex=(select.selectedIndex+direction+select.options.length)%select.options.length;
+    select.dispatchEvent(new Event('change',{bubbles:true}));
+  }
+  function pollPad(){
+    if(!active||$('#ruScreen').hidden)return;
+    if(document.hidden||!padFocused||!document.hasFocus()||gameKeysBlocked({defaultPrevented:false,target:document.activeElement||document.body})){
+      clearPad(true);return;
+    }
+    let devices;
+    try{
+      if(typeof navigator.getGamepads!=='function'){losePad('Controller support is unavailable in this browser. Keyboard and touch still work.','unavailable');return;}
+      devices=Array.from(navigator.getGamepads()||[]).filter(p=>p&&p.connected);
+    }catch(_error){losePad('Controller access is blocked by this browser or page. Keyboard and touch still work.','blocked');return;}
+    let device=devices.find(p=>p.index===pad.index&&p.id+'|'+p.index===pad.identity&&p.mapping==='standard');
+    if(pad.identity!==null&&!device){
+      const unmapped=devices.some(p=>p.index===pad.index&&p.mapping!=='standard');
+      losePad(unmapped?'Controller mapping is unsupported. Use a standard Xbox or PlayStation mapping.':'Controller disconnected.',unmapped?'unsupported':'disconnected');
+      return;
+    }
+    device=device||devices.find(p=>p.mapping==='standard');
+    if(!device){
+      clearPad(true);
+      padStatus(devices.length?'Controller mapping is unsupported. Use a standard Xbox or PlayStation mapping.':padNotice||'Press a controller button to connect.',devices.length?'unsupported':'ready');
+      return;
+    }
+    const buttons=Array.from(device.buttons||[],b=>!!b?.pressed||Number(b?.value)>.5);
+    const axis=i=>Number.isFinite(device.axes?.[i])?clamp(device.axes[i],-1,1):0;
+    const ax=axis(0),ay=axis(1),length=Math.hypot(ax,ay),neutral=length<=.2&&!buttons.some(Boolean);
+    const identity=device.id+'|'+device.index;
+    if(identity!==pad.identity){clearPad(true);pad.identity=identity;pad.index=device.index;}
+    if(pad.mode!==S.mode){clearPad(true);pad.mode=S.mode;}
+    if(!pad.armed){
+      pad.previous=buttons;
+      if(!neutral){padStatus('Release controller buttons and center the stick to continue.','waiting');return;}
+      pad.armed=true;padNotice='';
+    }
+    const fresh=i=>buttons[i]&&!pad.previous[i];
+    const startPressed=fresh(9),south=fresh(0),west=fresh(2),north=fresh(3);
+    const prior=fresh(4)||fresh(14),next=fresh(5)||fresh(15);
+    pad.previous=buttons;
+    padStatus(S.mode==='ready'?'Controller connected · LB/RB choose · A/Cross or Start begins.':S.mode==='paused'?'Controller connected · Start/Options resumes.':S.mode==='over'?'Controller connected · A/Cross or Start plays again.':'Controller connected · Start/Options pauses.','connected');
+    if(S.mode==='ready'){
+      clearPad();
+      if(prior!==next)selectWithPad(prior?-1:1);
+      if((south||startPressed)&&!$('#ruStartBtn').disabled){clearPad(true);start();}
+      return;
+    }
+    if(S.mode==='paused'){
+      clearPad();if(startPressed){padNotice='';clearPad(true);pause();}
+      return;
+    }
+    if(S.mode==='over'){
+      clearPad();if(south||startPressed){clearPad(true);start();}
+      return;
+    }
+    if(S.mode!=='playing'){clearPad(true);return;}
+    if(startPressed){clearPad(true);pause();return;}
+    // Radial dead zone preserves diagonals; D-pad overrides a tilted stick.
+    const scale=length>.2?Math.min(1,(length-.2)/.8)/length:0;
+    pad.x=buttons[14]||buttons[15]?Number(!!buttons[15])-Number(!!buttons[14]):ax*scale;
+    pad.y=buttons[12]||buttons[13]?Number(!!buttons[13])-Number(!!buttons[12]):ay*scale;
+    pad.guard=!!(buttons[1]||buttons[5]);
+    const guard=$('#ruGuardBtn'),pressed=String(pad.guard||guards.size>0);
+    if(guard.getAttribute('aria-pressed')!==pressed)guard.setAttribute('aria-pressed',pressed);
+    // One action per fresh press, using the same guest/host route as keys.
+    if(!pad.guard){if(north)act('finish');else if(west)act('throw');else if(south)act('hit');}
+  }
+  function padLoop(){padRaf=0;if(!active)return;pollPad();padRaf=requestAnimationFrame(padLoop);}
+  function startPad(){if(!padRaf){padFocused=document.hasFocus();pad.mode='';clearPad(true);padRaf=requestAnimationFrame(padLoop);}}
   const player=()=>S.fighters.find(f=>f.player);
   const alive=()=>S.fighters.filter(f=>!f.out);
   function text(id,v){const e=$('#'+id);if(e.textContent!==String(v))e.textContent=String(v);}
@@ -13043,7 +13361,7 @@ function createWrestlingGame(ladderMode=false){
     const id=S.queue[0],token=generation;if(!id||art.has(id))return;
     load(id).catch(()=>{if(token!==generation||S.mode!=='playing')return;S.error='Wrestler artwork could not be decoded. Resume to retry.';pause(true);});
   }
-  function clearInput(){held.clear();guards.clear();stick={x:0,y:0};stickId=null;$('#ruStickNub').style.transform='';$('#ruGuardBtn').setAttribute('aria-pressed','false');}
+  function clearInput(){held.clear();guards.clear();stick={x:0,y:0};stickId=null;clearPad(true);$('#ruStickNub').style.transform='';$('#ruGuardBtn').setAttribute('aria-pressed','false');}
   function stop(){cancelAnimationFrame(raf);raf=0;last=0;clearInput();}
   function loop(now){raf=0;if(!active||S.mode!=='playing')return;const dt=last?Math.min(.05,Math.max(0,(now-last)/1000)):0;last=now;step(dt);draw();if(S.mode==='playing')raf=requestAnimationFrame(loop);}
   function run(){if(active&&S.mode==='playing'&&!raf){last=0;raf=requestAnimationFrame(loop);}}
@@ -13052,7 +13370,7 @@ function createWrestlingGame(ladderMode=false){
 
     $('#ruRestartBtn').hidden=!!N;$('#ruSetup').hidden=!['ready','loading'].includes(S.mode);$('#ruPause').hidden=S.mode!=='paused';$('#ruOver').hidden=S.mode!=='over';
     $('#ruStartBtn').disabled=S.mode==='loading'||!!N?.localReady;$('#ruRoster').disabled=S.mode==='loading'||!!N?.localReady;$('#ruSize').disabled=S.mode==='loading'||!!N;
-    $('#ruPauseBtn').disabled=!['playing','paused'].includes(S.mode);text('ruPauseBtn',S.mode==='paused'?'RESUME':'PAUSE');text('ruPauseNote',S.error||'Your match is paused.');
+    $('#ruPauseBtn').disabled=!['playing','paused'].includes(S.mode);text('ruPauseBtn',S.mode==='paused'?'RESUME':'PAUSE');text('ruPauseNote',S.error||padNotice||'Your match is paused.');
     for(const id of ['ruHitBtn','ruThrowBtn','ruGuardBtn'])$('#'+id).disabled=S.mode!=='playing';
   }
   function hud(){
@@ -13113,7 +13431,7 @@ function createWrestlingGame(ladderMode=false){
     text('ruStartBtn','READY FOR VERSUS');text('ruLoadStatus','Choose a wrestler for the rematch.');$('#ruSize').disabled=true;if(send)NET.push(game,{k:'lobby',round:N.round});
   }
   function netEnd(){if(!N)return;N=null;generation++;stop();choose();text('ruStartBtn',ladderMode?'CHASE THE GOLD':'RING THE BELL');$('#ruRoster').disabled=false;$('#ruSize').disabled=false;status('Online match ended. You can play solo or invite a friend.');}
-  function controlVector(){let x=stick.x+(held.has('right')?1:0)-(held.has('left')?1:0),y=stick.y+(held.has('down')?1:0)-(held.has('up')?1:0);const len=Math.hypot(x,y);if(len>1){x/=len;y/=len;}return{x,y,hit:held.has('hit'),guard:guards.size>0};}
+  function controlVector(){let x=stick.x+pad.x+(held.has('right')?1:0)-(held.has('left')?1:0),y=stick.y+pad.y+(held.has('down')?1:0)-(held.has('up')?1:0);const len=Math.hypot(x,y);if(len>1){x/=len;y/=len;}return{x,y,hit:held.has('hit'),guard:guards.size>0||pad.guard};}
   function netInput(action){if(!N||N.phase!=='playing'||S.mode!=='playing')return;NET.push(game,{k:'input',round:N.round,seq:++N.inputSeq,...controlVector(),...(action?{action,...(ladderMode&&action==='throw'?{grabAt:S.elapsed}:{})}:{})});}
   function netTick(dt){
     if(!N||N.phase!=='playing')return false;N.clock+=dt;
@@ -13131,7 +13449,7 @@ function createWrestlingGame(ladderMode=false){
     else applyNetPause();
   }
   function applyNetPause(){
-    if(!N)return;const paused=N.pauses.some(Boolean);S.mode=paused?'paused':'playing';if(paused)stop();else{canvas.focus({preventScroll:true});run();}overlays();hud();draw();text('ruPauseNote',paused?'Both players must resume before the match continues.':'Your match is ready.');sendFrame();
+    if(!N)return;const paused=N.pauses.some(Boolean);S.mode=paused?'paused':'playing';if(paused){N.remote={x:0,y:0,hit:false,guard:false};N.remoteAge=0;stop();}else{canvas.focus({preventScroll:true});run();}overlays();hud();draw();text('ruPauseNote',paused?(padNotice||'Both players must resume before the match continues.'):'Your match is ready.');sendFrame();
   }
   function validFighter(f){
     if(!f||!byId[f.id]||!['p1','p2'].includes(f.uid))return false;
@@ -13320,7 +13638,7 @@ function createWrestlingGame(ladderMode=false){
       if(f.action){f.action.t+=dt;resolve(f);if(f.action&&f.action.t>=f.action.duration){if(f.action.kind==='down')f.hp=55;cancelMove(f);}}
       f.guardOn=false;
       if(f.grabbed||f.action||f.stun>0)continue;
-      if(ladderMode&&f.climbing){if((f===player()&&(held.has('down')||stick.y>.5))||(f.human&&f!==player()&&N?.remote.y>.5)){f.climb=Math.max(0,f.climb-dt*.8);if(f.climb<=0){f.climbing=false;f.x+=f.climbSide*23;f.cool=.3;}}else f.climb=Math.min(1,f.climb+dt*.34*byId[f.id].speed);if(!isHuman(f))aiLadder(f,dt);continue;}
+      if(ladderMode&&f.climbing){if((f===player()&&controlVector().y>.5)||(f.human&&f!==player()&&N?.remote.y>.5)){f.climb=Math.max(0,f.climb-dt*.8);if(f.climb<=0){f.climbing=false;f.x+=f.climbSide*23;f.cool=.3;}}else f.climb=Math.min(1,f.climb+dt*.34*byId[f.id].speed);if(!isHuman(f))aiLadder(f,dt);continue;}
       if(isHuman(f)){
         const input=f===player()?controlVector():N?.remote||{x:0,y:0,hit:false,guard:false};f.guardOn=input.guard&&f.guard>=8;
         let dx=input.x,dy=input.y;const len=Math.hypot(dx,dy);if(len>1){dx/=len;dy/=len;}
@@ -13344,7 +13662,7 @@ function createWrestlingGame(ladderMode=false){
   }
   async function start(){
     if(N){netReady();return;}
-    stop();const token=++generation;S.mode='loading';S.error='';text('ruLoadStatus','Getting your wrestlers ready…');overlays();
+    stop();padNotice='';const token=++generation;S.mode='loading';S.error='';text('ruLoadStatus','Getting your wrestlers ready…');overlays();
     S.selected=$('#ruRoster').value;S.total=ladderMode?(Number($('#ruSize').value)===4?4:2):(Number($('#ruSize').value)===12?12:roster.length);store.set('selected',S.selected);
     const ids=roster.filter(r=>r.id!==S.selected).map(r=>r.id);for(let i=ids.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[ids[i],ids[j]]=[ids[j],ids[i]];}
     const queue=ids.slice(0,S.total-1);loadingIds=new Set([S.selected,...queue.slice(0,ladderMode?3:2)]);
@@ -13368,12 +13686,12 @@ function createWrestlingGame(ladderMode=false){
   function pause(force){
     if(N){netPause(force);return;}
     if(S.mode==='playing'){S.mode='paused';stop();}
-    else if(S.mode==='paused'&&force!==true){S.error='';S.mode='playing';prefetch();run();canvas.focus({preventScroll:true});}else return;
+    else if(S.mode==='paused'&&force!==true){S.error='';padNotice='';clearPad(true);S.mode='playing';prefetch();run();canvas.focus({preventScroll:true});}else return;
     overlays();hud();draw();
   }
   function choose(){if(N){if(['over','lobby'].includes(N.phase))netLobby(true);return;}stop();generation++;S.mode='ready';S.fighters=[];S.queue=[];S.score=0;S.kills=0;S.charge=0;S.error='';S.bannerTime=0;text('ruLoadStatus','');overlays();hud();portrait();draw();}
-  function leave(){if(S.mode==='loading'){generation++;S.mode='ready';text('ruLoadStatus','');}pause(true);active=false;stop();if(ladderMode){$('#ruScreen').classList.remove('lw-match');document.body.classList.remove('ladder-match');}}
-  function enter(){active=true;resize();overlays();hud();portrait();draw();TICK.set(ladderMode?'LADDER WARS — CLIMB THROUGH THE CHAOS. CLAIM THE GOLD.':'JCW RUMBLE — OVER THE ROPES. LAST LUNATIC STANDING.','LUNACY UNLOCKED');}
+  function leave(){if(S.mode==='loading'){generation++;S.mode='ready';text('ruLoadStatus','');}pause(true);active=false;stop();cancelAnimationFrame(padRaf);padRaf=0;pad.identity=null;pad.index=null;if(ladderMode){$('#ruScreen').classList.remove('lw-match');document.body.classList.remove('ladder-match');}}
+  function enter(){active=true;startPad();resize();overlays();hud();portrait();draw();TICK.set(ladderMode?'LADDER WARS — CLIMB THROUGH THE CHAOS. CLAIM THE GOLD.':'JCW RUMBLE — OVER THE ROPES. LAST LUNATIC STANDING.','LUNACY UNLOCKED');}
   function resize(){const dpr=Math.min(devicePixelRatio||1,2);canvas.width=W*dpr;canvas.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);draw();}
   function oval(c,x,y,rx,ry,fill,stroke){c.beginPath();c.ellipse(x,y,rx,ry,0,0,Math.PI*2);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.stroke();}}
   function path(c,points,fill,stroke){c.beginPath();points.forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));if(fill){c.closePath();c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.stroke();}}
@@ -13466,7 +13784,11 @@ function createWrestlingGame(ladderMode=false){
       if(keys[k]){e.preventDefault();held.add(keys[k]);if(keys[k]==='hit'&&!e.repeat)act('hit');}else if(k==='Shift'||k==='l'){e.preventDefault();guards.add(k);}else if(k==='k'||k==='f'){e.preventDefault();if(!e.repeat)act(k==='k'?'throw':'finish');}
     });
     window.addEventListener('keyup',e=>{const k=e.key.length===1?e.key.toLowerCase():e.key;if(keys[k])held.delete(keys[k]);guards.delete(k);});
-    window.addEventListener('blur',()=>pause(true));document.addEventListener('visibilitychange',()=>{if(document.hidden)pause(true);});window.addEventListener('resize',()=>{if(active)resize();});
+    window.addEventListener('blur',()=>{padFocused=false;clearPad(true);pause(true);});
+    window.addEventListener('focus',()=>{padFocused=true;clearPad(true);});
+    window.addEventListener('gamepaddisconnected',e=>{if(active&&e.gamepad?.index===pad.index)losePad('Controller disconnected.');});
+    document.addEventListener('visibilitychange',()=>{if(document.hidden){clearPad(true);pause(true);}});
+    window.addEventListener('resize',()=>{if(active)resize();});
     // Menu art reuses whole reviewed frames, including their transparent margins.
     Promise.all([loadArena(),load('violent-j'),load('dani-mo')]).then(()=>{const c=$('#ruMenuArt').getContext('2d');c.drawImage(scenery,0,0,400,300);sprite(c,'violent-j','idle',0,145,255,1.23,1);sprite(c,'dani-mo','idle',0,267,255,1.23,-1);}).catch(()=>{});
     hud();overlays();
@@ -15313,7 +15635,7 @@ const RACING_RENDERER=(()=>{
     const ctx=canvas.getContext('2d',{alpha:false});
     const motionQuery=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)');let reducedMotion=!!motionQuery?.matches;
     let width=1200,height=700,projectionWidth=1200,dpr=1,horizon=220,disposed=false,redraw=true,playerSeat=-1,cameraX=0,currentZone=0,oldZone=0,zoneFade=1,lastTime=-1;
-    const nodes=[],sprites=[],labels=[],labelBoxes=[],tireMarks=[],tireHeads=new Map();let ownBox=null,roadPattern=null,dirtPattern=null,edgeGradient=null;
+    const nodes=[],sprites=[],labels=[],labelBoxes=[],impacts=[],tireMarks=[],tireHeads=new Map();let ownBox=null,roadPattern=null,dirtPattern=null,edgeGradient=null,combatLeft=null,combatRight=null;
     const motionChanged=event=>{reducedMotion=event.matches;tireMarks.length=0;tireHeads.clear();redraw=true;};
     motionQuery?.addEventListener?.('change',motionChanged);
     if(assets.vectors['asphalt-tile']?.image)roadPattern=ctx.createPattern(assets.vectors['asphalt-tile'].image,'repeat');
@@ -15371,7 +15693,7 @@ const RACING_RENDERER=(()=>{
         roadQuad(far,near,1.12,zone===0?'#797265':zone===1?'#564a49':'#77786c');
         if(dirtPattern){ctx.globalAlpha=.15;roadQuad(far,near,1.12,dirtPattern);ctx.globalAlpha=1;}
         roadQuad(far,near,.94,stripe?'#efdfc4':['#a9433e','#813c72','#3f5e68'][zone]);
-        roadQuad(far,near,.86,zone===1?(stripe?'#2d3740':'#2a343d'):(stripe?'#343d42':'#303a3f'));
+        roadQuad(far,near,.86,state.combat?(stripe?'#443d3a':'#3e3836'):zone===1?(stripe?'#2d3740':'#2a343d'):(stripe?'#343d42':'#303a3f'));
         if(roadPattern){ctx.globalAlpha=.14;roadQuad(far,near,.86,roadPattern);ctx.globalAlpha=1;}
         band(far,near,-.86,-.845,'#efe6cc');band(far,near,.845,.86,'#efe6cc');
         if(Math.floor(far.z/90)%2===0){band(far,near,-.292,-.28,'#e9e2c49c');band(far,near,.28,.292,'#e9e2c49c');}
@@ -15499,6 +15821,38 @@ const RACING_RENDERER=(()=>{
       '2-tuff-tony':{head:[[190,24],[345,24],[345,111],[310,120],[285,113],[239,114],[218,116],[190,104]],pivot:[269,112],profile:true,neck:'#b67a4e',wheels:[[256,419,35,59,'block']]},
       'big-foot':{head:[[187,2],[332,2],[335,112],[184,112]],pivot:[258,104],soft:28,eraseBottom:85,wheels:[[256,429,34,53,'chevron']]}
     };
+    // Combat arms are articulated from the same artwork, never painted over
+    // the rider as an extra limb. These small layers are prepared only for Riot.
+    const armSpec={
+      'violent-j':{pivot:[179,127],color:'#ded8cc',region:[[190,100],[181,125],[177,151],[177,175],[165,192],[164,220],[120,226],[105,179],[112,151],[145,120]]},
+      'shaggy-2-dope':{pivot:[196,135],color:'#c49167',region:[[202,116],[208,139],[199,173],[184,195],[180,215],[141,216],[133,202],[145,171],[165,133],[182,118]]},
+      'dani-mo':{pivot:[197,170],color:'#c28b55',region:[[194,149],[212,162],[211,184],[197,213],[179,234],[149,239],[135,227],[139,198],[141,168],[149,143],[168,135],[182,141]]},
+      '2-tuff-tony':{pivot:[180,151],color:'#d79b62',region:[[193,126],[191,158],[185,187],[169,215],[169,242],[148,251],[119,250],[108,226],[115,198],[127,172],[149,142],[173,129]]},
+      'mad-man-pondo':{pivot:[169,158],color:'#d39b68',region:[[174,133],[177,163],[174,195],[166,218],[175,240],[145,246],[117,236],[102,219],[99,197],[118,168],[145,141]]},
+      'big-foot':{pivot:[170,139],color:'#90502d',region:[[175,97],[183,130],[180,170],[171,202],[181,221],[176,247],[141,259],[105,258],[77,242],[70,215],[83,185],[103,145],[125,115]]}
+    };
+    function prepareCombatRig(rig,id){
+      if(rig.combat||!armSpec[id])return;
+      const spec=armSpec[id],image=assets.riders[id].image;rig.combat={};
+      for(const side of[-1,1]){
+        const points=spec.region.map(([x,y])=>[side<0?x:512-x,y]),pivot=[side<0?spec.pivot[0]:512-spec.pivot[0],spec.pivot[1]],cut=layer(image,points);
+        const body=document.createElement('canvas');body.width=body.height=512;const context=body.getContext('2d');context.drawImage(rig.base,0,0);context.save();regionPath(context,points);context.globalCompositeOperation='destination-out';context.fill();context.lineWidth=9;context.lineJoin='round';context.stroke();context.restore();
+        rig.combat[side]={...cut,pivot,body,color:spec.color};
+      }
+    }
+    function attackPose(racer){
+      const time=Math.max(0,Number(racer.attackTime)||0),windup=racer.human?.24:.40;
+      if(!time||!racer.attackSide||racer.crashTime>0)return null;
+      if(time>.18)return{side:racer.attackSide,windup:true,charge:clamp(1-(time-.18)/windup,0,1),extension:0};
+      const elapsed=.18-time,extension=elapsed<.045?elapsed/.045:time/.135;
+      return{side:racer.attackSide,windup:false,charge:1,extension:clamp(extension,0,1)};
+    }
+    function combatArm(rig,attack){
+      const arm=rig.combat?.[attack.side];if(!arm)return;
+      const [x,y]=arm.pivot,rotation=attack.side*(attack.windup?.22*attack.charge:.22-1.62*attack.extension);
+      ctx.save();ctx.translate(x,y);ctx.fillStyle=arm.color;ctx.beginPath();ctx.ellipse(0,3,14,20,0,0,TAU);ctx.fill();
+      ctx.rotate(rotation);ctx.scale(1,1+attack.extension*.18);ctx.drawImage(arm.image,arm.x-x,arm.y-y);ctx.restore();
+    }
     function regionPath(context,points){context.beginPath();context.moveTo(points[0][0],points[0][1]);for(let i=1;i<points.length;i++)context.lineTo(points[i][0],points[i][1]);context.closePath();}
     function layer(image,points){
       const x=Math.floor(Math.min(...points.map(p=>p[0])))-2,y=Math.floor(Math.min(...points.map(p=>p[1])))-2,w=Math.ceil(Math.max(...points.map(p=>p[0])))-x+3,h=Math.ceil(Math.max(...points.map(p=>p[1])))-y+3;
@@ -15527,7 +15881,7 @@ const RACING_RENDERER=(()=>{
     function updatePoses(state,dt,reset){
       if(reset)poses.clear();const blend=1-Math.exp(-Math.max(0,dt)*12),seen=new Set();
       for(const racer of state.racers){
-        seen.add(racer.id);const target=clamp(Number(racer.steer)||0,-1,1);let pose=poses.get(racer.id);
+        seen.add(racer.id);const attacking=state.combat&&racer.attackTime>0&&!(racer.crashTime>0),target=attacking?racer.attackSide*.85:clamp(Number(racer.steer)||0,-1,1);let pose=poses.get(racer.id);
         if(!pose||pose.racerId!==racer.racerId){pose={racerId:racer.racerId,steer:target,face:target<-.1?1:0};poses.set(racer.id,pose);}
         else{pose.steer=mix(pose.steer,target,blend);pose.face=mix(pose.face,target<-.1?1:0,blend);}
         // Distance, not elapsed animation time: stopped and paused wheels stay still.
@@ -15547,13 +15901,15 @@ const RACING_RENDERER=(()=>{
       }
       ctx.restore();
     }
-    function articulatedRider(racer,w,h,g){
+    function articulatedRider(racer,w,h,g,combat=false){
       const rig=rigs[racer.racerId];if(!rig){ctx.drawImage(assets.riders[racer.racerId].image,-w*g.anchorX,-h*g.anchorY,w,h);return;}
-      const pose=poses.get(racer.id)||{steer:0,face:0,phase:0},turn=pose.steer;
+      const pose=poses.get(racer.id)||{steer:0,face:0,phase:0},turn=pose.steer,attack=combat?attackPose(racer):null;
+      if(attack)prepareCombatRig(rig,racer.racerId);
       ctx.save();ctx.translate(-w*g.anchorX,-h*g.anchorY);ctx.scale(w/512,h/512);
       for(const front of rig.front){const wheel=front.wheel;ctx.save();ctx.translate(wheel.x,wheel.y);ctx.rotate(turn*.13);ctx.transform(1-Math.abs(turn)*.16,0,-turn*.09,1,0,0);ctx.translate(-wheel.x,-wheel.y);ctx.drawImage(front.image,front.x,front.y);rollingTire(wheel,pose.phase*1.12);ctx.restore();}
       const[px,py]=rig.spec.pivot;if(rig.spec.neck){ctx.fillStyle=rig.spec.neck;ctx.beginPath();ctx.ellipse(px,py+3,20,10,0,0,TAU);ctx.fill();}
-      ctx.drawImage(rig.base,0,0);
+      if(attack)combatArm(rig,attack);
+      ctx.drawImage(attack&&rig.combat?.[attack.side]?rig.combat[attack.side].body:rig.base,0,0);
       for(const wheel of rig.wheels)rollingTire(wheel,pose.phase);
       for(const[x,y,rx,ry]of rig.spec.hubs||[]){ctx.save();ctx.strokeStyle='#d2d5cb91';ctx.lineWidth=1.6;ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,TAU);ctx.clip();for(let i=0;i<5;i++){const a=pose.phase+i*TAU/5;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+Math.cos(a)*rx,y+Math.sin(a)*ry);ctx.stroke();}ctx.restore();}
       const head=rig.head;
@@ -15565,12 +15921,131 @@ const RACING_RENDERER=(()=>{
       ctx.restore();ctx.restore();
     }
 
-    function vehicle(racer,p,state,own,distance){
+    function latestCombatEvent(state,racer,types,seconds){
+      for(let i=state.events.length-1;i>=0;i--){const event=state.events[i];if(state.time-event.time>seconds)continue;if(types.includes(event.type)&&(event.type==='strike'?event.target===racer.id:event.racer===racer.id))return event;}
+      return null;
+    }
+    function combatImpact(racer,p,state,visibleWidth,visibleHeight){
+      if(!(racer.hurtTime>0)||visibleHeight<25)return;
+      const event=latestCombatEvent(state,racer,['strike','hit'],.34),blocked=!!event?.blocked,side=event?.type==='strike'?-event.side:0;
+      const fraction=clamp(racer.hurtTime/.32,0,1),progress=1-fraction,radius=clamp(visibleHeight*.065,7,18)*(reducedMotion?1:.65+progress*.7);
+      const x=p.x+side*visibleWidth*.40,y=p.y-visibleHeight*(event?.type==='hit'?.20:.60),color=blocked?'#a1ecf0':'#ffcf86';
+      ctx.save();ctx.globalAlpha=clamp(fraction*1.7,0,1);ctx.translate(x,y);ctx.lineWidth=clamp(2*p.ratio,1.2,2.4);ctx.lineCap='round';ctx.strokeStyle=color;
+      if(reducedMotion){ctx.beginPath();ctx.arc(0,0,radius*.7,0,TAU);ctx.stroke();}
+      else for(let i=0;i<6;i++){const angle=i*TAU/6+.25,inner=radius*.75,outer=radius*1.32;ctx.beginPath();ctx.moveTo(Math.cos(angle)*inner,Math.sin(angle)*inner);ctx.lineTo(Math.cos(angle)*outer,Math.sin(angle)*outer);ctx.stroke();}
+      const r=radius*(blocked?.34:.46);polygon([[-r,0],[-r*.25,-r*.25],[0,-r],[r*.25,-r*.25],[r,0],[r*.25,r*.25],[0,r],[-r*.25,r*.25]],blocked?'#d9ffff':'#fff1c9');ctx.restore();
+    }
+    function combatEffects(racer,p,state,visibleWidth,visibleHeight,own){
+      const attack=attackPose(racer),scale=p.ratio;
+      ctx.save();ctx.lineCap='round';
+      if(racer.crashTime>0){
+        // A short, grounded scrape conveys a crash without full-screen flashes.
+        if(!reducedMotion&&racer.crashTime>.55){
+          ctx.strokeStyle='#ffd29a';ctx.lineWidth=clamp(1.7*scale,.8,2.1);
+          for(let i=0;i<5;i++){const t=(state.time*5+i*.19+racer.id*.11)%1,x=p.x+(i%2?1:-1)*visibleWidth*(.22+t*.30),y=p.y+t*9*scale;ctx.globalAlpha=(1-t)*.8;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+(i%2?1:-1)*(4+t*6)*scale,y-4*scale);ctx.stroke();}
+        }
+        const rx=visibleWidth*.56,ry=Math.max(4,visibleWidth*.14),recovery=clamp(1-racer.crashTime/2.2,0,1);
+        ctx.globalAlpha=1;ctx.strokeStyle='#482e2b';ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(p.x,p.y,rx,ry,0,0,TAU);ctx.stroke();ctx.strokeStyle='#f0aa76';ctx.beginPath();ctx.ellipse(p.x,p.y,rx,ry,0,-Math.PI/2,-Math.PI/2+recovery*TAU);ctx.stroke();
+      }else if(racer.blocking){
+        const cy=p.y-visibleHeight*.53,rx=visibleWidth*.55,ry=visibleHeight*.47;
+        ctx.strokeStyle='#a5edf0';ctx.lineWidth=clamp(2.4*scale,1.3,2.8);ctx.beginPath();ctx.ellipse(p.x,cy,rx,ry,0,Math.PI*.88,Math.PI*2.12);ctx.stroke();
+        // A shield badge stays legible even when the guard is foreshortened.
+        const s=clamp(visibleHeight*.07,5,11),x=p.x+visibleWidth*.52,y=p.y-visibleHeight*.72;
+        polygon([[x-s,y-s*.7],[x+s,y-s*.7],[x+s*.8,y+s*.5],[x,y+s],[x-s*.8,y+s*.5]],'#183942');ctx.strokeStyle='#9be9e9';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(x-s,y-s*.7);ctx.lineTo(x+s,y-s*.7);ctx.lineTo(x+s*.8,y+s*.5);ctx.lineTo(x,y+s);ctx.lineTo(x-s*.8,y+s*.5);ctx.closePath();ctx.stroke();
+      }else if(racer.invulnerable>0){
+        const recovering=!!latestCombatEvent(state,racer,['recover'],1.8);
+        ctx.strokeStyle=recovering?'#a1edf0':'#f6d99c';ctx.globalAlpha=recovering?.80:.55;ctx.lineWidth=clamp((recovering?2.6:1.6)*scale,1,3);ctx.setLineDash([5*scale,4*scale]);ctx.beginPath();ctx.ellipse(p.x,p.y,visibleWidth*.56,Math.max(4,visibleWidth*.14),0,0,TAU);ctx.stroke();ctx.setLineDash([]);ctx.globalAlpha=1;
+        if(recovering){ctx.lineWidth=clamp(1.5*scale,1,2);for(const side of[-1,1]){const x=p.x+side*visibleWidth*.53,y=p.y-visibleHeight*.2;ctx.beginPath();ctx.moveTo(x-side*5*scale,y);ctx.lineTo(x,y);ctx.lineTo(x,y+visibleHeight*.13);ctx.stroke();}}
+      }
+      if(attack&&visibleHeight>28){
+        const side=attack.side,x=p.x+side*visibleWidth*.52,y=p.y-visibleHeight*.66;
+        if(attack.windup){
+          const r=clamp(visibleHeight*.055,5,11);ctx.fillStyle=own?'#e7b65b':'#ff946a';ctx.strokeStyle='#23191c';ctx.lineWidth=2;
+          ctx.beginPath();ctx.moveTo(x,y-r);ctx.lineTo(x+r,y+r*.8);ctx.lineTo(x-r,y+r*.8);ctx.closePath();ctx.fill();ctx.stroke();
+          ctx.fillStyle='#21181a';ctx.font=`900 ${Math.max(8,r*1.45)}px Arial`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('!',x,y+r*.16);
+        }else if(!reducedMotion&&attack.extension>.3){
+          // Two restrained arcs follow the striking hand, not the whole screen.
+          ctx.strokeStyle=own?'#ffe5a7':'#ffb08a';ctx.globalAlpha=attack.extension*.82;ctx.lineWidth=clamp(2*scale,1.1,3);
+          for(let i=0;i<2;i++){ctx.beginPath();ctx.moveTo(x-side*visibleWidth*.12,y+visibleHeight*(.12+i*.04));ctx.quadraticCurveTo(x+side*visibleWidth*.24,y-visibleHeight*.06,x+side*visibleWidth*(.42+i*.06),y+visibleHeight*.04);ctx.stroke();}
+        }
+      }
+      ctx.restore();
+    }
+    function selectCombatTarget(state,player,side){
+      if(state.phase!=='racing'||player.crashTime>0||player.finishTime!=null)return null;
+      let target=null,bestZ=Infinity,bestX=Infinity;
+      for(const rival of state.racers){
+        const lateral=(rival.x-player.x)*side,distance=Math.abs(rival.z-player.z);
+        if(rival.id===player.id||rival.crashTime>0||rival.invulnerable>0||rival.finishTime!=null||distance>38||lateral<.08||lateral>.68)continue;
+        if(distance<bestZ||distance===bestZ&&(lateral<bestX||lateral===bestX&&rival.id<target.id)){bestZ=distance;bestX=lateral;target=rival;}
+      }
+      return target;
+    }
+    function combatTargets(state,player){
+      for(const side of[-1,1]){
+        const target=selectCombatTarget(state,player,side);
+        if(!target)continue;
+        const p=point(target.z-player.z,target.x);if(!p)continue;
+        const ready=!(player.attackCooldown>0)&&!(player.attackTime>0)&&!player.blocking,color=ready?'#ffe3a1':'#c4b49a';
+        // Ground brackets identify the target without obscuring rider artwork.
+        ctx.save();ctx.strokeStyle=color;ctx.lineWidth=2.5;const r=clamp(p.course*.13,12,35);
+        for(const direction of[-1,1]){ctx.beginPath();ctx.moveTo(p.x+direction*r,p.y-4);ctx.lineTo(p.x+direction*(r+5),p.y+3);ctx.lineTo(p.x+direction*r,p.y+8);ctx.stroke();}
+        ctx.fillStyle=color;const x=p.x-side*(r+8),y=p.y+3;polygon([[x-side*5,y-4],[x,y],[x-side*5,y+4]],color);ctx.restore();
+      }
+    }
+    function drawDuelPennant(x, y, flagWidth, poleHeight, direction = 1) {
+      const flagHeight = flagWidth * 0.64;
+      const cellWidth = flagWidth / 3;
+      const cellHeight = flagHeight / 2;
+      const edge = clamp(flagWidth * 0.09, 0.9, 2);
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(direction, 1);
+      ctx.fillStyle = '#241532';
+      ctx.fillRect(-edge, -edge, edge * 2, poleHeight + edge);
+      ctx.fillStyle = '#e9dcf6';
+      ctx.fillRect(-edge * 0.5, 0, edge, poleHeight);
+
+      // A notched silhouette and alternating light/dark squares also read in grayscale.
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.lineTo(flagWidth, 0);
+      ctx.lineTo(flagWidth * 0.82, cellHeight);
+      ctx.lineTo(flagWidth, flagHeight);
+      ctx.lineTo(0, flagHeight);
+      ctx.closePath();
+      ctx.fillStyle = '#f1e8fa';
+      ctx.fill();
+      ctx.save();
+      ctx.clip();
+      ctx.fillStyle = '#874ab0';
+      ctx.fillRect(0, 0, cellWidth, cellHeight);
+      ctx.fillRect(cellWidth * 2, 0, cellWidth, cellHeight);
+      ctx.fillRect(cellWidth, cellHeight, cellWidth, cellHeight);
+      ctx.restore();
+      ctx.strokeStyle = '#322039';
+      ctx.lineWidth = edge;
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawDuelGate(p) {
+      const flagWidth = p.course * 0.22;
+      if (flagWidth < 4) return;
+      const top = p.y - p.course * 1.38;
+      const poleHeight = p.course * 0.22;
+      for (const side of [-1, 1]) {
+        const postX = p.x + side * p.course * 1.15;
+        drawDuelPennant(postX, top, flagWidth, poleHeight, side);
+      }
+    }
+
+    function vehicle(racer,p,state,own,distance,featured=false){
       const entry=assets.riders[racer.racerId],g=riderGeometry[racer.racerId];if(!entry||!g)return;
       const visibleHeight=height*(own?(width>height*1.7?.35:.29):(width>height*1.7?.29:.245))*p.ratio;if(visibleHeight<5)return;
       const h=visibleHeight/Math.max(.1,g.visibleH),w=h*g.w/g.h,visibleWidth=w*g.visibleW;
       if(p.x+visibleWidth<0||p.x-visibleWidth>width||p.y-visibleHeight>height)return;
-      const bounce=reducedMotion?0:Math.sin(state.time*22+racer.id*2)*Math.min(1,racer.speed/130)*height*.0013*p.ratio;
+      const crashed=state.combat&&racer.crashTime>0,bounce=reducedMotion||crashed?0:Math.sin(state.time*22+racer.id*2)*Math.min(1,racer.speed/130)*height*.0013*p.ratio;
       const turbo=(racer.driftTurbo||0)>0,charge=racer.driftCharge||0,driftColor=charge>=1.4?'#ffdb7ab3':'#8ae8e8aa';
       shadow(p.x,p.y,visibleWidth*.89);
       if(own){ownBox={x:p.x-visibleWidth*.58,y:p.y-visibleHeight-12,w:visibleWidth*1.16,h:visibleHeight+30};ctx.save();ctx.strokeStyle=racer.invulnerable>0?'#ed986bb3':racer.drifting?driftColor:turbo?'#a5e8ffb3':'#b9ef4288';ctx.lineWidth=racer.invulnerable>0?3:2;ctx.beginPath();ctx.ellipse(p.x,p.y,visibleWidth*.53,Math.max(3,visibleWidth*.13),0,0,Math.PI*2);ctx.stroke();ctx.restore();}
@@ -15581,36 +16056,80 @@ const RACING_RENDERER=(()=>{
         for(const side of[-1,1]){const x=p.x+side*visibleWidth*.18;polygon([[x-3*p.ratio,p.y-5*p.ratio],[x+3*p.ratio,p.y-5*p.ratio],[x+side*visibleWidth*.08,p.y+length]],turbo?'#96e5ff':side<0?'#c0ff5c':'#7be8e2');}ctx.restore();
       }
       const steer=poses.get(racer.id)?.steer||0,kart=entry.meta.vehicle==='kart';
-      ctx.save();ctx.translate(p.x,p.y+bounce);const lean=racer.drifting?(racer.driftDirection||Math.sign(racer.steer))*(reducedMotion?.045:.095)+steer*.02:steer*(kart?.045:.09);ctx.rotate(clamp(lean,-.135,.135)*Math.min(1,racer.speed/70));
-      articulatedRider(racer,w,h,g);
+      ctx.save();ctx.translate(p.x,p.y+bounce);const lean=racer.drifting?(racer.driftDirection||Math.sign(racer.steer))*(reducedMotion?.045:.095)+steer*.02:steer*(kart?.045:.09);
+      if(crashed){const fall=clamp((2.2-racer.crashTime)/.28,0,1)*clamp(racer.crashTime/.55,0,1),side=racer.attackSide||(racer.id%2?1:-1);ctx.translate(0,-visibleHeight*.13);ctx.rotate(side*fall*(reducedMotion?.42:kart?.64:.92));ctx.translate(0,visibleHeight*.13);}
+      else ctx.rotate(clamp(lean+(state.combat&&racer.attackTime>0?racer.attackSide*.045:0),state.combat?-.17:-.135,state.combat?.17:.135)*Math.min(1,racer.speed/70));
+      articulatedRider(racer,w,h,g,!!state.combat);
+      if (featured && visibleHeight >= 14) {
+        const flagWidth = clamp(visibleHeight * 0.10, 6, 17);
+        const poleHeight = clamp(visibleHeight * 0.20, 8, 27);
+        drawDuelPennant(-visibleWidth * 0.33, -visibleHeight * 0.90, flagWidth, poleHeight, -1);
+      }
       ctx.restore();
-      if(!own&&distance>45&&distance<650&&visibleHeight>23&&p.y<height*.82){
-        labels.push({text:(entry.meta.name||racer.racerId)+(Number.isInteger(racer.playerSeat)?' · P'+(racer.playerSeat+1):''),color:entry.meta.color||'#f3e8cf',x:p.x,y:p.y-visibleHeight-8,d:distance});
+      if(state.combat){combatEffects(racer,p,state,visibleWidth,visibleHeight,own);if(racer.hurtTime>0)impacts.push({racer,p,visibleWidth,visibleHeight});}
+      if(!own&&distance>(state.combat?-38:45)&&distance<(state.combat?350:650)&&visibleHeight>23&&p.y<height*(state.combat?.98:.82)){
+        const targetSide=state.combat?(combatLeft?.id===racer.id?-1:combatRight?.id===racer.id?1:0):0;
+        labels.push({text:(entry.meta.name||racer.racerId)+(Number.isInteger(racer.playerSeat)?' · P'+(racer.playerSeat+1):''),racerId:racer.racerId,color:entry.meta.color||'#f3e8cf',x:p.x,y:p.y-visibleHeight-8,d:state.combat?Math.abs(distance):distance,health:state.combat?clamp(Number(racer.health)||0,0,100):null,warning:state.combat&&racer.attackTime>.18,blocking:state.combat&&racer.blocking,crashed,crashTime:racer.crashTime||0,targetSide,featured,hurt:state.combat&&racer.hurtTime>0,recovering:state.combat&&racer.invulnerable>0&&!!latestCombatEvent(state,racer,['recover'],1.8)});
       }
     }
-    function drawLabels(){
+    const combatNames={'violent-j':'VIOLENT J','shaggy-2-dope':'SHAGGY','dani-mo':'DANI MO','2-tuff-tony':'2 TUFF TONY','mad-man-pondo':'PONDO','big-foot':'BIG FOOT'};
+    function drawCombatLabels(){
+      const font=width<600?10:11,gap=3,limit=width<600?2:3;
+      ctx.font=`800 ${font}px Arial,sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';labelBoxes.length=0;if(ownBox)labelBoxes.push(ownBox);
+      const priority=label=>label.featured?-1:label.targetSide?0:label.hurt?1:label.warning?2:3;
+      labels.sort((a,b)=>priority(a)-priority(b)||a.d-b.d);let shown=0;
+      for(const label of labels){
+        if(shown>=limit)break;
+        const flagSpace=label.featured?13:0;
+        const text=(label.targetSide<0?'‹ ':label.targetSide>0?'› ':'')+(combatNames[label.racerId]||label.text),w=Math.max(62,ctx.measureText(text).width+12+flagSpace),h=font+12;
+        const originalX=clamp(label.x-w/2,6,width-w-6),originalY=label.y-h+3;
+        const outside=ownBox?(label.x<ownBox.x+ownBox.w/2?Math.min(originalX,ownBox.x-w-gap):Math.max(originalX,ownBox.x+ownBox.w+gap)):originalX;
+        let x=originalX,y=originalY,clear=false;
+        for(let attempt=0;attempt<4;attempt++){
+          x=attempt%2?outside:originalX;y=originalY-(attempt>1?h+gap:0);
+          if(x<6||x+w>width-6||y<horizon+5)continue;
+          clear=!labelBoxes.some(b=>x<b.x+b.w+gap&&x+w>b.x-gap&&y<b.y+b.h+gap&&y+h>b.y-gap);if(clear)break;
+        }
+        if(!clear)continue;
+        const color=label.crashed?'#eeac7b':label.recovering||label.blocking?'#98e2e7':label.targetSide?'#ffe1a1':label.hurt?'#ffb47a':label.health<30?'#ff8d79':'#bfd99a';
+        // Small leader marks keep a displaced tag attached to the right rider.
+        ctx.save();ctx.strokeStyle='#142026';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(x+w/2,y+h);ctx.lineTo(label.x,label.y+4);ctx.stroke();ctx.strokeStyle=color;ctx.globalAlpha=.65;ctx.lineWidth=1;ctx.stroke();ctx.restore();
+        ctx.fillStyle='#101b21e8';ctx.fillRect(x,y,w,h);ctx.fillStyle=label.targetSide?color:label.color;ctx.fillRect(x,y,2,h);
+        if(label.featured)drawDuelPennant(x+6,y+3,9,10);
+        ctx.fillStyle=label.targetSide?'#ffe9ba':'#f4ebd8';ctx.fillText(text,x+(w+flagSpace)/2,y+font/2+4);
+        ctx.fillStyle='#4b4741';ctx.fillRect(x+6,y+h-6,w-12,3);ctx.fillStyle=color;ctx.fillRect(x+6,y+h-6,(w-12)*(label.crashed?clamp(1-label.crashTime/2.2,0,1):label.health/100),3);
+        if(label.warning){ctx.fillStyle='#ffbe79';ctx.fillRect(x,y+h-1,w,1);}
+        labelBoxes.push({x,y,w,h});shown++;
+      }
+    }
+    function drawLabels(combat=false){
+      if(combat){drawCombatLabels();return;}
       const font=height<280?10:width<600?11:12,limit=width<600?2:3,gap=4;
       ctx.font=`800 ${font}px Arial,sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';
       labelBoxes.length=0;if(ownBox)labelBoxes.push(ownBox);
       labels.sort((a,b)=>a.d-b.d);let shown=0;
       for(const label of labels){
         if(shown>=limit)break;
-        const w=ctx.measureText(label.text).width+14,h=font+10,x=label.x-w/2;
+        const w=Math.max(combat?83:0,ctx.measureText(label.text).width+14),h=font+(combat?19:10),x=label.x-w/2;
         if(x<8||x+w>width-8)continue;
         let y=label.y-h,clear=false;
         for(let attempt=0;attempt<2;attempt++){
-          if(y<Math.max(horizon+5,90))break;
+          if(y<Math.max(horizon+5,combat?28:90))break;
           clear=!labelBoxes.some(b=>x<b.x+b.w+gap&&x+w>b.x-gap&&y<b.y+b.h+gap&&y+h>b.y-gap);
           if(clear)break;y-=h+gap;
         }
         if(!clear)continue;
         ctx.fillStyle='#09151ee8';ctx.fillRect(x,y,w,h);ctx.fillStyle=label.color;ctx.fillRect(x,y,2,h);
-        ctx.fillStyle='#f6f0dd';ctx.fillText(label.text,label.x,y+h/2+.5);
+        ctx.fillStyle='#f6f0dd';ctx.fillText(label.text,label.x,y+(combat?(font+10)/2:h/2)+.5);
+        if(combat){const barX=x+6,barY=y+h-8,barW=w-12;ctx.fillStyle='#4f4140';ctx.fillRect(barX,barY,barW,4);ctx.fillStyle=label.blocking?'#92e1e5':label.warning?'#ffc36c':label.health<30?'#ff8871':'#c4df97';ctx.fillRect(barX,barY,barW*label.health/100,4);if(label.warning||label.crashed){ctx.strokeStyle=label.warning?'#ffb07b':'#e77d57';ctx.lineWidth=1;ctx.strokeRect(x+.5,y+.5,w-1,h-1);}}
         labelBoxes.push({x,y,w,h});shown++;
       }
     }
     function populate(state,player){
-      sprites.length=0;labels.length=0;ownBox=null;
+      sprites.length=0;labels.length=0;impacts.length=0;ownBox=null;
+      const duels = state.combat ? state.duels : null;
+      const featuredRivalId = state.phase !== 'finished' ? duels?.find(duel => duel.status === 'active')?.rivalId : null;
+      combatLeft=state.combat?selectCombatTarget(state,player,-1):null;combatRight=state.combat?selectCombatTarget(state,player,1):null;
       for(const object of state.objects){const d=object.z-player.z;if(d<-18||d>1800||object.collectedBy.includes(player.id))continue;const p=point(d,object.x);if(p)sprites.push({d,type:'object',object,p});}
       // A single outside-bend sign gives direction without a wall of arrows.
       // Passed scenery fades before its perspective can overwhelm the rider.
@@ -15625,19 +16144,26 @@ const RACING_RENDERER=(()=>{
         const zone=RACING_RULES.zoneAt(z),index=Math.round(z/480);
         for(const side of[-1,1]){if(zone!==1&&(index%2===0?side>0:side<0))continue;const p=point(d,side*(zone===1?2.18:1.88));if(p)sprites.push({d,type:'native',p,zone,side,index});}
       }
-      for(const z of[5000,10000,state.length]){const d=z-player.z,p=point(d);if(p&&d>-75&&d<FAR)sprites.push({d,type:'arch',id:z===state.length?'finish-gantry':'checkpoint-banner',p});}
+      for(const z of[5000,10000,state.length]){const d=z-player.z,p=point(d);if(p&&d>-75&&d<FAR)sprites.push({d,type:'arch',id:z===state.length?'finish-gantry':'checkpoint-banner',duelGate:z<state.length&&duels?.some(duel=>duel.checkpoint===z),p});}
       for(const racer of state.racers){const own=racer.id===player.id,d=racer.z-player.z;if(!own&&(d<-42||d>FAR))continue;const p=point(d,racer.x);if(p)sprites.push({d,type:'racer',racer,p,own});}
       sprites.sort((a,b)=>Number(!!a.own)-Number(!!b.own)||b.d-a.d);
-      for(const sprite of sprites){const p=sprite.p;if(sprite.type==='racer')vehicle(sprite.racer,p,state,sprite.own,sprite.d);
+      for(const sprite of sprites){const p=sprite.p;if(sprite.type==='racer'){
+          const featured = !sprite.own && sprite.racer.id === featuredRivalId && sprite.racer.finishTime === null;
+          vehicle(sprite.racer,p,state,sprite.own,sprite.d,featured);
+        }
         else if(sprite.type==='native')nativeScenery(sprite);
         else if(sprite.type==='object'){
           const o=sprite.object,pickup=['ticket','boost','repair'].includes(o.kind);
           if(pickup){const radius=Math.max(3,p.course*.13);ctx.save();ctx.fillStyle=o.kind==='ticket'?'#f5bd493b':o.kind==='boost'?'#b9ef4238':'#ff6b7133';ctx.beginPath();ctx.ellipse(p.x,p.y,radius,radius*.24,0,0,Math.PI*2);ctx.fill();ctx.restore();}
           vector(objectIds[o.kind],p,p.course*objectWidths[o.kind]*1.5,{alpha:clamp((sprite.d+18)/30,0,1)});
-        }else if(sprite.type==='arch')vector(sprite.id,p,p.course*2.55);
+        }else if(sprite.type==='arch'){
+          vector(sprite.id,p,p.course*2.55);
+          if(sprite.duelGate)drawDuelGate(p);
+        }
         else vector(sprite.id,p,p.course*(sprite.id==='warning-arrow'?.24:.22),{flip:sprite.id==='warning-arrow'&&sprite.curve<0,alpha:clamp((sprite.d-18)/80,0,1)*clamp((1600-sprite.d)/200,0,1)});
       }
-      drawLabels();
+      for(const impact of impacts)combatImpact(impact.racer,impact.p,state,impact.visibleWidth,impact.visibleHeight);
+      drawLabels(!!state.combat);if(state.combat)combatTargets(state,player);
     }
     function effects(state,player){
       if((player.boosting||(player.driftTurbo||0)>0)&&!reducedMotion){ctx.save();ctx.strokeStyle='#d2f9df';ctx.lineWidth=1.5;ctx.globalAlpha=.18;for(let i=0;i<8;i++){const side=i%2?-1:1,t=((state.time*1.6+i*.143)%1),x=width/2+side*width*(.18+t*.42),y=horizon+height*(.08+(i%5)*.11);ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+side*height*.08,y+height*.065);ctx.stroke();}ctx.restore();}
@@ -15657,7 +16183,7 @@ const RACING_RENDERER=(()=>{
       if(zoneFade<1)background(oldZone,1,player);background(currentZone,zoneFade,player);
       updatePoses(state,dt,reset);makeRoad(player);sampleTireMarks(state,player,reset);track(state);roadPaint(player);roadsideFences(player);drawTireMarks(state,player);populate(state,player);effects(state,player);redraw=false;
     }
-    function dispose(){disposed=true;observer?.disconnect();motionQuery?.removeEventListener?.('change',motionChanged);tireMarks.length=0;tireHeads.clear();nodes.length=0;sprites.length=0;labels.length=0;labelBoxes.length=0;roadPattern=null;dirtPattern=null;poses.clear();for(const rig of Object.values(rigs)){for(const image of[rig.base,rig.head.image,...rig.front.map(p=>p.image),...rig.wheels.flatMap(w=>[w.surface,w.texture]),...rig.front.flatMap(p=>[p.wheel.surface,p.wheel.texture])]){image.width=1;image.height=1;}}}
+    function dispose(){disposed=true;observer?.disconnect();motionQuery?.removeEventListener?.('change',motionChanged);tireMarks.length=0;tireHeads.clear();nodes.length=0;sprites.length=0;labels.length=0;labelBoxes.length=0;impacts.length=0;roadPattern=null;dirtPattern=null;poses.clear();for(const rig of Object.values(rigs)){for(const image of[rig.base,rig.head.image,...rig.front.map(p=>p.image),...rig.wheels.flatMap(w=>[w.surface,w.texture]),...rig.front.flatMap(p=>[p.wheel.surface,p.wheel.texture]),...Object.values(rig.combat||{}).flatMap(p=>[p.image,p.body])]){image.width=1;image.height=1;}}}
     return{draw,resize,dispose,get needsRedraw(){return redraw;}};
   }
   return{create};
@@ -16675,6 +17201,532 @@ const RACING=(()=>{
   return{bind,enter,leave,start,choose,chooseMode,pause,ready,openParty,endParty,partyActive:()=>!!multiplayer?.active,launch:()=>!!assets&&multiplayer?.launch(),netStart,netApply,netConnection,netEnd,loadAssets,get state(){return{...clone(state),mode:mode(),seat:seat(),chosen,loaded:!!assets,paused,started,ended,best,wins,playMode:onlineMatch?'online':'solo',saved,runMode,raceDay,dailyDate:raceDay||utcDay(),dailyBest:clone(dailyRecords[raceDay||utcDay()]||null),music:music.state};},netState:()=>N?clone({...N,controls:{...N.controls}}):null,debug:{advance,advanceAll:(dt,inputs)=>multiplayer?.debug.advanceAll(dt,inputs),controls,cleanState}};
 })();
 /* RACING GAME END */
+/* ROAD RIOT RULES START */
+/* JCW Road Riot: deterministic racing and side-by-side arcade combat.
+ * Shared scenery/roster geometry, independent simulation and no browser APIs. */
+const ROAD_RIOT_RULES=(()=>{
+  'use strict';
+  const BASE=RACING_RULES,roster=BASE.roster,byId=Object.fromEntries(roster.map(r=>[r.id,r]));
+  const FIXED_DT=1/120,LENGTH=15000,MAX_TIME=180,ROAD_EDGE=.86,MAX_SPEED=312.5;
+  const PLAYER_WINDUP=.24,RIVAL_WINDUP=.40,SWING_TIME=.18,ATTACK_RANGE_Z=38,ATTACK_RANGE_X=.68,ATTACK_MIN_X=.08;
+  const CRASH_TIME=2.2,RECOVERY_HEALTH=75,RECOVERY_PROTECTION=1.8,BOOST_DURATION=3,BOOST_COST=30,BOOST_MULTIPLIER=1.25;
+  const CONTACT_WIDTH=.30,CONTACT_LENGTH=26,CONTACT_SIDE_RATE=2.4;
+  const DUEL_BONUS=250, DUEL_MAX_LEAD=280, DUEL_MAX_TRAIL=75, DUEL_MIN_DISTANCE=1600;
+  const curveAt=BASE.curveAt,zoneAt=BASE.zoneAt;
+  const kinds=Object.freeze({ticket:{width:.17,pickup:true,amount:1},boost:{width:.19,pickup:true,amount:30},repair:{width:.21,pickup:true,amount:35},cone:{width:.14,damage:8,factor:.80},tire:{width:.20,damage:12,factor:.72},barrier:{width:.25,damage:15,factor:.65}});
+  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),finite=(v,fallback=0)=>Number.isFinite(v)?v:fallback;
+  const tune=r=>byId[r.racerId]||roster[0];
+  function random(seed){let n=seed>>>0||0x6d2b79f5;return()=>{n^=n<<13;n^=n>>>17;n^=n<<5;return(n>>>0)/4294967296;};}
+  function route(seed){
+    const rng=random(seed^0xe9d42381),objects=[],lanes=[-.56,0,.56];
+    const put=(kind,x,z)=>objects.push({id:objects.length,kind,x,z,collectedBy:[]});
+    put('boost',0,500);put('ticket',-.55,720);put('ticket',.55,720);put('repair',0,1100);
+    for(let row=0,z=1450;z<LENGTH-500;row++,z+=330+Math.floor(rng()*90)){
+      const lane=Math.floor(rng()*3),rewardLane=(lane+1+Math.floor(rng()*2))%3;
+      if(row%3!==2)put(['cone','tire','barrier'][Math.floor(rng()*3)],lanes[lane],z);
+      put(row%3===1?'repair':row%3===0?'boost':'ticket',lanes[rewardLane],z+65);
+      if(row%4===0)put('ticket',lanes[rewardLane],z+130);
+    }
+    return objects.sort((a,b)=>a.z-b.z||a.id-b.id);
+  }
+  function create(options={}){
+    const seed=finite(options.seed,1)>>>0,difficulty=['easy','hard'].includes(options.difficulty)?options.difficulty:'normal';
+    const player=byId[options.playerRacer]?options.playerRacer:roster[0].id,remaining=roster.filter(r=>r.id!==player).map(r=>r.id),rng=random(seed);
+    for(let i=remaining.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));[remaining[i],remaining[j]]=[remaining[j],remaining[i]];}
+    const state={version:1,combat:true,seed,difficulty,phase:'countdown',countdown:3,time:0,tick:0,remainder:0,length:LENGTH,timedOut:false,
+      racers:[player,...remaining].map((racerId,id)=>({id,racerId,human:id===0,x:[-.32,.28,-.56,.52,-.20,.30][id],z:[0,22,55,90,125,160][id],speed:0,health:100,boost:60,
+        steer:0,boosting:false,boostTime:0,boostHeld:false,drafting:false,drifting:false,driftCharge:0,driftDirection:0,driftTurbo:0,drifts:0,
+        tickets:0,hits:0,invulnerable:0,finishTime:null,dnf:false,
+        attackSide:0,attackTime:0,attackCooldown:0,attackResolved:false,attackLeftHeld:false,attackRightHeld:false,
+        blocking:false,crashTime:0,hurtTime:0,combatHits:0,knockouts:0,combo:0,bestCombo:0,comboTime:0,crashes:0})),
+      objects:route(seed),events:[],finishOrder:[],duels:[1,2,3].map(leg=>({
+        leg,checkpoint:leg*LENGTH/3,rivalId:null,status:'upcoming',startTime:null,startGap:null,playerCross:null,rivalCross:null,bonus:0
+      }))};
+    offerDuel(state,state.duels[0]);
+    return state;
+  }
+  function emit(s,event){s.events.push({id:`${s.tick}:${event.type}:${event.racer}:${event.target??event.object??event.leg??''}`,time:s.time,...event});if(s.events.length>24)s.events.splice(0,s.events.length-24);}
+  function duelEvent(s,duel,type){
+    const {leg,checkpoint,rivalId,status,bonus}=duel;
+    emit(s,{type,racer:0,leg,checkpoint,rivalId,status,bonus});
+  }
+  function offerDuel(s,duel){
+    const player=s.racers[0];
+    if(duel.checkpoint-player.z<DUEL_MIN_DISTANCE){
+      duel.status='unavailable';
+      return;
+    }
+    duel.status='seeking';
+    if(player.crashTime>0)return;
+    let rival=null, bestDistance=Infinity;
+    for(const candidate of s.racers){
+      if(candidate.human||candidate.finishTime!==null||candidate.crashTime>0||candidate.z>=duel.checkpoint)continue;
+      const gap=candidate.z-player.z;
+      if(gap < -DUEL_MAX_TRAIL || gap > DUEL_MAX_LEAD)continue;
+      // Prefer a new opponent when the gaps are comparable. A rider a short
+      // distance behind can race for the lead just as one ahead can defend it.
+      const repeat=s.duels.some(past=>past.leg<duel.leg&&past.rivalId===candidate.id);
+      const distance=Math.abs(gap)+(repeat?30:0);
+      if(distance<bestDistance){
+        rival=candidate;
+        bestDistance=distance;
+      }
+    }
+    if(!rival)return;
+    duel.rivalId=rival.id;
+    duel.startTime=s.time;
+    duel.startGap=rival.z-player.z;
+    duel.status='active';
+    duelEvent(s,duel,'duelStart');
+  }
+  function checkpointTime(s,racer,oldZ,checkpoint){
+    if(oldZ>=checkpoint||racer.z<checkpoint)return null;
+    // At the finish the position is capped. Use the same unclipped crossing
+    // time as the race standings, before any trailing finishers are projected.
+    if(checkpoint===LENGTH)return racer.finishTime;
+    return s.time-FIXED_DT+FIXED_DT*(checkpoint-oldZ)/(racer.z-oldZ);
+  }
+  function updateDuels(s,previous){
+    const player=s.racers[0];
+    for(let i=0;i<s.duels.length;i++){
+      const duel=s.duels[i];
+      if(i>0&&s.duels[i-1].playerCross===null)break;
+      if(duel.status==='upcoming'||duel.status==='seeking')offerDuel(s,duel);
+      if(duel.playerCross===null)duel.playerCross=checkpointTime(s,player,previous[0].z,duel.checkpoint);
+      if(duel.rivalId===null)continue;
+      const rival=s.racers[duel.rivalId];
+      if(duel.rivalCross===null)duel.rivalCross=checkpointTime(s,rival,previous[rival.id].z,duel.checkpoint);
+      if(duel.status!=='active'||(duel.playerCross===null&&duel.rivalCross===null))continue;
+      if(duel.playerCross===null)duel.status='lost';
+      else if(duel.rivalCross===null)duel.status='won';
+      else {
+        const delta=duel.playerCross-duel.rivalCross;
+        duel.status=Math.abs(delta)<1e-9?'tied':delta<0?'won':'lost';
+      }
+      duel.bonus=duel.status==='won'?DUEL_BONUS:0;
+      duelEvent(s,duel,'duelResult');
+    }
+  }
+  function standings(s){return s.racers.slice().sort((a,b)=>a.finishTime!==null||b.finishTime!==null?a.finishTime===null?1:b.finishTime===null?-1:a.finishTime-b.finishTime||a.id-b.id:b.z-a.z||a.id-b.id);}
+  function attackTargets(s,index,side){
+    const a=s.racers[index];if(!a||![-1,1].includes(side)||a.crashTime>0||a.finishTime!==null)return[];
+    return s.racers.filter(b=>b.id!==index&&b.finishTime===null&&b.crashTime<=0&&b.invulnerable<=0&&Math.abs(b.z-a.z)<=ATTACK_RANGE_Z&&
+      (b.x-a.x)*side>=ATTACK_MIN_X&&(b.x-a.x)*side<=ATTACK_RANGE_X).sort((b,c)=>Math.abs(b.z-a.z)-Math.abs(c.z-a.z)||Math.abs(b.x-a.x)-Math.abs(c.x-a.x)||b.id-c.id);
+  }
+  function aiInput(s,index=0){
+    const r=s.racers[index];if(!r||r.finishTime!==null||r.crashTime>0)return{steer:0,brake:false,boost:false,attackLeft:false,attackRight:false,block:false};
+    const nearby=s.racers.filter(o=>o.id!==index&&o.finishTime===null&&o.crashTime<=0&&Math.abs(o.z-r.z)<120).sort((a,b)=>Math.abs(a.z-r.z)-Math.abs(b.z-r.z)||a.id-b.id);
+    const opponent=nearby[0],bend=curveAt(r.z),hazards=s.objects.filter(o=>!kinds[o.kind].pickup&&!o.collectedBy.includes(index)&&o.z>r.z&&o.z-r.z<230);
+    let target=clamp((index%3-1)*.48,-.65,.65);
+    if(opponent){const side=r.x>=opponent.x?1:-1;target=clamp(opponent.x+side*.44,-.68,.68);}
+    if(hazards.some(o=>Math.abs(o.x-target)<kinds[o.kind].width+.12)){
+      target=[-.62,0,.62].map(x=>({x,cost:Math.abs(x-r.x)+hazards.reduce((n,o)=>n+(Math.abs(o.x-x)<kinds[o.kind].width+.12?4:0),0)})).sort((a,b)=>a.cost-b.cost)[0].x;
+    }
+    // Wounded riders seek visible repairs instead of repeatedly losing the same
+    // fight. Pickups and attacks still require physically reaching their lane.
+    const repair=r.health<55?s.objects.find(o=>o.kind==='repair'&&!o.collectedBy.includes(index)&&o.z>r.z&&o.z-r.z<280):null;
+    if(repair&&!hazards.some(o=>Math.abs(o.x-repair.x)<kinds[o.kind].width+.12))target=repair.x;
+    const threat=nearby.find(o=>o.attackTime>SWING_TIME&&o.attackTime<SWING_TIME+(o.human?PLAYER_WINDUP:RIVAL_WINDUP)-.12&&o.attackSide===Math.sign(r.x-o.x)&&Math.abs(o.z-r.z)<45);
+    const defense=(s.seed+index*17+Math.floor(s.time*2))%5<(s.difficulty==='hard'?3:s.difficulty==='easy'?1:2);
+    const block=!!threat&&defense&&r.attackTime<=0;
+    const left=attackTargets(s,index,-1)[0],right=attackTargets(s,index,1)[0];
+    const canAttack=s.time>2&&r.speed>45&&r.attackCooldown<=0&&r.attackTime<=0&&!block&&r.invulnerable<=0;
+    const side=left&&right?(Math.abs(left.z-r.z)<=Math.abs(right.z-r.z)?-1:1):left?-1:right?1:0;
+    return{steer:clamp((target-r.x)*3.2+bend*.16,-1,1),brake:Math.abs(r.x)>.78&&Math.abs(bend)>.7&&r.speed>170,
+      boost:(s.time+index*.61)%8<.22&&r.boost>=BOOST_COST&&r.boostTime<=0&&Math.abs(target-r.x)<.24&&!block,
+      attackLeft:canAttack&&side===-1&&!r.attackLeftHeld,attackRight:canAttack&&side===1&&!r.attackRightHeld,block};
+  }
+  function clearAttack(r){r.attackTime=0;r.attackSide=0;r.attackResolved=false;}
+  function clearBoost(r){if(r.boostTime>0)r.speed/=BOOST_MULTIPLIER;r.boostTime=0;r.boosting=false;}
+  function crash(s,r,attacker=null){
+    if(r.crashTime>0||r.finishTime!==null)return;
+    clearBoost(r);clearAttack(r);r.blocking=false;r.crashTime=CRASH_TIME;r.health=0;r.speed*=.35;r.invulnerable=0;r.combo=0;r.comboTime=0;r.crashes++;
+    if(attacker){attacker.knockouts++;emit(s,{type:'knockout',racer:attacker.id,target:r.id});}
+    emit(s,{type:'crash',racer:r.id,by:attacker?.id??null});
+  }
+  function hit(s,attacker,target,side){
+    if(target.crashTime>0||target.finishTime!==null||target.invulnerable>0)return false;
+    const blocked=target.blocking,base=attacker.human?22+(Math.min(attacker.combo,3)*2):s.difficulty==='easy'?13:s.difficulty==='hard'?20:17;
+    const damage=blocked?Math.max(2,Math.round(base*.18)):base;
+    target.health=clamp(target.health-damage/tune(target).armor,0,100);target.hits++;target.hurtTime=.32;target.invulnerable=blocked?.20:.45;
+    target.x=clamp(target.x+side*(blocked?.025:.12),-1,1);target.speed*=blocked?.96:.83;
+    if(!blocked){attacker.combatHits++;attacker.combo=attacker.comboTime>0?attacker.combo+1:1;attacker.comboTime=4;attacker.bestCombo=Math.max(attacker.bestCombo,attacker.combo);}
+    emit(s,{type:'strike',racer:attacker.id,target:target.id,side,damage,blocked,combo:attacker.combo});
+    if(target.health<=0)crash(s,target,attacker);
+    return true;
+  }
+  function finish(s,r,time,projected=false){
+    if(r.finishTime!==null)return;
+    r.z=LENGTH;r.speed=0;r.steer=0;r.finishTime=time;r.boosting=false;r.boostTime=0;r.boostHeld=false;r.blocking=false;r.crashTime=0;r.drafting=false;
+    r.attackLeftHeld=r.attackRightHeld=false;clearAttack(r);s.finishOrder.push(r.id);emit(s,{type:'finish',racer:r.id,finishTime:time,projected});
+  }
+  function endRace(s,cutoff){
+    s.timedOut=cutoff;
+    for(const duel of s.duels){
+      if(duel.status==='active'||duel.status==='seeking'||duel.status==='upcoming'){
+        duel.status='expired';
+        if(duel.rivalId!==null)duelEvent(s,duel,'duelResult');
+      }
+    }
+    for(const r of standings(s).filter(r=>r.finishTime===null)){r.dnf=cutoff;finish(s,r,s.time+Math.max(.01,(LENGTH-r.z)/165),true);}
+    s.finishOrder=standings(s).map(r=>r.id);s.phase='finished';s.remainder=0;
+  }
+  function collect(s,r,oldX,oldZ){
+    const travel=r.z-oldZ;if(travel<=0||r.crashTime>0)return;
+    for(const o of s.objects){
+      if(o.z<oldZ-8||o.collectedBy.includes(r.id))continue;if(o.z>r.z+8)break;
+      const k=kinds[o.kind];if(!k)continue;
+      const x=oldX+(r.x-oldX)*clamp((o.z-oldZ)/travel,0,1);if(Math.abs(x-o.x)>k.width+.085)continue;
+      if(k.pickup){
+        o.collectedBy.push(r.id);let amount=k.amount;
+        if(o.kind==='ticket')r.tickets++;
+        else if(o.kind==='repair'){const before=r.health;r.health=clamp(before+k.amount,0,100);amount=r.health-before;}
+        else{const before=r.boost;r.boost=clamp(before+k.amount,0,100);amount=r.boost-before;}
+        emit(s,{type:'pickup',racer:r.id,object:o.id,kind:o.kind,amount});
+      }else if(r.invulnerable<=0){
+        o.collectedBy.push(r.id);r.hits++;r.health=clamp(r.health-k.damage/tune(r).armor,0,100);r.speed*=k.factor;r.invulnerable=.75;r.hurtTime=.3;
+        emit(s,{type:'hit',racer:r.id,object:o.id,kind:o.kind});if(r.health<=0)crash(s,r);
+      }
+    }
+  }
+  function contacts(s,motion){
+    // Accumulate every pair from one coherent snapshot. Player and CPU have
+    // equal mass: neither receives a special passing or shoving advantage.
+    const world=s.racers.map(r=>({x:r.x,z:r.z,speed:r.speed})),side=world.map(()=>0),long=world.map(()=>0),impulse=world.map(()=>0),counts=world.map(()=>0),pairs=[];
+    for(let i=0;i<world.length;i++)for(let j=i+1;j<world.length;j++){
+      if(!motion[i]||!motion[j])continue;
+      const a=world[i],b=world[j],ma=motion[i],mb=motion[j];
+      const oldX=mb.oldX-ma.oldX,dx=b.x-a.x,oldZ=mb.oldZ-ma.oldZ,dz=b.z-a.z;
+      const nearX=oldX*dx<=0?0:Math.min(Math.abs(oldX),Math.abs(dx)),nearZ=oldZ*dz<=0?0:Math.min(Math.abs(oldZ),Math.abs(dz));
+      if(nearX>=CONTACT_WIDTH||nearZ>=CONTACT_LENGTH)continue;
+      const direction=Math.abs(oldX)>.00001?Math.sign(oldX):Math.abs(dx)>.00001?Math.sign(dx):i<j?1:-1;
+      const wanted=CONTACT_WIDTH*(.65+.35*(1-nearZ/CONTACT_LENGTH));
+      const push=Math.min(CONTACT_SIDE_RATE*FIXED_DT,Math.max(0,wanted-dx*direction)/2);
+      side[i]-=direction*push;side[j]+=direction*push;
+      if(Math.abs(oldZ)<.001)continue;
+      const back=oldZ>0?i:j,front=oldZ>0?j:i,closing=world[back].speed-world[front].speed;
+      if(closing<=0)continue;
+      const gap=Math.abs(oldZ),hitAt=clamp((gap-CONTACT_LENGTH)/Math.max(.0001,closing*FIXED_DT),0,1),exchange=closing/2;
+      // Move to contact, then share forward momentum for the rest of this
+      // step. Distance never rewinds and no rider is teleported into a gap.
+      const travel=exchange*FIXED_DT*(1-hitAt);
+      pairs.push({back,front,travel,exchange});counts[back]++;counts[front]++;
+    }
+    for(const p of pairs){
+      // A rider touching two others shares each impulse at the same weight on
+      // both ends. The pack cannot create speed through asymmetric averaging.
+      const weight=Math.max(counts[p.back],counts[p.front]);
+      long[p.back]-=p.travel/weight;long[p.front]+=p.travel/weight;impulse[p.back]-=p.exchange/weight;impulse[p.front]+=p.exchange/weight;
+    }
+    for(let i=0;i<world.length;i++){
+      if(!motion[i])continue;const r=s.racers[i],limit=CONTACT_SIDE_RATE*FIXED_DT;
+      r.x=clamp(world[i].x+clamp(side[i],-limit,limit),-1,1);
+      if(counts[i]){r.z=clamp(world[i].z+long[i],motion[i].oldZ,LENGTH);r.speed=clamp(world[i].speed+impulse[i],0,MAX_SPEED);}
+    }
+  }
+  function step(s,input){
+    s.tick++;
+    if(s.phase==='countdown'){s.countdown=Math.max(0,3-s.tick*FIXED_DT);if(s.countdown<=0)s.phase='racing';return;}
+    s.time=(s.tick-360)*FIXED_DT;
+    const actions=s.racers.map(r=>r.human?input||{}:aiInput(s,r.id)),strikes=[],motion=[];
+    const previous=s.racers.map(r=>({x:r.x,z:r.z,speed:r.speed,live:r.finishTime===null&&r.crashTime<=0}));
+    for(const r of s.racers){
+      if(r.finishTime!==null)continue;
+      const a=actions[r.id],steer=clamp(finite(a.steer),-1,1),brake=a.brake===true,oldX=r.x,oldZ=r.z,t=tune(r);
+      const left=a.attackLeft===true,right=a.attackRight===true,boost=a.boost===true;
+      const newLeft=left&&!r.attackLeftHeld,newRight=right&&!r.attackRightHeld,newBoost=boost&&!r.boostHeld;
+      r.attackLeftHeld=left;r.attackRightHeld=right;r.boostHeld=boost;
+      r.attackCooldown=Math.max(0,r.attackCooldown-FIXED_DT);r.invulnerable=Math.max(0,r.invulnerable-FIXED_DT);r.hurtTime=Math.max(0,r.hurtTime-FIXED_DT);
+      r.comboTime=Math.max(0,r.comboTime-FIXED_DT);if(!r.comboTime)r.combo=0;
+      if(r.crashTime>0){
+        r.crashTime=r.crashTime<=FIXED_DT+1e-9?0:r.crashTime-FIXED_DT;r.steer=0;r.blocking=false;r.speed=Math.max(0,r.speed-140*FIXED_DT);r.z=Math.min(LENGTH-1,r.z+r.speed*FIXED_DT);
+        if(!r.crashTime){r.health=RECOVERY_HEALTH;r.invulnerable=RECOVERY_PROTECTION;r.attackCooldown=.5;r.boost=Math.max(30,r.boost);emit(s,{type:'recover',racer:r.id});}
+        continue;
+      }
+      if(r.boostTime>0)r.speed/=BOOST_MULTIPLIER;
+      r.steer+=(steer-r.steer)*Math.min(1,FIXED_DT*12);
+      const offroad=Math.abs(r.x)>ROAD_EDGE,bend=curveAt(r.z);
+      r.drafting=previous.some((o,i)=>i!==r.id&&o.live&&o.z-r.z>18&&o.z-r.z<140&&Math.abs(o.x-r.x)<.18)&&r.speed>80;
+      r.blocking=a.block===true&&r.attackTime<=0;
+      if(newBoost&&r.boostTime<=0&&!brake&&!offroad&&!r.blocking&&r.boost>=BOOST_COST){r.boost-=BOOST_COST;r.boostTime=BOOST_DURATION;}
+      r.boosting=r.boostTime>0;if(!r.boosting)r.boost=clamp(r.boost+FIXED_DT*(8+(r.drafting?5:0)),0,100);
+      if(r.attackTime<=0&&r.attackCooldown<=0&&!r.blocking&&r.speed>35&&newLeft!==newRight){
+        r.attackSide=newLeft?-1:1;r.attackTime=(r.human?PLAYER_WINDUP:RIVAL_WINDUP)+SWING_TIME;r.attackResolved=false;
+        r.attackCooldown=r.human?.85:s.difficulty==='hard'?1.15:s.difficulty==='easy'?1.8:1.45;
+        emit(s,{type:'attack',racer:r.id,side:r.attackSide});
+      }
+      if(r.attackTime>0){
+        r.attackTime=Math.max(0,r.attackTime-FIXED_DT);
+        if(!r.attackResolved&&r.attackTime<=SWING_TIME+1e-9){r.attackResolved=true;strikes.push({racer:r.id,side:r.attackSide});}
+        if(!r.attackTime)clearAttack(r);
+      }
+      const health=.92+.08*r.health/100,pace=r.human?1:(s.difficulty==='easy'?.92:s.difficulty==='hard'?1:.96)+(r.id%3-1)*.008;
+      let target=(t.topSpeed+(r.drafting?5:0))*health*pace*(1-Math.abs(bend)*.055);
+      if(offroad)target*=t.offroad;if(r.blocking)target*=.78;if(brake)target=0;
+      if(!r.human){const lead=previous.filter((o,i)=>i!==r.id&&o.live&&o.z-r.z>0&&o.z-r.z<45&&Math.abs(o.x-r.x)<.16).sort((a,b)=>a.z-b.z)[0];if(lead)target=Math.min(target,Math.max(0,lead.speed+(lead.z-r.z-28)*2)/(r.boosting?BOOST_MULTIPLIER:1));}
+      const rate=target<r.speed?(brake?200:offroad?130:100):t.acceleration;
+      r.speed=clamp(r.speed+clamp(target-r.speed,-rate*FIXED_DT,rate*FIXED_DT),0,250);if(r.boosting)r.speed*=BOOST_MULTIPLIER;
+      const ratio=r.speed/190,moving=Math.min(1,r.speed/80),handling=(.5+.8*Math.min(ratio,1.3))*moving*t.handling*(brake?1.15:1);
+      r.x=clamp(r.x+(r.steer*handling-bend*.21*ratio*ratio)*FIXED_DT,-1,1);
+      const travelSpeed=r.speed;r.z=Math.min(LENGTH,r.z+travelSpeed*FIXED_DT);motion[r.id]={oldX,oldZ,travelSpeed};
+    }
+    contacts(s,motion);
+    for(const r of s.racers){
+      const moved=motion[r.id];if(!moved)continue;const{oldX,oldZ,travelSpeed}=moved;collect(s,r,oldX,oldZ);
+      if(r.boostTime>0){r.boostTime=r.boostTime<=FIXED_DT+1e-9?0:r.boostTime-FIXED_DT;if(!r.boostTime){r.speed/=BOOST_MULTIPLIER;r.boosting=false;}}
+      if(zoneAt(oldZ)!==zoneAt(r.z))emit(s,{type:'zone',racer:r.id,zone:zoneAt(r.z)});
+      if(r.z>=LENGTH)finish(s,r,s.time-FIXED_DT+clamp((LENGTH-oldZ)/Math.max(.001,travelSpeed*FIXED_DT),0,1)*FIXED_DT);
+    }
+    // Resolve all targets after movement. Simultaneous swings can trade hits;
+    // array order cannot silently grant a faster windup to the first rider.
+    const impacts=strikes.map(a=>({attacker:s.racers[a.racer],side:a.side,target:attackTargets(s,a.racer,a.side)[0]})).filter(a=>a.attacker.finishTime===null&&a.attacker.crashTime<=0);
+    for(const impact of impacts)if(!impact.target||!hit(s,impact.attacker,impact.target,impact.side))emit(s,{type:'miss',racer:impact.attacker.id,side:impact.side});
+    updateDuels(s,previous);
+    if(s.racers[0].finishTime!==null)endRace(s,false);else if(s.time>=MAX_TIME)endRace(s,true);
+  }
+  function advance(s,dt,input={}){
+    if(!s||s.phase==='finished'||!Number.isFinite(dt)||dt<=0)return s;
+    s.remainder=finite(s.remainder)+Math.min(dt,.25);
+    while(s.remainder+1e-10>=FIXED_DT&&s.phase!=='finished'){s.remainder=Math.max(0,s.remainder-FIXED_DT);step(s,input);}
+    return s;
+  }
+  function scoreBreakdown(s){
+    const r=s.racers[0],place=standings(s).findIndex(o=>o.id===0)+1;
+    const result={place,finish:[5000,4200,3500,2900,2400,2000][place-1],hits:r.combatHits*75,knockouts:r.knockouts*600,tickets:r.tickets*50,timeBonus:Math.round(Math.max(0,MAX_TIME-(r.finishTime??s.time))*15),penalty:r.dnf?-1200:0};
+    result.duels=(s.duels||[]).reduce((points,duel)=>points+duel.bonus,0);
+    const sum=result.finish+result.hits+result.knockouts+result.tickets+result.timeBonus+result.penalty+result.duels;
+    result.total=Math.max(1,sum);result.finish+=result.total-sum;return result;
+  }
+  function score(s){return scoreBreakdown(s).total;}
+  return Object.freeze({create,advance,standings,score,scoreBreakdown,aiInput,attackTargets,roster,kinds,curveAt,zoneAt,constants:Object.freeze({FIXED_DT,LENGTH,MAX_TIME,ROAD_EDGE,MAX_SPEED,PLAYER_WINDUP,RIVAL_WINDUP,SWING_TIME,ATTACK_RANGE_Z,ATTACK_RANGE_X,ATTACK_MIN_X,CRASH_TIME,RECOVERY_HEALTH,RECOVERY_PROTECTION,BOOST_DURATION,BOOST_COST,BOOST_MULTIPLIER,CONTACT_WIDTH,CONTACT_LENGTH,CONTACT_SIDE_RATE})});
+})();
+/* ROAD RIOT RULES END */
+/* ROAD RIOT GAME START */
+/* Separate combat-racing cabinet. Shares decoded artwork and music with Road
+ * to the Show, but owns its simulation, inputs, records and lifecycle. */
+const ROAD_RIOT=(()=>{
+  'use strict';
+  const R=ROAD_RIOT_RULES,D=RACING_ASSET_DATA,$=id=>document.getElementById('rr'+id),store=gameStore('pa_riot_');
+  const ids=R.roster.map(r=>r.id),clone=value=>JSON.parse(JSON.stringify(value));
+  const name=id=>R.roster.find(r=>r.id===id)?.name||'Rider';
+  const legNames=['Detroit','Carnival','JCW Arena'];
+  const duelName=d=>Number.isInteger(d.rivalId)?name(state.racers[d.rivalId].racerId):'';
+  const duelStatus={upcoming:'UP NEXT',seeking:'OPEN',active:'RACING',won:'WIN',lost:'LOSS',tied:'TIE',unavailable:'NO DUEL',expired:'TIME LIMIT'};
+  const count=value=>Number.isSafeInteger(value)&&value>=0?value:0;
+  let chosen=ids.includes(store.get('rider','violent-j'))?store.get('rider','violent-j'):'violent-j';
+  let difficulty=['easy','normal','hard'].includes(store.get('difficulty','normal'))?store.get('difficulty','normal'):'normal';
+  let track=['theme','fight-club','off'].includes(store.get('music','fight-club'))?store.get('music','fight-club'):'fight-club';
+  let state=R.create({playerRacer:chosen,difficulty}),active=false,started=false,paused=false,saved=false,recorded=false,pendingSave=null;
+  let assets=null,loading=null,assetError='',renderer=null,raf=0,last=0,lastUI=0,dirty=true,motor=null;
+  let best=count(store.get('best',0)),wins=count(store.get('wins',0)),seen=new Set(),feedback={text:'',kind:'',until:0},newBest=false;
+  const music=RACING_MUSIC.create();music.setTrack(track);
+  const keys=new Map(),pointers=new Map(),pulses=new Set();
+  const bindings=[['LeftBtn','left'],['RightBtn','right'],['BrakeBtn','brake'],['AttackLeftBtn','attackLeft'],['AttackRightBtn','attackRight'],['BlockBtn','block'],['BoostBtn','boost']];
+  const keyMap={ArrowLeft:'left',a:'left',A:'left',ArrowRight:'right',d:'right',D:'right',ArrowDown:'brake',s:'brake',S:'brake',j:'attackLeft',J:'attackLeft',l:'attackRight',L:'attackRight',k:'block',K:'block',' ':'boost',Shift:'boost'};
+  const isAction=action=>['attackLeft','attackRight','boost'].includes(action);
+  const driving=()=>active&&started&&!paused&&state.phase==='racing'&&state.racers[0].finishTime===null;
+  const text=(id,value)=>{const el=$(id);if(el.textContent!==String(value))el.textContent=String(value);};
+  const hide=(id,value)=>{if($(id).hidden!==value)$(id).hidden=value;};
+  const disable=(id,value)=>{if($(id).disabled!==value)$(id).disabled=value;};
+  const attr=(el,key,value)=>{if(el.getAttribute(key)!==String(value))el.setAttribute(key,String(value));};
+  const flag=(el,key,value)=>{if(el.classList.contains(key)!==value)el.classList.toggle(key,value);};
+  const meter=(id,value)=>{const next=Math.round(Math.max(0,Math.min(100,value)));if($(id).value!==next)$(id).value=next;};
+  function controls(){const held=action=>[...keys.values(),...pointers.values()].includes(action);if(!driving())return{steer:0,brake:false,boost:false,attackLeft:false,attackRight:false,block:false};return{steer:Number(held('right'))-Number(held('left')),brake:held('brake'),boost:held('boost'),attackLeft:held('attackLeft'),attackRight:held('attackRight'),block:held('block')};}
+  function release(){keys.clear();pointers.clear();pulses.clear();for(const[id]of bindings)$(id)?.classList.remove('held');}
+  function strikeState(side){
+    const p=state.racers[0];if(!driving()||p.crashTime>0)return'unavailable';
+    if(p.blocking)return'guarding';
+    if(p.attackCooldown>0||p.attackTime>0)return'cooldown';
+    if(p.speed<=35)return'slow';
+    return R.attackTargets(state,0,side).length?'ready':'line-up';
+  }
+  function press(action){
+    if(!driving())return;
+    const p=state.racers[0];
+    if(action==='boost'&&p.boostTime<=0){
+      if(p.boost<30)announce('TURBO NEEDS 30% CHARGE','hint',1000);
+      else if(p.blocking||controls().brake)announce('RELEASE BLOCK / BRAKE TO TURBO','hint',1000);
+      else if(Math.abs(p.x)>R.constants.ROAD_EDGE)announce('GET BACK ON THE ROAD TO TURBO','hint',1000);
+    }
+    if(action.startsWith('attack')){
+      const readiness=strikeState(action==='attackLeft'?-1:1);
+      if(readiness==='guarding')announce('RELEASE BLOCK TO STRIKE','hint',1000);
+      else if(readiness==='slow')announce('BUILD SPEED TO SWING','hint',1000);
+    }
+    if(isAction(action))pulses.add(action);syncMusic(true);
+  }
+  function syncMusic(gesture=false){music.sync(active&&started&&!paused&&!document.hidden&&state.phase!=='finished'&&Sound.on,gesture);}
+  function stopMotor(){if(!motor)return;try{motor.osc.stop();motor.osc.disconnect();motor.filter.disconnect();motor.gain.disconnect();}catch(_e){}motor=null;}
+  function soundFrame(){
+    if(!driving()||!Sound.on||state.racers[0].crashTime>0){stopMotor();return;}
+    try{const ctx=Sound.ensure();if(!ctx)return;const p=state.racers[0];if(!motor){const osc=ctx.createOscillator(),filter=ctx.createBiquadFilter(),gain=ctx.createGain();osc.type='sawtooth';filter.type='lowpass';gain.gain.value=0;osc.connect(filter);filter.connect(gain);gain.connect(Sound.master);osc.start();motor={osc,filter,gain};}motor.osc.frequency.setTargetAtTime(29+p.speed*.4,ctx.currentTime,.09);motor.filter.frequency.setTargetAtTime(p.boosting?500:260,ctx.currentTime,.1);motor.gain.gain.setTargetAtTime(.015+p.speed*.0001,ctx.currentTime,.1);}catch(_e){stopMotor();}
+  }
+  function loadAssets(){
+    if(loading)return loading;assetError='';
+    loading=RACING.loadAssets().then(a=>{if(!a)throw Error('Artwork unavailable');assets=a;renderer=RACING_RENDERER.create($('Canvas'),a);dirty=true;render();return a;}).catch(()=>{loading=null;assetError='Artwork did not load. Tap RETRY LOADING.';render();return null;});
+    return loading;
+  }
+  function announce(message,kind='hit',duration=1400){
+    const priority={crash:5,ko:4,hit:3,block:3,duel:2.5,zone:2,miss:1,hint:1,pickup:0};
+    // A pickup on the same physics tick must not erase a knockout or impact.
+    if(feedback.until>state.time&&feedback.protectedUntil>state.time&&(priority[feedback.kind]||0)>(priority[kind]||0))return;
+    feedback={text:message,kind,until:state.time+duration/1000,protectedUntil:state.time+(kind==='ko'||kind==='crash'?1:.65)};dirty=true;
+  }
+  function observe(){
+    for(const e of state.events){
+      if(seen.has(e.id))continue;seen.add(e.id);
+      if(state.time-e.time>1)continue;
+      if(e.type==='strike'&&(e.racer===0||e.target===0)){
+        if(e.blocked){announce(e.target===0?'BLOCKED IT!':'RIVAL BLOCKED YOUR HIT','block');Sound.play('capture',.17);}
+        else{announce(e.racer===0?'CLEAN HIT!'+(e.combo>1?' · '+e.combo+' HIT STREAK':''):'HIT! · BLOCK THE NEXT SWING','hit');Sound.play('slam',.22);}
+      }
+      if(e.type==='knockout'&&e.racer===0){announce('KNOCKOUT!','ko',1900);Sound.play('crowdPop',.35);}
+      if(e.type==='crash'&&e.racer===0){announce('WIPED OUT · GETTING BACK UP','crash',2200);Sound.play('slam',.25);}
+      if(e.type==='recover'&&e.racer===0)announce('BACK IN IT · RECOVERY SHIELD','block',1600);
+      if(e.type==='hit'&&e.racer===0)announce('ROAD HAZARD · WATCH YOUR LINE','hit');
+      if(e.type==='miss'&&e.racer===0)announce('MISSED · PULL ALONGSIDE YOUR RIVAL','miss',1100);
+      if(e.type==='zone'&&e.racer===0)announce(e.zone===1?'DETROIT CLEARED · INTO THE CARNIVAL':'FINAL LEG · BRING IT HOME','zone',1800);
+      if(e.type==='duelStart'&&e.leg>1)announce('DUEL '+e.leg+' · RACE '+duelName(state.duels[e.leg-1]).toUpperCase()+' TO THE FLAG','hint',1800);
+      if(e.type==='duelResult'&&['won','lost','tied'].includes(e.status)){
+        const rival=duelName(state.duels[e.leg-1]).toUpperCase();
+        announce(e.status==='won'?'DUEL WON · +'+e.bonus:e.status==='tied'?'DEAD HEAT · DUEL TIED':rival+' TOOK THE FLAG','duel',2100);
+        if(e.status==='won')Sound.play('crowdPop',.2);
+      }
+      if(e.type==='pickup'&&e.racer===0){const gain=Math.round(e.amount||0);announce(e.kind==='repair'?(gain>0?'RIDE REPAIRED +'+gain+'%':'RIDE ALREADY HEALTHY'):e.kind==='boost'?(gain>0?'TURBO REFILLED +'+gain+'%':'TURBO ALREADY FULL'):'TICKET +50','pickup');}
+    }
+    if(seen.size>100)seen=new Set(state.events.map(e=>e.id));
+    if(state.phase==='finished'&&!recorded){recorded=true;const score=R.score(state);newBest=score>best;best=Math.max(best,score);store.set('best',best);if(!state.racers[0].dnf&&R.standings(state)[0]?.id===0){wins++;store.set('wins',wins);}release();stopMotor();syncMusic();render();}
+  }
+  function choose(id){if(!ids.includes(id)||started)return false;chosen=id;store.set('rider',id);state=R.create({playerRacer:chosen,difficulty});dirty=true;render();return true;}
+  function start(){
+    if(!assets){loadAssets();return false;}
+    const seed=crypto.getRandomValues(new Uint32Array(1))[0]||1;state=R.create({seed,playerRacer:chosen,difficulty});started=true;paused=false;saved=false;pendingSave=null;recorded=false;newBest=false;$('Placements').removeAttribute('data-tick');seen.clear();feedback={text:'',kind:'',until:0};release();last=0;dirty=true;render();window.scrollTo(0,0);renderer.resize();syncMusic(true);return true;
+  }
+  function reset(){release();stopMotor();started=false;paused=false;saved=false;pendingSave=null;state=R.create({playerRacer:chosen,difficulty});feedback={text:'',kind:'',until:0};dirty=true;last=0;syncMusic();render();renderer?.resize();window.scrollTo(0,0);}
+  function pause(value){if(!started||state.phase==='finished')return;paused=typeof value==='boolean'?value:!paused;release();stopMotor();last=0;dirty=true;syncMusic(!paused);render();}
+  function advance(dt,input){
+    if(!active||!started||paused||state.phase==='finished')return;
+    let effective=input||controls();
+    // Preserve a complete touch tap between animation frames; clear pulses only
+    // after enough simulation time has accumulated to consume an input step.
+    const consume=(state.remainder||0)+dt+1e-10>=1/120;
+    if(!input&&state.phase==='racing')for(const action of pulses){
+      // A release and new press may both land between physics steps. Each
+      // pulse comes from a fresh physical down event, so rearm that edge.
+      const latch={attackLeft:'attackLeftHeld',attackRight:'attackRightHeld',boost:'boostHeld'}[action];
+      if(latch)state.racers[0][latch]=false;effective={...effective,[action]:true};
+    }
+    R.advance(state,dt,effective);if(consume)pulses.clear();observe();dirty=true;
+  }
+  // These three rows also serve as a scorecard at the finish. Build the DOM
+  // once and only change values that differ, including when starting a rematch.
+  function duelCard(id){
+    const list=$(id);
+    for(const d of state.duels){
+      let row=list.children[d.leg-1];
+      if(!row){row=document.createElement('li');row.dataset.leg=String(d.leg);for(const tag of ['small','span','b'])row.append(document.createElement(tag));list.append(row);}
+      const rival=duelName(d),outcome=d.status==='won'?'WIN +'+d.bonus:duelStatus[d.status];
+      const values=['0'+d.leg+' / '+legNames[d.leg-1],rival||'—',outcome];
+      for(let i=0;i<values.length;i++)if(row.children[i].textContent!==values[i])row.children[i].textContent=values[i];
+      attr(row,'data-state',d.status);
+    }
+  }
+  function duelHud(p,finished){
+    const leg=RACING_RULES.zoneAt(p.z),d=state.duels[leg],rival=duelName(d);
+    const remaining=Math.max(0,Math.ceil((d.checkpoint-p.z)/10));
+    let line='GET READY TO RUMBLE';
+    if(finished)line='FINISHED';
+    else if(started){
+      if(d.status==='active'){
+        const gap=state.racers[d.rivalId].z-p.z,meters=Math.round(Math.abs(gap)/10);
+        line=rival+' · '+(meters===0?'LEVEL':(gap>0?'TRAIL ':'LEAD ')+meters+'m');
+      }else if(d.status==='lost')line='FLAG LOST · '+rival;
+      else if(d.status==='won')line='DUEL WON · +'+d.bonus;
+      else if(d.status==='tied')line='DEAD HEAT';
+      else line=d.status==='seeking'?'NO RIVAL IN REACH':'RACE TO THE FLAG';
+    }
+    attr($('Duel'),'data-state',finished?'finished':started?d.status:'idle');
+    text('DuelLeg',(started&&rival?'DUEL ':'LEG ')+d.leg+'/3');
+    text('Distance',finished?'RACE OVER':remaining+'m TO FLAG');text('RivalGap',line);
+  }
+  function render(){
+    const p=state.racers[0],finished=state.phase==='finished',match=active&&started;
+    if(pendingSave){
+      if(LB.board('riot').some(row=>!pendingSave.before.has(row)&&row.v===pendingSave.score&&row.tag===pendingSave.tag)){saved=true;pendingSave=null;}
+      else if(document.getElementById('lbModal').hidden)pendingSave=null;
+    }
+    flag($('Screen'),'rr-match',match);flag(document.body,'riot-match',match);
+    hide('Setup',started);hide('Pause',!started||!paused||finished);hide('Result',!started||!finished);
+    const standings=R.standings(state),place=standings.findIndex(r=>r.id===0)+1;
+    if($('Position').textContent!==place+'/6')$('Position').replaceChildren(document.createTextNode(String(place)),Object.assign(document.createElement('span'),{textContent:'/6'}));
+    text('Speed',Math.round(p.speed*.36));text('Zone',['DETROIT SUNSET','DARK CARNIVAL','JCW TONIGHT'][RACING_RULES.zoneAt(p.z)]);
+    meter('Progress',p.z/state.length*100);duelHud(p,finished);
+    if(started&&paused&&!finished)duelCard('PauseDuels');
+    text('Health',Math.ceil(p.health)+'%');meter('HealthMeter',p.health);
+    text('TurboLabel',p.boostTime>0?'+25% · '+p.boostTime.toFixed(1)+'s':'TURBO');text('Boost',Math.floor(p.boost)+'%');
+    meter('BoostMeter',p.boost);text('BoostBtnLabel',p.boostTime>0?p.boostTime.toFixed(1)+'s':p.boost<30?'NEED 30%':'TURBO');attr($('BoostBtn'),'data-state',p.boostTime>0?'active':p.boost<30?'empty':'ready');
+    text('Knockouts',p.knockouts||0);text('Combo',p.combo>1?p.combo+'×':'—');
+    for(const[id,action]of bindings){const b=$(id),held=[...keys.values(),...pointers.values()].includes(action);disable(id,!driving()||p.crashTime>0);flag(b,'held',held);}
+    for(const [prefix,side,arrow]of[['AttackLeft',-1,'↖'],['AttackRight',1,'↗']]){const readiness=strikeState(side),cool=Math.max(p.attackCooldown,p.attackTime);attr($(prefix+'Btn'),'data-state',readiness);flag($(prefix+'Btn'),'in-range',readiness==='ready');text(prefix+'Glyph',readiness==='cooldown'?cool.toFixed(1):readiness==='guarding'?'◇':arrow);meter(prefix+'Meter',100*(1-Math.min(1,cool/.85)));}
+    disable('PauseBtn',!started||finished);text('PauseBtn',paused?'RESUME':'PAUSE');disable('SaveBtn',saved||!!pendingSave||!finished);text('SaveBtn',saved?'RECORD SAVED':pendingSave?'ENTER INITIALS':finished&&LB.rankOf('riot',R.score(state))<0?'VIEW RECORDS':'SAVE RECORD');
+    text('StartBtn',assetError?'RETRY LOADING':assets?'START A RIOT':'LOADING RIDES…');disable('StartBtn',!assets&&!assetError);
+    const threat=state.racers.find(r=>r.id!==0&&r.attackTime>R.constants.SWING_TIME&&R.attackTargets(state,r.id,r.attackSide)[0]?.id===0);
+    const readyLeft=strikeState(-1)==='ready',readyRight=strikeState(1)==='ready';
+    const status=assetError||(!started?'Pull alongside rivals. Lit strike buttons mean they’re in reach.':paused?'Race paused.':finished?'Race complete. Race again or save your device record.':state.phase==='countdown'?(state.duels[0].status==='active'?'FIRST FLAG · BEAT '+duelName(state.duels[0]).toUpperCase()+' FOR +250':'GET READY · AUTO-ACCELERATE ON GO'):p.crashTime>0?'WIPED OUT · BACK UP IN '+p.crashTime.toFixed(1)+'s':p.blocking?'GUARD UP · RELEASE TO STRIKE':threat?'INCOMING '+(threat.x<p.x?'LEFT':'RIGHT')+' · HOLD BLOCK':p.boostTime>0?'TURBO · +25% SPEED FOR 3 SECONDS':readyLeft&&readyRight?'BOTH SIDES IN RANGE · PICK YOUR TARGET':readyLeft?'LEFT RIVAL IN RANGE · STRIKE LEFT':readyRight?'RIGHT RIVAL IN RANGE · STRIKE RIGHT':p.attackCooldown>0?'RECOVERING · NEXT SWING IN '+p.attackCooldown.toFixed(1)+'s':'PULL ALONGSIDE · LIGHT UP A STRIKE BUTTON');text('Status',status);
+    attr($('Status'),'data-warning',!!threat&&!p.blocking&&driving());
+    text('SoundBtn',Sound.on?'SOUND ON':'SOUND OFF');attr($('SoundBtn'),'aria-label',Sound.on?'Mute sound':'Enable sound');
+    text('Best',best?'PERSONAL BEST '+best.toLocaleString('en-US')+' · '+wins+' WINS':'Your first riot starts here.');
+    for(const b of $('Roster').children)attr(b,'aria-pressed',b.dataset.riotRacer===chosen);
+    hide('Feedback',!driving()||feedback.until<=state.time||!feedback.text);text('Feedback',feedback.text);attr($('Feedback'),'data-kind',feedback.kind);
+    if(finished&&started){
+      text('ResultTitle',p.dnf?'TIME’S UP!':place===1?'KING OF THE ROAD!':'MADE THE SHOW!');text('Score',R.score(state).toLocaleString('en-US'));
+      text('ResultDetail',(p.dnf?'Time limit':p.finishTime.toFixed(1)+' seconds')+' · '+(p.combatHits||0)+' hits · '+(p.knockouts||0)+' knockouts · '+(p.crashes||0)+' wipeouts');
+      const points=R.scoreBreakdown(state);for(const [id,key]of[['Finish','finish'],['Hits','hits'],['Knockouts','knockouts'],['Tickets','tickets'],['Duels','duels'],['Time','timeBonus'],['Penalty','penalty']])text('Score'+id,points[key].toLocaleString('en-US'));
+      const victories=state.duels.filter(d=>d.status==='won').length;text('DuelsWon','YOUR DUEL CARD · '+victories+(victories===1?' WIN':' WINS'));duelCard('DuelRecap');
+      hide('PenaltyRow',!points.penalty);text('ResultRecap',(newBest?'NEW PERSONAL BEST · ':'')+'BEST STREAK '+(p.bestCombo||0)+' HITS');
+      const list=$('Placements');if(list.dataset.tick!==String(state.tick)){list.dataset.tick=String(state.tick);list.replaceChildren();R.standings(state).forEach((r,i)=>{const li=document.createElement('li');li.classList.toggle('rr-you',r.id===0);const label=document.createElement('span'),time=document.createElement('b');label.textContent=(i+1)+'. '+name(r.racerId)+(r.id===0?' · YOU':'');time.textContent=r.dnf?'DNF':r.finishTime>state.time+.0001?'BEHIND':r.finishTime.toFixed(1)+'s';li.append(label,time);list.append(li);});}
+    }
+  }
+  function frame(now){
+    if(!active){raf=0;return;}
+    const elapsed=last?(now-last)/1000:0;last=now;
+    // A slow visible frame shouldn't open the pause menu or fast-forward the
+    // opponents. Actual focus loss and backgrounding have their own handlers.
+    const dt=elapsed>.5?0:Math.min(.1,elapsed);
+    advance(dt);syncMusic();soundFrame();
+    if(renderer&&(dirty||renderer.needsRedraw)){renderer.draw(state,0,dt);dirty=false;}
+    if(now-lastUI>80){render();lastUI=now;}
+    raf=requestAnimationFrame(frame);
+  }
+  function enter(){active=true;document.body.classList.add('riot-selected');loadAssets();last=0;dirty=true;render();if(!raf)raf=requestAnimationFrame(frame);TICK.set('JCW ROAD RIOT · THE ROAD IS YOUR RING.','COMBAT RACING');}
+  function leave(){if(started&&state.phase!=='finished')pause(true);active=false;cancelAnimationFrame(raf);raf=0;release();stopMotor();syncMusic();document.body.classList.remove('riot-selected','riot-match');$('Screen').classList.remove('rr-match');}
+  function snapshot(){return{...clone(state),mode:!started?'ready':paused?'paused':state.phase,active,started,paused,loaded:!!assets,chosen,difficulty,best,wins,saved,music:music.state};}
+  function bind(){
+    for(const r of R.roster){const b=document.createElement('button');b.type='button';b.className='rr-rider';b.dataset.riotRacer=r.id;const img=document.createElement('img'),label=document.createElement('strong'),vehicle=document.createElement('small');img.src=D.riders[r.id];img.alt='';label.textContent=r.name;vehicle.textContent=r.vehicle==='kart'?'GO-KART':'MINI BIKE';b.append(img,label,vehicle);b.onclick=()=>choose(r.id);$('Roster').append(b);}
+    $('Difficulty').value=difficulty;$('Difficulty').onchange=e=>{difficulty=e.target.value;store.set('difficulty',difficulty);state=R.create({playerRacer:chosen,difficulty});dirty=true;render();};
+    $('MusicSelect').value=track;$('MusicSelect').onchange=e=>{track=e.target.value;store.set('music',track);music.setTrack(track);syncMusic(true);};
+    $('StartBtn').onclick=start;$('AgainBtn').onclick=start;$('PauseBtn').onclick=()=>pause();$('ResumeBtn').onclick=()=>pause(false);$('HomeBtn').onclick=()=>showScreen('menu');$('RestartBtn').onclick=$('ChangeBtn').onclick=reset;
+    $('SoundBtn').onclick=()=>{toggleSound();syncMusic(true);render();};
+    $('SaveBtn').onclick=()=>{
+      if(!started||state.phase!=='finished'||saved||pendingSave)return;
+      const score=R.score(state),tag=name(chosen)+' · '+(state.racers[0].knockouts||0)+' KO · '+difficulty.toUpperCase();
+      if(LB.rankOf('riot',score)<0){LB.show('riot');return;}
+      pendingSave={score,tag,before:new Set(LB.board('riot'))};LB.check('riot',score,tag);render();
+    };
+    for(const [id,action]of bindings){const b=$(id);
+      b.addEventListener('pointerdown',e=>{if(b.disabled)return;e.preventDefault();press(action);pointers.set(e.pointerId,action);try{b.setPointerCapture(e.pointerId);}catch(_e){}b.classList.add('held');});
+      const up=e=>{pointers.delete(e.pointerId);if(![...pointers.values()].includes(action))b.classList.remove('held');};for(const event of['pointerup','pointercancel','lostpointercapture'])b.addEventListener(event,up);
+      b.addEventListener('keydown',e=>{if(![' ','Enter'].includes(e.key)||b.disabled)return;e.preventDefault();e.stopPropagation();if(!e.repeat)press(action);keys.set('button:'+id+e.key,action);});b.addEventListener('keyup',e=>{if(![' ','Enter'].includes(e.key))return;e.preventDefault();e.stopPropagation();keys.delete('button:'+id+e.key);});
+      b.addEventListener('blur',()=>{for(const key of keys.keys())if(key.startsWith('button:'+id))keys.delete(key);});
+      b.addEventListener('click',e=>{if(e.detail===0&&!b.disabled&&isAction(action))press(action);});b.addEventListener('contextmenu',e=>e.preventDefault());
+    }
+    document.addEventListener('keydown',e=>{if(!active||gameKeysBlocked(e)||e.target.closest('input,textarea,select')||e.key===' '&&e.target.closest('button,a[href]'))return;if(['p','P','Escape'].includes(e.key)){e.preventDefault();if(!e.repeat)pause();return;}const action=keyMap[e.key];if(action&&driving()){e.preventDefault();if(!e.repeat)press(action);keys.set(e.code||e.key,action);}});
+    document.addEventListener('keyup',e=>{keys.delete(e.code||e.key);});window.addEventListener('blur',()=>{release();if(active)pause(true);});document.addEventListener('visibilitychange',()=>{if(document.hidden){release();if(active)pause(true);}syncMusic();});
+    const resize=()=>{renderer?.resize();dirty=true;};window.addEventListener('resize',resize);window.visualViewport?.addEventListener('resize',resize);render();
+  }
+  return{bind,enter,leave,start,choose,pause,loadAssets,get state(){return snapshot();},getState:snapshot,debug:{advance,controls}};
+})();
+/* ROAD RIOT GAME END */
 /* CLAW CATALOG START */
 const CLAW_CATALOG = {"source":"https://jcwlunacy.net/#crew","checkedAt":"2026-10-01","roster":[{"name":"Caleb Konley","id":"caleb-konley","role":"Lunacy World Champion","group":"Champions","items":[{"kind":"belt","name":"Belt"},{"kind":"robe","name":"Entrance Robe"},{"kind":"boots","name":"Ring Boots"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Josh Bishop","id":"josh-bishop","role":"World Heavyweight Champion","group":"Champions","items":[{"kind":"belt","name":"Belt"},{"kind":"robe","name":"Entrance Robe"},{"kind":"boots","name":"Ring Boots"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Dani Mo","id":"dani-mo","role":"Women’s World Champion","group":"Champions","items":[{"kind":"belt","name":"Belt"},{"kind":"robe","name":"Entrance Robe"},{"kind":"boots","name":"Ring Boots"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Father Bronson","id":"father-bronson","role":"American Champion","group":"Champions","items":[{"kind":"belt","name":"Belt"},{"kind":"robe","name":"Entrance Robe"},{"kind":"boots","name":"Ring Boots"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Choppa City","id":"choppa-city","role":"World Tag Team Champions","group":"Champions","items":[{"kind":"belt","name":"Belt"},{"kind":"robe","name":"Entrance Robe"},{"kind":"boots","name":"Ring Boots"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"2 Tuff Tony","id":"2-tuff-tony","role":"JCW Roster","group":"Roster","items":[{"kind":"glove","name":"Flame Glove"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Alice Crowley","id":"alice-crowley","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Midnight Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Backseat Boyz","id":"backseat-boyz","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Barnabas the Bizarre","id":"barnabas-the-bizarre","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Bizarre Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Big Vito","id":"big-vito","role":"JCW Roster","group":"Roster","items":[{"kind":"hat","name":"Street-Fight Fedora"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Breyer Wellington","id":"breyer-wellington","role":"JCW Roster","group":"Roster","items":[{"kind":"bowtie","name":"Bow Tie"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Cokane","id":"cokane","role":"JCW Roster","group":"Roster","items":[{"kind":"chain","name":"Entrance Chain"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Donovan Dijak","id":"donovan-dijak","role":"JCW Roster","group":"Roster","items":[{"kind":"glasses","name":"Entrance Shades"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"EC3","id":"ec3","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Main-Event Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Facade","id":"facade","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Neon Bandana"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Forty Winks","id":"forty-winks","role":"JCW Roster","group":"Roster","items":[{"kind":"cap","name":"Sleep Cap"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Freya the Slaya","id":"freya-the-slaya","role":"JCW Roster","group":"Roster","items":[{"kind":"glove","name":"Battle Gauntlet"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Gisele Shaw","id":"gisele-shaw","role":"JCW Roster","group":"Roster","items":[{"kind":"robe","name":"Spotlight Robe"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"The Green Phantom","id":"the-green-phantom","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Green Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Hollyhood Haley J","id":"hollyhood-haley-j","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Hollyhood Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Hokane","id":"hokane","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Monster Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"J-Rod","id":"j-rod","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"James Storm","id":"james-storm","role":"JCW Roster","group":"Roster","items":[{"kind":"hat","name":"Cowboy Hat"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Jasmin St. Claire","id":"jasmine-st-claire","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Monster Corp Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Jeeves","id":"jeeves","role":"JCW Roster","group":"Roster","items":[{"kind":"bowtie","name":"Butler Bow Tie"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Joel Gertner","id":"joel-gertner","role":"JCW Roster","group":"Roster","items":[{"kind":"bowtie","name":"Ringside Bow Tie"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Kerry Morton","id":"kerry-morton","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Rock-Star Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Kongo Kong","id":"kongo-kong","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Monster Faceplate"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Krule","id":"krule","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Atrocity Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Luigi Primo","id":"luigi-primo","role":"JCW Roster","group":"Roster","items":[{"kind":"hat","name":"Chef Hat"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Mad Man Pondo","id":"mad-man-pondo","role":"JCW Roster","group":"Roster","items":[{"kind":"sign","name":"Stop Sign"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Matt Cross","id":"matt-cross","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Mecha Wolf","id":"mecha-wolf","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Wolf Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Mickie Knuckles","id":"mickie-knuckles","role":"JCW Roster","group":"Roster","items":[{"kind":"glove","name":"Brawler Gloves"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Mosh Pit Mike","id":"moshpit-mike","role":"JCW Roster","group":"Roster","items":[{"kind":"vest","name":"Mosh Pit Vest"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Mr. Anderson","id":"mr-anderson","role":"JCW Roster","group":"Roster","items":[{"kind":"mic","name":"Drop Mic"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Mr. Happy","id":"mr-happy","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Happy Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Nic Nemeth","id":"nic-nemeth","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Showtime Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Ninja Mack","id":"ninja-mack","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Ninja Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"The Outbreak","id":"outbreak","role":"JCW Roster","group":"Roster","items":[{"kind":"mask","name":"Outbreak Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"7 Foot Tall Painful Paul","id":"7-foot-tall-painful-paul","role":"JCW Roster","group":"Roster","items":[{"kind":"glove","name":"Giant Gloves"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Ricky Morton","id":"ricky-morton","role":"JCW Roster","group":"Roster","items":[{"kind":"bandana","name":"Rock & Roll Bandana"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"The Ring Rat","id":"the-ring-rat","role":"JCW Roster","group":"Roster","items":[{"kind":"pants","name":"Pants"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Sally Boy","id":"sally-boy","role":"JCW Roster","group":"Roster","items":[{"kind":"hat","name":"Street-Fight Fedora"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Sewacide","id":"sewacide","role":"JCW Roster","group":"Roster","items":[{"kind":"chair","name":"Hardcore Chair"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Shane Mercer","id":"shane-mercer","role":"JCW Roster","group":"Roster","items":[{"kind":"chain","name":"Iron Chain"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Sonny Kiss","id":"sonny-kiss","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Spotlight Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Sophia Rose","id":"sohpia-rose","role":"JCW Roster","group":"Roster","items":[{"kind":"robe","name":"Rose Robe"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Steven Flowe","id":"steven-flowe","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Vincenzo","id":"vincenzo","role":"JCW Roster","group":"Roster","items":[{"kind":"hat","name":"Street-Fight Fedora"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Zach Gowen","id":"zach-gowen","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Willie Mack","id":"willie-mack","role":"JCW Roster","group":"Roster","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Violent J","id":"violent-j","role":"Owner","group":"Crew","items":[{"kind":"chain","name":"Hatchet Pendant"},{"kind":"headphones","name":"Broadcast Headset"},{"kind":"mic","name":"Ringside Mic"},{"kind":"pass","name":"Backstage Pass"},{"kind":"clipboard","name":"Match Card Clipboard"}]},{"name":"Joe Dombrowski","id":"joe-dombrowski","role":"Commentary","group":"Crew","items":[{"kind":"headphones","name":"Broadcast Headset"},{"kind":"mic","name":"Ringside Mic"},{"kind":"pass","name":"Backstage Pass"},{"kind":"clipboard","name":"Match Card Clipboard"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Mark Roberts","id":"mark-roberts","role":"Commentary","group":"Crew","items":[{"kind":"headphones","name":"Broadcast Headset"},{"kind":"mic","name":"Ringside Mic"},{"kind":"pass","name":"Backstage Pass"},{"kind":"clipboard","name":"Match Card Clipboard"},{"kind":"poster","name":"Foil Poster"}]},{"name":"DJ Clay","id":"dj-clay","role":"House DJ","group":"Crew","items":[{"kind":"record","name":"Signed Vinyl"},{"kind":"headphones","name":"Broadcast Headset"},{"kind":"mic","name":"Ringside Mic"},{"kind":"pass","name":"Backstage Pass"},{"kind":"clipboard","name":"Match Card Clipboard"}]},{"name":"Veda Scott","id":"veda-scott","role":"Commentary","group":"Crew","items":[{"kind":"headphones","name":"Broadcast Headset"},{"kind":"mic","name":"Ringside Mic"},{"kind":"pass","name":"Backstage Pass"},{"kind":"clipboard","name":"Match Card Clipboard"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Zac Amico","id":"zac-amico","role":"Commentary","group":"Crew","items":[{"kind":"headphones","name":"Broadcast Headset"},{"kind":"mic","name":"Ringside Mic"},{"kind":"pass","name":"Backstage Pass"},{"kind":"clipboard","name":"Match Card Clipboard"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Mac Davis","id":"mac-davis","role":"Roving Reporter","group":"Crew","items":[{"kind":"headphones","name":"Broadcast Headset"},{"kind":"mic","name":"Ringside Mic"},{"kind":"pass","name":"Backstage Pass"},{"kind":"clipboard","name":"Match Card Clipboard"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Kid Cadet","id":"kid-cadet","role":"Ring Announcer","group":"Crew","items":[{"kind":"headphones","name":"Broadcast Headset"},{"kind":"mic","name":"Ringside Mic"},{"kind":"pass","name":"Backstage Pass"},{"kind":"clipboard","name":"Match Card Clipboard"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Jeff the Ref","id":"jeff-the-ref","role":"Referee","group":"Crew","items":[{"kind":"refshirt","name":"Referee Shirt"},{"kind":"whistle","name":"Referee Whistle"},{"kind":"boots","name":"Ring Boots"},{"kind":"clipboard","name":"Match Card Clipboard"},{"kind":"pass","name":"Backstage Pass"}]},{"name":"George Ross","id":"george-ross","role":"Referee","group":"Crew","items":[{"kind":"refshirt","name":"Referee Shirt"},{"kind":"whistle","name":"Referee Whistle"},{"kind":"boots","name":"Ring Boots"},{"kind":"clipboard","name":"Match Card Clipboard"},{"kind":"pass","name":"Backstage Pass"}]},{"name":"The Iron Sheik","id":"the-iron-sheik","role":"Night One · 1999","group":"Legends & Alumni","items":[{"kind":"flag","name":"Entrance Flag"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"King Kong Bundy","id":"king-kong-bundy","role":"Night One · 1999","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Abdullah the Butcher","id":"abdullah-the-butcher","role":"Night One · 1999","group":"Legends & Alumni","items":[{"kind":"robe","name":"Butcher Robe"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Handsome Harley Guestella & Diamond Donovan Douglas","id":"icp-founders","role":"Founders · First Tag Champs","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Evil Dead","id":"evil-dead","role":"First Champion","group":"Champions","items":[{"kind":"mask","name":"Horror Mask"},{"kind":"belt","name":"Belt"},{"kind":"robe","name":"Entrance Robe"},{"kind":"boots","name":"Ring Boots"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Corporal Robinson","id":"corporal-robinson","role":"Original · Creative","group":"Legends & Alumni","items":[{"kind":"vest","name":"Camo Vest"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"The Rude Boy","id":"the-rude-boy","role":"JCW Legend","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Vampiro","id":"vampiro","role":"Champion · Consultant","group":"Champions","items":[{"kind":"jacket","name":"Midnight Jacket"},{"kind":"belt","name":"Belt"},{"kind":"robe","name":"Entrance Robe"},{"kind":"boots","name":"Ring Boots"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Necro Butcher","id":"necro-butcher","role":"Vol. 3 · 2003","group":"Legends & Alumni","items":[{"kind":"chair","name":"Hardcore Chair"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Human Tornado","id":"human-tornado","role":"SlamTV! Era","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Dance-Floor Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Trent Acid","id":"trent-acid","role":"PWU Alliance","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"The Great Muta","id":"the-great-muta","role":"Icon","group":"Legends & Alumni","items":[{"kind":"mask","name":"Dragon Mask"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Chris Hero","id":"chris-hero","role":"Young Blood","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Scott Hall","id":"scott-hall","role":"Executive Consultant","group":"Legends & Alumni","items":[{"kind":"vest","name":"Outsider Vest"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Raven","id":"raven","role":"2008 Arrival","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Raven Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Scott D’Amore","id":"scott-damore","role":"Manager · 2008","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Officer Colt Cabana","id":"officer-colt-cabana","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"cap","name":"Officer Cap"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Cash Flo","id":"cash-flo","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Rob Conway","id":"rob-conway","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"JWO","id":"jwo","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"shirt","name":"JWO Shirt"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Kevin Nash","id":"kevin-nash","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"vest","name":"Big-Man Vest"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Sean Waltman","id":"sean-waltman","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"bandana","name":"Bandana"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"The Weedman","id":"the-weedman","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"cap","name":"Green Cap"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Vanilla Ice","id":"vanilla-ice","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"mic","name":"Stage Mic"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Terry Funk","id":"terry-funk","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"hat","name":"Cowboy Hat"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Dusty Rhodes","id":"dusty-rhodes","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"elbow","name":"Polka-Dot Elbow Pad"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Pat Tanaka","id":"pat-tanaka","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"The Ring Ryders","id":"the-ring-ryders","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"The Thomaselli Brothers","id":"the-thomaselli-brothers","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Hollywood Chuck Hogan","id":"hollywood-chuck-hogan","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"bandana","name":"Hollywood Bandana"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Tracy Smothers","id":"tracy-smothers","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Steve Corino","id":"steve-corino","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"“Rowdy” Roddy Piper","id":"roddy-piper","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"kilt","name":"Tartan Kilt"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Greg “The Hammer” Valentine","id":"greg-valentine","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"elbow","name":"Hammer Elbow Pad"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Kamala","id":"kamala","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"mask","name":"Warrior Faceplate"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Tito Santana","id":"tito-santana","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Kid Kash","id":"kid-kash","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Monty Brown","id":"monty-brown","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Kevin Thorn","id":"kevin-thorn","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"},{"kind":"poster","name":"Foil Poster"}]},{"name":"Bobby Lashley","id":"bobby-lashley","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"glove","name":"Power Gloves"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Balls Mahoney","id":"balls-mahoney","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"chair","name":"Hardcore Chair"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Ian Rotten","id":"ian-rotten","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"chair","name":"Hardcore Chair"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Bull Pain","id":"bull-pain","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"vest","name":"Brawler Vest"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]},{"name":"Sabu","id":"sabu","role":"Legends & Alumni","group":"Legends & Alumni","items":[{"kind":"chair","name":"Airborne Chair"},{"kind":"jacket","name":"Entrance Jacket"},{"kind":"boots","name":"Ring Boots"},{"kind":"shirt","name":"Entrance Shirt"},{"kind":"turnbuckle","name":"Signed Turnbuckle"}]}]};
 /* CLAW CATALOG END */
@@ -17010,6 +18062,7 @@ const CLAW = (()=>{
 /* LEADERBOARDS CLIENT START */
 const LB = (()=>{
   const CFG = {
+    riot: {name:'JCW ROAD RIOT',metric:'COMBAT RACE SCORE',higher:true,screen:'rrScreen',localOnly:true,deviceOnly:true},
     poker: {name:'BIG MONEY RUSTLAS POKER',metric:'CPU MATCH VICTORY SCORE',higher:true,screen:'pkScreen',localOnly:true},
     racing: {name:'ROAD TO THE SHOW',metric:'SOLO RACE SCORE',higher:true,screen:'rcScreen',localOnly:true},
     pool: {name:'JUGGALO POOL',metric:'BEST RACK WON VS CPU',higher:true,screen:'plScreen'},
@@ -17030,7 +18083,7 @@ const LB = (()=>{
     j31:     { name:'JUGGALO 31',           metric:'TABLES SWEPT IN A ROW VS CPU', higher:true, screen:'j31Screen' },
     hockey:  { name:'JUGGALO AIR HOCKEY',   metric:'WIN STREAK VS CPU', higher:true, screen:'ahScreen' },
   };
-  const SHORT = { racing:'ROAD TO THE SHOW', poker:'RUSTLAS POKER', pool:'POOL', ladder:'LADDER WARS', rumble:'RUMBLE', chicken:'CHICKEN HUNTIN’', claw:'CLAW', shooter:'CROSSFIRE', ttt:'SLAM', chess:'CHESS', checkers:'CHECKERS', pinball:'PINBALL', faygo:'JOKER CARD FOUR', bj:'21', memory:'MEMORY', camper:'CAMPER', solitaire:'SOLITAIRE', j31:'31', hockey:'HOCKEY' };
+  const SHORT = { riot:'ROAD RIOT', racing:'ROAD TO THE SHOW', poker:'RUSTLAS POKER', pool:'POOL', ladder:'LADDER WARS', rumble:'RUMBLE', chicken:'CHICKEN HUNTIN’', claw:'CLAW', shooter:'CROSSFIRE', ttt:'SLAM', chess:'CHESS', checkers:'CHECKERS', pinball:'PINBALL', faygo:'JOKER CARD FOUR', bj:'21', memory:'MEMORY', camper:'CAMPER', solitaire:'SOLITAIRE', j31:'31', hockey:'HOCKEY' };
   const known = g => typeof g==='string' && Object.hasOwn(CFG,g);
   const validScore = v => typeof v==='number' && Number.isFinite(v) && v>0 && v<=Number.MAX_SAFE_INTEGER;
   const sorter = g => (a,b) => CFG[g].higher ? b.v - a.v : a.v - b.v;
@@ -17073,12 +18126,14 @@ const LB = (()=>{
   const validSharedScore=v=>Number.isSafeInteger(v)&&v>0&&v<=SHARED_MAX;
   const sharedState=g=>{if(!shared.has(g))shared.set(g,{rows:[],own:null,state:'idle',submission:'',serial:0});return shared.get(g);};
   function sharedMessage(result){
+    if(result?.reason==='device-only')return 'Road Riot records are saved on this device.';
     if(result?.reason==='standalone')return 'Open the arcade on JCW Lunacy and sign in to use website rankings. Device records work here.';
     if(result?.error==='signed-out'||(result?.ok===true&&result?.signedIn===false))return 'Sign in on JCW Lunacy to view and save website rankings. Device records still work.';
     return 'Website rankings are unavailable right now. Your device records still work.';
   }
   function requestShared(action,g,extra={}){
     if(!known(g))return Promise.resolve({ok:false,error:'invalid-request'});
+    if(CFG[g].deviceOnly)return Promise.resolve({ok:false,error:'unavailable',reason:'device-only'});
     if(!hostOrigin)return Promise.resolve({ok:false,error:'unavailable',reason:window.parent===window?'standalone':'untrusted'});
     if(requests.size>=32)return Promise.resolve({ok:false,error:'unavailable'});
     const id='lb-'+Date.now().toString(36)+'-'+(++requestSerial).toString(36)+'-'+crypto.getRandomValues(new Uint32Array(1))[0].toString(36);
@@ -17143,6 +18198,7 @@ const LB = (()=>{
     if(current===g&&source==='website'&&version===viewVersion&&!$('#lbModal').hidden){renderSharedRows();updateSharedNotice();}
   }
   function submitShared(g,v,tag){
+    if(CFG[g].deviceOnly)return;
     const value=sharedState(g);
     if(!validSharedScore(v)){value.submission='This score is outside website ranking limits. Your device record still works.';return;}
     let initials='ICP';try{initials=(localStorage.getItem('pa_lb_name')||'ICP').toUpperCase().replace(/[^A-Z0-9-]/g,'').padEnd(3,'-').slice(0,3);}catch{}
@@ -17211,6 +18267,8 @@ const LB = (()=>{
   }
   function fmtV(g, v){ return v.toLocaleString('en-US') + (CFG[g].higher ? '' : ' MV'); }
   function render(fresh){
+    if(CFG[current].deviceOnly)source='device';
+    $('#lbWebsiteTab').hidden=!!CFG[current].deviceOnly;
     const version=++viewVersion;
     $('#lbDeviceTab').setAttribute('aria-selected',String(source==='device'));$('#lbWebsiteTab').setAttribute('aria-selected',String(source==='website'));
     $('#lbSharedTools').hidden=source!=='website';$('#lbEntry').hidden=!pending||source!=='device';
@@ -17258,6 +18316,7 @@ const LB = (()=>{
   function show(g){
     if(!$('#pkScreen').hidden) POKER.pause(true);
     if(!$('#rcScreen').hidden) RACING.pause(true);
+    if(!$('#rrScreen').hidden) ROAD_RIOT.pause(true);
     if(!$('#plScreen').hidden) POOL.pause(true);
     if(!$('#lwScreen').hidden) LADDER.pause(true);
     if(!$('#ruScreen').hidden) RUMBLE.pause(true);
@@ -17299,6 +18358,7 @@ window.LB_READY = true;
 /* LEADERBOARDS CLIENT END */
 /* ================= hub + boot ================= */
 function bindHub(){
+  $('#cardRoadRiot').onclick = ()=>{Sound.play('move');showScreen('riot');};
   $('#cardRacing').onclick = ()=>{Sound.play('move');showScreen('racing');};
   $('#cardPoker').onclick = ()=>{Sound.play('move');showScreen('poker');};
   $('#cardPool').onclick = ()=>{Sound.play('move');showScreen('pool');};
@@ -17313,7 +18373,7 @@ function bindHub(){
   $('#cardPinball').onclick = ()=>{ Sound.play('move'); showScreen('pinball'); };
   $('#cardFaygo').onclick = ()=>{ Sound.play('move'); showScreen('faygo'); };
 }
-window.ARCADE = { showScreen, RACING, RACING_PARTY, RACING_MULTI, POKER, POOL, DUELS, LADDER, RUMBLE, CHICKEN, CLAW, SHOOTER, TTT, CHESS, CHECKERS, FAYGO, PINBALL, BLACKJACK, MEMORY, CAMPER, SOLITAIRE, J31, AIRHOCKEY, NET, LB, Sound, T, TICK, ASSETS };
+window.ARCADE = { showScreen, ROAD_RIOT, RACING, RACING_PARTY, RACING_MULTI, POKER, POOL, DUELS, LADDER, RUMBLE, CHICKEN, CLAW, SHOOTER, TTT, CHESS, CHECKERS, FAYGO, PINBALL, BLACKJACK, MEMORY, CAMPER, SOLITAIRE, J31, AIRHOCKEY, NET, LB, Sound, T, TICK, ASSETS };
 
 applyDataImgs();
 TTT.bind();
@@ -17347,6 +18407,8 @@ POKER.bind();
 window.POKER_READY=true;
 RACING.bind();
 window.RACING_READY=true;
+ROAD_RIOT.bind();
+window.ROAD_RIOT_READY=true;
 NET.bind();
 LB.bind();
 window.PINBALL_READY = true;

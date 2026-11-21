@@ -1,6 +1,6 @@
 # Psychopathic Arcade
 
-Nineteen browser games with carnival artwork, synthesized audio, CPU opponents,
+Twenty browser games with carnival artwork, synthesized audio, CPU opponents,
 local multiplayer, and fifteen online modes. Open `public/game.html` directly for
 local play, or serve the Vite build. No backend is needed for solo/local games.
 
@@ -40,8 +40,8 @@ without checking. Keep the bundled chess engine's license intact.
 
 ## Leaderboards
 
-All nineteen games have a trophy button and independent device records. The
-records dialog also offers **JCW WEBSITE** rankings when the arcade is embedded
+All twenty games have a trophy button and independent device records. The
+records dialog also offers **JCW WEBSITE** rankings for the original nineteen games when the arcade is embedded
 on JCW Lunacy and the player is signed in. It shows the top ten and the player's
 personal best; Chess and Checkers rank fewer moves first. Each valid completed
 run is submitted even when it does not enter this device's top ten. Online peer
@@ -58,6 +58,43 @@ or change the existing locker event bridge.
 
 Edit `games/leaderboards.{js,html,css}` and run
 `node scripts/sync-leaderboards.mjs` to update the standalone arcade.
+
+## JCW Road Riot
+
+The twentieth cabinet is a separate solo combat racer, reusing Road to the Show's
+six riders, articulated vehicles, three environments and Lunacy Unlocked music.
+It shares decoded artwork without duplicating embedded image or music payloads.
+Choose Rookie, Rowdy or Riot opponents and race to the JCW show.
+
+The ride accelerates automatically. Steer with Left/Right or A/D, brake with
+Down/S, strike left with J, strike right with L and hold K to block. Space/Shift
+activates the same three-second, 25% turbo (30 charge). Each strike needs a fresh
+press, a short windup and a nearby rival on that side. Buttons light when a strike
+is ready and a rival is in range; recovery bars show when the next swing is available.
+Opponent windup markers warn when to defend. Blocking slows the
+ride. Knockdowns take 2.2 seconds to recover, then grant a brief protective window.
+Vehicle contact separates overlapping riders and shares forward momentum. Steering
+fades with speed so stopped vehicles cannot slide sideways. Hit sparks, guarded-hit
+effects and recovery indicators stay attached to the affected rider; higher-priority
+combat messages remain readable when a pickup happens immediately afterward.
+Position, landed hits, knockouts, tickets and finish time contribute to the score.
+Detroit, the Carnival, and the JCW arena each offer an optional rival duel.
+Beat the marked rider to that leg's flag for 250 extra points. The HUD shows
+the distance to the flag and whether you lead or trail your opponent. If the
+field is spread out, a leg can pass without a matchup. The pause and results
+screens show a three-leg duel card. Only won duels add points to the score;
+the results also itemize finish, combat, tickets, time bonus and time-limit
+penalty. Idle and paused HUDs avoid repeated DOM writes.
+The running game fits portrait and landscape phones with controls outside the road.
+P/Escape pauses; leaving the tab or losing focus also pauses and clears held inputs.
+A long frame while the tab is still active discards missed time so opponents do
+not jump ahead and the player can keep driving without dismissing a pause screen.
+
+Road Riot records are **device-only** in this local version. It does not send
+scores to the existing website allowlist or trigger the website badge bridge.
+No multiplayer transport or host database changes are included for this cabinet.
+Edit `games/road-riot*` and run `node scripts/sync-road-riot.mjs`; combat rendering
+is gated by `state.combat` in the shared renderer, preserving the original racer.
 
 ## JCW × ICP: Road to the Show
 
@@ -317,6 +354,24 @@ four-fighter limit, capped frame delta, cached scenery, and bounded effects
 keep the game small in memory. Blur, visibility loss, records and menu navigation
 pause every match timer and release held inputs. Async startup is cancelled
 when navigating away; decoding failures offer a retry.
+
+Both Rumble and Ladder Wars support controllers that the browser reports with
+the standard Gamepad mapping (including common Xbox and PlayStation controllers).
+Press a controller button to expose it to the browser, then release the controls
+before playing. Left stick/D-pad moves; A/Cross strikes; X/Square whips or throws
+in Rumble and handles the ladder in Ladder Wars; B/Circle or RB/R1 holds guard;
+Y/Triangle uses a charged finisher; Start/Options pauses and resumes. In selection,
+LB/RB or D-pad left/right changes wrestlers, and A/Cross or Start begins the match.
+A/Cross or Start also starts a rematch from the results screen.
+
+The stick has a radial dead zone. Strikes, ladder actions and finishers require
+fresh presses; guard is held. Keyboard, touch and controller inputs coexist.
+The selected game polls controllers while paused so Start can resume it, but
+modals, text entry, hidden tabs and inactive cabinets block controller actions.
+Disconnecting the selected controller pauses the match and clears its input.
+Reconnects and mode changes require neutral controls before rearming. Controller
+guest actions use the same sequence-checked online path as keyboard and touch.
+Unsupported mappings or blocked API access show guidance and preserve other input.
 
 `assets/rumble/manifest.json` retains the reviewed source frame boundaries,
 foot anchors, per-frame facing corrections and draw scales. The optimized WebP
