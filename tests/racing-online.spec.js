@@ -411,15 +411,25 @@ test('guest brake-and-steer drifts are simulated by the host and shared with the
     });
     await host.waitForFunction(() => !ARCADE.RACING.netState().controls.brake && ARCADE.RACING.netState().controls.steer === 0);
     await host.evaluate(() => ARCADE.RACING.debug.advance(.05));
-    await join.waitForFunction(() => ARCADE.RACING.state.racers[1].drifts > 0);
+    const received = await join.waitForFunction(() => ARCADE.RACING.state.events.find(event => event.type === 'drift' && event.racer === 1));
+    const drift = await received.jsonValue();
+    await received.dispose();
+    // Real RAF and network time can carry the charge into tier 2 before release.
+    // Assert the event actually received by the guest against its host snapshot.
+    expect([1, 2]).toContain(drift.tier);
+    expect(drift.amount).toBeGreaterThanOrEqual(0);
+    expect(drift.amount).toBeLessThanOrEqual(drift.tier === 2 ? 22 : 12);
+    const sent = await host.evaluate(id => racingPackets
+      .filter(packet => packet.k === 'snapshot')
+      .flatMap(packet => packet.state.events)
+      .find(event => event.id === id), drift.id);
+    expect(sent).toEqual(drift);
     await pauseBoth(host, join);
     const shared = await world(host);
     expect(await world(join)).toEqual(shared);
     expect(shared.racers[1].drifting).toBe(false); expect(shared.racers[1].driftCharge).toBe(0); expect(shared.racers[1].drifts).toBe(charging.drifts + 1);
     expect(shared.racers[1].driftTurbo).toBeGreaterThan(0);
     expect(shared.objects.length).toBeGreaterThan(0);
-    const packet = await host.evaluate(() => racingPackets.filter(p => p.k === 'snapshot').at(-1));
-    expect(packet.state.events.some(e => e.type === 'drift' && e.racer === 1 && e.tier === 1 && e.amount >= 0 && e.amount <= 12)).toBe(true);
     expect(errors).toEqual([]);
   } finally { await closePages(pages); }
 });
