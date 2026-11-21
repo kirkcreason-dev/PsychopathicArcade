@@ -2,8 +2,8 @@
 
 Play: https://kirkcreason-dev.github.io/PsychopathicArcade/
 
-This branch contains the tested static build from `codex/juggalo-pool` at `8831d82e3e530a061e9f5469b282a748b46ea034`, merged through PR #14. Juggalo Pool is the seventeenth arcade game, with three CPU opponents, pass-and-play, practice, online versus, touch aiming, power control, called-eight pockets, foul recovery and device-local CPU records. The separate JCWLUNACY website and its badge definitions are unchanged.
+This twenty-game release adds Road Riot, a combat racer with three rival duels, and standard Xbox/PlayStation controller support for JCW Rumble and Ladder Wars. It also includes the previously merged Rustlas Poker and eight-player Road to the Show updates. Source: `779ef1730aa4f338b9efbd0b20ad0f64de657da6`, merged through https://github.com/kirkcreason-dev/PsychopathicArcade/pull/16.
 
-Validation: all 457 tests, lint, type checking, source synchronization and the production build passed in GitHub Actions run 41214771707. Phone layouts were checked in Chrome and WebKit, including rotation and embedded play. Physical-phone and cross-network testing remain separate field checks.
+Validation: 986 tests passed, 9 intentionally skipped, 0 failed in GitHub Actions run https://github.com/kirkcreason-dev/PsychopathicArcade/actions/runs/44954673051. Lint, type checking, standalone-source synchronization and production builds passed. Seventeen additional controller checks passed in the browser using simulated standard gamepads. Physical controller hardware remains a separate field check.
 
 GitHub Pages publishes the root of `gh-pages`. Build source with `npm run build`, replace the static files with `dist/`, retain `.nojekyll`, update `version.json`, and keep `public/game.html` identical to `game.html` for existing links. Do not merge this generated branch into source branches.
