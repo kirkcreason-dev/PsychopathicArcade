@@ -257,6 +257,8 @@ test('only the selected cabinet reads actions and an open records modal blocks S
   await tap(page, 9);
   expect(await page.evaluate(() => ARCADE.LADDER.state.mode)).toBe('paused');
   await page.locator('#lbClose').click();
+  // Closing a modal rearms the controller only after a neutral polling frame.
+  await pad(page, { axes: [0, 0], buttons: [] });
   await tap(page, 9);
   await page.waitForFunction(() => ARCADE.LADDER.state.mode === 'playing');
 });
@@ -299,6 +301,8 @@ for (const cabinet of cabinets) {
       await frames(host); await frames(guest);
       await tap(host, 0); await tap(guest, 0);
       for (const page of [host, guest]) await page.waitForFunction(module => ARCADE[module].state.mode === 'playing' && ARCADE[module].state.countdown === 0, cabinet.module);
+      // Rumble has no opening countdown to provide neutral frames after loading.
+      await pad(guest, { axes: [0, 0], buttons: [] });
       await pad(guest, { axes: [-1, 0] });
       await host.waitForFunction(module => ARCADE[module].state.fighters[1].x < 280, cabinet.module);
       await pad(guest, { axes: [0, 0] });
