@@ -101,12 +101,25 @@ test('strike readiness respects guarding and cooldown indicators freeze when pau
   await expect(page.locator('#rrAttackRightBtn')).toHaveAttribute('data-state', 'guarding');
   await expect(page.locator('#rrAttackRightBtn')).not.toHaveClass(/in-range/);
   await page.keyboard.up('k'); await expect(page.locator('#rrAttackRightBtn')).not.toHaveAttribute('data-state', 'guarding');
-  await page.locator('#rrAttackRightBtn').click();
-  await expect(page.locator('#rrAttackRightBtn')).toHaveAttribute('data-state', 'cooldown');
-  await expect(page.locator('#rrAttackRightGlyph')).toHaveText(/\d\.\d/);
-  await expect(page.locator('#rrAttackRightBtn')).not.toHaveClass(/in-range/);
-  await page.locator('#rrPauseBtn').click();
-  const frozen = await page.evaluate(() => ({ cooldown: ARCADE.ROAD_RIOT.state.racers[0].attackCooldown, meter: document.getElementById('rrAttackRightMeter').value, label: document.getElementById('rrAttackRightGlyph').textContent }));
+  // Keep the 0.85-second cooldown inside one browser sequence. Remote click
+  // actionability and separate assertions can take longer than the cooldown.
+  const { live, frozen } = await page.evaluate(async () => {
+    const game = ARCADE.ROAD_RIOT;
+    const button = document.getElementById('rrAttackRightBtn');
+    const glyph = document.getElementById('rrAttackRightGlyph');
+    const meter = document.getElementById('rrAttackRightMeter');
+    button.click();
+    game.debug.advance(.1);
+    for (let frame = 0; frame < 30; frame++) {
+      await new Promise(resolve => requestAnimationFrame(resolve));
+      if (button.dataset.state !== 'cooldown') continue;
+      const live = { state: button.dataset.state, label: glyph.textContent, inRange: button.classList.contains('in-range') };
+      document.getElementById('rrPauseBtn').click();
+      return { live, frozen: { cooldown: game.state.racers[0].attackCooldown, meter: meter.value, label: glyph.textContent } };
+    }
+    throw new Error('The accepted strike never displayed its cooldown');
+  });
+  expect(live.state).toBe('cooldown'); expect(live.label).toMatch(/\d\.\d/); expect(live.inRange).toBe(false);
   expect(frozen.cooldown).toBeGreaterThan(0); expect(frozen.meter).toBeGreaterThanOrEqual(0); expect(frozen.meter).toBeLessThan(100);
   await page.waitForTimeout(200);
   expect(await page.evaluate(() => ({ cooldown: ARCADE.ROAD_RIOT.state.racers[0].attackCooldown, meter: document.getElementById('rrAttackRightMeter').value, label: document.getElementById('rrAttackRightGlyph').textContent }))).toEqual(frozen);
