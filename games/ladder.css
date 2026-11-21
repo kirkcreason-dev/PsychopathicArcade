@@ -60,3 +60,57 @@
   #lwScreen.lw-match .ctl-row button{font-size:9px}
   #lwScreen.lw-match .ctl-row .icon{width:28px;height:28px}
 }
+
+/* Controller help lives in the guide so the touch cabinet keeps its space. */
+.lw-guide > .lw-controller-guide {
+  grid-column: 1 / -1;
+  padding: 14px 16px;
+}
+.lw-guide .lw-controller-status {
+  margin: 0 0 8px;
+  color: #e9dfeb;
+  font-size: .875rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+.lw-controller-status[data-state="connected"] {
+  color: #ffe2a1;
+}
+.lw-controller-help summary {
+  color: #ffe2a1;
+  font-size: .875rem;
+  font-weight: 700;
+  line-height: 1.5;
+  cursor: pointer;
+  padding: 3px 0;
+}
+.lw-controller-help summary:focus-visible {
+  outline: 2px solid #ffe2a1;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+.lw-controller-help dl {
+  margin: 12px 0 0;
+  font-size: .875rem;
+  line-height: 1.5;
+}
+.lw-controller-help dl > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 10px;
+  padding: 6px 0;
+  border-top: 1px solid #594154;
+}
+.lw-controller-help dt {
+  color: #e9dfeb;
+  font-weight: 700;
+}
+.lw-controller-help dd {
+  margin: 0;
+  color: #d0bdcd;
+}
+.lw-guide .lw-controller-help p {
+  margin: 12px 0 0;
+  font-size: .875rem;
+  line-height: 1.5;
+}

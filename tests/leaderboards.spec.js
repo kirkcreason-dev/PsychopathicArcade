@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const games = ['poker', 'racing', 'pool', 'ladder', 'rumble', 'chicken', 'claw', 'shooter', 'ttt', 'chess', 'checkers', 'pinball', 'faygo', 'bj', 'memory', 'camper', 'solitaire', 'j31', 'hockey'];
+const games = ['riot', 'poker', 'racing', 'pool', 'ladder', 'rumble', 'chicken', 'claw', 'shooter', 'ttt', 'chess', 'checkers', 'pinball', 'faygo', 'bj', 'memory', 'camper', 'solitaire', 'j31', 'hockey'];
 let errors;
 test.beforeEach(async ({ page }) => {
   errors = [];
@@ -26,10 +26,11 @@ async function embedded(page) {
   return frame;
 }
 
-test('all 19 games have their own reachable trophy and correctly named board', async ({ page }) => {
+test('all 20 games have their own reachable trophy and correctly named board', async ({ page }) => {
   await open(page);
   const config = await page.evaluate(() => ARCADE.LB.CFG);
-  expect(Object.keys(config)).toEqual(games);
+  expect(Object.keys(config).sort()).toEqual([...games].sort());
+  expect(config.riot).toMatchObject({ localOnly: true, deviceOnly: true });
   for (const game of games) {
     const button = page.locator('#' + config[game].screen + ' .lb-mini');
     await expect(button).toHaveCount(1);
@@ -38,12 +39,12 @@ test('all 19 games have their own reachable trophy and correctly named board', a
     await expect(page.locator('#lbModal')).toBeVisible();
     await expect(page.locator('#lbGameName')).toHaveText(config[game].name);
     await expect(page.locator('#lbMetric')).toHaveText(config[game].metric);
-    await expect(page.locator('#lbTabs button')).toHaveCount(19);
+    await expect(page.locator('#lbTabs button')).toHaveCount(20);
     await page.locator('#lbClose').click();
   }
 });
 
-test('all 19 games save independently and persist, without extending the website badge bridge', async ({ page }) => {
+test('all 20 games save independently and persist, without extending the website badge bridge', async ({ page }) => {
   const frame = await embedded(page);
   for (let i = 0; i < games.length; i++) {
     const game = games[i], score = 100 + i;
@@ -55,11 +56,11 @@ test('all 19 games save independently and persist, without extending the website
     await frame.locator('#lbClose').click();
   }
   // Existing legacy games retain their previous host notifications; adding
-  // Poker and Racing records must not add website wins or badges.
+  // Poker, Racing and Road Riot records must not add website wins or badges.
   await expect.poll(async () => (await page.evaluate(() => recordMessages.filter(m => ['win', 'record'].includes(m.ev)))).length).toBe(34);
   const messages = await page.evaluate(() => recordMessages.filter(m => ['win', 'record'].includes(m.ev)));
-  expect(messages.some(m => m.g === 'poker' || m.g === 'racing')).toBe(false);
-  for (const game of games.filter(g => !['poker', 'racing'].includes(g))) {
+  expect(messages.some(m => ['poker', 'racing', 'riot'].includes(m.g))).toBe(false);
+  for (const game of games.filter(g => !['poker', 'racing', 'riot'].includes(g))) {
     expect(messages.filter(m => m.g === game).map(m => m.ev)).toEqual(['win', 'record']);
   }
   await page.reload();

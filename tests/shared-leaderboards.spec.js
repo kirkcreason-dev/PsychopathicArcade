@@ -16,7 +16,7 @@ async function embedded(page,baseURL,{auto=true,origin=baseURL}={}){
 }
 async function request(page,action,g){await expect.poll(()=>page.evaluate(({action,g})=>rankRequests.filter(r=>r.action===action&&r.g===g).length,{action,g})).toBeGreaterThan(0);return page.evaluate(({action,g})=>rankRequests.filter(r=>r.action===action&&r.g===g).at(-1),{action,g});}
 
-test('every game submits an eligible run outside device top10 without adding new badge events',async({page,baseURL})=>{
+test('all 19 supported website games submit eligible runs outside device top10 without adding new badge events',async({page,baseURL})=>{
   const frame=await embedded(page,baseURL);
   await frame.evaluate(games=>{for(const g of games){const list=ARCADE.LB.board(g);for(let i=0;i<10;i++)list.push({name:'AAA',v:['chess','checkers'].includes(g)?i+1:1000+i,tag:'OLD',t:1700000000000});ARCADE.LB.check(g,100,'NEW RUN');}},games);
   await expect.poll(()=>page.evaluate(()=>rankRequests.filter(r=>r.action==='submit').length)).toBe(19);
@@ -25,6 +25,21 @@ test('every game submits an eligible run outside device top10 without adding new
   await expect(frame.locator('#lbModal')).toBeHidden();expect(await frame.evaluate(()=>ARCADE.LB.debug.forcePending())).toBeNull();
   expect(await page.evaluate(()=>legacy.filter(m=>['poker','racing'].includes(m.g)))).toEqual([]);
   expect(await page.evaluate(()=>legacy.filter(m=>m.ev==='win').length)).toBe(17);
+});
+
+test('Road Riot has an independent device board without unsupported website or badge requests',async({page,baseURL})=>{
+  const frame=await embedded(page,baseURL);
+  await frame.evaluate(()=>ARCADE.LB.show('racing'));await frame.locator('#lbWebsiteTab').click();
+  await request(page,'list','racing');
+  await frame.evaluate(()=>ARCADE.LB.check('riot',2300,'ROAD RIOT RUN'));
+  await expect(frame.locator('#lbGameName')).toContainText('ROAD RIOT');
+  await expect(frame.locator('#lbWebsiteTab')).toBeHidden();
+  await expect(frame.locator('#lbCloudStatus')).not.toContainText(/Saving|Saved to JCW/);
+  await frame.locator('#lbInitials').fill('JCW');await frame.locator('#lbSaveBtn').click();
+  expect(await frame.evaluate(()=>ARCADE.LB.board('riot').map(row=>({name:row.name,v:row.v})))).toEqual([{name:'JCW',v:2300}]);
+  expect(await page.evaluate(()=>rankRequests.filter(r=>r.g==='riot'))).toEqual([]);
+  expect(await page.evaluate(()=>legacy.filter(m=>m.g==='riot'))).toEqual([]);
+  await frame.evaluate(()=>ARCADE.LB.show('racing'));await expect(frame.locator('#lbWebsiteTab')).toBeVisible();
 });
 
 test('shared requests dispatch three at a time in FIFO order with a bounded queue lifetime',async({page,baseURL})=>{
@@ -115,7 +130,7 @@ test('standalone and untrusted embeds do not send website ranking requests',asyn
   await page.goto('/game.html');await page.waitForFunction(()=>window.LB_READY);await page.evaluate(()=>ARCADE.LB.show('racing'));await page.locator('#lbWebsiteTab').click();await expect(page.locator('#lbCloudStatus')).toContainText('Open the arcade on JCW Lunacy');
   // Isolate the client: the complete game correctly refuses untrusted hosts.
   // This fixture exercises the bridge allowlist without bypassing that gate.
-  const screens=['pkScreen','rcScreen','plScreen','lwScreen','ruScreen','khScreen','shScreen','clScreen'].map(id=>'<div id="'+id+'" hidden></div>').join('');
+  const screens=['rrScreen','pkScreen','rcScreen','plScreen','lwScreen','ruScreen','khScreen','shScreen','clScreen'].map(id=>'<div id="'+id+'" hidden></div>').join('');
   await page.route('http://untrusted.example/game.html',route=>route.fulfill({contentType:'text/html',body:'<!doctype html>'+clientMarkup+screens+'<button id="recordsBtn">RECORDS</button><script>const $=s=>document.querySelector(s);const Sound={play(){},on:false};'+clientSource+';window.ARCADE={LB,Sound};LB.bind();</script>'}));
   const frame=await embedded(page,'http://untrusted.example');await frame.evaluate(()=>ARCADE.LB.check('poker',100,'RUN'));await frame.locator('#lbWebsiteTab').click();
   await expect(frame.locator('#lbCloudStatus')).toContainText('unavailable');expect(await page.evaluate(()=>rankRequests)).toEqual([]);

@@ -12,6 +12,97 @@ function createWrestlingGame(ladderMode=false){
   let arenaImage=null,arenaPromise=null;
   function loadArena(){if(!arenaPromise){arenaImage=new Image();arenaImage.src=LADDER_BACKDROP;arenaPromise=arenaImage.decode().then(()=>makeScenery()).catch(e=>{arenaPromise=null;throw e;});}return arenaPromise;}
   let canvas,ctx,scenery,active=false,raf=0,last=0,generation=0,portraitGeneration=0,stickId=null,stick={x:0,y:0},hudKey='';
+  // Controller state stays separate from keys and touch so releasing one input
+  // source never cancels another. Poll while selected, including pause/setup.
+  let padRaf=0,padFocused=true,padNotice='';
+  const pad={identity:null,index:null,armed:false,previous:[],mode:'',x:0,y:0,guard:false};
+  function padStatus(message,state){
+    const el=$('#ruGamepadStatus');if(!el)return;
+    if(el.textContent!==message)el.textContent=message;
+    if(el.dataset.state!==state)el.dataset.state=state;
+  }
+  function clearPad(disarm=false){
+    pad.x=pad.y=0;pad.guard=false;
+    if(disarm){pad.armed=false;pad.previous=[];}
+    const guard=$('#ruGuardBtn'),pressed=String(guards.size>0);
+    if(guard&&guard.getAttribute('aria-pressed')!==pressed)guard.setAttribute('aria-pressed',pressed);
+  }
+  function losePad(message,state='disconnected'){
+    const hadPad=pad.identity!==null;
+    pad.identity=null;pad.index=null;clearPad(true);padStatus(message,state);
+    if(hadPad&&S.mode==='playing'){padNotice=message+' Reconnect or use the keyboard, then resume.';pause(true);status(padNotice);text('ruPauseNote',padNotice);}
+  }
+  function selectWithPad(direction){
+    const select=$('#ruRoster');if(select.disabled)return;
+    select.selectedIndex=(select.selectedIndex+direction+select.options.length)%select.options.length;
+    select.dispatchEvent(new Event('change',{bubbles:true}));
+  }
+  function pollPad(){
+    if(!active||$('#ruScreen').hidden)return;
+    if(document.hidden||!padFocused||!document.hasFocus()||gameKeysBlocked({defaultPrevented:false,target:document.activeElement||document.body})){
+      clearPad(true);return;
+    }
+    let devices;
+    try{
+      if(typeof navigator.getGamepads!=='function'){losePad('Controller support is unavailable in this browser. Keyboard and touch still work.','unavailable');return;}
+      devices=Array.from(navigator.getGamepads()||[]).filter(p=>p&&p.connected);
+    }catch(_error){losePad('Controller access is blocked by this browser or page. Keyboard and touch still work.','blocked');return;}
+    let device=devices.find(p=>p.index===pad.index&&p.id+'|'+p.index===pad.identity&&p.mapping==='standard');
+    if(pad.identity!==null&&!device){
+      const unmapped=devices.some(p=>p.index===pad.index&&p.mapping!=='standard');
+      losePad(unmapped?'Controller mapping is unsupported. Use a standard Xbox or PlayStation mapping.':'Controller disconnected.',unmapped?'unsupported':'disconnected');
+      return;
+    }
+    device=device||devices.find(p=>p.mapping==='standard');
+    if(!device){
+      clearPad(true);
+      padStatus(devices.length?'Controller mapping is unsupported. Use a standard Xbox or PlayStation mapping.':padNotice||'Press a controller button to connect.',devices.length?'unsupported':'ready');
+      return;
+    }
+    const buttons=Array.from(device.buttons||[],b=>!!b?.pressed||Number(b?.value)>.5);
+    const axis=i=>Number.isFinite(device.axes?.[i])?clamp(device.axes[i],-1,1):0;
+    const ax=axis(0),ay=axis(1),length=Math.hypot(ax,ay),neutral=length<=.2&&!buttons.some(Boolean);
+    const identity=device.id+'|'+device.index;
+    if(identity!==pad.identity){clearPad(true);pad.identity=identity;pad.index=device.index;}
+    if(pad.mode!==S.mode){clearPad(true);pad.mode=S.mode;}
+    if(!pad.armed){
+      pad.previous=buttons;
+      if(!neutral){padStatus('Release controller buttons and center the stick to continue.','waiting');return;}
+      pad.armed=true;padNotice='';
+    }
+    const fresh=i=>buttons[i]&&!pad.previous[i];
+    const startPressed=fresh(9),south=fresh(0),west=fresh(2),north=fresh(3);
+    const prior=fresh(4)||fresh(14),next=fresh(5)||fresh(15);
+    pad.previous=buttons;
+    padStatus(S.mode==='ready'?'Controller connected · LB/RB choose · A/Cross or Start begins.':S.mode==='paused'?'Controller connected · Start/Options resumes.':S.mode==='over'?'Controller connected · A/Cross or Start plays again.':'Controller connected · Start/Options pauses.','connected');
+    if(S.mode==='ready'){
+      clearPad();
+      if(prior!==next)selectWithPad(prior?-1:1);
+      if((south||startPressed)&&!$('#ruStartBtn').disabled){clearPad(true);start();}
+      return;
+    }
+    if(S.mode==='paused'){
+      clearPad();if(startPressed){padNotice='';clearPad(true);pause();}
+      return;
+    }
+    if(S.mode==='over'){
+      clearPad();if(south||startPressed){clearPad(true);start();}
+      return;
+    }
+    if(S.mode!=='playing'){clearPad(true);return;}
+    if(startPressed){clearPad(true);pause();return;}
+    // Radial dead zone preserves diagonals; D-pad overrides a tilted stick.
+    const scale=length>.2?Math.min(1,(length-.2)/.8)/length:0;
+    pad.x=buttons[14]||buttons[15]?Number(!!buttons[15])-Number(!!buttons[14]):ax*scale;
+    pad.y=buttons[12]||buttons[13]?Number(!!buttons[13])-Number(!!buttons[12]):ay*scale;
+    pad.guard=!!(buttons[1]||buttons[5]);
+    const guard=$('#ruGuardBtn'),pressed=String(pad.guard||guards.size>0);
+    if(guard.getAttribute('aria-pressed')!==pressed)guard.setAttribute('aria-pressed',pressed);
+    // One action per fresh press, using the same guest/host route as keys.
+    if(!pad.guard){if(north)act('finish');else if(west)act('throw');else if(south)act('hit');}
+  }
+  function padLoop(){padRaf=0;if(!active)return;pollPad();padRaf=requestAnimationFrame(padLoop);}
+  function startPad(){if(!padRaf){padFocused=document.hasFocus();pad.mode='';clearPad(true);padRaf=requestAnimationFrame(padLoop);}}
   const player=()=>S.fighters.find(f=>f.player);
   const alive=()=>S.fighters.filter(f=>!f.out);
   function text(id,v){const e=$('#'+id);if(e.textContent!==String(v))e.textContent=String(v);}
@@ -31,7 +122,7 @@ function createWrestlingGame(ladderMode=false){
     const id=S.queue[0],token=generation;if(!id||art.has(id))return;
     load(id).catch(()=>{if(token!==generation||S.mode!=='playing')return;S.error='Wrestler artwork could not be decoded. Resume to retry.';pause(true);});
   }
-  function clearInput(){held.clear();guards.clear();stick={x:0,y:0};stickId=null;$('#ruStickNub').style.transform='';$('#ruGuardBtn').setAttribute('aria-pressed','false');}
+  function clearInput(){held.clear();guards.clear();stick={x:0,y:0};stickId=null;clearPad(true);$('#ruStickNub').style.transform='';$('#ruGuardBtn').setAttribute('aria-pressed','false');}
   function stop(){cancelAnimationFrame(raf);raf=0;last=0;clearInput();}
   function loop(now){raf=0;if(!active||S.mode!=='playing')return;const dt=last?Math.min(.05,Math.max(0,(now-last)/1000)):0;last=now;step(dt);draw();if(S.mode==='playing')raf=requestAnimationFrame(loop);}
   function run(){if(active&&S.mode==='playing'&&!raf){last=0;raf=requestAnimationFrame(loop);}}
@@ -40,7 +131,7 @@ function createWrestlingGame(ladderMode=false){
 
     $('#ruRestartBtn').hidden=!!N;$('#ruSetup').hidden=!['ready','loading'].includes(S.mode);$('#ruPause').hidden=S.mode!=='paused';$('#ruOver').hidden=S.mode!=='over';
     $('#ruStartBtn').disabled=S.mode==='loading'||!!N?.localReady;$('#ruRoster').disabled=S.mode==='loading'||!!N?.localReady;$('#ruSize').disabled=S.mode==='loading'||!!N;
-    $('#ruPauseBtn').disabled=!['playing','paused'].includes(S.mode);text('ruPauseBtn',S.mode==='paused'?'RESUME':'PAUSE');text('ruPauseNote',S.error||'Your match is paused.');
+    $('#ruPauseBtn').disabled=!['playing','paused'].includes(S.mode);text('ruPauseBtn',S.mode==='paused'?'RESUME':'PAUSE');text('ruPauseNote',S.error||padNotice||'Your match is paused.');
     for(const id of ['ruHitBtn','ruThrowBtn','ruGuardBtn'])$('#'+id).disabled=S.mode!=='playing';
   }
   function hud(){
@@ -101,7 +192,7 @@ function createWrestlingGame(ladderMode=false){
     text('ruStartBtn','READY FOR VERSUS');text('ruLoadStatus','Choose a wrestler for the rematch.');$('#ruSize').disabled=true;if(send)NET.push(game,{k:'lobby',round:N.round});
   }
   function netEnd(){if(!N)return;N=null;generation++;stop();choose();text('ruStartBtn',ladderMode?'CHASE THE GOLD':'RING THE BELL');$('#ruRoster').disabled=false;$('#ruSize').disabled=false;status('Online match ended. You can play solo or invite a friend.');}
-  function controlVector(){let x=stick.x+(held.has('right')?1:0)-(held.has('left')?1:0),y=stick.y+(held.has('down')?1:0)-(held.has('up')?1:0);const len=Math.hypot(x,y);if(len>1){x/=len;y/=len;}return{x,y,hit:held.has('hit'),guard:guards.size>0};}
+  function controlVector(){let x=stick.x+pad.x+(held.has('right')?1:0)-(held.has('left')?1:0),y=stick.y+pad.y+(held.has('down')?1:0)-(held.has('up')?1:0);const len=Math.hypot(x,y);if(len>1){x/=len;y/=len;}return{x,y,hit:held.has('hit'),guard:guards.size>0||pad.guard};}
   function netInput(action){if(!N||N.phase!=='playing'||S.mode!=='playing')return;NET.push(game,{k:'input',round:N.round,seq:++N.inputSeq,...controlVector(),...(action?{action,...(ladderMode&&action==='throw'?{grabAt:S.elapsed}:{})}:{})});}
   function netTick(dt){
     if(!N||N.phase!=='playing')return false;N.clock+=dt;
@@ -119,7 +210,7 @@ function createWrestlingGame(ladderMode=false){
     else applyNetPause();
   }
   function applyNetPause(){
-    if(!N)return;const paused=N.pauses.some(Boolean);S.mode=paused?'paused':'playing';if(paused)stop();else{canvas.focus({preventScroll:true});run();}overlays();hud();draw();text('ruPauseNote',paused?'Both players must resume before the match continues.':'Your match is ready.');sendFrame();
+    if(!N)return;const paused=N.pauses.some(Boolean);S.mode=paused?'paused':'playing';if(paused){N.remote={x:0,y:0,hit:false,guard:false};N.remoteAge=0;stop();}else{canvas.focus({preventScroll:true});run();}overlays();hud();draw();text('ruPauseNote',paused?(padNotice||'Both players must resume before the match continues.'):'Your match is ready.');sendFrame();
   }
   function validFighter(f){
     if(!f||!byId[f.id]||!['p1','p2'].includes(f.uid))return false;
@@ -308,7 +399,7 @@ function createWrestlingGame(ladderMode=false){
       if(f.action){f.action.t+=dt;resolve(f);if(f.action&&f.action.t>=f.action.duration){if(f.action.kind==='down')f.hp=55;cancelMove(f);}}
       f.guardOn=false;
       if(f.grabbed||f.action||f.stun>0)continue;
-      if(ladderMode&&f.climbing){if((f===player()&&(held.has('down')||stick.y>.5))||(f.human&&f!==player()&&N?.remote.y>.5)){f.climb=Math.max(0,f.climb-dt*.8);if(f.climb<=0){f.climbing=false;f.x+=f.climbSide*23;f.cool=.3;}}else f.climb=Math.min(1,f.climb+dt*.34*byId[f.id].speed);if(!isHuman(f))aiLadder(f,dt);continue;}
+      if(ladderMode&&f.climbing){if((f===player()&&controlVector().y>.5)||(f.human&&f!==player()&&N?.remote.y>.5)){f.climb=Math.max(0,f.climb-dt*.8);if(f.climb<=0){f.climbing=false;f.x+=f.climbSide*23;f.cool=.3;}}else f.climb=Math.min(1,f.climb+dt*.34*byId[f.id].speed);if(!isHuman(f))aiLadder(f,dt);continue;}
       if(isHuman(f)){
         const input=f===player()?controlVector():N?.remote||{x:0,y:0,hit:false,guard:false};f.guardOn=input.guard&&f.guard>=8;
         let dx=input.x,dy=input.y;const len=Math.hypot(dx,dy);if(len>1){dx/=len;dy/=len;}
@@ -332,7 +423,7 @@ function createWrestlingGame(ladderMode=false){
   }
   async function start(){
     if(N){netReady();return;}
-    stop();const token=++generation;S.mode='loading';S.error='';text('ruLoadStatus','Getting your wrestlers ready…');overlays();
+    stop();padNotice='';const token=++generation;S.mode='loading';S.error='';text('ruLoadStatus','Getting your wrestlers ready…');overlays();
     S.selected=$('#ruRoster').value;S.total=ladderMode?(Number($('#ruSize').value)===4?4:2):(Number($('#ruSize').value)===12?12:roster.length);store.set('selected',S.selected);
     const ids=roster.filter(r=>r.id!==S.selected).map(r=>r.id);for(let i=ids.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[ids[i],ids[j]]=[ids[j],ids[i]];}
     const queue=ids.slice(0,S.total-1);loadingIds=new Set([S.selected,...queue.slice(0,ladderMode?3:2)]);
@@ -356,12 +447,12 @@ function createWrestlingGame(ladderMode=false){
   function pause(force){
     if(N){netPause(force);return;}
     if(S.mode==='playing'){S.mode='paused';stop();}
-    else if(S.mode==='paused'&&force!==true){S.error='';S.mode='playing';prefetch();run();canvas.focus({preventScroll:true});}else return;
+    else if(S.mode==='paused'&&force!==true){S.error='';padNotice='';clearPad(true);S.mode='playing';prefetch();run();canvas.focus({preventScroll:true});}else return;
     overlays();hud();draw();
   }
   function choose(){if(N){if(['over','lobby'].includes(N.phase))netLobby(true);return;}stop();generation++;S.mode='ready';S.fighters=[];S.queue=[];S.score=0;S.kills=0;S.charge=0;S.error='';S.bannerTime=0;text('ruLoadStatus','');overlays();hud();portrait();draw();}
-  function leave(){if(S.mode==='loading'){generation++;S.mode='ready';text('ruLoadStatus','');}pause(true);active=false;stop();if(ladderMode){$('#ruScreen').classList.remove('lw-match');document.body.classList.remove('ladder-match');}}
-  function enter(){active=true;resize();overlays();hud();portrait();draw();TICK.set(ladderMode?'LADDER WARS — CLIMB THROUGH THE CHAOS. CLAIM THE GOLD.':'JCW RUMBLE — OVER THE ROPES. LAST LUNATIC STANDING.','LUNACY UNLOCKED');}
+  function leave(){if(S.mode==='loading'){generation++;S.mode='ready';text('ruLoadStatus','');}pause(true);active=false;stop();cancelAnimationFrame(padRaf);padRaf=0;pad.identity=null;pad.index=null;if(ladderMode){$('#ruScreen').classList.remove('lw-match');document.body.classList.remove('ladder-match');}}
+  function enter(){active=true;startPad();resize();overlays();hud();portrait();draw();TICK.set(ladderMode?'LADDER WARS — CLIMB THROUGH THE CHAOS. CLAIM THE GOLD.':'JCW RUMBLE — OVER THE ROPES. LAST LUNATIC STANDING.','LUNACY UNLOCKED');}
   function resize(){const dpr=Math.min(devicePixelRatio||1,2);canvas.width=W*dpr;canvas.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);draw();}
   function oval(c,x,y,rx,ry,fill,stroke){c.beginPath();c.ellipse(x,y,rx,ry,0,0,Math.PI*2);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.stroke();}}
   function path(c,points,fill,stroke){c.beginPath();points.forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));if(fill){c.closePath();c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.stroke();}}
@@ -454,7 +545,11 @@ function createWrestlingGame(ladderMode=false){
       if(keys[k]){e.preventDefault();held.add(keys[k]);if(keys[k]==='hit'&&!e.repeat)act('hit');}else if(k==='Shift'||k==='l'){e.preventDefault();guards.add(k);}else if(k==='k'||k==='f'){e.preventDefault();if(!e.repeat)act(k==='k'?'throw':'finish');}
     });
     window.addEventListener('keyup',e=>{const k=e.key.length===1?e.key.toLowerCase():e.key;if(keys[k])held.delete(keys[k]);guards.delete(k);});
-    window.addEventListener('blur',()=>pause(true));document.addEventListener('visibilitychange',()=>{if(document.hidden)pause(true);});window.addEventListener('resize',()=>{if(active)resize();});
+    window.addEventListener('blur',()=>{padFocused=false;clearPad(true);pause(true);});
+    window.addEventListener('focus',()=>{padFocused=true;clearPad(true);});
+    window.addEventListener('gamepaddisconnected',e=>{if(active&&e.gamepad?.index===pad.index)losePad('Controller disconnected.');});
+    document.addEventListener('visibilitychange',()=>{if(document.hidden){clearPad(true);pause(true);}});
+    window.addEventListener('resize',()=>{if(active)resize();});
     // Menu art reuses whole reviewed frames, including their transparent margins.
     Promise.all([loadArena(),load('violent-j'),load('dani-mo')]).then(()=>{const c=$('#ruMenuArt').getContext('2d');c.drawImage(scenery,0,0,400,300);sprite(c,'violent-j','idle',0,145,255,1.23,1);sprite(c,'dani-mo','idle',0,267,255,1.23,-1);}).catch(()=>{});
     hud();overlays();

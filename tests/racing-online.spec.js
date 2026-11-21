@@ -397,29 +397,48 @@ test('guest brake-and-steer drifts are simulated by the host and shared with the
     await connect(host, join); await ready(host, join);
     await host.evaluate(() => { for (let i = 0; i < 50; i++) ARCADE.RACING.debug.advance(.05); });
     await join.waitForFunction(() => ARCADE.RACING.state.racers[1].speed >= 120);
+    await expect(join.locator('#rcDriftMeter')).toBeVisible();
     await join.evaluate(() => {
       for (const [key, code] of [['ArrowLeft', 'ArrowLeft'], ['ArrowDown', 'ArrowDown']]) document.body.dispatchEvent(new KeyboardEvent('keydown', { key, code, bubbles: true }));
     });
     await host.waitForFunction(() => ARCADE.RACING.netState().controls.steer === -1 && ARCADE.RACING.netState().controls.brake);
     await host.evaluate(() => { for (let i = 0; i < 15; i++) ARCADE.RACING.debug.advance(.05); });
-    await join.waitForFunction(() => ARCADE.RACING.state.racers[1].drifting && ARCADE.RACING.state.racers[1].driftCharge >= .65);
-    const charging = await host.evaluate(() => ARCADE.RACING.state.racers[1]);
-    expect(charging.driftDirection).toBe(-1);
-    await expect(join.locator('#rcDriftMeter')).toBeVisible();
-    await join.evaluate(() => {
+    const charged = await join.waitForFunction(() => {
+      const racer = ARCADE.RACING.state.racers[1];
+      if (!racer.drifting || racer.driftCharge < .65) return false;
+      // Release within this page poll, before cross-process assertions add hold time.
       for (const [key, code] of [['ArrowLeft', 'ArrowLeft'], ['ArrowDown', 'ArrowDown']]) document.body.dispatchEvent(new KeyboardEvent('keyup', { key, code, bubbles: true }));
+      return { driftDirection: racer.driftDirection, drifts: racer.drifts };
     });
+    const charging = await charged.jsonValue();
+    await charged.dispose();
+    expect(charging.driftDirection).toBe(-1);
     await host.waitForFunction(() => !ARCADE.RACING.netState().controls.brake && ARCADE.RACING.netState().controls.steer === 0);
     await host.evaluate(() => ARCADE.RACING.debug.advance(.05));
-    await join.waitForFunction(() => ARCADE.RACING.state.racers[1].drifts > 0);
+    const received = await join.waitForFunction(() => ARCADE.RACING.state.events.find(event => event.type === 'drift' && event.racer === 1));
+    const drift = await received.jsonValue();
+    await received.dispose();
+    // Real RAF and network time can carry the charge into tier 2 before release.
+    // Assert the event actually received by the guest against its host snapshot.
+    expect([1, 2]).toContain(drift.tier);
+    expect(drift.amount).toBeGreaterThanOrEqual(0);
+    expect(drift.amount).toBeLessThanOrEqual(drift.tier === 2 ? 22 : 12);
+    const sent = await host.evaluate(id => {
+      const packet = racingPackets.find(packet => packet.k === 'snapshot' && packet.state.events.some(event => event.id === id));
+      return packet && { event: packet.state.events.find(event => event.id === id), turbo: packet.state.racers[1].driftTurbo };
+    }, drift.id);
+    expect(sent.event).toEqual(drift);
+    // Prove activation when the host first broadcasts the award. The short turbo
+    // can legitimately expire while later reads and pause handshakes complete.
+    expect(sent.turbo).toBeGreaterThan(0);
+    expect(sent.turbo).toBeLessThanOrEqual(drift.tier === 2 ? 1.25 : .75);
     await pauseBoth(host, join);
     const shared = await world(host);
     expect(await world(join)).toEqual(shared);
     expect(shared.racers[1].drifting).toBe(false); expect(shared.racers[1].driftCharge).toBe(0); expect(shared.racers[1].drifts).toBe(charging.drifts + 1);
-    expect(shared.racers[1].driftTurbo).toBeGreaterThan(0);
+    expect(shared.racers[1].driftTurbo).toBeGreaterThanOrEqual(0);
+    expect(shared.racers[1].driftTurbo).toBeLessThanOrEqual(sent.turbo);
     expect(shared.objects.length).toBeGreaterThan(0);
-    const packet = await host.evaluate(() => racingPackets.filter(p => p.k === 'snapshot').at(-1));
-    expect(packet.state.events.some(e => e.type === 'drift' && e.racer === 1 && e.tier === 1 && e.amount >= 0 && e.amount <= 12)).toBe(true);
     expect(errors).toEqual([]);
   } finally { await closePages(pages); }
 });

@@ -1,5 +1,6 @@
 const LB = (()=>{
   const CFG = {
+    riot: {name:'JCW ROAD RIOT',metric:'COMBAT RACE SCORE',higher:true,screen:'rrScreen',localOnly:true,deviceOnly:true},
     poker: {name:'BIG MONEY RUSTLAS POKER',metric:'CPU MATCH VICTORY SCORE',higher:true,screen:'pkScreen',localOnly:true},
     racing: {name:'ROAD TO THE SHOW',metric:'SOLO RACE SCORE',higher:true,screen:'rcScreen',localOnly:true},
     pool: {name:'JUGGALO POOL',metric:'BEST RACK WON VS CPU',higher:true,screen:'plScreen'},
@@ -20,7 +21,7 @@ const LB = (()=>{
     j31:     { name:'JUGGALO 31',           metric:'TABLES SWEPT IN A ROW VS CPU', higher:true, screen:'j31Screen' },
     hockey:  { name:'JUGGALO AIR HOCKEY',   metric:'WIN STREAK VS CPU', higher:true, screen:'ahScreen' },
   };
-  const SHORT = { racing:'ROAD TO THE SHOW', poker:'RUSTLAS POKER', pool:'POOL', ladder:'LADDER WARS', rumble:'RUMBLE', chicken:'CHICKEN HUNTIN’', claw:'CLAW', shooter:'CROSSFIRE', ttt:'SLAM', chess:'CHESS', checkers:'CHECKERS', pinball:'PINBALL', faygo:'JOKER CARD FOUR', bj:'21', memory:'MEMORY', camper:'CAMPER', solitaire:'SOLITAIRE', j31:'31', hockey:'HOCKEY' };
+  const SHORT = { riot:'ROAD RIOT', racing:'ROAD TO THE SHOW', poker:'RUSTLAS POKER', pool:'POOL', ladder:'LADDER WARS', rumble:'RUMBLE', chicken:'CHICKEN HUNTIN’', claw:'CLAW', shooter:'CROSSFIRE', ttt:'SLAM', chess:'CHESS', checkers:'CHECKERS', pinball:'PINBALL', faygo:'JOKER CARD FOUR', bj:'21', memory:'MEMORY', camper:'CAMPER', solitaire:'SOLITAIRE', j31:'31', hockey:'HOCKEY' };
   const known = g => typeof g==='string' && Object.hasOwn(CFG,g);
   const validScore = v => typeof v==='number' && Number.isFinite(v) && v>0 && v<=Number.MAX_SAFE_INTEGER;
   const sorter = g => (a,b) => CFG[g].higher ? b.v - a.v : a.v - b.v;
@@ -63,12 +64,14 @@ const LB = (()=>{
   const validSharedScore=v=>Number.isSafeInteger(v)&&v>0&&v<=SHARED_MAX;
   const sharedState=g=>{if(!shared.has(g))shared.set(g,{rows:[],own:null,state:'idle',submission:'',serial:0});return shared.get(g);};
   function sharedMessage(result){
+    if(result?.reason==='device-only')return 'Road Riot records are saved on this device.';
     if(result?.reason==='standalone')return 'Open the arcade on JCW Lunacy and sign in to use website rankings. Device records work here.';
     if(result?.error==='signed-out'||(result?.ok===true&&result?.signedIn===false))return 'Sign in on JCW Lunacy to view and save website rankings. Device records still work.';
     return 'Website rankings are unavailable right now. Your device records still work.';
   }
   function requestShared(action,g,extra={}){
     if(!known(g))return Promise.resolve({ok:false,error:'invalid-request'});
+    if(CFG[g].deviceOnly)return Promise.resolve({ok:false,error:'unavailable',reason:'device-only'});
     if(!hostOrigin)return Promise.resolve({ok:false,error:'unavailable',reason:window.parent===window?'standalone':'untrusted'});
     if(requests.size>=32)return Promise.resolve({ok:false,error:'unavailable'});
     const id='lb-'+Date.now().toString(36)+'-'+(++requestSerial).toString(36)+'-'+crypto.getRandomValues(new Uint32Array(1))[0].toString(36);
@@ -133,6 +136,7 @@ const LB = (()=>{
     if(current===g&&source==='website'&&version===viewVersion&&!$('#lbModal').hidden){renderSharedRows();updateSharedNotice();}
   }
   function submitShared(g,v,tag){
+    if(CFG[g].deviceOnly)return;
     const value=sharedState(g);
     if(!validSharedScore(v)){value.submission='This score is outside website ranking limits. Your device record still works.';return;}
     let initials='ICP';try{initials=(localStorage.getItem('pa_lb_name')||'ICP').toUpperCase().replace(/[^A-Z0-9-]/g,'').padEnd(3,'-').slice(0,3);}catch{}
@@ -201,6 +205,8 @@ const LB = (()=>{
   }
   function fmtV(g, v){ return v.toLocaleString('en-US') + (CFG[g].higher ? '' : ' MV'); }
   function render(fresh){
+    if(CFG[current].deviceOnly)source='device';
+    $('#lbWebsiteTab').hidden=!!CFG[current].deviceOnly;
     const version=++viewVersion;
     $('#lbDeviceTab').setAttribute('aria-selected',String(source==='device'));$('#lbWebsiteTab').setAttribute('aria-selected',String(source==='website'));
     $('#lbSharedTools').hidden=source!=='website';$('#lbEntry').hidden=!pending||source!=='device';
@@ -248,6 +254,7 @@ const LB = (()=>{
   function show(g){
     if(!$('#pkScreen').hidden) POKER.pause(true);
     if(!$('#rcScreen').hidden) RACING.pause(true);
+    if(!$('#rrScreen').hidden) ROAD_RIOT.pause(true);
     if(!$('#plScreen').hidden) POOL.pause(true);
     if(!$('#lwScreen').hidden) LADDER.pause(true);
     if(!$('#ruScreen').hidden) RUMBLE.pause(true);
