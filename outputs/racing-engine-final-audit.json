@@ -1,0 +1,604 @@
+{
+  "engineSha256": "3352eb3923a601366433ac59c804793003fd6d1ee824f9c959eb5aef883fc275",
+  "tests": {
+    "rules": {
+      "passed": 13,
+      "failed": 0
+    },
+    "controller": {
+      "passed": 8,
+      "failed": 0,
+      "engines": [
+        "Chrome",
+        "WebKit"
+      ],
+      "output": "/private/tmp/racing-controls-final-results",
+      "durationSeconds": 16.2
+    }
+  },
+  "changes": [
+    "Staggered CPU convoy; both online humans begin at z=0",
+    "Traffic-aware lane choice and staggered boost timing",
+    "Gentle CPU following-speed cap; humans can pass freely",
+    "CPU top speed reduced3% to compensate grid lead"
+  ],
+  "timing": {
+    "scope": "Native Node simulation only; excludes renderer, browser, networking and physical phone",
+    "samples": 29146,
+    "meanMs": 0.009745376106498345,
+    "p95Ms": 0.01695800000000247,
+    "maxMs": 0.5317499999999882
+  },
+  "races": [
+    {
+      "seed": 1,
+      "online": false,
+      "frames": 4755,
+      "startGrid": [
+        {
+          "id": 0,
+          "human": true,
+          "x": -0.5,
+          "z": 0
+        },
+        {
+          "id": 1,
+          "human": false,
+          "x": 0.5,
+          "z": 90
+        },
+        {
+          "id": 2,
+          "human": false,
+          "x": -0.5,
+          "z": 180
+        },
+        {
+          "id": 3,
+          "human": false,
+          "x": 0.5,
+          "z": 270
+        },
+        {
+          "id": 4,
+          "human": false,
+          "x": -0.5,
+          "z": 360
+        },
+        {
+          "id": 5,
+          "human": false,
+          "x": 0.5,
+          "z": 450
+        }
+      ],
+      "positionsAt7": [
+        {
+          "id": 0,
+          "x": 0.125,
+          "z": 1171.18
+        },
+        {
+          "id": 1,
+          "x": 0.076,
+          "z": 1218.49
+        },
+        {
+          "id": 2,
+          "x": -0.401,
+          "z": 1289.85
+        },
+        {
+          "id": 3,
+          "x": 0.28,
+          "z": 1315.37
+        },
+        {
+          "id": 4,
+          "x": -0.231,
+          "z": 1357.05
+        },
+        {
+          "id": 5,
+          "x": 0.002,
+          "z": 1490.63
+        }
+      ],
+      "elapsed": 76.25,
+      "playerPlace": 1,
+      "playerHits": 0,
+      "playerTickets": 26,
+      "finishOrder": [
+        0,
+        4,
+        5,
+        2,
+        3,
+        1
+      ],
+      "finishTimes": [
+        76.24680534310203,
+        79.73276828277764,
+        78.53325826525455,
+        79.57582799315335,
+        78.32032707536041,
+        78.38061829935866
+      ]
+    },
+    {
+      "seed": 2,
+      "online": false,
+      "frames": 4842,
+      "startGrid": [
+        {
+          "id": 0,
+          "human": true,
+          "x": -0.5,
+          "z": 0
+        },
+        {
+          "id": 1,
+          "human": false,
+          "x": 0.5,
+          "z": 90
+        },
+        {
+          "id": 2,
+          "human": false,
+          "x": -0.5,
+          "z": 180
+        },
+        {
+          "id": 3,
+          "human": false,
+          "x": 0.5,
+          "z": 270
+        },
+        {
+          "id": 4,
+          "human": false,
+          "x": -0.5,
+          "z": 360
+        },
+        {
+          "id": 5,
+          "human": false,
+          "x": 0.5,
+          "z": 450
+        }
+      ],
+      "positionsAt7": [
+        {
+          "id": 0,
+          "x": 0.004,
+          "z": 1166.78
+        },
+        {
+          "id": 1,
+          "x": 0.57,
+          "z": 1205.24
+        },
+        {
+          "id": 2,
+          "x": -0.407,
+          "z": 1278.34
+        },
+        {
+          "id": 3,
+          "x": -0.052,
+          "z": 1310.75
+        },
+        {
+          "id": 4,
+          "x": -0.286,
+          "z": 1375.32
+        },
+        {
+          "id": 5,
+          "x": 0.004,
+          "z": 1478.3
+        }
+      ],
+      "elapsed": 77.7,
+      "playerPlace": 3,
+      "playerHits": 4,
+      "playerTickets": 15,
+      "finishOrder": [
+        5,
+        3,
+        0,
+        2,
+        1,
+        4
+      ],
+      "finishTimes": [
+        77.69724187438894,
+        82.72726324273997,
+        78.96158888353271,
+        77.46102694017087,
+        83.33704131196866,
+        76.51366135608782
+      ]
+    },
+    {
+      "seed": 3,
+      "online": false,
+      "frames": 5007,
+      "startGrid": [
+        {
+          "id": 0,
+          "human": true,
+          "x": -0.5,
+          "z": 0
+        },
+        {
+          "id": 1,
+          "human": false,
+          "x": 0.5,
+          "z": 90
+        },
+        {
+          "id": 2,
+          "human": false,
+          "x": -0.5,
+          "z": 180
+        },
+        {
+          "id": 3,
+          "human": false,
+          "x": 0.5,
+          "z": 270
+        },
+        {
+          "id": 4,
+          "human": false,
+          "x": -0.5,
+          "z": 360
+        },
+        {
+          "id": 5,
+          "human": false,
+          "x": 0.5,
+          "z": 450
+        }
+      ],
+      "positionsAt7": [
+        {
+          "id": 0,
+          "x": -0.577,
+          "z": 1205.21
+        },
+        {
+          "id": 1,
+          "x": 0.42,
+          "z": 1226.8
+        },
+        {
+          "id": 2,
+          "x": -0.396,
+          "z": 1300.4
+        },
+        {
+          "id": 3,
+          "x": -0.012,
+          "z": 1308.87
+        },
+        {
+          "id": 4,
+          "x": -0.065,
+          "z": 1391.94
+        },
+        {
+          "id": 5,
+          "x": -0.577,
+          "z": 1446.29
+        }
+      ],
+      "elapsed": 80.45,
+      "playerPlace": 5,
+      "playerHits": 2,
+      "playerTickets": 20,
+      "finishOrder": [
+        5,
+        3,
+        4,
+        1,
+        0,
+        2
+      ],
+      "finishTimes": [
+        80.44665795909262,
+        78.86407357135943,
+        80.74816072471818,
+        77.29482232065953,
+        78.07564824151409,
+        77.08904157872526
+      ]
+    },
+    {
+      "seed": 4,
+      "online": false,
+      "frames": 4780,
+      "startGrid": [
+        {
+          "id": 0,
+          "human": true,
+          "x": -0.5,
+          "z": 0
+        },
+        {
+          "id": 1,
+          "human": false,
+          "x": 0.5,
+          "z": 90
+        },
+        {
+          "id": 2,
+          "human": false,
+          "x": -0.5,
+          "z": 180
+        },
+        {
+          "id": 3,
+          "human": false,
+          "x": 0.5,
+          "z": 270
+        },
+        {
+          "id": 4,
+          "human": false,
+          "x": -0.5,
+          "z": 360
+        },
+        {
+          "id": 5,
+          "human": false,
+          "x": 0.5,
+          "z": 450
+        }
+      ],
+      "positionsAt7": [
+        {
+          "id": 0,
+          "x": 0.005,
+          "z": 1172.88
+        },
+        {
+          "id": 1,
+          "x": 0.161,
+          "z": 1216.67
+        },
+        {
+          "id": 2,
+          "x": -0.501,
+          "z": 1270.45
+        },
+        {
+          "id": 3,
+          "x": -0.035,
+          "z": 1312.9
+        },
+        {
+          "id": 4,
+          "x": -0.287,
+          "z": 1393.21
+        },
+        {
+          "id": 5,
+          "x": 0.004,
+          "z": 1478.3
+        }
+      ],
+      "elapsed": 76.65833333333333,
+      "playerPlace": 1,
+      "playerHits": 1,
+      "playerTickets": 26,
+      "finishOrder": [
+        0,
+        5,
+        3,
+        1,
+        4,
+        2
+      ],
+      "finishTimes": [
+        76.65761567677794,
+        79.40238950117988,
+        80.88949834058921,
+        78.1666593056367,
+        79.88386549429855,
+        77.40097852503732
+      ]
+    },
+    {
+      "seed": 5,
+      "online": false,
+      "frames": 4765,
+      "startGrid": [
+        {
+          "id": 0,
+          "human": true,
+          "x": -0.5,
+          "z": 0
+        },
+        {
+          "id": 1,
+          "human": false,
+          "x": 0.5,
+          "z": 90
+        },
+        {
+          "id": 2,
+          "human": false,
+          "x": -0.5,
+          "z": 180
+        },
+        {
+          "id": 3,
+          "human": false,
+          "x": 0.5,
+          "z": 270
+        },
+        {
+          "id": 4,
+          "human": false,
+          "x": -0.5,
+          "z": 360
+        },
+        {
+          "id": 5,
+          "human": false,
+          "x": 0.5,
+          "z": 450
+        }
+      ],
+      "positionsAt7": [
+        {
+          "id": 0,
+          "x": -0.577,
+          "z": 1181.7
+        },
+        {
+          "id": 1,
+          "x": 0.585,
+          "z": 1215.46
+        },
+        {
+          "id": 2,
+          "x": -0.285,
+          "z": 1307.41
+        },
+        {
+          "id": 3,
+          "x": 0.293,
+          "z": 1329.23
+        },
+        {
+          "id": 4,
+          "x": -0.576,
+          "z": 1391.02
+        },
+        {
+          "id": 5,
+          "x": 0.584,
+          "z": 1478.3
+        }
+      ],
+      "elapsed": 76.40833333333333,
+      "playerPlace": 1,
+      "playerHits": 1,
+      "playerTickets": 23,
+      "finishOrder": [
+        0,
+        2,
+        5,
+        1,
+        4,
+        3
+      ],
+      "finishTimes": [
+        76.40435238774008,
+        79.70415394307568,
+        77.61137341249263,
+        80.06086351204641,
+        79.7600498105897,
+        77.75708240306227
+      ]
+    },
+    {
+      "seed": 6,
+      "online": true,
+      "frames": 4997,
+      "startGrid": [
+        {
+          "id": 0,
+          "human": true,
+          "x": -0.5,
+          "z": 0
+        },
+        {
+          "id": 1,
+          "human": true,
+          "x": 0.5,
+          "z": 0
+        },
+        {
+          "id": 2,
+          "human": false,
+          "x": -0.5,
+          "z": 90
+        },
+        {
+          "id": 3,
+          "human": false,
+          "x": 0.5,
+          "z": 180
+        },
+        {
+          "id": 4,
+          "human": false,
+          "x": -0.5,
+          "z": 270
+        },
+        {
+          "id": 5,
+          "human": false,
+          "x": 0.5,
+          "z": 360
+        }
+      ],
+      "positionsAt7": [
+        {
+          "id": 0,
+          "x": -0.288,
+          "z": 1175.63
+        },
+        {
+          "id": 1,
+          "x": 0.001,
+          "z": 1170.04
+        },
+        {
+          "id": 2,
+          "x": -0.575,
+          "z": 1211.63
+        },
+        {
+          "id": 3,
+          "x": -0.285,
+          "z": 1262.51
+        },
+        {
+          "id": 4,
+          "x": 0.004,
+          "z": 1316.27
+        },
+        {
+          "id": 5,
+          "x": -0.576,
+          "z": 1392.56
+        }
+      ],
+      "elapsed": 80.275,
+      "playerPlace": 3,
+      "playerHits": 2,
+      "playerTickets": 20,
+      "finishOrder": [
+        3,
+        5,
+        0,
+        4,
+        2,
+        1
+      ],
+      "finishTimes": [
+        78.4545292941438,
+        80.27411710858944,
+        79.10962435242257,
+        77.20134436088624,
+        78.69013882606791,
+        77.70080871408206
+      ]
+    }
+  ]
+}

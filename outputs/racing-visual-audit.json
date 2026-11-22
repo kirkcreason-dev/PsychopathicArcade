@@ -1,0 +1,53 @@
+[
+  {
+    "name": "desktop",
+    "width": 1280,
+    "height": 800,
+    "errors": [],
+    "layout": {
+      "scrollWidth": 1280,
+      "viewport": 1280,
+      "canvas": {
+        "x": 13,
+        "y": 15,
+        "w": 1254,
+        "h": 614
+      },
+      "time": 7.483333333333333
+    }
+  },
+  {
+    "name": "phone",
+    "width": 390,
+    "height": 740,
+    "errors": [],
+    "layout": {
+      "scrollWidth": 390,
+      "viewport": 390,
+      "canvas": {
+        "x": 6,
+        "y": 5,
+        "w": 378,
+        "h": 587
+      },
+      "time": 7.241666666666666
+    }
+  },
+  {
+    "name": "landscape",
+    "width": 844,
+    "height": 390,
+    "errors": [],
+    "layout": {
+      "scrollWidth": 844,
+      "viewport": 844,
+      "canvas": {
+        "x": 6,
+        "y": 5,
+        "w": 832,
+        "h": 264
+      },
+      "time": 7.25
+    }
+  }
+]

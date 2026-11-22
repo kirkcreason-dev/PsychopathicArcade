@@ -1,0 +1,54 @@
+{
+  "feature": "Road Riot rival duels",
+  "date": "2026-11-06",
+  "published": false,
+  "build": {
+    "sha256": "27f5419191da66a96d5b3dc8c92a218688466130cffb1df01ba5d81a2e574870",
+    "bytes": 24643131,
+    "standaloneMatchesProduction": true
+  },
+  "verification": {
+    "rules": 29,
+    "originalCabinetStartChecks": 2,
+    "originalCabinetIdenticalRenderComparisons": 18,
+    "viewportWidths": [
+      320,
+      390,
+      667,
+      1280
+    ],
+    "manualPreview": "Verified the full marked name, moving gap, countdown, pause card and clean restart. Final build loaded at rider selection.",
+    "roadRiotBrowser": {
+      "unique": 64,
+      "passed": 64,
+      "original": 34,
+      "refinement": 20,
+      "duels": 10,
+      "finalTargetedChecks": 12
+    },
+    "uniqueTestsPassed": 95,
+    "skipped": 0,
+    "foregroundHitchMs": 750,
+    "smallPhoneLabelClipped": false
+  },
+  "outcomes": {
+    "win": 250,
+    "maximum": 750,
+    "tie": 0,
+    "loss": 0,
+    "unpaired": 0,
+    "timeout": "Keeps points from flags already won; no points awarded for unfinished duels."
+  },
+  "replayExample": {
+    "seed": 19,
+    "earned": 500,
+    "total": 8827
+  },
+  "screenshots": [
+    "desktop-checkpoint.png",
+    "phone-checkpoint.png",
+    "small-phone-duel-card.png",
+    "desktop-result.png"
+  ],
+  "scope": "Solo racing and local records. Phone sizes tested in browsers; no physical-device claim."
+}

@@ -1,0 +1,60 @@
+{
+  "checkedAt": "2026-11-01T16:18:26.421096+00:00",
+  "localCommit": "d26a6f419885267d212982a5326bcfda53ac070a",
+  "releaseCommit": "25178c6ea1f77f2d1892d77694a54da19f8a8b3d",
+  "releaseTree": "d3818e670a0b9e0e616ff97ef7ee285525ec19bd",
+  "pullRequest": "https://github.com/kirkcreason-dev/PsychopathicArcade/pull/15",
+  "standaloneSha256": "39055ac53b15819acf10d2e50d9e34775a961a8fc77b7ad9985bdd543568edf3",
+  "buildMatchesStandalone": true,
+  "checks": {
+    "build": "passed",
+    "lint": "passed",
+    "typecheck": "passed",
+    "sourceAndAssetSync": "passed",
+    "racingRules": 36,
+    "racingPartyProtocol": 19,
+    "turboAndLegacyOnlineBrowserChecks": 28,
+    "sharedLeaderboardBrowserChecks": 24,
+    "focusedLeaderboardQueueChecks": 4,
+    "latestEightPeerRaces": 3,
+    "hostRankingAndRulesEmulator": 26,
+    "unchangedHostBadgeChecks": 7
+  },
+  "visuals": {
+    "allSixHeadAndWheelMotion": "passed in Chrome and WebKit",
+    "stoppedWheels": "identical tire pixels while stopped",
+    "reducedMotion": "rolling suppressed; steering retained",
+    "phoneDrawSampling": {
+      "method": "120 frames, six racers, phone-size viewport on desktop browser; not physical-phone FPS",
+      "chromiumMedianMs": 0.3,
+      "chromiumP95Ms": 0.6,
+      "webkitMedianMs": 2,
+      "webkitP95Ms": 4
+    }
+  },
+  "host": {
+    "pullRequest": "https://github.com/kirkcreason-dev/JCWLUNACY/pull/2",
+    "mergeCommit": "14530ad90fe8ffdc5e6adbda3cd1549054316bfe",
+    "publicFilesVerified": true,
+    "firebaseRulesLive": true,
+    "existingNamespacesUnchanged": 31,
+    "fabricatedProductionScoresWritten": false
+  },
+  "ci": {
+    "run": "https://github.com/kirkcreason-dev/PsychopathicArcade/actions/runs/41324414896",
+    "state": "success",
+    "passed": 836,
+    "skipped": 7,
+    "failed": 0,
+    "total": 843
+  },
+  "mergeCommit": "a95cbb8ce0c8c9b9d6187c69689bc25e5e2758de",
+  "publication": {
+    "arcadeMainSourceHTTP": 200,
+    "arcadeMainSourceMatchesTestedBuild": true,
+    "websiteHTTP": 200,
+    "websiteRankingBridgeHTTP": 200,
+    "websiteLoadsPublishedMainSource": true,
+    "githubPagesStillPropagatingAtLastCheck": true
+  }
+}

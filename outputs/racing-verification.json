@@ -1,0 +1,37 @@
+{
+  "game": "JCW × ICP: Road to the Show",
+  "status": "implemented locally; not pushed",
+  "assets": {
+    "createdBeforeGameplay": true,
+    "originalRiders": 6,
+    "backgrounds": 3,
+    "vectors": 20,
+    "embeddedImageBytes": 913679,
+    "sourceBoard": "assets/racing/contact-sheet.html",
+    "prompts": "assets/racing/riders/prompts.json"
+  },
+  "verification": {
+    "rules": 13,
+    "racingUi": 20,
+    "controlsAndLocalRecords": 10,
+    "onlineRealPeerCases": 8,
+    "existingArcadeCases": 84,
+    "existingOnlineAndTransportCases": 33,
+    "lint": true,
+    "typecheck": true,
+    "build": true,
+    "diffWhitespace": true,
+    "fullRouteVisualReview": true,
+    "viewports": [
+      "320×568",
+      "390×740",
+      "568×320",
+      "844×390",
+      "1280×800"
+    ],
+    "limitations": "Browsers were tested locally. No physical phone or cross-network/TURN availability claim."
+  },
+  "sha256": "604e4626a0c57dd317ff9690aa9091b8710b50f4d6d52ee80eea538253a0d0ea",
+  "bytes": 16185473,
+  "buildMatchesSource": true
+}

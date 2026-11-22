@@ -1,0 +1,70 @@
+{
+  "task": "JCW Road Riot refinement",
+  "date": "2026-11-05",
+  "published": false,
+  "standalone": {
+    "path": "public/game.html",
+    "bytes": 24631982,
+    "sha256": "7be00aa4b8547525fe2e37001a76ae282a2f3752852bdb5953c2e53f232d2d0d",
+    "matchesProduction": true
+  },
+  "checks": {
+    "rules": 23,
+    "roadRiotBrowser": 52,
+    "originalRacingBrowser": 32,
+    "total": 107,
+    "failed": 0,
+    "skipped": 0,
+    "browsers": [
+      "Chrome",
+      "WebKit"
+    ],
+    "sourceSync": true,
+    "typecheck": true,
+    "build": true,
+    "diffWhitespace": true
+  },
+  "renderer": {
+    "originalRacePixelComparisons": 18,
+    "unchanged": true,
+    "targetAgreementCases": 200,
+    "drawTimeCanvasAllocations": 0,
+    "reducedMotion": true
+  },
+  "refinements": [
+    "Symmetric vehicle contact and speed-dependent steering",
+    "Accurate strike readiness and recovery bars",
+    "Localized impact, block, crash and recovery effects",
+    "Prioritized combat feedback and miss messages",
+    "Rival gap HUD and itemized score",
+    "No repeated idle, paused or finished HUD mutations"
+  ],
+  "manualPreview": [
+    "Driving and turbo",
+    "Pause and clean reset",
+    "Final build reloaded in in-app browser"
+  ],
+  "limits": [
+    "Solo cabinet; device-only scores",
+    "Physical phone hardware was not tested",
+    "Last CSS spacing adjustment is verified by the final visual/layout audit separately from the 107 checks"
+  ],
+  "notes": "23 rules checks, 52 Road Riot browser checks and 32 original racer browser checks were run for this refinement; earlier-turn checks are not included. No push or website badge changes.",
+  "visualAudit": {
+    "passed": true,
+    "viewports": [
+      "320x568",
+      "390x740",
+      "667x375",
+      "1280x800"
+    ],
+    "browsers": [
+      "Chrome",
+      "WebKit"
+    ],
+    "smallPhoneFeedbackClearancePx": 8.19,
+    "report": "outputs/road-riot/integrated-refinement-checks.json",
+    "rendererReport": "outputs/road-riot/renderer-refinement-checks.json",
+    "screenshot": "outputs/road-riot/refinement-chrome-desktop-combat.png"
+  }
+}

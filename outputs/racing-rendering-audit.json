@@ -1,0 +1,39 @@
+{
+  "scope": "Local headless desktop browser measurements using a phone-sized viewport; not physical phone or cross-network performance.",
+  "results": [
+    {
+      "browser": "chrome",
+      "viewport": "390×740 @2x",
+      "drawing": {
+        "samples": 253,
+        "meanMs": 0.4545454432370634,
+        "p95Ms": 0.5999999046325684,
+        "maxMs": 0.8000001907348633
+      },
+      "frames": {
+        "samples": 252,
+        "meanMs": 17.590873016251457,
+        "p95Ms": 17.300000190734863,
+        "maxMs": 261.59999990463257
+      },
+      "phase": "racing"
+    },
+    {
+      "browser": "webkit",
+      "viewport": "390×740 @2x",
+      "drawing": {
+        "samples": 133,
+        "meanMs": 0.9097744360902256,
+        "p95Ms": 1,
+        "maxMs": 2
+      },
+      "frames": {
+        "samples": 132,
+        "meanMs": 33.333333333333336,
+        "p95Ms": 34,
+        "maxMs": 35
+      },
+      "phase": "racing"
+    }
+  ]
+}

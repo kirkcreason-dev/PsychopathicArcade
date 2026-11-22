@@ -1,0 +1,40 @@
+{
+  "game": "JCW × ICP: Road to the Show",
+  "status": "refined locally; not committed or pushed",
+  "verifiedAt": "2026-11-01T13:17:09.388Z",
+  "improvements": [
+    "Smoother boost recovery and more forgiving racing balance",
+    "Distinct bike and kart handling with stronger braking grip",
+    "Clear meters, route progress, pickup feedback and honest result times",
+    "Less visual clutter and stable phone layouts",
+    "Independent physical-key and touch inputs",
+    "Paused recovery for congested online connections",
+    "Cached rendering when idle, paused or finished"
+  ],
+  "verification": {
+    "rules": 18,
+    "racingUiAndControls": 32,
+    "onlineAndRefinement": 19,
+    "finalArcadeAndFeedbackSmoke": 10,
+    "lint": true,
+    "typecheck": true,
+    "build": true,
+    "diffWhitespace": true,
+    "fullRouteVisualReview": true,
+    "browsers": [
+      "Chromium",
+      "WebKit"
+    ],
+    "viewports": [
+      "320×568",
+      "390×740",
+      "568×320",
+      "844×390",
+      "1280×800"
+    ],
+    "limitations": "Local browser and two-peer tests; no physical-device or cross-network/TURN guarantee."
+  },
+  "sha256": "1aa143fd088b880b2cf82494f15edd6189419087aebac9c3e218fd14cd2ac37c",
+  "bytes": 16200765,
+  "buildMatchesSource": true
+}

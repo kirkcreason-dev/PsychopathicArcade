@@ -1,0 +1,496 @@
+{
+  "chrome": {
+    "errors": [],
+    "assets": [
+      {
+        "file": "road-to-the-show-logo.svg",
+        "width": 768,
+        "height": 368,
+        "bounds": [
+          94,
+          47,
+          674,
+          320
+        ],
+        "safe": true
+      },
+      {
+        "file": "checkpoint-banner.svg",
+        "width": 512,
+        "height": 256,
+        "bounds": [
+          64,
+          39,
+          450,
+          224
+        ],
+        "safe": true
+      },
+      {
+        "file": "finish-gantry.svg",
+        "width": 768,
+        "height": 512,
+        "bounds": [
+          102,
+          65,
+          665,
+          450
+        ],
+        "safe": true
+      },
+      {
+        "file": "tire-stack.svg",
+        "width": 320,
+        "height": 320,
+        "bounds": [
+          47,
+          91,
+          273,
+          279
+        ],
+        "safe": true
+      },
+      {
+        "file": "traffic-cone.svg",
+        "width": 320,
+        "height": 320,
+        "bounds": [
+          54,
+          70,
+          266,
+          280
+        ],
+        "safe": true
+      },
+      {
+        "file": "road-barrier.svg",
+        "width": 320,
+        "height": 320,
+        "bounds": [
+          47,
+          62,
+          280,
+          279
+        ],
+        "safe": true
+      },
+      {
+        "file": "warning-arrow.svg",
+        "width": 320,
+        "height": 320,
+        "bounds": [
+          59,
+          39,
+          262,
+          278
+        ],
+        "safe": true
+      },
+      {
+        "file": "destination-pin.svg",
+        "width": 320,
+        "height": 320,
+        "bounds": [
+          69,
+          40,
+          252,
+          279
+        ],
+        "safe": true
+      },
+      {
+        "file": "boost-pickup.svg",
+        "width": 320,
+        "height": 320,
+        "bounds": [
+          70,
+          51,
+          250,
+          279
+        ],
+        "safe": true
+      },
+      {
+        "file": "repair-pickup.svg",
+        "width": 320,
+        "height": 320,
+        "bounds": [
+          70,
+          51,
+          250,
+          279
+        ],
+        "safe": true
+      },
+      {
+        "file": "ticket-pickup.svg",
+        "width": 320,
+        "height": 320,
+        "bounds": [
+          57,
+          60,
+          263,
+          279
+        ],
+        "safe": true
+      },
+      {
+        "file": "gold-medal.svg",
+        "width": 320,
+        "height": 320,
+        "bounds": [
+          73,
+          40,
+          249,
+          277
+        ],
+        "safe": true
+      },
+      {
+        "file": "silver-medal.svg",
+        "width": 320,
+        "height": 320,
+        "bounds": [
+          73,
+          40,
+          249,
+          277
+        ],
+        "safe": true
+      },
+      {
+        "file": "bronze-medal.svg",
+        "width": 320,
+        "height": 320,
+        "bounds": [
+          73,
+          40,
+          249,
+          277
+        ],
+        "safe": true
+      },
+      {
+        "file": "steer-left-icon.svg",
+        "width": 128,
+        "height": 128,
+        "bounds": [
+          18,
+          16,
+          110,
+          110
+        ],
+        "safe": true
+      },
+      {
+        "file": "steer-right-icon.svg",
+        "width": 128,
+        "height": 128,
+        "bounds": [
+          18,
+          16,
+          110,
+          110
+        ],
+        "safe": true
+      },
+      {
+        "file": "brake-icon.svg",
+        "width": 128,
+        "height": 128,
+        "bounds": [
+          18,
+          16,
+          110,
+          110
+        ],
+        "safe": true
+      },
+      {
+        "file": "boost-icon.svg",
+        "width": 128,
+        "height": 128,
+        "bounds": [
+          18,
+          16,
+          110,
+          110
+        ],
+        "safe": true
+      },
+      {
+        "file": "asphalt-tile.svg",
+        "width": 256,
+        "height": 256,
+        "bounds": [
+          0,
+          0,
+          256,
+          256
+        ],
+        "safe": true,
+        "seamless": true
+      },
+      {
+        "file": "dirt-tile.svg",
+        "width": 256,
+        "height": 256,
+        "bounds": [
+          0,
+          0,
+          256,
+          256
+        ],
+        "safe": true,
+        "seamless": true
+      }
+    ]
+  },
+  "webkit": {
+    "errors": [],
+    "assets": [
+      {
+        "file": "road-to-the-show-logo.svg",
+        "width": 768,
+        "height": 368,
+        "bounds": [
+          94,
+          46,
+          674,
+          320
+        ],
+        "safe": true
+      },
+      {
+        "file": "checkpoint-banner.svg",
+        "width": 512,
+        "height": 256,
+        "bounds": [
+          64,
+          39,
+          450,
+          224
+        ],
+        "safe": true
+      },
+      {
+        "file": "finish-gantry.svg",
+        "width": 768,
+        "height": 512,
+        "bounds": [
+          102,
+          65,
+          665,
+          449
+        ],
+        "safe": true
+      },
+      {
+        "file": "tire-stack.svg",
+        "width": 320,
+        "height": 320,
+        "bounds": [
+          47,
+          91,
+          273,
+          279
+        ],
+        "safe": true
+      },
+      {
+        "file": "traffic-cone.svg",
+        "width": 320,
+        "height": 320,
+        "bounds": [
+          54,
+          70,
+          266,
+          281
+        ],
+        "safe": true
+      },
+      {
+        "file": "road-barrier.svg",
+        "width": 320,
+        "height": 320,
+        "bounds": [
+          47,
+          62,
+          280,
+          279
+        ],
+        "safe": true
+      },
+      {
+        "file": "warning-arrow.svg",
+        "width": 320,
+        "height": 320,
+        "bounds": [
+          59,
+          39,
+          262,
+          278
+        ],
+        "safe": true
+      },
+      {
+        "file": "destination-pin.svg",
+        "width": 320,
+        "height": 320,
+        "bounds": [
+          69,
+          40,
+          252,
+          279
+        ],
+        "safe": true
+      },
+      {
+        "file": "boost-pickup.svg",
+        "width": 320,
+        "height": 320,
+        "bounds": [
+          70,
+          51,
+          250,
+          279
+        ],
+        "safe": true
+      },
+      {
+        "file": "repair-pickup.svg",
+        "width": 320,
+        "height": 320,
+        "bounds": [
+          70,
+          51,
+          250,
+          279
+        ],
+        "safe": true
+      },
+      {
+        "file": "ticket-pickup.svg",
+        "width": 320,
+        "height": 320,
+        "bounds": [
+          57,
+          60,
+          263,
+          279
+        ],
+        "safe": true
+      },
+      {
+        "file": "gold-medal.svg",
+        "width": 320,
+        "height": 320,
+        "bounds": [
+          73,
+          40,
+          249,
+          277
+        ],
+        "safe": true
+      },
+      {
+        "file": "silver-medal.svg",
+        "width": 320,
+        "height": 320,
+        "bounds": [
+          73,
+          40,
+          249,
+          277
+        ],
+        "safe": true
+      },
+      {
+        "file": "bronze-medal.svg",
+        "width": 320,
+        "height": 320,
+        "bounds": [
+          73,
+          40,
+          249,
+          277
+        ],
+        "safe": true
+      },
+      {
+        "file": "steer-left-icon.svg",
+        "width": 128,
+        "height": 128,
+        "bounds": [
+          18,
+          16,
+          110,
+          110
+        ],
+        "safe": true
+      },
+      {
+        "file": "steer-right-icon.svg",
+        "width": 128,
+        "height": 128,
+        "bounds": [
+          18,
+          16,
+          110,
+          110
+        ],
+        "safe": true
+      },
+      {
+        "file": "brake-icon.svg",
+        "width": 128,
+        "height": 128,
+        "bounds": [
+          18,
+          16,
+          110,
+          110
+        ],
+        "safe": true
+      },
+      {
+        "file": "boost-icon.svg",
+        "width": 128,
+        "height": 128,
+        "bounds": [
+          18,
+          16,
+          110,
+          110
+        ],
+        "safe": true
+      },
+      {
+        "file": "asphalt-tile.svg",
+        "width": 256,
+        "height": 256,
+        "bounds": [
+          0,
+          0,
+          256,
+          256
+        ],
+        "safe": true,
+        "seamless": true
+      },
+      {
+        "file": "dirt-tile.svg",
+        "width": 256,
+        "height": 256,
+        "bounds": [
+          0,
+          0,
+          256,
+          256
+        ],
+        "safe": true,
+        "seamless": true
+      }
+    ]
+  }
+}

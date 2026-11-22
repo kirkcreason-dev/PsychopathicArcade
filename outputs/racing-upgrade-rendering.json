@@ -1,0 +1,71 @@
+{
+  "scope": "Local headless desktop browsers with a390×740 @2x viewport; not a physical-phone benchmark.",
+  "results": [
+    {
+      "browser": "chrome",
+      "zone": "detroit",
+      "loadMs": 687,
+      "errors": [],
+      "samples": 179,
+      "drawMeanMs": 0.6692737494101072,
+      "drawP95Ms": 1.0999999046325684,
+      "drawMaxMs": 1.3000001907348633,
+      "phase": "racing"
+    },
+    {
+      "browser": "chrome",
+      "zone": "carnival",
+      "loadMs": 687,
+      "errors": [],
+      "samples": 170,
+      "drawMeanMs": 0.6829412067637725,
+      "drawP95Ms": 1.0999999046325684,
+      "drawMaxMs": 1.200000286102295,
+      "phase": "racing"
+    },
+    {
+      "browser": "chrome",
+      "zone": "arena",
+      "loadMs": 687,
+      "errors": [],
+      "samples": 179,
+      "drawMeanMs": 0.668156410728753,
+      "drawP95Ms": 1.0999999046325684,
+      "drawMaxMs": 1.3000001907348633,
+      "phase": "racing"
+    },
+    {
+      "browser": "webkit",
+      "zone": "detroit",
+      "loadMs": 770,
+      "errors": [],
+      "samples": 88,
+      "drawMeanMs": 0.9431818181818182,
+      "drawP95Ms": 1,
+      "drawMaxMs": 2,
+      "phase": "racing"
+    },
+    {
+      "browser": "webkit",
+      "zone": "carnival",
+      "loadMs": 770,
+      "errors": [],
+      "samples": 88,
+      "drawMeanMs": 0.875,
+      "drawP95Ms": 1,
+      "drawMaxMs": 2,
+      "phase": "racing"
+    },
+    {
+      "browser": "webkit",
+      "zone": "arena",
+      "loadMs": 770,
+      "errors": [],
+      "samples": 88,
+      "drawMeanMs": 0.75,
+      "drawP95Ms": 1,
+      "drawMaxMs": 1,
+      "phase": "racing"
+    }
+  ]
+}

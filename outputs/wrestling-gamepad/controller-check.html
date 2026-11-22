@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Wrestling controller browser checks</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;padding:18px;background:#11131a;color:#ecedf1;font:15px/1.45 system-ui,sans-serif}h1{font-size:23px;margin:0 0 8px}p{max-width:850px}button{font:inherit;padding:10px 22px;border:0;border-radius:7px;background:#bde65c;color:#17200d;font-weight:750;cursor:pointer}button:disabled{opacity:.6}#summary{font-weight:750;font-size:18px}#results{padding-left:24px}#results li{margin:5px 0}.pass{color:#bde65c}.fail{color:#ff9a9a}.pending{color:#f6cf7f}iframe{display:block;width:100%;height:68vh;min-height:440px;border:1px solid #59606e;border-radius:8px;background:#050506}details{margin-top:16px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+  </style>
+</head>
+<body>
+  <h1 tabindex="-1">Wrestling controller browser checks</h1>
+  <p>This runs the actual Rumble and Ladder Wars games with simulated standard-controller readings. Keep this tab visible and leave the embedded game focused until completion. It verifies browser behavior without a physical controller.</p>
+  <button id="run">Run controller checks</button>
+  <p id="summary" role="status">Ready</p>
+  <ol id="results"></ol>
+  <iframe id="game" title="Actual arcade under controller test" allow="gamepad"></iframe>
+  <details><summary>Check details</summary><pre id="report"></pre></details>
+  <script>
+    'use strict';
+    const runButton=document.querySelector('#run');
+    const summary=document.querySelector('#summary');
+    const list=document.querySelector('#results');
+    const frame=document.querySelector('#game');
+    const report=document.querySelector('#report');
+    const cabinets=[{screen:'rumble',module:'RUMBLE',prefix:'ru'},{screen:'ladder',module:'LADDER',prefix:'lw'}];
+    let gameWindow,activeCabinet;
+    window.controllerCheck={running:false,done:false,results:[]};
+
+    function installController(){
+      const device={id:'Browser check standard controller',index:0,connected:true,mapping:'standard',axes:[0,0,0,0],buttons:Array.from({length:17},()=>({pressed:false,touched:false,value:0})),timestamp:1};
+      window.padTest={device,available:true,fail:false,set(value={}){
+        if(value.axes)device.axes=[...value.axes,0,0].slice(0,4);
+        if(value.buttons)device.buttons=device.buttons.map((button,index)=>({pressed:value.buttons.includes(index),touched:value.buttons.includes(index),value:value.buttons.includes(index)?1:0}));
+        if(value.connected!==undefined)device.connected=value.connected;
+        if(value.mapping!==undefined)device.mapping=value.mapping;
+        device.timestamp++;
+      }};
+      Object.defineProperty(navigator,'getGamepads',{configurable:true,value(){
+        if(window.padTest.fail)throw new DOMException('Test policy denial','SecurityError');
+        return window.padTest.available&&device.connected?[device]:[];
+      }});
+      window.controllerErrors=[];
+      window.addEventListener('error',event=>window.controllerErrors.push(event.message));
+      window.addEventListener('unhandledrejection',event=>window.controllerErrors.push(String(event.reason)));
+    }
+    function assert(condition,message){if(!condition)throw new Error(message);}
+    const sleep=milliseconds=>new Promise(resolve=>setTimeout(resolve,milliseconds));
+    async function until(predicate,message,timeout=4000){
+      const end=performance.now()+timeout;
+      while(!predicate()){
+        if(performance.now()>end)throw new Error(message);
+        await sleep(25);
+      }
+    }
+    async function frames(count=5){
+      await Promise.race([
+        (async()=>{for(let i=0;i<count;i++)await new Promise(resolve=>gameWindow.requestAnimationFrame(resolve));})(),
+        sleep(5000).then(()=>{throw new Error('Game animation frames stopped. Keep the tab visible.');})
+      ]);
+    }
+    const current=()=>gameWindow.ARCADE[activeCabinet.module];
+    const element=id=>gameWindow.document.getElementById(activeCabinet.prefix+id);
+    function focusGame(){frame.focus();gameWindow.focus();element('Canvas').focus({preventScroll:true});}
+    async function setPad(value){gameWindow.padTest.set(value);await frames();}
+    async function neutral(){await setPad({axes:[0,0],buttons:[],connected:true,mapping:'standard'});}
+    async function tap(index){await setPad({buttons:[index]});await setPad({buttons:[]});}
+    function key(type,key){element('Canvas').dispatchEvent(new gameWindow.KeyboardEvent(type,{key,bubbles:true}));}
+    function resetPose(){
+      const game=current(),state=game.state,player=game.player();
+      const rival=state.fighters.find(fighter=>!fighter.player);
+      assert(player&&rival,'A playable wrestler and rival must load');
+      state.countdown=0;state.nextIn=999;state.fighters=[player,rival];
+      const y=activeCabinet.screen==='ladder'?365:265;
+      Object.assign(player,{x:220,y,invuln:0,action:null,cool:0,stun:0,guardOn:false});
+      Object.assign(rival,{x:370,y,invuln:0,action:null,cool:0,stun:999,guardOn:false,human:true});
+    }
+    async function prepare(){
+      gameWindow.padTest.fail=false;gameWindow.padTest.available=true;
+      await neutral();
+      gameWindow.ARCADE.showScreen(activeCabinet.screen);
+      current().choose();focusGame();await frames();
+      await current().start();
+      await until(()=>current().state.mode==='playing','Match did not start',30000);
+      resetPose();focusGame();await neutral();
+    }
+    async function test(name,callback){
+      const row=document.createElement('li');row.className='pending';row.textContent='RUNNING · '+name;list.append(row);
+      summary.textContent='Checking '+name;
+      const start=performance.now();
+      let result;
+      try{
+        await callback();
+        assert(gameWindow.controllerErrors.length===0,'Browser error: '+gameWindow.controllerErrors.join(' | '));
+        result={name,pass:true,milliseconds:Math.round(performance.now()-start)};
+        row.className='pass';row.textContent='PASS · '+name;
+      }catch(error){
+        result={name,pass:false,error:String(error.message||error),milliseconds:Math.round(performance.now()-start)};
+        row.className='fail';row.textContent='FAIL · '+name+' — '+result.error;
+      }
+      window.controllerCheck.results.push(result);
+      report.textContent=JSON.stringify(window.controllerCheck,null,2);
+    }
+    async function checkCabinet(cabinet){
+      activeCabinet=cabinet;
+      const label=cabinet.screen==='rumble'?'Rumble':'Ladder Wars';
+      await test(label+' selection and held Start',async()=>{
+        gameWindow.ARCADE.showScreen(cabinet.screen);current().choose();focusGame();await neutral();
+        const selected=element('Roster').value;
+        await setPad({buttons:[5]});const next=element('Roster').value;
+        assert(next!==selected,'Right shoulder did not select the next wrestler');
+        await frames(12);assert(element('Roster').value===next,'Held shoulder repeated selection');
+        await neutral();await tap(4);assert(element('Roster').value===selected,'Left shoulder did not restore selection');
+        await setPad({buttons:[0]});
+        await until(()=>current().state.mode==='playing','Controller did not start the match',30000);
+        resetPose();await frames(12);
+        assert(current().player().action===null&&current().state.score===0,'Held Start leaked a strike into gameplay');
+        await neutral();
+      });
+      await test(label+' dead zone, analog movement and D-pad priority',async()=>{
+        await prepare();let x=current().player().x;
+        await setPad({axes:[.1,-.1]});await frames(10);
+        assert(Math.abs(current().player().x-x)<.001,'Small stick drift moved the wrestler');
+        await setPad({axes:[.6,0]});await until(()=>current().player().x>x+3,'Analog stick did not move right');
+        x=current().player().x;await setPad({axes:[1,0],buttons:[14]});
+        await until(()=>current().player().x<x-3,'D-pad left did not override a right-tilted stick');await neutral();
+      });
+      await test(label+' keyboard and both guard buttons coexist',async()=>{
+        await prepare();const x=current().player().x;
+        key('keydown','ArrowRight');await until(()=>current().player().x>x+3,'Keyboard movement failed');
+        await setPad({buttons:[1,5]});await until(()=>current().player().guardOn,'Controller guard failed');
+        key('keyup','ArrowRight');const stopped=current().player().x;
+        await setPad({buttons:[5]});await frames(8);
+        assert(Math.abs(current().player().x-stopped)<.001,'Keyboard release did not stop movement');
+        assert(current().player().guardOn,'Releasing one guard source released the other');
+        await neutral();await until(()=>!current().player().guardOn,'Guard remained held');
+      });
+      await test(label+' strike and finisher require fresh presses',async()=>{
+        await prepare();current().state.fighters[1].x=current().player().x+40;
+        await setPad({buttons:[0]});await until(()=>current().state.score===25,'First strike did not score once');
+        await sleep(900);assert(current().state.score===25,'Held strike repeated');
+        await neutral();await tap(0);await until(()=>current().state.score===50,'Fresh strike did not score');
+        await until(()=>!current().player().action&&current().player().cool===0,'Strike cooldown did not end');
+        current().state.charge=100;await setPad({buttons:[3]});
+        assert(current().state.charge<100,'Finisher did not spend charge');
+        await until(()=>!current().player().action&&current().player().cool===0,'Finisher did not finish');
+        current().state.charge=100;await frames(12);
+        assert(current().state.charge===100,'Held finisher triggered again');await neutral();
+      });
+      await test(label+(cabinet.screen==='ladder'?' pickup, placement, climb and descent':' throw triggers once'),async()=>{
+        await prepare();const game=current(),player=game.player();
+        if(cabinet.screen==='rumble'){
+          const rival=game.state.fighters[1];rival.x=player.x+40;
+          await setPad({buttons:[2]});await until(()=>rival.hp<100,'Throw did not affect the rival');
+          const hp=rival.hp;await sleep(850);assert(rival.hp===hp,'Held throw repeated');await neutral();
+        }else{
+          Object.assign(game.state.ladder,{x:player.x,y:player.y,carrier:null,open:false});
+          await setPad({buttons:[2]});assert(game.state.ladder.carrier===player.uid,'Ladder was not picked up');
+          await sleep(550);assert(!game.state.ladder.open,'Held action placed the ladder');
+          await neutral();await tap(2);assert(game.state.ladder.open,'Fresh action did not place ladder');
+          await until(()=>player.cool===0,'Placement cooldown did not end');await tap(2);
+          await until(()=>player.climb>.1,'Climbing did not begin');
+          const height=player.climb;await setPad({buttons:[13]});
+          await until(()=>player.climb<height,'Controller down did not descend');await neutral();
+        }
+      });
+      await test(label+' pause, disconnect and neutral reconnect',async()=>{
+        await prepare();await setPad({buttons:[9]});assert(current().state.mode==='paused','Start did not pause');
+        const paused=current().state.elapsed;await frames(12);
+        assert(current().state.mode==='paused'&&current().state.elapsed===paused,'Held Start resumed or advanced play');
+        await neutral();await setPad({axes:[1,0],buttons:[0,9]});
+        assert(current().state.mode==='playing','Fresh Start did not resume');
+        const x=current().player().x;await frames(12);
+        assert(current().player().x===x&&!current().player().action,'Held controls leaked through resume');
+        await neutral();await setPad({axes:[-1,0]});await until(()=>current().player().x<x-3,'Fresh movement failed after resume');
+        await setPad({connected:false});assert(current().state.mode==='paused','Controller disconnect did not pause');
+        await setPad({connected:true,axes:[-1,0],buttons:[0,9]});await frames(10);
+        assert(current().state.mode==='paused','Held reconnect inputs resumed the game');
+        await neutral();await tap(9);assert(current().state.mode==='playing','Neutral reconnect could not resume');
+      });
+      await test(label+' real focus loss and records modal block input',async()=>{
+        await prepare();document.querySelector('h1').focus();await sleep(100);
+        assert(current().state.mode==='paused','Losing iframe focus did not pause');
+        gameWindow.padTest.set({buttons:[9]});focusGame();await frames(10);
+        assert(current().state.mode==='paused','Held Start resumed on focus return');
+        await neutral();await tap(9);assert(current().state.mode==='playing','Fresh Start failed after focus return');
+        gameWindow.ARCADE.LB.show(cabinet.screen);await frames();
+        assert(!gameWindow.document.querySelector('#lbModal').hidden,'Records modal did not open');
+        await tap(9);assert(current().state.mode==='paused','Start bypassed the records modal');
+        gameWindow.document.querySelector('#lbClose').click();focusGame();await neutral();
+      });
+      await test(label+' unsupported mapping and denied access keep keyboard usable',async()=>{
+        await prepare();await setPad({mapping:''});
+        assert(/mapping|unsupported/i.test(element('GamepadStatus').textContent),'Unsupported mapping was not explained');
+        if(current().state.mode==='paused')current().pause();focusGame();await frames();
+        const x=current().player().x;key('keydown','ArrowLeft');
+        await until(()=>current().player().x<x-3,'Keyboard failed with unsupported controller');key('keyup','ArrowLeft');
+        gameWindow.padTest.fail=true;await frames();
+        assert(/blocked|access|unavailable/i.test(element('GamepadStatus').textContent),'Denied API access was not explained');
+        gameWindow.padTest.fail=false;await neutral();
+      });
+    }
+    async function run(){
+      runButton.disabled=true;list.replaceChildren();report.textContent='';
+      window.controllerCheck={running:true,done:false,started:new Date().toISOString(),userAgent:navigator.userAgent,results:[]};
+      const saved=new Map();
+      for(let i=0;i<localStorage.length;i++){const key=localStorage.key(i);if(/^pa_(ru|lw)_/.test(key))saved.set(key,localStorage.getItem(key));}
+      try{
+        summary.textContent='Loading the actual game…';
+        const response=await fetch('/game.html',{cache:'no-store'});assert(response.ok,'Could not load /game.html');
+        const html=await response.text();
+        const injection='<script>('+installController.toString()+')();<\/script>';
+        const loaded=new Promise(resolve=>frame.addEventListener('load',resolve,{once:true}));
+        frame.srcdoc=html.replace(/<head[^>]*>/i,match=>match+injection);
+        await Promise.race([loaded,sleep(60000).then(()=>{throw new Error('The game iframe did not load');})]);
+        await until(()=>frame.contentWindow?.ARCADE,'The game did not initialize',60000);
+        gameWindow=frame.contentWindow;gameWindow.ARCADE.Sound.on=false;
+        for(const cabinet of cabinets)await checkCabinet(cabinet);
+        await test('Cabinet navigation freezes the previous match and consumes held Start',async()=>{
+          activeCabinet=cabinets[0];await prepare();
+          gameWindow.ARCADE.showScreen('menu');const previous=JSON.stringify(current().state);
+          await setPad({buttons:[0]});gameWindow.ARCADE.showScreen('ladder');
+          activeCabinet=cabinets[1];current().choose();focusGame();await frames(12);
+          assert(current().state.mode==='ready','Held action started another cabinet');
+          assert(JSON.stringify(gameWindow.ARCADE.RUMBLE.state)===previous,'The previous cabinet kept advancing');await neutral();
+        });
+      }catch(error){
+        window.controllerCheck.results.push({name:'Harness initialization',pass:false,error:String(error.stack||error)});
+      }finally{
+        if(gameWindow?.ARCADE){gameWindow.ARCADE.RUMBLE.pause(true);gameWindow.ARCADE.LADDER.pause(true);gameWindow.padTest?.set({axes:[0,0],buttons:[]});}
+        const keys=[];for(let i=0;i<localStorage.length;i++){const key=localStorage.key(i);if(/^pa_(ru|lw)_/.test(key))keys.push(key);}
+        for(const key of keys)if(!saved.has(key))localStorage.removeItem(key);
+        for(const [key,value] of saved)localStorage.setItem(key,value);
+        const state=window.controllerCheck;state.running=false;state.done=true;state.finished=new Date().toISOString();
+        state.passed=state.results.filter(result=>result.pass).length;state.failed=state.results.length-state.passed;
+        summary.textContent=state.passed+' passed · '+state.failed+' failed';summary.className=state.failed?'fail':'pass';
+        report.textContent=JSON.stringify(state,null,2);runButton.disabled=false;
+      }
+    }
+    runButton.addEventListener('click',run);
+  </script>
+</body>
+</html>

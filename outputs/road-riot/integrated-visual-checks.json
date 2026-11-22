@@ -1,0 +1,374 @@
+[
+  {
+    "engine": "chrome",
+    "name": "phone",
+    "bounds": [
+      {
+        "id": "rrCanvas",
+        "x": 6,
+        "y": 6,
+        "w": 378,
+        "h": 552,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrLeftBtn",
+        "x": 14,
+        "y": 607.5,
+        "w": 42,
+        "h": 60,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrRightBtn",
+        "x": 61,
+        "y": 607.5,
+        "w": 42,
+        "h": 60,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBrakeBtn",
+        "x": 108,
+        "y": 607.5,
+        "w": 42.296875,
+        "h": 60,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrAttackLeftBtn",
+        "x": 211,
+        "y": 592,
+        "w": 80,
+        "h": 43,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrAttackRightBtn",
+        "x": 296,
+        "y": 592,
+        "w": 80,
+        "h": 43,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBlockBtn",
+        "x": 211,
+        "y": 640,
+        "w": 80,
+        "h": 43,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBoostBtn",
+        "x": 296,
+        "y": 640,
+        "w": 80,
+        "h": 43,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrPauseBtn",
+        "x": 69.9375,
+        "y": 696,
+        "w": 54.171875,
+        "h": 34,
+        "visible": true,
+        "reachable": true
+      }
+    ],
+    "combat": {
+      "time": 2.3,
+      "hits": 1,
+      "attackTime": 0.13666666666666616
+    },
+    "errors": []
+  },
+  {
+    "engine": "chrome",
+    "name": "desktop",
+    "bounds": [
+      {
+        "id": "rrCanvas",
+        "x": 6,
+        "y": 6,
+        "w": 1268,
+        "h": 638,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrLeftBtn",
+        "x": 22,
+        "y": 680,
+        "w": 66,
+        "h": 59,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrRightBtn",
+        "x": 95,
+        "y": 680,
+        "w": 66,
+        "h": 59,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBrakeBtn",
+        "x": 168,
+        "y": 680,
+        "w": 66,
+        "h": 59,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrAttackLeftBtn",
+        "x": 925,
+        "y": 680,
+        "w": 90,
+        "h": 59,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrAttackRightBtn",
+        "x": 1022,
+        "y": 680,
+        "w": 90,
+        "h": 59,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBlockBtn",
+        "x": 1119,
+        "y": 680,
+        "w": 66,
+        "h": 59,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBoostBtn",
+        "x": 1192,
+        "y": 680,
+        "w": 66,
+        "h": 59,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrPauseBtn",
+        "x": 514.9375,
+        "y": 754.5,
+        "w": 54.171875,
+        "h": 34,
+        "visible": true,
+        "reachable": true
+      }
+    ],
+    "combat": {
+      "time": 2.3,
+      "hits": 1,
+      "attackTime": 0.13666666666666616
+    },
+    "errors": []
+  },
+  {
+    "engine": "chrome",
+    "name": "landscape",
+    "bounds": [
+      {
+        "id": "rrCanvas",
+        "x": 6,
+        "y": 6,
+        "w": 634,
+        "h": 378,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrLeftBtn",
+        "x": 657.5,
+        "y": 92,
+        "w": 50,
+        "h": 48,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrRightBtn",
+        "x": 714.5,
+        "y": 92,
+        "w": 50,
+        "h": 48,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBrakeBtn",
+        "x": 771.5,
+        "y": 92,
+        "w": 50,
+        "h": 48,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrAttackLeftBtn",
+        "x": 649,
+        "y": 152,
+        "w": 87,
+        "h": 48,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrAttackRightBtn",
+        "x": 743,
+        "y": 152,
+        "w": 87,
+        "h": 48,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBlockBtn",
+        "x": 649,
+        "y": 207,
+        "w": 87,
+        "h": 48,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBoostBtn",
+        "x": 743,
+        "y": 207,
+        "w": 87,
+        "h": 48,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrPauseBtn",
+        "x": 655.5,
+        "y": 313,
+        "w": 44.40625,
+        "h": 32,
+        "visible": true,
+        "reachable": true
+      }
+    ],
+    "combat": {
+      "time": 2.3,
+      "hits": 1,
+      "attackTime": 0.13666666666666616
+    },
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "name": "phone",
+    "bounds": [
+      {
+        "id": "rrCanvas",
+        "x": 6,
+        "y": 6,
+        "w": 378,
+        "h": 552,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrLeftBtn",
+        "x": 14,
+        "y": 607.5,
+        "w": 42,
+        "h": 60,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrRightBtn",
+        "x": 61,
+        "y": 607.5,
+        "w": 42,
+        "h": 60,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBrakeBtn",
+        "x": 108,
+        "y": 607.5,
+        "w": 42.296875,
+        "h": 60,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrAttackLeftBtn",
+        "x": 211,
+        "y": 592,
+        "w": 80,
+        "h": 43,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrAttackRightBtn",
+        "x": 296,
+        "y": 592,
+        "w": 80,
+        "h": 43,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBlockBtn",
+        "x": 211,
+        "y": 640,
+        "w": 80,
+        "h": 43,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBoostBtn",
+        "x": 296,
+        "y": 640,
+        "w": 80,
+        "h": 43,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrPauseBtn",
+        "x": 69.9375,
+        "y": 696,
+        "w": 54.171875,
+        "h": 34,
+        "visible": true,
+        "reachable": true
+      }
+    ],
+    "combat": {
+      "time": 2.3,
+      "hits": 1,
+      "attackTime": 0.13666666666666616
+    },
+    "errors": []
+  }
+]

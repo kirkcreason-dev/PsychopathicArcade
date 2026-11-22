@@ -1,0 +1,140 @@
+[
+  {
+    "browser": "chrome",
+    "equality": [
+      {
+        "w": 320,
+        "h": 400,
+        "z": 1200,
+        "difference": 0
+      },
+      {
+        "w": 320,
+        "h": 400,
+        "z": 6500,
+        "difference": 0
+      },
+      {
+        "w": 320,
+        "h": 400,
+        "z": 12000,
+        "difference": 0
+      },
+      {
+        "w": 844,
+        "h": 245,
+        "z": 1200,
+        "difference": 0
+      },
+      {
+        "w": 844,
+        "h": 245,
+        "z": 6500,
+        "difference": 0
+      },
+      {
+        "w": 844,
+        "h": 245,
+        "z": 12000,
+        "difference": 0
+      },
+      {
+        "w": 1280,
+        "h": 650,
+        "z": 1200,
+        "difference": 0
+      },
+      {
+        "w": 1280,
+        "h": 650,
+        "z": 6500,
+        "difference": 0
+      },
+      {
+        "w": 1280,
+        "h": 650,
+        "z": 12000,
+        "difference": 0
+      }
+    ],
+    "reduced": {
+      "idleDifference": 0,
+      "attackDifference": 179212
+    },
+    "perf": {
+      "p95": 0.7000002861022949,
+      "median": 0.3000001907348633,
+      "canvasAllocations": 0
+    },
+    "errors": []
+  },
+  {
+    "browser": "webkit",
+    "equality": [
+      {
+        "w": 320,
+        "h": 400,
+        "z": 1200,
+        "difference": 0
+      },
+      {
+        "w": 320,
+        "h": 400,
+        "z": 6500,
+        "difference": 0
+      },
+      {
+        "w": 320,
+        "h": 400,
+        "z": 12000,
+        "difference": 0
+      },
+      {
+        "w": 844,
+        "h": 245,
+        "z": 1200,
+        "difference": 0
+      },
+      {
+        "w": 844,
+        "h": 245,
+        "z": 6500,
+        "difference": 0
+      },
+      {
+        "w": 844,
+        "h": 245,
+        "z": 12000,
+        "difference": 0
+      },
+      {
+        "w": 1280,
+        "h": 650,
+        "z": 1200,
+        "difference": 0
+      },
+      {
+        "w": 1280,
+        "h": 650,
+        "z": 6500,
+        "difference": 0
+      },
+      {
+        "w": 1280,
+        "h": 650,
+        "z": 12000,
+        "difference": 0
+      }
+    ],
+    "reduced": {
+      "idleDifference": 0,
+      "attackDifference": 35340
+    },
+    "perf": {
+      "p95": 10,
+      "median": 7,
+      "canvasAllocations": 0
+    },
+    "errors": []
+  }
+]

@@ -1,0 +1,44 @@
+{
+  "errors": [],
+  "externalRequests": [],
+  "phase": "finished",
+  "time": 75.775,
+  "racers": [
+    {
+      "name": "dani-mo",
+      "time": 75.7726521402502,
+      "dnf": false,
+      "tickets": 23
+    },
+    {
+      "name": "shaggy-2-dope",
+      "time": 81.18105080536989,
+      "dnf": false,
+      "tickets": 27
+    },
+    {
+      "name": "mad-man-pondo",
+      "time": 83.35092560785704,
+      "dnf": false,
+      "tickets": 20
+    },
+    {
+      "name": "big-foot",
+      "time": 82.7437879960617,
+      "dnf": false,
+      "tickets": 20
+    },
+    {
+      "name": "2-tuff-tony",
+      "time": 79.66167641624514,
+      "dnf": false,
+      "tickets": 19
+    },
+    {
+      "name": "violent-j",
+      "time": 80.59003560036717,
+      "dnf": false,
+      "tickets": 18
+    }
+  ]
+}

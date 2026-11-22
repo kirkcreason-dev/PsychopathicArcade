@@ -1,0 +1,58 @@
+{
+  "game": "JCW Road Riot",
+  "publication": "local only; not pushed",
+  "cabinetCount": 20,
+  "modes": [
+    "solo vs five CPU rivals"
+  ],
+  "sharedAssets": "Road to the Show riders, articulated vehicles, backgrounds, track props and two original music tracks",
+  "leaderboards": "device only; no host database or badge changes",
+  "sourceMatchesBuild": true,
+  "bytes": 24616059,
+  "sha256": "ea7bf75c8b3308c2873cc30845397119a200529b63eae1e794fff69974082f35",
+  "verification": {
+    "rules": {
+      "passed": 53,
+      "skipped": 0,
+      "includes": "36 original racer + 17 Road Riot"
+    },
+    "arcadeAndOriginalRacingBrowsers": {
+      "passed": 134,
+      "skipped": 0,
+      "engines": [
+        "Chrome",
+        "WebKit"
+      ]
+    },
+    "riotAndLeaderboardBrowsers": {
+      "uniquePassed": 74,
+      "skipped": 0,
+      "engines": [
+        "Chrome",
+        "WebKit"
+      ],
+      "note": "Two failures in a new test assumed SKIP closed the whole board; corrected fixture and both focused rechecks passed."
+    },
+    "uniqueAutomatedCasesPassed": 261,
+    "build": true,
+    "typecheck": true,
+    "sourceSynchronization": true,
+    "diffWhitespace": true,
+    "finalLayoutRecheck": {
+      "passed": 8,
+      "skipped": 0,
+      "includes": "320\u00d7568,390\u00d7844,667\u00d7375,844\u00d7390 in Chrome and WebKit; overlaps74-case suite"
+    },
+    "visualReview": {
+      "passed": true,
+      "originalRacingPixelComparisons": 18,
+      "targetCueAgreementCases": 200,
+      "errors": 0
+    }
+  },
+  "limits": [
+    "No multiplayer in Road Riot",
+    "No physical phone testing",
+    "Not published"
+  ]
+}

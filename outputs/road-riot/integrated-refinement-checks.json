@@ -1,0 +1,746 @@
+[
+  {
+    "engine": "chrome",
+    "name": "small-phone",
+    "bounds": [
+      {
+        "id": "rrCanvas",
+        "x": 6,
+        "y": 6,
+        "w": 308,
+        "h": 380,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrLeftBtn",
+        "x": 14,
+        "y": 435.5,
+        "w": 42,
+        "h": 60,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrRightBtn",
+        "x": 61,
+        "y": 435.5,
+        "w": 42,
+        "h": 60,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBrakeBtn",
+        "x": 108,
+        "y": 435.5,
+        "w": 42.296875,
+        "h": 60,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrAttackLeftBtn",
+        "x": 160.296875,
+        "y": 420,
+        "w": 70.34375,
+        "h": 43,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrAttackRightBtn",
+        "x": 235.640625,
+        "y": 420,
+        "w": 70.359375,
+        "h": 43,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBlockBtn",
+        "x": 160.296875,
+        "y": 468,
+        "w": 70.34375,
+        "h": 43,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBoostBtn",
+        "x": 235.640625,
+        "y": 468,
+        "w": 70.359375,
+        "h": 43,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrPauseBtn",
+        "x": 34.9375,
+        "y": 524,
+        "w": 54.171875,
+        "h": 34,
+        "visible": true,
+        "reachable": true
+      }
+    ],
+    "feedback": {
+      "rect": {
+        "x": 143,
+        "y": 90,
+        "width": 163,
+        "height": 43.5,
+        "top": 90,
+        "right": 306,
+        "bottom": 133.5,
+        "left": 143
+      },
+      "readout": {
+        "x": 14,
+        "y": 83,
+        "width": 120.8125,
+        "height": 41,
+        "top": 83,
+        "right": 134.8125,
+        "bottom": 124,
+        "left": 14
+      },
+      "visible": true,
+      "text": "HIT! · BLOCK THE NEXT SWING",
+      "overlap": []
+    },
+    "resultAction": {
+      "visible": true,
+      "reachable": true,
+      "score": "9,551",
+      "breakdown": "FINISH4,200CLEAN HITS1,800KNOCKOUTS1,800TICKETS250TIME BONUS1,501TIME LIMIT0"
+    },
+    "combat": {
+      "time": 2.3,
+      "hits": 1,
+      "attackTime": 0.13666666666666616
+    },
+    "errors": []
+  },
+  {
+    "engine": "chrome",
+    "name": "phone",
+    "bounds": [
+      {
+        "id": "rrCanvas",
+        "x": 6,
+        "y": 6,
+        "w": 378,
+        "h": 552,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrLeftBtn",
+        "x": 14,
+        "y": 607.5,
+        "w": 42,
+        "h": 60,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrRightBtn",
+        "x": 61,
+        "y": 607.5,
+        "w": 42,
+        "h": 60,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBrakeBtn",
+        "x": 108,
+        "y": 607.5,
+        "w": 42.296875,
+        "h": 60,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrAttackLeftBtn",
+        "x": 211,
+        "y": 592,
+        "w": 80,
+        "h": 43,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrAttackRightBtn",
+        "x": 296,
+        "y": 592,
+        "w": 80,
+        "h": 43,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBlockBtn",
+        "x": 211,
+        "y": 640,
+        "w": 80,
+        "h": 43,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBoostBtn",
+        "x": 296,
+        "y": 640,
+        "w": 80,
+        "h": 43,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrPauseBtn",
+        "x": 69.9375,
+        "y": 696,
+        "w": 54.171875,
+        "h": 34,
+        "visible": true,
+        "reachable": true
+      }
+    ],
+    "feedback": {
+      "rect": {
+        "x": 143,
+        "y": 90,
+        "width": 233,
+        "height": 29.75,
+        "top": 90,
+        "right": 376,
+        "bottom": 119.75,
+        "left": 143
+      },
+      "readout": {
+        "x": 14,
+        "y": 83,
+        "width": 120.8125,
+        "height": 41,
+        "top": 83,
+        "right": 134.8125,
+        "bottom": 124,
+        "left": 14
+      },
+      "visible": true,
+      "text": "HIT! · BLOCK THE NEXT SWING",
+      "overlap": []
+    },
+    "resultAction": {
+      "visible": true,
+      "reachable": true,
+      "score": "9,551",
+      "breakdown": "FINISH4,200CLEAN HITS1,800KNOCKOUTS1,800TICKETS250TIME BONUS1,501TIME LIMIT0"
+    },
+    "combat": {
+      "time": 2.3,
+      "hits": 1,
+      "attackTime": 0.13666666666666616
+    },
+    "errors": []
+  },
+  {
+    "engine": "chrome",
+    "name": "landscape",
+    "bounds": [
+      {
+        "id": "rrCanvas",
+        "x": 6,
+        "y": 6,
+        "w": 457,
+        "h": 363,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrLeftBtn",
+        "x": 482.5,
+        "y": 88,
+        "w": 50,
+        "h": 48,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrRightBtn",
+        "x": 537.5,
+        "y": 88,
+        "w": 50,
+        "h": 48,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBrakeBtn",
+        "x": 592.5,
+        "y": 88,
+        "w": 50,
+        "h": 48,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrAttackLeftBtn",
+        "x": 472,
+        "y": 148,
+        "w": 88,
+        "h": 44,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrAttackRightBtn",
+        "x": 565,
+        "y": 148,
+        "w": 88,
+        "h": 44,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBlockBtn",
+        "x": 472,
+        "y": 197,
+        "w": 88,
+        "h": 47,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBoostBtn",
+        "x": 565,
+        "y": 197,
+        "w": 88,
+        "h": 47,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrPauseBtn",
+        "x": 478.5,
+        "y": 298,
+        "w": 44.40625,
+        "h": 32,
+        "visible": true,
+        "reachable": true
+      }
+    ],
+    "feedback": {
+      "rect": {
+        "x": 195,
+        "y": 88,
+        "width": 260,
+        "height": 28.5,
+        "top": 88,
+        "right": 455,
+        "bottom": 116.5,
+        "left": 195
+      },
+      "readout": {
+        "x": 14,
+        "y": 83,
+        "width": 120.8125,
+        "height": 41,
+        "top": 83,
+        "right": 134.8125,
+        "bottom": 124,
+        "left": 14
+      },
+      "visible": true,
+      "text": "HIT! · BLOCK THE NEXT SWING",
+      "overlap": []
+    },
+    "resultAction": {
+      "visible": true,
+      "reachable": true,
+      "score": "9,551",
+      "breakdown": "FINISH4,200CLEAN HITS1,800KNOCKOUTS1,800TICKETS250TIME BONUS1,501TIME LIMIT0"
+    },
+    "combat": {
+      "time": 2.3,
+      "hits": 1,
+      "attackTime": 0.13666666666666616
+    },
+    "errors": []
+  },
+  {
+    "engine": "chrome",
+    "name": "desktop",
+    "bounds": [
+      {
+        "id": "rrCanvas",
+        "x": 6,
+        "y": 6,
+        "w": 1268,
+        "h": 638,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrLeftBtn",
+        "x": 22,
+        "y": 680,
+        "w": 66,
+        "h": 59,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrRightBtn",
+        "x": 95,
+        "y": 680,
+        "w": 66,
+        "h": 59,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBrakeBtn",
+        "x": 168,
+        "y": 680,
+        "w": 66,
+        "h": 59,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrAttackLeftBtn",
+        "x": 925,
+        "y": 680,
+        "w": 90,
+        "h": 59,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrAttackRightBtn",
+        "x": 1022,
+        "y": 680,
+        "w": 90,
+        "h": 59,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBlockBtn",
+        "x": 1119,
+        "y": 680,
+        "w": 66,
+        "h": 59,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBoostBtn",
+        "x": 1192,
+        "y": 680,
+        "w": 66,
+        "h": 59,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrPauseBtn",
+        "x": 514.9375,
+        "y": 754.5,
+        "w": 54.171875,
+        "h": 34,
+        "visible": true,
+        "reachable": true
+      }
+    ],
+    "feedback": {
+      "rect": {
+        "x": 517.0546875,
+        "y": 184.625,
+        "width": 245.890625,
+        "height": 37.5,
+        "top": 184.625,
+        "right": 762.9453125,
+        "bottom": 222.125,
+        "left": 517.0546875
+      },
+      "readout": {
+        "x": 23,
+        "y": 110,
+        "width": 146.765625,
+        "height": 51,
+        "top": 110,
+        "right": 169.765625,
+        "bottom": 161,
+        "left": 23
+      },
+      "visible": true,
+      "text": "HIT! · BLOCK THE NEXT SWING",
+      "overlap": []
+    },
+    "resultAction": {
+      "visible": true,
+      "reachable": true,
+      "score": "9,551",
+      "breakdown": "FINISH4,200CLEAN HITS1,800KNOCKOUTS1,800TICKETS250TIME BONUS1,501TIME LIMIT0"
+    },
+    "combat": {
+      "time": 2.3,
+      "hits": 1,
+      "attackTime": 0.13666666666666616
+    },
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "name": "small-phone",
+    "bounds": [
+      {
+        "id": "rrCanvas",
+        "x": 6,
+        "y": 6,
+        "w": 308,
+        "h": 380,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrLeftBtn",
+        "x": 14,
+        "y": 435.5,
+        "w": 42,
+        "h": 60,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrRightBtn",
+        "x": 61,
+        "y": 435.5,
+        "w": 42,
+        "h": 60,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBrakeBtn",
+        "x": 108,
+        "y": 435.5,
+        "w": 42.296875,
+        "h": 60,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrAttackLeftBtn",
+        "x": 160.296875,
+        "y": 420,
+        "w": 70.34375,
+        "h": 43,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrAttackRightBtn",
+        "x": 235.640625,
+        "y": 420,
+        "w": 70.359375,
+        "h": 43,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBlockBtn",
+        "x": 160.296875,
+        "y": 468,
+        "w": 70.34375,
+        "h": 43,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBoostBtn",
+        "x": 235.640625,
+        "y": 468,
+        "w": 70.359375,
+        "h": 43,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrPauseBtn",
+        "x": 34.9375,
+        "y": 524,
+        "w": 54.171875,
+        "h": 34,
+        "visible": true,
+        "reachable": true
+      }
+    ],
+    "feedback": {
+      "rect": {
+        "x": 143,
+        "y": 90,
+        "width": 163,
+        "height": 43.5,
+        "top": 90,
+        "right": 306,
+        "bottom": 133.5,
+        "left": 143
+      },
+      "readout": {
+        "x": 14,
+        "y": 83,
+        "width": 120.8125,
+        "height": 41,
+        "top": 83,
+        "right": 134.8125,
+        "bottom": 124,
+        "left": 14
+      },
+      "visible": true,
+      "text": "HIT! · BLOCK THE NEXT SWING",
+      "overlap": []
+    },
+    "resultAction": {
+      "visible": true,
+      "reachable": true,
+      "score": "9,551",
+      "breakdown": "FINISH4,200CLEAN HITS1,800KNOCKOUTS1,800TICKETS250TIME BONUS1,501TIME LIMIT0"
+    },
+    "combat": {
+      "time": 2.3,
+      "hits": 1,
+      "attackTime": 0.13666666666666616
+    },
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "name": "phone",
+    "bounds": [
+      {
+        "id": "rrCanvas",
+        "x": 6,
+        "y": 6,
+        "w": 378,
+        "h": 552,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrLeftBtn",
+        "x": 14,
+        "y": 607.5,
+        "w": 42,
+        "h": 60,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrRightBtn",
+        "x": 61,
+        "y": 607.5,
+        "w": 42,
+        "h": 60,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBrakeBtn",
+        "x": 108,
+        "y": 607.5,
+        "w": 42.296875,
+        "h": 60,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrAttackLeftBtn",
+        "x": 211,
+        "y": 592,
+        "w": 80,
+        "h": 43,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrAttackRightBtn",
+        "x": 296,
+        "y": 592,
+        "w": 80,
+        "h": 43,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBlockBtn",
+        "x": 211,
+        "y": 640,
+        "w": 80,
+        "h": 43,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrBoostBtn",
+        "x": 296,
+        "y": 640,
+        "w": 80,
+        "h": 43,
+        "visible": true,
+        "reachable": true
+      },
+      {
+        "id": "rrPauseBtn",
+        "x": 69.9375,
+        "y": 696,
+        "w": 54.171875,
+        "h": 34,
+        "visible": true,
+        "reachable": true
+      }
+    ],
+    "feedback": {
+      "rect": {
+        "x": 143,
+        "y": 90,
+        "width": 233,
+        "height": 29.75,
+        "top": 90,
+        "right": 376,
+        "bottom": 119.75,
+        "left": 143
+      },
+      "readout": {
+        "x": 14,
+        "y": 83,
+        "width": 120.8125,
+        "height": 41,
+        "top": 83,
+        "right": 134.8125,
+        "bottom": 124,
+        "left": 14
+      },
+      "visible": true,
+      "text": "HIT! · BLOCK THE NEXT SWING",
+      "overlap": []
+    },
+    "resultAction": {
+      "visible": true,
+      "reachable": true,
+      "score": "9,551",
+      "breakdown": "FINISH4,200CLEAN HITS1,800KNOCKOUTS1,800TICKETS250TIME BONUS1,501TIME LIMIT0"
+    },
+    "combat": {
+      "time": 2.3,
+      "hits": 1,
+      "attackTime": 0.13666666666666616
+    },
+    "errors": []
+  }
+]
